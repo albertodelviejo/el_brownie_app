@@ -20,5 +20,7 @@ class AuthRepository {
 
   Future<User> singInGoogle() => _firebaseAuthAPI.signInGoogle();
 
+  Future<User> singInFacebook() => _firebaseAuthAPI.signInFacebook();
+
   signOut() => _firebaseAuthAPI.signOut();
 }

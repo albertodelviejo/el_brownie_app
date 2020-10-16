@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/repository/auth_repository.dart';
 import 'package:el_brownie_app/repository/cloud_firestore_repository.dart';
@@ -30,6 +29,9 @@ class UserBloc implements Bloc {
 
 //3. Log in Google
   Future<User> signInGoogle() => _authRepository.singInGoogle();
+
+//4. Log in Facebook
+  Future<User> signInFacebook() => _authRepository.singInFacebook();
 
 //3. Get Tickets from DB
 

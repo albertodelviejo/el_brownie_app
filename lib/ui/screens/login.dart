@@ -36,8 +36,6 @@ class _Login extends State<Login> {
   }
 
   Widget logInForm(BuildContext context) {
-    final pathImage = "assets/images/logopcd.png";
-
     return Scaffold(
       body: Stack(
         children: [
@@ -52,9 +50,6 @@ class _Login extends State<Login> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Container(
-                        margin: EdgeInsets.only(top: 30.0, right: 20),
-                        child: Image.asset(pathImage)),
                     Center(
                       child: Container(
                         padding: EdgeInsets.only(top: 30),
@@ -179,8 +174,7 @@ class _Login extends State<Login> {
                         onPressed: () async {
                           userBloc.signOut();
                           await userBloc
-                              .register(
-                                  email: ecMail.text, password: ecPassword.text)
+                              .signInFacebook()
                               .then((value) => userBloc.user.uid = value.uid);
                         }),
                   ),
