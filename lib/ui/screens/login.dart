@@ -1,7 +1,9 @@
 import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/screens/home.dart';
 import 'package:el_brownie_app/ui/widgets/decoration_layout.dart';
 import 'package:el_brownie_app/ui/widgets/rounded_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
@@ -130,27 +132,39 @@ class _Login extends State<Login> {
                         buttonText: "Iniciar Sesión",
                         backgroundColor: Colors.blue,
                         textColor: Colors.white,
-                        onPressed: () async {
-                          await userBloc
+                        onPressed: () {
+                          userBloc
                               .signIn(
                                   email: ecMail.text, password: ecPassword.text)
-                              .then((value) => userBloc.user.uid = value.uid);
+                              .then((User value) {
+                            userBloc.user.uid = value.uid;
+                            userBloc.updateUserData(UserModel(
+                                uid: value.uid,
+                                userName: value.displayName,
+                                email: value.email));
+                          });
                         }),
                   ),
                   Container(
-                    width: 300,
-                    margin: EdgeInsets.only(),
-                    child: RoundedButton(
-                        buttonText: "Registrarse",
-                        backgroundColor: Colors.blue,
-                        textColor: Colors.white,
-                        onPressed: () async {
-                          await userBloc
-                              .register(
-                                  email: ecMail.text, password: ecPassword.text)
-                              .then((value) => userBloc.user.uid = value.uid);
-                        }),
-                  ),
+                      width: 300,
+                      margin: EdgeInsets.only(),
+                      child: RoundedButton(
+                          buttonText: "Registrarse",
+                          backgroundColor: Colors.blue,
+                          textColor: Colors.white,
+                          onPressed: () {
+                            userBloc
+                                .register(
+                                    email: ecMail.text,
+                                    password: ecPassword.text)
+                                .then((User value) {
+                              userBloc.user.uid = value.uid;
+                              userBloc.updateUserData(UserModel(
+                                  uid: value.uid,
+                                  userName: value.displayName,
+                                  email: value.email));
+                            });
+                          })),
                   Container(
                     width: 300,
                     margin: EdgeInsets.only(),
@@ -158,10 +172,14 @@ class _Login extends State<Login> {
                         buttonText: "Log In Google",
                         backgroundColor: Colors.blue,
                         textColor: Colors.white,
-                        onPressed: () async {
-                          await userBloc
-                              .signInGoogle()
-                              .then((value) => userBloc.user.uid = value.uid);
+                        onPressed: () {
+                          userBloc.signInGoogle().then((User value) {
+                            userBloc.user.uid = value.uid;
+                            userBloc.updateUserData(UserModel(
+                                uid: value.uid,
+                                userName: value.displayName,
+                                email: value.email));
+                          });
                         }),
                   ),
                   Container(
@@ -171,11 +189,15 @@ class _Login extends State<Login> {
                         buttonText: "Log In Facebook",
                         backgroundColor: Colors.blue,
                         textColor: Colors.white,
-                        onPressed: () async {
+                        onPressed: () {
                           userBloc.signOut();
-                          await userBloc
-                              .signInFacebook()
-                              .then((value) => userBloc.user.uid = value.uid);
+                          userBloc.signInFacebook().then((User value) {
+                            userBloc.user.uid = value.uid;
+                            userBloc.updateUserData(UserModel(
+                                uid: value.uid,
+                                userName: value.displayName,
+                                email: value.email));
+                          });
                         }),
                   ),
                 ],

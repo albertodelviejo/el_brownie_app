@@ -8,13 +8,13 @@ class AuthRepository {
 
   Future<User> signInFirebase(email, password) {
     try {
-      _firebaseAuthAPI.signIn(email, password);
+      return _firebaseAuthAPI.signIn(email, password);
     } on PlatformException catch (e) {}
   }
 
   Future<User> registerFirebase(email, password) {
     try {
-      _firebaseAuthAPI.register(email, password);
+      return _firebaseAuthAPI.register(email, password);
     } on PlatformException catch (e) {}
   }
 

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
+import 'package:el_brownie_app/ui/widgets/card.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
@@ -11,14 +12,19 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<Home> {
-  final pathImage = "assets/images/logopcd.png";
   UserBloc userBloc;
+
+  @override
+  Widget build(BuildContext context) {
+    userBloc = BlocProvider.of(context);
+    return getUserfromDB(userBloc.user.id);
+  }
 
   Widget getUserfromDB(uid) {
     if (userBloc.user.uid == null) {
       return StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
-              .collection("pacientes")
+              .collection("users")
               .where('uid', isEqualTo: uid)
               .snapshots(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -32,52 +38,85 @@ class _Home extends State<Home> {
                   uid: element.get("uid"),
                   id: element.get("id"),
                   userName: element.get("name"),
-                  userSurname1: element.get("surname1"),
-                  userSurname2: element.get("surname2"),
-                  paidBalance: element.get("paid_balance"),
-                  totalBalance: element.get("total_balance"),
                   points: element.get("points"));
               Stream.empty();
-              return homescreen(context);
+              return getPostsfromDB();
             }
           });
     } else {
-      return homescreen(context);
+      return getPostsfromDB();
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    userBloc = BlocProvider.of(context);
-    return getUserfromDB(userBloc.user.uid);
+  Widget getPostsfromDB() {
+    return StreamBuilder(
+        stream: userBloc.myPostsListStream(),
+        builder: (context, AsyncSnapshot snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Center(child: CircularProgressIndicator());
+            case ConnectionState.done:
+              return homescreen(userBloc.buildMyPosts(snapshot.data.documents));
+
+            case ConnectionState.active:
+              return homescreen(userBloc.buildMyPosts(snapshot.data.documents));
+
+            case ConnectionState.none:
+              return Center(child: CircularProgressIndicator());
+            default:
+              return homescreen(userBloc.buildMyPosts(snapshot.data.documents));
+          }
+        });
   }
 
-  Widget homescreen(BuildContext context) {
+  Widget homescreen(posts) {
+    var postsList = posts;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Plan Cobertura Dental",
-          style: TextStyle(color: Colors.black, fontFamily: "ProximaNova"),
+        appBar: AppBar(
+          title: Text(
+            "ElBrownie",
+            style: TextStyle(color: Colors.black, fontFamily: "ProximaNova"),
+          ),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
+          backgroundColor: Colors.black,
+          shadowColor: Colors.transparent,
         ),
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
+        body: Column(
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.only(bottom: 25),
+              scrollDirection: Axis.vertical,
+              reverse: false,
+              itemBuilder: (_, int index) => posts[index],
+              itemCount: posts.length,
+            ),
+            GestureDetector(
+              onTap: () {
+                userBloc.signOut();
               },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
-        backgroundColor: Colors.black,
-        shadowColor: Colors.transparent,
-      ),
-      body: Stack(),
-    );
+              child: Container(
+                height: 40,
+                width: 80,
+                child: Text("SignOut"),
+              ),
+            )
+          ],
+        ));
   }
 }
 
