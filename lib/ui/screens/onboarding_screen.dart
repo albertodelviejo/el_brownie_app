@@ -1,9 +1,8 @@
+import 'package:el_brownie_app/ui/screens/login_screen.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'login.dart';
 
 class OnBoarding extends StatefulWidget {
   @override
@@ -52,7 +51,6 @@ class _OnBoardingState extends State<OnBoarding> {
         backgroundColor: Mystyle.primarycolo,
         body: PageView.builder(
             controller: controller,
-            // physics: NeverScrollableScrollPhysics(),
             onPageChanged: (val) {
               setState(() {
                 currentIndex = val;
@@ -132,27 +130,14 @@ class _OnBoardingState extends State<OnBoarding> {
               ),
               GestureDetector(
                 onTap: () {
-                  // if (currentIndex == 3) {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return Login();
+                        return LoginScreen();
                       },
                     ),
                   );
-                  // } else {
-                  //   print("after then :" + currentIndex.toString());
-                  //   controller
-                  //       .animateToPage(
-                  //     currentIndex + 1,
-                  //     duration: Duration(seconds: 1),
-                  //     curve: Curves.ease,
-                  //   )
-                  //       .then((_) {
-                  //     print("after then :" + currentIndex.toString());
-                  //   });
-                  // }
                 },
                 child: Container(
                   height: ScreenUtil().setHeight(120),
@@ -166,36 +151,6 @@ class _OnBoardingState extends State<OnBoarding> {
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: _deviceHeight * 0.02,
-              // ),
-              // GestureDetector(
-              //   onTap: () {
-              //     // Navigator.pushNamed(context, LoginScreen.nameRoute);
-              //     Navigator.pushReplacement(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (BuildContext context) {
-              //           // return LoginScreen();
-              //         },
-              //       ),
-              //     );
-              //   },
-              //   child: Container(
-              //     height: ScreenUtil().setHeight(130),
-              //     width: _deviceWidth - ScreenUtil().setWidth(200),
-              //     decoration: BoxDecoration(color: Colors.white),
-              //     child: Center(
-              //       child: Text(
-              //         '${onBoardingData[currentIndex].secondContainer}',
-              //         style: TextStyle(
-              //             fontSize: ScreenUtil().setSp(48),
-              //             fontWeight: FontWeight.normal,
-              //             color: Colors.grey),
-              //       ),
-              //     ),
-              //   ),
-              // )
             ],
           ),
         ),

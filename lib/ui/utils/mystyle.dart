@@ -4,10 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Mystyle {
   static const Color primarycolo = Color(0xFFfde34e);
   static const Color secondrycolo = Color(0xFF25bbee);
-  // static const Color lightercolo = Color(0xFFbfecff);
-  // static const Color redcolo = Color(0xFFeb6468);
-  // static const Color bodycolo = Color(0xFFfbfbfb);
-  // static const Color txtcolo = Color(0xFF455590);
 
   static String tragickmarker = "TragicMarker";
   static String openS = "OpenSansRegular";
@@ -24,6 +20,11 @@ class Mystyle {
     fontFamily: openS,
     fontSize: ScreenUtil().setSp(48),
   );
+  static TextStyle subtitleTextStylenoco = TextStyle(
+    fontWeight: FontWeight.w800,
+    fontFamily: openS,
+    fontSize: ScreenUtil().setSp(48),
+  );
 
   static TextStyle regularTextStyle = TextStyle(
     color: Colors.black87,
@@ -32,11 +33,18 @@ class Mystyle {
     fontSize: ScreenUtil().setSp(48),
   );
 
+  static TextStyle normalTextStyle = TextStyle(
+    color: Colors.black87,
+    fontWeight: FontWeight.normal,
+    fontFamily: openS,
+    fontSize: ScreenUtil().setSp(42),
+  );
+
   static TextStyle smallTextStyle = TextStyle(
     color: primarycolo,
     fontWeight: FontWeight.normal,
     fontFamily: openS,
-    fontSize: ScreenUtil().setSp(32),
+    fontSize: ScreenUtil().setSp(36),
   );
 
   //---------------
@@ -66,6 +74,16 @@ class Mystyle {
     );
   }
 
+  static buttDecotatio() {
+    return BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(50),
+      // border: Border.all(
+      //   color: Colors.black87,
+      // ),
+    );
+  }
+
   static inputregular(hint, {icon}) {
     return InputDecoration(
       hintText: hint,
@@ -75,24 +93,98 @@ class Mystyle {
       fillColor: Colors.white,
 
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.blue.withOpacity(.2), width: 1.0),
+        borderSide: BorderSide(
+          color: Colors.blue.withOpacity(.2),
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.blue.withOpacity(.2), width: 1.0),
+        borderSide: BorderSide(
+          color: Colors.blue.withOpacity(.2),
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.red.withOpacity(.2), width: 1.0),
+        borderSide: BorderSide(
+          color: Colors.red.withOpacity(.2),
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.red.withOpacity(.2), width: 1.0),
+        borderSide: BorderSide(
+          color: Colors.red.withOpacity(.2),
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
       ),
       disabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.blue.withOpacity(.2), width: 1.0),
+        borderSide: BorderSide(
+          color: Colors.blue.withOpacity(.2),
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
       ),
       // bo
       suffixIcon: icon,
       filled: true,
-      contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
+      contentPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 0),
+      labelStyle: TextStyle(
+        fontSize: 14,
+      ),
+    );
+  }
+
+  static inputWhitebg(hint, {icon}) {
+    return InputDecoration(
+      hintText: hint,
+      hintStyle: TextStyle(
+        fontSize: 14,
+        color: Color(0xFF8b8b8b),
+      ),
+      fillColor: Color(0xFFe6e6e6),
+
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      // bo
+      suffixIcon: icon,
+      filled: true,
+      contentPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 0),
       labelStyle: TextStyle(
         fontSize: 14,
       ),

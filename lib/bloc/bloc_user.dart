@@ -56,7 +56,7 @@ class UserBloc implements Bloc {
 // 7. Set post as favourite
 
   Future likePost(Post post) =>
-      _cloudFirestoreRepository.likePost(post, user.id);
+      _cloudFirestoreRepository.likePost(post, user.uid);
 
   signOut() {
     _authRepository.signOut();

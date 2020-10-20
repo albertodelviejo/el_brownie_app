@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
-import 'package:el_brownie_app/ui/widgets/card.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
@@ -17,7 +16,10 @@ class _Home extends State<Home> {
   @override
   Widget build(BuildContext context) {
     userBloc = BlocProvider.of(context);
-    return getUserfromDB(userBloc.user.id);
+    if (userBloc.user.uid == null) {
+      userBloc.user = UserModel(uid: userBloc.currentUser.uid);
+    }
+    return getUserfromDB(userBloc.user.uid);
   }
 
   Widget getUserfromDB(uid) {
@@ -36,9 +38,7 @@ class _Home extends State<Home> {
               userBloc.user = UserModel(
                   email: element.get("email"),
                   uid: element.get("uid"),
-                  id: element.get("id"),
-                  userName: element.get("name"),
-                  points: element.get("points"));
+                  userName: element.get("username"));
               Stream.empty();
               return getPostsfromDB();
             }

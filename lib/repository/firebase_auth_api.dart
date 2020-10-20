@@ -10,14 +10,28 @@ class FirebaseAuthAPI {
   Future<User> signIn(email, password) async {
     UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: email, password: password);
-    return userCredential.user;
+
+    User _user = userCredential.user;
+    assert(!_user.isAnonymous);
+    assert(await _user.getIdToken() != null);
+    User currentUser = _auth.currentUser;
+    assert(_user.uid == currentUser.uid);
+
+    return currentUser;
   }
 
   Future<User> register(email, password) async {
     UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
 
-    return userCredential.user;
+    User _user = userCredential.user;
+
+    assert(!_user.isAnonymous);
+    assert(await _user.getIdToken() != null);
+    User currentUser = _auth.currentUser;
+    assert(_user.uid == currentUser.uid);
+
+    return currentUser;
   }
 
   Future<User> signInGoogle() async {

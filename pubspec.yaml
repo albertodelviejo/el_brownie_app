@@ -36,6 +36,7 @@ dependencies:
   flutter_facebook_login: ^3.0.0
   google_sign_in:
   flutter_screenutil: ^3.1.1
+  flutter_signin_button: ^1.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -76,6 +77,15 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: TragicMarker
+      fonts:
+        - asset: assets/font/TragicMarker.otf
+    - family: OpenSansRegular
+      fonts:
+        - asset: assets/font/OpenSans-Regular.ttf
+        - asset: assets/font/OpenSans-Bold.ttf
+          weight: 700
   # fonts:
   #   - family: Schyler
   #     fonts:

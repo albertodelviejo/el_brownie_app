@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class UserModel {
   String uid;
-  final String id;
   final String userName;
   final String email;
   final int points;
@@ -12,7 +11,6 @@ class UserModel {
   UserModel({
     Key key,
     this.uid,
-    this.id,
     this.userName,
     this.email,
     this.bankAccount,

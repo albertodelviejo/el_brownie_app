@@ -14,7 +14,7 @@ class CloudFirestoreAPI {
 
   void updateUserData(UserModel user) async {
     DocumentReference ref = _db.collection("users").doc(user.uid);
-    return await ref.set({
+    return await ref.update({
       'uid': user.uid,
       'username': user.userName,
       'email': user.email,
@@ -33,6 +33,7 @@ class CloudFirestoreAPI {
           valoration: element.get('valoration'),
           date: element.get('date'),
           idUser: element.get('id_user'),
+          idPost: element.get('idPost'),
           photos: element.get('photos')));
     });
     return allPost;
@@ -51,7 +52,8 @@ class CloudFirestoreAPI {
             valoration: element.get('valoration'),
             date: element.get('date'),
             idUser: element.get('id_user'),
-            photos: element.get('photos')),
+            photos: element.get('photos'),
+            idPost: element.get('idPost')),
       ));
     });
     return allPost;
@@ -59,15 +61,9 @@ class CloudFirestoreAPI {
 
   Future likePost(Post post, String uid) async {
     await _db.collection("users").doc(uid).get().then((DocumentSnapshot ds) {
-      if (ds.get('favorites') != null) {
-        _db.collection("users").doc(uid).update({
-          'favorites': FieldValue.arrayUnion([post.idPost])
-        });
-      } else {
-        _db.collection("users").doc(uid).set({
-          'favorites': FieldValue.arrayUnion([post.idPost])
-        });
-      }
+      _db.collection("users").doc(uid).update({
+        'favorites': FieldValue.arrayUnion([post.idPost])
+      });
     });
   }
 }
