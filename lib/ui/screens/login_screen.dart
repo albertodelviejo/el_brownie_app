@@ -5,6 +5,7 @@ import 'package:el_brownie_app/ui/screens/register_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/button_list.dart';
@@ -201,22 +202,31 @@ class _LoginScreenState extends State<LoginScreen> {
                               userBloc.user.uid = value.uid;
                               userBloc.updateUserData(UserModel(
                                   uid: value.uid, email: value.email));
-
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (BuildContext context) {
-                                    return Home(); //register
-                                  },
-                                ),
-                              );
                             });
                           }),
                           Container(
-                            padding: EdgeInsets.only(top: 15),
-                            alignment: Alignment.center,
-                            child: Text("¿No tienes una cuenta? Registrate"),
-                          ),
+                              padding: EdgeInsets.only(top: 15),
+                              alignment: Alignment.center,
+                              child: RichText(
+                                  text: TextSpan(
+                                      style: Mystyle.normalTextStyle,
+                                      children: <TextSpan>[
+                                    TextSpan(text: '¿No tienes una cuenta? '),
+                                    TextSpan(
+                                        text: 'Regístrate',
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return RegisterScreen(); //register
+                                                },
+                                              ),
+                                            );
+                                          })
+                                  ]))),
                           SizedBox(height: ScreenUtil().setHeight(50)),
                         ],
                       ),

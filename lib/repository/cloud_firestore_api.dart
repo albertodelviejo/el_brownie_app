@@ -14,11 +14,24 @@ class CloudFirestoreAPI {
 
   void updateUserData(UserModel user) async {
     DocumentReference ref = _db.collection("users").doc(user.uid);
-    return await ref.update({
-      'uid': user.uid,
-      'username': user.userName,
-      'email': user.email,
-    });
+    ref.get().then((value) async => {
+          if (value.exists)
+            {
+              await ref.update({
+                'uid': user.uid,
+                'username': user.userName,
+                'email': user.email,
+              })
+            }
+          else
+            {
+              await ref.set({
+                'uid': user.uid,
+                'username': user.userName,
+                'email': user.email,
+              })
+            }
+        });
   }
 
   List<Post> getAllPosts(List<DocumentSnapshot> postsListSnapshot) {

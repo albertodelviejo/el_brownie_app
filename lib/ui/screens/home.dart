@@ -75,23 +75,9 @@ class _Home extends State<Home> {
         appBar: AppBar(
           title: Text(
             "ElBrownie",
-            style: TextStyle(color: Colors.black, fontFamily: "ProximaNova"),
+            style: TextStyle(color: Colors.white, fontFamily: "ProximaNova"),
           ),
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(
-                  Icons.menu,
-                  color: Colors.black,
-                ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              );
-            },
-          ),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.yellow,
           shadowColor: Colors.transparent,
         ),
         body: Column(

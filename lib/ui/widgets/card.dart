@@ -53,14 +53,14 @@ class CitaCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text("Hora"),
-                          Text(post.price.toString()),
+                          Text("Restaurante:" + concept),
+                          Text("Precio: " + post.price.toString()),
                           Container(
                               height: 1,
                               width: double.maxFinite,
                               color: Colors.grey[300]),
-                          Text("Concepto"),
-                          Text(concept)
+                          Text("Puntuacion: " + post.valoration),
+                          Text("Categoría: " + post.category)
                         ],
                       ),
                     ),

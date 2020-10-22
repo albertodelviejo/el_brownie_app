@@ -1,14 +1,17 @@
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/screens/home.dart';
+import 'package:el_brownie_app/ui/screens/login_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -26,6 +29,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   int currentIndex = 0;
   bool pressAttention = false;
+
+  bool accepted = false;
 
   UserBloc userBloc;
 
@@ -143,10 +148,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: (t) {},
+                      value: accepted,
+                      onChanged: (t) {
+                        setState(() {
+                          accepted = t;
+                        });
+                      },
                     ),
-                    Text("Aceptar términos y condiciones"),
+                    RichText(
+                        text: TextSpan(
+                            style: Mystyle.normalTextStyle,
+                            children: <TextSpan>[
+                          TextSpan(text: 'Aceptar '),
+                          TextSpan(
+                              text: 'términos y condiciones',
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  _launchURL();
+                                })
+                        ]))
                   ],
                 ),
               ),
@@ -156,27 +176,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   "Registrarse",
                   pressAttention,
                   () {
-                    setState(() {
-                      pressAttention = false;
-                      //
-                    });
-                    userBloc
-                        .register(email: email.text, password: password.text)
-                        .then((User value) {
-                      userBloc.updateUserData(UserModel(
-                        uid: value.uid,
-                        userName: username.text,
-                        email: value.email,
-                      ));
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return Home(); //register
-                          },
-                        ),
-                      );
-                    });
+                    if (accepted) {
+                      setState(() {
+                        pressAttention = false;
+                        //
+                      });
+                      userBloc
+                          .register(email: email.text, password: password.text)
+                          .then((User value) {
+                        userBloc.updateUserData(UserModel(
+                          uid: value.uid,
+                          userName: username.text,
+                          email: value.email,
+                        ));
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return Home(); //register
+                            },
+                          ),
+                        );
+                      });
+                    } else {}
                   },
                   border: true,
                 ),
@@ -184,7 +206,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Container(
                 padding: EdgeInsets.only(top: 15),
                 alignment: Alignment.center,
-                child: Text("¿Tienes una cuenta? Accede ahora"),
+                child: RichText(
+                    text: TextSpan(
+                        style: Mystyle.normalTextStyle,
+                        children: <TextSpan>[
+                      TextSpan(text: '¿Tienes una cuenta? '),
+                      TextSpan(
+                          text: 'Accede ahora',
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                    return LoginScreen(); //register
+                                  },
+                                ),
+                              );
+                            })
+                    ])),
+                //child: Text("¿Tienes una cuenta? Accede ahora"),
               ),
               SizedBox(height: ScreenUtil().setHeight(150)),
               Text(
@@ -196,7 +237,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SignInButton(
                 Buttons.Facebook,
                 padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 16),
-                onPressed: () {},
+                onPressed: () {
+                  userBloc.signOut();
+                  userBloc.signInFacebook().then((User value) {
+                    userBloc.user.uid = value.uid;
+                    userBloc.updateUserData(UserModel(
+                        uid: value.uid,
+                        userName: value.displayName,
+                        email: value.email));
+                  });
+                },
                 shape: StadiumBorder(
                   side: BorderSide(
                     color: Colors.transparent,
@@ -207,7 +257,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SignInButton(
                 Buttons.Google,
                 padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
-                onPressed: () {},
+                onPressed: () {
+                  userBloc.signInGoogle().then((User value) {
+                    userBloc.user.uid = value.uid;
+                    userBloc.updateUserData(UserModel(
+                        uid: value.uid,
+                        userName: value.displayName,
+                        email: value.email));
+                  });
+                },
                 shape: StadiumBorder(
                   side: BorderSide(
                     color: Colors.black,
@@ -220,5 +278,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
+  }
+}
+
+_launchURL() async {
+  const url = 'http://elbrownie.com/terms.php';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
