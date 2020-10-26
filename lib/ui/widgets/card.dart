@@ -23,7 +23,7 @@ class CitaCard extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0),
       child: GestureDetector(
         onTap: () {
-          userBloc.likePost(post);
+          //userBloc.likePost(post);
         },
         child: Container(
           height: 120,

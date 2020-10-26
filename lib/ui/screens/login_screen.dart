@@ -1,6 +1,8 @@
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
+import 'package:el_brownie_app/ui/screens/bottom_tab.dart';
 import 'package:el_brownie_app/ui/screens/home.dart';
+import 'package:el_brownie_app/ui/screens/home_screen.dart';
 import 'package:el_brownie_app/ui/screens/register_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
@@ -43,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
           if (!snapshot.hasData || snapshot.hasError) {
             return loginScreen(context);
           } else {
-            return Home();
+            return BottomTabBarr();
           }
         });
   }

@@ -1,5 +1,8 @@
+import 'package:el_brownie_app/ui/screens/add_screen.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
+
+import 'home_screen.dart';
 
 class BottomTabBarr extends StatefulWidget {
   Widget widgetoutside;
@@ -19,9 +22,9 @@ class _BottomTabBarrState extends State<BottomTabBarr> {
   }
 
   static List _widgetOptions = [
-    // HomeScreen(),
-    // PrintScreen(),
-    // SettingScreen(),
+    HomeScreen(),
+    AddScreen(),
+    Container(),
     Container(),
   ];
 
@@ -32,20 +35,26 @@ class _BottomTabBarrState extends State<BottomTabBarr> {
         body: widget.widgetoutside ?? _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           elevation: 30,
-          selectedItemColor: Mystyle.primarycolo,
-          unselectedItemColor: Colors.grey[400],
+          backgroundColor: Mystyle.primarycolo,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black38,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              title: Text('Projects'),
-              icon: Icon(Icons.library_books),
+              title: Text('Buscar'),
+              icon: Icon(Icons.search),
             ),
             BottomNavigationBarItem(
-              title: Text('Settings'),
-              icon: Icon(Icons.settings),
+              title: Text('Añadir'),
+              icon: Icon(Icons.add_circle_outline),
             ),
             BottomNavigationBarItem(
-              title: Text('More'),
-              icon: Icon(Icons.more),
+              title: Text('Favoritos'),
+              icon: Icon(Icons.bookmark_border),
+            ),
+            BottomNavigationBarItem(
+              title: Text('Perfil'),
+              icon: Icon(Icons.person_outline),
             ),
           ],
           currentIndex: _selectedIndex,

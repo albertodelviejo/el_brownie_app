@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:el_brownie_app/ui/screens/onboarding_screen.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/size_config.dart';

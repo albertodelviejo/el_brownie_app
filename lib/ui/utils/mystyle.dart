@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Mystyle {
   static const Color primarycolo = Color(0xFFfde34e);
   static const Color secondrycolo = Color(0xFF25bbee);
+  static const Color thirdcolo = Color(0xFFd87778);
 
   static String tragickmarker = "TragicMarker";
   static String openS = "OpenSansRegular";
@@ -14,6 +15,25 @@ class Mystyle {
     fontSize: ScreenUtil().setSp(82),
   );
 
+  static TextStyle titleregularTextStyle = TextStyle(
+    color: secondrycolo,
+    fontFamily: Mystyle.openS,
+    fontWeight: FontWeight.w800,
+    fontSize: ScreenUtil().setSp(82),
+  );
+
+  static TextStyle placeTextStyle = TextStyle(
+    color: secondrycolo,
+    fontFamily: openS,
+    fontSize: ScreenUtil().setSp(48),
+  );
+
+  static TextStyle subtitlebigTextStyle = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.w800,
+    fontFamily: openS,
+    fontSize: ScreenUtil().setSp(56),
+  );
   static TextStyle subtitleTextStyle = TextStyle(
     color: Colors.black87,
     fontWeight: FontWeight.w800,
@@ -137,6 +157,46 @@ class Mystyle {
     );
   }
 
+  static inputregularmaxline(hint, {icon}) {
+    return InputDecoration(
+      hintText: hint,
+      hintStyle: TextStyle(
+        fontSize: 14,
+        color: Colors.black,
+        fontStyle: FontStyle.italic,
+      ),
+      fillColor: Colors.white,
+
+      contentPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.black54),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.black54),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.black54),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.black54),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.black54),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      suffixIcon: icon,
+      filled: true,
+      // contentPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 0),
+      labelStyle: TextStyle(
+        fontSize: 14,
+      ),
+    );
+  }
+
   static inputWhitebg(hint, {icon}) {
     return InputDecoration(
       hintText: hint,
@@ -185,6 +245,61 @@ class Mystyle {
       suffixIcon: icon,
       filled: true,
       contentPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 0),
+      labelStyle: TextStyle(
+        fontSize: 14,
+      ),
+    );
+  }
+
+  static inputSearch(hint, {icon, icon2}) {
+    return InputDecoration(
+      hintText: hint,
+      hintStyle: TextStyle(
+        fontSize: 14,
+        color: Colors.black87,
+      ),
+      fillColor: Colors.white,
+
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      // bo
+      prefixIcon: icon2,
+      suffixIcon: icon,
+      filled: true,
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
       labelStyle: TextStyle(
         fontSize: 14,
       ),

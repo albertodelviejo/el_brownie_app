@@ -5,6 +5,7 @@ import 'package:el_brownie_app/repository/auth_repository.dart';
 import 'package:el_brownie_app/repository/cloud_firestore_api.dart';
 import 'package:el_brownie_app/repository/cloud_firestore_repository.dart';
 import 'package:el_brownie_app/repository/google_maps_api.dart';
+import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/widgets/card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
@@ -45,8 +46,19 @@ class UserBloc implements Bloc {
       .collection(CloudFirestoreAPI().POSTS)
       .snapshots();
 
-  List<CitaCard> buildMyPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
+  List<CardHome> buildMyPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildAllPosts(ticketsListSnapshot);
+
+//6. Get favourites posts
+  Stream<QuerySnapshot> myFavouritesPostsListStream() =>
+      FirebaseFirestore.instance
+          .collection(CloudFirestoreAPI().USERS)
+          .where('uid', isEqualTo: user.uid)
+          .snapshots();
+
+  List<CitaCard> buildMyFavouritesPosts(
+          List<DocumentSnapshot> favouritesPostsSnapshot) =>
+      _cloudFirestoreRepository.buildFavouritesPosts(favouritesPostsSnapshot);
 
 //3. Get Tickets from DB
 
@@ -55,8 +67,20 @@ class UserBloc implements Bloc {
 
 // 7. Set post as favourite
 
-  Future likePost(Post post) =>
-      _cloudFirestoreRepository.likePost(post, user.uid);
+  Future likePost(String idPost) =>
+      _cloudFirestoreRepository.likePost(idPost, user.uid);
+
+// 8. Remove a post from favourite
+
+  Future unlikePost(String idPost) =>
+      _cloudFirestoreRepository.unlikePost(idPost, user.uid);
+
+//9. Create new post
+
+  void createPost(String address, String category, String name, double price,
+          bool status, int valoration, String url) =>
+      _cloudFirestoreRepository.createPost(
+          user.uid, address, category, name, price, status, valoration, url);
 
   signOut() {
     _authRepository.signOut();
