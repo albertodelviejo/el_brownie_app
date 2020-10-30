@@ -18,9 +18,11 @@ class CloudFirestoreRepository {
   List<CardHome> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.buildAllPosts(postsListSnapshot);
 
-  List<CitaCard> buildFavouritesPosts(
-          List<DocumentSnapshot> favouritesListSnapshot) =>
+  List<CardHome> buildFavouritesPosts(List<Post> favouritesListSnapshot) =>
       _cloudFirestoreAPI.buildFavouritesPosts(favouritesListSnapshot);
+
+  Future<List<dynamic>> getFavouritesPostFromString(String uid) =>
+      _cloudFirestoreAPI.getFavouritesPostFromString(uid);
 
   Future likePost(String idPost, String uid) =>
       _cloudFirestoreAPI.likePost(idPost, uid);
@@ -28,8 +30,24 @@ class CloudFirestoreRepository {
   Future unlikePost(String idPost, String uid) =>
       _cloudFirestoreAPI.unlikePost(idPost, uid);
 
-  void createPost(String uid, String address, String category, String name,
-          double price, bool status, int valoration, String url) =>
-      _cloudFirestoreAPI.createPost(
-          uid, address, category, name, price, status, valoration, url);
+  Future<String> createPost(
+          String idPost,
+          String uid,
+          String address,
+          String category,
+          String name,
+          String comentary,
+          double price,
+          bool status,
+          int valoration) =>
+      _cloudFirestoreAPI.createPost(idPost, uid, address, category, name,
+          comentary, price, status, valoration);
+
+  void addPhotoToPost(String idPost, String imageUrl) =>
+      _cloudFirestoreAPI.addPhotoToPost(idPost, imageUrl);
+
+  Post getPost(String idPost) => _cloudFirestoreAPI.getPost(idPost);
+
+  List<CardHome> buildMyBrownies(List<DocumentSnapshot> postsListSnapshot) =>
+      _cloudFirestoreAPI.buildMyBrownies(postsListSnapshot);
 }

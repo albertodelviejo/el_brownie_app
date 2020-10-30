@@ -50,14 +50,19 @@ class UserBloc implements Bloc {
       _cloudFirestoreRepository.buildAllPosts(ticketsListSnapshot);
 
 //6. Get favourites posts
-  Stream<QuerySnapshot> myFavouritesPostsListStream() =>
-      FirebaseFirestore.instance
-          .collection(CloudFirestoreAPI().USERS)
-          .where('uid', isEqualTo: user.uid)
-          .snapshots();
+  Future<List<Post>> myFavouritesPostsList() async {
+    List<String> list = new List<String>();
+    list =
+        await _cloudFirestoreRepository.getFavouritesPostFromString(user.uid);
 
-  List<CitaCard> buildMyFavouritesPosts(
-          List<DocumentSnapshot> favouritesPostsSnapshot) =>
+    List<Post> posts = new List<Post>();
+    list.forEach((element) {
+      posts.add(_cloudFirestoreRepository.getPost(element));
+    });
+    return posts;
+  }
+
+  List<CardHome> buildMyFavouritesPosts(List<Post> favouritesPostsSnapshot) =>
       _cloudFirestoreRepository.buildFavouritesPosts(favouritesPostsSnapshot);
 
 //3. Get Tickets from DB
@@ -77,12 +82,31 @@ class UserBloc implements Bloc {
 
 //9. Create new post
 
-  void createPost(String address, String category, String name, double price,
-          bool status, int valoration, String url) =>
-      _cloudFirestoreRepository.createPost(
-          user.uid, address, category, name, price, status, valoration, url);
+  Future<String> createPost(
+          String idPost,
+          String address,
+          String category,
+          String name,
+          String comentary,
+          double price,
+          bool status,
+          int valoration) =>
+      _cloudFirestoreRepository.createPost(idPost, currentUser.uid, address,
+          category, name, comentary, price, status, valoration);
 
-  signOut() {
+  void addPhotoToPost(String idPost, String imageUrl) =>
+      _cloudFirestoreRepository.addPhotoToPost(idPost, imageUrl);
+
+//10. Get my brownies
+  Stream<QuerySnapshot> myBrowniesListStream(uid) => FirebaseFirestore.instance
+      .collection(CloudFirestoreAPI().POSTS)
+      .where("id_user", isEqualTo: uid)
+      .snapshots();
+
+  List<CardHome> buildMyBrownies(List<DocumentSnapshot> ticketsListSnapshot) =>
+      _cloudFirestoreRepository.buildMyBrownies(ticketsListSnapshot);
+
+  void signOut() {
     _authRepository.signOut();
   }
 

@@ -53,25 +53,31 @@ class CloudFirestoreAPI {
     return allPost;
   }
 
-  List<CitaCard> buildFavouritesPosts(
-      List<DocumentSnapshot> postListsSnapshot) {
-    List<CitaCard> favouritesPosts = List<CitaCard>();
+  List<CardHome> buildFavouritesPosts(List<Post> postListsSnapshot) {
+    List<CardHome> favouritesPosts = List<CardHome>();
     postListsSnapshot.forEach((element) {
-      favouritesPosts.add(CitaCard(
-          post: Post(
-              name: element.get('name'),
-              address: element.get('address'),
-              category: element.get('category'),
-              price: element.get('price'),
-              status: element.get('status'),
-              valoration: element.get('valoration'),
-              date: element.get('date'),
-              idUser: element.get('id_user'),
-              idPost: element.get('idPost'),
-              photos: element.get('photos'))));
+      favouritesPosts.add(CardHome(
+        name: element.name,
+        valo: "1700 valoraciones",
+        place: element.address,
+        reclam: element.status == "true" ? true : false,
+        view: "1700 views",
+        hace: "Hace 2 dias",
+        myindex: element.valoration,
+        id: element.idPost,
+      ));
     });
 
     return favouritesPosts;
+  }
+
+  Future<List<dynamic>> getFavouritesPostFromString(String uid) async {
+    DocumentReference ref = _db.collection("users").doc(uid);
+    List<dynamic> favoritesPost = new List<String>();
+    await ref.get().then((value) {
+      favoritesPost = value.get('favorites');
+      return favoritesPost;
+    });
   }
 
   List<CardHome> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) {
@@ -121,20 +127,70 @@ class CloudFirestoreAPI {
         });
   }
 
-  void createPost(String uid, String address, String category, String name,
-      double price, bool status, int valoration, String url) async {
+  Future<String> createPost(
+      String idPost,
+      String uid,
+      String address,
+      String category,
+      String name,
+      String comentary,
+      double price,
+      bool status,
+      int valoration) async {
     DocumentReference ref = _db.collection("posts").doc();
     ref.set({
       'address': address,
       'category': category,
+      'comentary': comentary,
       'date': Timestamp.now(),
-      'id_post': ref.id,
+      'id_post': idPost,
       'id_user': uid,
       'name': name,
       'price': price,
       'status': status,
       'valoration': valoration,
-      'photos': FieldValue.arrayUnion([url])
     });
+  }
+
+  void addPhotoToPost(String idPost, String imageUrl) {
+    DocumentReference ref = _db.collection("posts").doc(idPost);
+    ref.update({
+      'photos': FieldValue.arrayUnion([imageUrl])
+    });
+  }
+
+  Post getPost(String idPost) {
+    DocumentReference ref = _db.collection("posts").doc(idPost);
+    Post aux;
+    ref.get().then((value) => {
+          aux = new Post(
+              address: value.get('address'),
+              category: value.get('category'),
+              date: value.get('date'),
+              idPost: value.get('id_post'),
+              idUser: value.get('id_user'),
+              name: value.get('name'),
+              price: value.get('price'),
+              status: value.get('status'),
+              valoration: value.get('valoration'))
+        });
+    return aux;
+  }
+
+  List<CardHome> buildMyBrownies(List<DocumentSnapshot> postsListSnapshot) {
+    List<CardHome> allPost = List<CardHome>();
+    postsListSnapshot.forEach((element) {
+      allPost.add(CardHome(
+        name: element.get('name'),
+        valo: "1700 valoraciones",
+        place: element.get('address'),
+        reclam: element.get('status'),
+        view: "1700 views",
+        hace: "Hace 2 dias",
+        myindex: element.get('valoration').toString(),
+        id: element.id,
+      ));
+    });
+    return allPost;
   }
 }

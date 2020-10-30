@@ -94,13 +94,28 @@ class Mystyle {
     );
   }
 
+  static rankedfirsts(bool ranked) {
+    return ranked
+        ? BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [
+                Mystyle.primarycolo.withOpacity(.3),
+                Colors.white,
+                Colors.white,
+              ],
+            ),
+          )
+        : BoxDecoration(
+            color: Colors.white,
+          );
+  }
+
   static buttDecotatio() {
     return BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(50),
-      // border: Border.all(
-      //   color: Colors.black87,
-      // ),
     );
   }
 
