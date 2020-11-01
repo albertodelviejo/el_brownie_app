@@ -40,7 +40,11 @@ class _CardHomeState extends State<CardHome> {
 
     return GestureDetector(
       onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => PostScreen())),
+          context,
+          MaterialPageRoute(
+              builder: (context) => PostScreen(
+                    id: widget.id,
+                  ))),
       child: Column(
         children: [
           Stack(children: [

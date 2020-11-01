@@ -36,7 +36,6 @@ dependencies:
   flutter_signin_button: ^1.1.0
   flutter_svg: ^0.19.1
   generic_bloc_provider: ^1.0.8
-  google_maps_flutter: ^1.0.0
   google_sign_in: null
   image_picker: ^0.6.7+12
   intl: ^0.16.1

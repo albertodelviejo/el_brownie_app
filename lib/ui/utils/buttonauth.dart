@@ -29,16 +29,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ButtAuth extends StatefulWidget {
   String text;
   Function fun;
-  bool border;
+  bool border, press;
 
-  ButtAuth(this.text, this.fun, {this.border = false});
+  ButtAuth(this.text, this.fun, {this.border = false, this.press = false});
 
   @override
   _ButtAuthState createState() => _ButtAuthState();
 }
 
 class _ButtAuthState extends State<ButtAuth> {
-  bool press = false;
+  // bool press = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,7 +49,7 @@ class _ButtAuthState extends State<ButtAuth> {
           widget.text,
           style: Mystyle.regularTextStyle.copyWith(
             fontWeight: FontWeight.w600,
-            color: press ? Colors.white : Colors.black87,
+            color: widget.press ? Colors.white : Colors.black87,
           ),
         ),
         shape: RoundedRectangleBorder(
@@ -57,7 +57,7 @@ class _ButtAuthState extends State<ButtAuth> {
           side:
               widget.border ? BorderSide(color: Colors.black) : BorderSide.none,
         ),
-        color: press ? Colors.black87 : Colors.white,
+        color: widget.press ? Colors.black87 : Colors.white,
         splashColor: Colors.black87,
         highlightColor: Colors.black87,
         onPressed: widget.fun,

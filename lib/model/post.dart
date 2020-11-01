@@ -5,7 +5,7 @@ class Post {
   String name;
   String address;
   String category;
-  String status;
+  bool status;
   String price;
   String idUser;
   String valoration;

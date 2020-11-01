@@ -1,20 +1,59 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:el_brownie_app/ui/screens/add/request_screen.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../model/post.dart';
+
 class PostScreen extends StatefulWidget {
+  String id;
+
+  PostScreen({Key key, this.id});
+
   @override
   _PostScreenState createState() => _PostScreenState();
 }
 
 class _PostScreenState extends State<PostScreen> {
+  Post post;
   bool noresult = false;
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+    return getPostfromDB(widget.id);
+  }
 
+  Widget getPostfromDB(id) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("posts")
+            .where('id_post', isEqualTo: id)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            DocumentSnapshot element = snapshot.data.documents[0];
+            post = Post(
+                name: element.get('name'),
+                address: element.get('address'),
+                category: element.get('category'),
+                status: element.get('status'),
+                price: element.get('price').toString(),
+                idUser: element.get('id_user'),
+                idPost: widget.id,
+                valoration: element.get('valoration').toString());
+            Stream.empty();
+            return postScreen();
+          }
+        });
+  }
+
+  Widget postScreen() {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Mystyle.primarycolo,
@@ -43,7 +82,7 @@ class _PostScreenState extends State<PostScreen> {
               children: [
                 SizedBox(height: ScreenUtil().setHeight(40)),
                 Text(
-                  "Taska Church",
+                  post.name,
                   style: Mystyle.titleTextStyle.copyWith(
                     fontSize: ScreenUtil().setSp(100),
                     color: Colors.black87,
@@ -52,12 +91,12 @@ class _PostScreenState extends State<PostScreen> {
                 ),
                 SizedBox(height: ScreenUtil().setHeight(20)),
                 CardHome(
-                  name: "Taska Church",
-                  place: "Calle Aragón, Vigo, España ",
-                  view: "1700 views  l",
-                  valo: " 1000 valoraciones",
-                  hace: "Hace 2 dias",
-                  reclam: true,
+                  name: post.name,
+                  place: post.address,
+                  view: "",
+                  valo: "",
+                  hace: "",
+                  reclam: post.status,
                   myindex: "3",
                   pagename: "post",
                 ),
@@ -145,7 +184,16 @@ class _PostScreenState extends State<PostScreen> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return RequestScreen(); //register
+                            },
+                          ),
+                        );
+                      },
                       child: Container(
                         decoration: Mystyle.cadredec().copyWith(
                           borderRadius: BorderRadius.circular(10),
