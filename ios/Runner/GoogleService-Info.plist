@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>325312053116-cfkusqd4aa0ri55shtb1cir44416ltka.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.325312053116-cfkusqd4aa0ri55shtb1cir44416ltka</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>325312053116-220vb8bmfs6j76n4agchq0r499j8dr4v.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDLWxxnOgBH1-Z4c1-Ka5Lz7SAxDN2M_5Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>325312053116</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ideafoster.elbrownie</string>
+	<key>PROJECT_ID</key>
+	<string>elbrownie-baf68</string>
+	<key>STORAGE_BUCKET</key>
+	<string>elbrownie-baf68.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:325312053116:ios:34f56d74f382cc62d12ef9</string>
+	<key>DATABASE_URL</key>
+	<string>https://elbrownie-baf68.firebaseio.com</string>
+</dict>
+</plist>
