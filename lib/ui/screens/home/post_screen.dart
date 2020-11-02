@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:el_brownie_app/ui/screens/add/addpost_screen.dart';
 import 'package:el_brownie_app/ui/screens/add/request_screen.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
@@ -155,7 +156,16 @@ class _PostScreenState extends State<PostScreen> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return AddPostScreen(); //register
+                            },
+                          ),
+                        );
+                      },
                       child: Container(
                         decoration: Mystyle.cadredec().copyWith(
                           borderRadius: BorderRadius.circular(10),
@@ -189,7 +199,10 @@ class _PostScreenState extends State<PostScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (BuildContext context) {
-                              return RequestScreen(); //register
+                              return RequestScreen(
+                                postId: widget.id,
+                                price: post.price,
+                              ); //register
                             },
                           ),
                         );

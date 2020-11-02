@@ -7,6 +7,9 @@ import '../../utils/buttonauth.dart';
 import '../../utils/mystyle.dart';
 
 class RequestScreen extends StatefulWidget {
+  String postId, price;
+
+  RequestScreen({Key key, this.postId, this.price});
   @override
   _RequestScreenState createState() => _RequestScreenState();
 }
@@ -223,7 +226,7 @@ class _RequestScreenState extends State<RequestScreen> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                "7,00 €",
+                widget.price + " €",
                 style: Mystyle.titleregularTextStyle.copyWith(
                   color: Colors.black87,
                 ),
