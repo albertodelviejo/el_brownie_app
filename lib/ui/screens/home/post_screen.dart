@@ -1,16 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:el_brownie_app/ui/screens/add/addpost_screen.dart';
+import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/ui/screens/add/add_comment_screen.dart';
 import 'package:el_brownie_app/ui/screens/add/request_screen.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
+import 'package:el_brownie_app/ui/utils/popup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 import '../../../model/post.dart';
 
 class PostScreen extends StatefulWidget {
   String id;
+  bool isTapped = false;
+  Icon icon = Icon(
+    Icons.bookmark_border,
+    color: Colors.black87,
+  );
 
   PostScreen({Key key, this.id});
 
@@ -21,10 +29,12 @@ class PostScreen extends StatefulWidget {
 class _PostScreenState extends State<PostScreen> {
   Post post;
   bool noresult = false;
+  UserBloc userBloc;
 
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+    userBloc = BlocProvider.of(context);
     return getPostfromDB(widget.id);
   }
 
@@ -106,7 +116,9 @@ class _PostScreenState extends State<PostScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        PopUp;
+                      },
                       child: Container(
                         decoration: Mystyle.cadredec().copyWith(
                           borderRadius: BorderRadius.circular(10),
@@ -130,7 +142,27 @@ class _PostScreenState extends State<PostScreen> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        if (!widget.isTapped) {
+                          setState(() {
+                            widget.icon = Icon(
+                              Icons.bookmark,
+                              color: Colors.black87,
+                            );
+                          });
+                          userBloc.likePost(widget.id);
+                          widget.isTapped = true;
+                        } else {
+                          setState(() {
+                            widget.icon = Icon(
+                              Icons.bookmark_border,
+                              color: Colors.black87,
+                            );
+                          });
+                          userBloc.unlikePost(widget.id);
+                          widget.isTapped = false;
+                        }
+                      },
                       child: Container(
                         decoration: Mystyle.cadredec().copyWith(
                           borderRadius: BorderRadius.circular(10),
@@ -141,7 +173,7 @@ class _PostScreenState extends State<PostScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.bookmark_border),
+                            widget.icon,
                             SizedBox(height: ScreenUtil().setHeight(10)),
                             Flexible(
                               child: Text(

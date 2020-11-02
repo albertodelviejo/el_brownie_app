@@ -1,4 +1,4 @@
-import 'package:el_brownie_app/ui/screens/add/add_comment_screen.dart';
+import 'package:el_brownie_app/ui/screens/add/add_post_screen.dart';
 import 'package:el_brownie_app/ui/screens/fav/fav_screen.dart';
 import 'package:el_brownie_app/ui/screens/perfil/profile_home_screen.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
