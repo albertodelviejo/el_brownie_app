@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alberto/Flutter Apps/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-et/values-et.xml",
+            "outputFile": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-et/values-et.xml",
             "map": [
                 {
                     "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/334b48c5d9cfca510d45c6fa7aa6ae0e/play-services-wallet-18.0.0/res/values-et/values.xml",
@@ -55,6 +55,23 @@
                     }
                 },
                 {
+                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/res/values-et/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "198",
+                        "endOffsets": "445"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "4016",
+                        "endColumns": "198",
+                        "endOffsets": "4210"
+                    }
+                },
+                {
                     "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/6eb14f512292913515d869914807ad40/play-services-base-17.1.0/res/values-et/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -69,23 +86,6 @@
                         "startOffsets": "2860,2965,3159,3288,3398,3607,3738,3884,4215,4434,4544,4739,4873,5087,5262,5355,5450",
                         "endColumns": "104,193,128,109,208,130,145,131,218,109,194,133,213,174,92,94,116",
                         "endOffsets": "2960,3154,3283,3393,3602,3733,3879,4011,4429,4539,4734,4868,5082,5257,5350,5445,5562"
-                    }
-                },
-                {
-                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/3e0c3a0f91eda484ee1d16b115a5aff7/jetified-play-services-basement-17.0.0/res/values-et/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "198",
-                        "endOffsets": "445"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "4016",
-                        "endColumns": "198",
-                        "endOffsets": "4210"
                     }
                 }
             ]

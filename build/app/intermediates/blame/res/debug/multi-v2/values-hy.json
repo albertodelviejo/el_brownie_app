@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alberto/Flutter Apps/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hy/values-hy.xml",
+            "outputFile": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hy/values-hy.xml",
             "map": [
                 {
                     "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/3aaf6e5219b7f981ec263df919098c6f/core-1.1.0/res/values-hy/values-hy.xml",
@@ -55,23 +55,6 @@
                     }
                 },
                 {
-                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/3e0c3a0f91eda484ee1d16b115a5aff7/jetified-play-services-basement-17.0.0/res/values-hy/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "209",
-                        "endOffsets": "456"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "4003",
-                        "endColumns": "209",
-                        "endOffsets": "4208"
-                    }
-                },
-                {
                     "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/334b48c5d9cfca510d45c6fa7aa6ae0e/play-services-wallet-18.0.0/res/values-hy/values.xml",
                     "from": {
                         "startLines": "4",
@@ -86,6 +69,23 @@
                         "startOffsets": "5789",
                         "endColumns": "109",
                         "endOffsets": "5894"
+                    }
+                },
+                {
+                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/res/values-hy/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "209",
+                        "endOffsets": "456"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "4003",
+                        "endColumns": "209",
+                        "endOffsets": "4208"
                     }
                 }
             ]

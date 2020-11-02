@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:el_brownie_app/model/comment.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/repository/auth_repository.dart';
@@ -105,6 +106,13 @@ class UserBloc implements Bloc {
 
   List<CardHome> buildMyBrownies(List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildMyBrownies(ticketsListSnapshot);
+
+  //11. Add comment
+
+  Future<String> addComment(String idPost, String id, String photoUrl,
+          String text, String valoration) =>
+      _cloudFirestoreRepository.addComment(
+          idPost, id, photoUrl, text, valoration);
 
   void signOut() {
     _authRepository.signOut();

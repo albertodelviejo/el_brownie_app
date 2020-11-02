@@ -1,15 +1,21 @@
+import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddPostScreen extends StatefulWidget {
   int valoration = 0;
   String idPost;
   bool tapped = false;
+
+  AddPostScreen({Key key, this.idPost});
   @override
   _AddPostScreenState createState() => _AddPostScreenState();
 }
@@ -17,13 +23,16 @@ class AddPostScreen extends StatefulWidget {
 class _AddPostScreenState extends State<AddPostScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   double _value = 12;
-  int rating = 3;
+  int rating = 0;
   bool filled = false;
   final comentarioController = TextEditingController();
+  UserBloc userBloc;
+  var imageFile;
 
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+    userBloc = BlocProvider.of(context);
 
     return SafeArea(
       child: Scaffold(
@@ -152,11 +161,80 @@ class _AddPostScreenState extends State<AddPostScreen> {
               ),
             ),
             SizedBox(height: ScreenUtil().setHeight(60)),
-            ButtAuth("Publicar", () {}, border: true, press: true),
+            ButtAuth("Publicar", () {
+              userBloc
+                  .addComment(widget.idPost, id, photoUrl,
+                      comentarioController.text, rating.toString())
+                  .whenComplete(() => uploadFile());
+            }, border: true, press: true),
             SizedBox(height: ScreenUtil().setHeight(100)),
           ],
         ),
       ),
     );
+  }
+
+  void _openGallery(BuildContext context) async {
+    var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+    this.setState(() {
+      imageFile = picture;
+    });
+    Navigator.of(context).pop();
+  }
+
+  void _openCamera(BuildContext context) async {
+    var picture = await ImagePicker.pickImage(source: ImageSource.camera);
+    this.setState(() {
+      imageFile = picture;
+    });
+    Navigator.of(context).pop();
+  }
+
+  Widget _setImageView() {
+    if (imageFile != null) {
+      return Image.file(imageFile, width: 500, height: 500);
+    } else {
+      return Text("Please select an image");
+    }
+  }
+
+  Future<void> _showSelectionDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text("Elija una opción..."),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    GestureDetector(
+                      child: Text("Galería"),
+                      onTap: () {
+                        _openGallery(context);
+                      },
+                    ),
+                    Padding(padding: EdgeInsets.all(8.0)),
+                    GestureDetector(
+                      child: Text("Camara"),
+                      onTap: () {
+                        _openCamera(context);
+                      },
+                    )
+                  ],
+                ),
+              ));
+        });
+  }
+
+  Future uploadFile() async {
+    StorageReference storageReference = FirebaseStorage.instance
+        .ref()
+        .child('comments/${nombre.text}/${imageFile.hashCode}');
+    StorageUploadTask uploadTask = storageReference.putFile(imageFile);
+    await uploadTask.onComplete;
+    print('File Uploaded');
+    storageReference.getDownloadURL().then((fileURL) {
+      userBloc.addPhotoToPost(widget.idPost, fileURL);
+    });
   }
 }

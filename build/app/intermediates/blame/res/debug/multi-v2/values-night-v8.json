@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alberto/Flutter Apps/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/768231408fe0266785a463e918c814a1/jetified-stripe-3ds2-android-1.2.2/res/values-night-v8/values-night-v8.xml",
+                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/c3579837e15b20f6d2b9e9df650c4fc5/jetified-stripe-android-10.4.6/res/values-night-v8/values-night-v8.xml",
+                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

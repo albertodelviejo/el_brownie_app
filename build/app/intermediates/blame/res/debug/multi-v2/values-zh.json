@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alberto/Flutter Apps/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-zh/values-zh.xml",
+            "outputFile": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-zh/values-zh.xml",
             "map": [
                 {
-                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/768231408fe0266785a463e918c814a1/jetified-stripe-3ds2-android-1.2.2/res/values-zh/values-zh.xml",
+                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/res/values-zh/values-zh.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/c3579837e15b20f6d2b9e9df650c4fc5/jetified-stripe-android-10.4.6/res/values-zh/values-zh.xml",
+                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/res/values-zh/values-zh.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

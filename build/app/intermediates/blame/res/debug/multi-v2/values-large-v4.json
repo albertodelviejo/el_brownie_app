@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alberto/Flutter Apps/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml",
+            "outputFile": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml",
             "map": [
                 {
                     "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/res/values-large-v4/values-large-v4.xml",

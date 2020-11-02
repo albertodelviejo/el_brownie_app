@@ -193,4 +193,16 @@ class CloudFirestoreAPI {
     });
     return allPost;
   }
+
+  Future<String> addComment(String idPost, String id, String photoURL,
+      String text, String valoration) {
+    DocumentReference ref = _db.collection("comments").doc();
+    ref.set({
+      'id_user': id,
+      'likes': 0,
+      'photo_url': photoURL,
+      'text': text,
+      'valoration': valoration
+    });
+  }
 }
