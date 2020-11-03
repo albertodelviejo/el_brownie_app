@@ -194,11 +194,12 @@ class CloudFirestoreAPI {
     return allPost;
   }
 
-  Future<String> addComment(String idPost, String id, String photoURL,
+  Future<String> addComment(String idPost, String id_user, String photoURL,
       String text, String valoration) {
     DocumentReference ref = _db.collection("comments").doc();
     ref.set({
-      'id_user': id,
+      'id_post': idPost,
+      'id_user': id_user,
       'likes': 0,
       'photo_url': photoURL,
       'text': text,

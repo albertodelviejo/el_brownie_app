@@ -1,4 +1,4 @@
-#Mon Nov 02 18:54:49 CET 2020
+#Tue Nov 03 17:49:08 CET 2020
 base.2=/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/dex/debug/mergeExtDexDebug/out/classes2.dex
 base.1=/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
 base.0=/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex

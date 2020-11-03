@@ -50,7 +50,7 @@ class _CardHomeState extends State<CardHome> {
           Stack(children: [
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: widget.reclam ? 16 : 16,
+                //horizontal: widget.reclam ? 16 : 16,
                 vertical: widget.reclam ? 12 : 12,
               ),
               child: ImageFiltered(
@@ -59,8 +59,8 @@ class _CardHomeState extends State<CardHome> {
                   sigmaY: widget.reclam ? 5 : 0.1,
                 ),
                 child: Container(
-                  width: ScreenUtil().setWidth(900),
-                  height: ScreenUtil().setHeight(widget.reclam ? 900 : 800),
+                  width: ScreenUtil().setHeight(900),
+                  height: ScreenUtil().setHeight(widget.reclam ? 900 : 900),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
@@ -186,14 +186,14 @@ class _CardHomeState extends State<CardHome> {
                 //var myindexaux = int.parse(widget.myindex);
                 return index < 3
                     ? Container(
-                        height: ScreenUtil().setHeight(70),
-                        width: ScreenUtil().setHeight(70),
+                        height: ScreenUtil().setHeight(90),
+                        width: ScreenUtil().setHeight(90),
                         margin: EdgeInsets.symmetric(horizontal: 2),
                         child: Image.asset("assets/ifull.png"),
                       )
                     : Container(
-                        height: ScreenUtil().setHeight(70),
-                        width: ScreenUtil().setHeight(70),
+                        height: ScreenUtil().setHeight(90),
+                        width: ScreenUtil().setHeight(90),
                         margin: EdgeInsets.symmetric(horizontal: 2),
                         child: Image.asset("assets/iempty.png"),
                       );

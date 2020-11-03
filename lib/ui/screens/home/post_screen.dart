@@ -64,6 +64,32 @@ class _PostScreenState extends State<PostScreen> {
         });
   }
 
+  Widget getCommentsFromDb(id) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("comments")
+            .where('id_post', isEqualTo: id)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            DocumentSnapshot element = snapshot.data.documents[0];
+            post = Post(
+                name: element.get('name'),
+                address: element.get('address'),
+                category: element.get('category'),
+                status: element.get('status'),
+                price: element.get('price').toString(),
+                idUser: element.get('id_user'),
+                idPost: widget.id,
+                valoration: element.get('valoration').toString());
+            Stream.empty();
+            return postScreen();
+          }
+        });
+  }
+
   Widget postScreen() {
     return Scaffold(
       appBar: AppBar(
@@ -193,7 +219,9 @@ class _PostScreenState extends State<PostScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (BuildContext context) {
-                              return AddPostScreen(); //register
+                              return AddPostScreen(
+                                idPost: widget.id,
+                              ); //register
                             },
                           ),
                         );
@@ -276,7 +304,7 @@ class _PostScreenState extends State<PostScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24),
             child: Text(
-              "Taska Church",
+              "Comentarios",
               style: Mystyle.titleTextStyle.copyWith(
                 fontSize: ScreenUtil().setSp(80),
                 color: Colors.black87,

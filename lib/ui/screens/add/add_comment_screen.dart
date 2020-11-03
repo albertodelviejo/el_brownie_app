@@ -28,6 +28,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   final comentarioController = TextEditingController();
   UserBloc userBloc;
   var imageFile;
+  String photoUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -130,42 +131,59 @@ class _AddPostScreenState extends State<AddPostScreen> {
               },
             ),
             SizedBox(height: ScreenUtil().setHeight(40)),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black54, width: 1),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              width: double.infinity,
-              height: ScreenUtil().setHeight(600),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: ScreenUtil().setWidth(160),
-                      width: ScreenUtil().setWidth(160),
-                      child: SvgPicture.asset(
-                        "assets/svg/camera.svg",
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "Sube una foto",
-                    style: Mystyle.smallTextStyle.copyWith(
-                      color: Colors.black87,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ),
+            GestureDetector(
+                onTap: () => _showSelectionDialog,
+                child: imageFile == null
+                    ? Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black54, width: 1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        width: double.infinity,
+                        height: ScreenUtil().setHeight(600),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                _showSelectionDialog(context);
+                              },
+                              child: Container(
+                                height: ScreenUtil().setWidth(160),
+                                width: ScreenUtil().setWidth(160),
+                                child: SvgPicture.asset(
+                                  "assets/svg/camera.svg",
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "Sube una foto",
+                              style: Mystyle.smallTextStyle.copyWith(
+                                color: Colors.black87,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      )
+                    : Container(
+                        width: 80,
+                        height: 250,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black54, width: 1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Image.file(imageFile, fit: BoxFit.cover),
+                      )),
             SizedBox(height: ScreenUtil().setHeight(60)),
             ButtAuth("Publicar", () {
               userBloc
-                  .addComment(widget.idPost, id, photoUrl,
-                      comentarioController.text, rating.toString())
-                  .whenComplete(() => uploadFile());
+                  .addComment(widget.idPost, photoUrl,
+                      comentarioController.text, widget.valoration.toString())
+                  .whenComplete(() {
+                uploadFile();
+                Navigator.pop(context);
+              });
             }, border: true, press: true),
             SizedBox(height: ScreenUtil().setHeight(100)),
           ],
@@ -229,12 +247,12 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Future uploadFile() async {
     StorageReference storageReference = FirebaseStorage.instance
         .ref()
-        .child('comments/${nombre.text}/${imageFile.hashCode}');
+        .child('comments/${widget.idPost}/${imageFile.hashCode}');
     StorageUploadTask uploadTask = storageReference.putFile(imageFile);
     await uploadTask.onComplete;
     print('File Uploaded');
     storageReference.getDownloadURL().then((fileURL) {
-      userBloc.addPhotoToPost(widget.idPost, fileURL);
+      // userBloc.addPhotoToPost(widget.idPost, fileURL);
     });
   }
 }

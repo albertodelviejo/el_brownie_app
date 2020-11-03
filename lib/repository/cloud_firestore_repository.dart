@@ -51,7 +51,7 @@ class CloudFirestoreRepository {
   List<CardHome> buildMyBrownies(List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.buildMyBrownies(postsListSnapshot);
 
-  Future<String> addComment(String idPost, String id, String photoURL,
+  Future<String> addComment(String idPost, String idUser, String photoURL,
           String text, String valoration) =>
-      _cloudFirestoreAPI.addComment(idPost, id, photoURL, text, valoration);
+      _cloudFirestoreAPI.addComment(idPost, idUser, photoURL, text, valoration);
 }

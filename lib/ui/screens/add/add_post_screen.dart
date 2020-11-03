@@ -92,7 +92,9 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                _showSelectionDialog(context);
+                              },
                               child: Container(
                                 height: ScreenUtil().setWidth(160),
                                 width: ScreenUtil().setWidth(160),
@@ -114,12 +116,12 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                       )
                     : Container(
                         width: 80,
-                        height: 80,
+                        height: 250,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black54, width: 1),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Image.file(imageFile),
+                        child: Image.file(imageFile, fit: BoxFit.cover),
                       )),
             SizedBox(height: ScreenUtil().setHeight(40)),
             Padding(
@@ -168,7 +170,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
             SizedBox(height: ScreenUtil().setHeight(60)),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: 24, vertical: ScreenUtil().setHeight(20)),
+                  horizontal: 0, vertical: ScreenUtil().setHeight(20)),
               child: TextFormField(
                 controller: nombre,
                 keyboardType: TextInputType.emailAddress,
@@ -182,7 +184,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: 24, vertical: ScreenUtil().setHeight(20)),
+                  horizontal: 0, vertical: ScreenUtil().setHeight(20)),
               child: TextFormField(
                 controller: categoria,
                 keyboardType: TextInputType.emailAddress,
@@ -202,7 +204,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: 24, vertical: ScreenUtil().setHeight(20)),
+                  horizontal: 0, vertical: ScreenUtil().setHeight(20)),
               child: TextFormField(
                 controller: direccion,
                 keyboardType: TextInputType.emailAddress,
@@ -229,7 +231,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: 24, vertical: ScreenUtil().setHeight(20)),
+                  horizontal: 0, vertical: ScreenUtil().setHeight(20)),
               child: TextFormField(
                 controller: comentario,
                 maxLines: 8,

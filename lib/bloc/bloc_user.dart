@@ -109,10 +109,10 @@ class UserBloc implements Bloc {
 
   //11. Add comment
 
-  Future<String> addComment(String idPost, String id, String photoUrl,
-          String text, String valoration) =>
+  Future<String> addComment(
+          String idPost, String photoUrl, String text, String valoration) =>
       _cloudFirestoreRepository.addComment(
-          idPost, id, photoUrl, text, valoration);
+          idPost, user.uid, photoUrl, text, valoration);
 
   void signOut() {
     _authRepository.signOut();
