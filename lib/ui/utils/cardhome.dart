@@ -43,7 +43,7 @@ class _CardHomeState extends State<CardHome> {
           context,
           MaterialPageRoute(
               builder: (context) => PostScreen(
-                    id: widget.id,
+                    id: widget.name.hashCode.toString(),
                   ))),
       child: Column(
         children: [

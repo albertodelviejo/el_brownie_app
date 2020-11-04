@@ -7,6 +7,7 @@ import 'package:el_brownie_app/repository/cloud_firestore_api.dart';
 import 'package:el_brownie_app/repository/cloud_firestore_repository.dart';
 import 'package:el_brownie_app/repository/google_maps_api.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/widgets/card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
@@ -113,6 +114,15 @@ class UserBloc implements Bloc {
           String idPost, String photoUrl, String text, String valoration) =>
       _cloudFirestoreRepository.addComment(
           idPost, user.uid, photoUrl, text, valoration);
+
+  //12. Build comments
+  List<CommentsW> buildComments(List<DocumentSnapshot> ticketsListSnapshot) =>
+      _cloudFirestoreRepository.buildComments(ticketsListSnapshot);
+
+  Stream<QuerySnapshot> commentsListStream(idPost) => FirebaseFirestore.instance
+      .collection("comments")
+      .where("id_post", isEqualTo: idPost)
+      .snapshots();
 
   void signOut() {
     _authRepository.signOut();

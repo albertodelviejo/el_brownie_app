@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       indicatorWeight: 4,
                       unselectedLabelColor: Colors.black87.withOpacity(.5),
                       labelStyle: TextStyle(
-                        fontSize: 14,
+                        fontSize: 11,
                         fontWeight: FontWeight.bold,
                         color: Mystyle.secondrycolo,
                       ),

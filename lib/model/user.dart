@@ -7,7 +7,7 @@ class UserModel {
   final int points;
   final String bankAccount;
   final List favourites;
-  final String type;
+  String type;
   String restaurantName;
   String location;
   String cif;

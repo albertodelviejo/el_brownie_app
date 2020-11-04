@@ -60,32 +60,58 @@ class _PostScreenState extends State<PostScreen> {
                 valoration: element.get('valoration').toString());
             Stream.empty();
             return postScreen();
+            //return getComments();
           }
         });
   }
 
-  Widget getCommentsFromDb(id) {
+  Widget getComments() {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection("comments")
-            .where('id_post', isEqualTo: id)
+            .where('id_post', isEqualTo: widget.id)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
           } else {
-            DocumentSnapshot element = snapshot.data.documents[0];
-            post = Post(
-                name: element.get('name'),
-                address: element.get('address'),
-                category: element.get('category'),
-                status: element.get('status'),
-                price: element.get('price').toString(),
-                idUser: element.get('id_user'),
-                idPost: widget.id,
-                valoration: element.get('valoration').toString());
+            List<CommentsW> list = new List<CommentsW>();
+            snapshot.data.documents.forEach((element) {
+              list.add(CommentsW(
+                comment: element.get('text'),
+                image: "",
+                likes: element.get('likes'),
+                name: "",
+                valoration: int.parse(element.get('valoration')),
+                time: "",
+              ));
+            });
             Stream.empty();
             return postScreen();
+            //return getComments();
+          }
+        });
+  }
+
+  Widget getComments1() {
+    return StreamBuilder(
+        stream: userBloc.commentsListStream(widget.id),
+        builder: (context, AsyncSnapshot snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return comments(null);
+
+            case ConnectionState.done:
+              return comments(userBloc.buildComments(snapshot.data.documents));
+
+            case ConnectionState.active:
+              return comments(userBloc.buildComments(snapshot.data.documents));
+
+            case ConnectionState.none:
+              return comments(null);
+
+            default:
+              return comments(userBloc.buildComments(snapshot.data.documents));
           }
         });
   }
@@ -95,6 +121,7 @@ class _PostScreenState extends State<PostScreen> {
       appBar: AppBar(
         backgroundColor: Mystyle.primarycolo,
         elevation: 0,
+        automaticallyImplyLeading: false,
         title: Container(
           width: ScreenUtil().setHeight(500),
           child: Image.asset("assets/appblogo.png"),
@@ -312,34 +339,29 @@ class _PostScreenState extends State<PostScreen> {
               textAlign: TextAlign.left,
             ),
           ),
-          ListView.builder(
-            itemCount: 7,
-            shrinkWrap: true,
-            physics: ClampingScrollPhysics(),
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-                child: CommentsW(
-                  image:
-                      "https://i.pinimg.com/originals/45/13/23/451323560320fa7639b790ce4b9a13eb.jpg",
-                  name: "Nombre Usuario",
-                  elbr: 3,
-                  comment: "“Más warros imposible!”",
-                  likes: 1,
-                  time: "Hace 2 días ",
-                ),
-              );
-            },
-          ),
+          getComments()
           // SizedBox(height: ScreenUtil().setHeight(100)),
         ],
       ),
     );
+  }
+
+  Widget comments(List<CommentsW> commentsList) {
+    List<CommentsW> list = commentsList;
+    return list == null
+        ? Container(child: Center(child: CircularProgressIndicator()))
+        : SizedBox(
+            width: 200.0,
+            height: 300.0,
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.only(bottom: 25),
+              scrollDirection: Axis.vertical,
+              reverse: false,
+              itemBuilder: (_, int index) => commentsList[index],
+              itemCount: commentsList.length,
+            ),
+          );
   }
 }

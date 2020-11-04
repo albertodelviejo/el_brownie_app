@@ -40,6 +40,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Mystyle.primarycolo,
           elevation: 0,
           title: Container(

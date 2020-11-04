@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:el_brownie_app/model/comment.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/widgets/card.dart';
 
 import 'cloud_firestore_api.dart';
@@ -54,4 +56,7 @@ class CloudFirestoreRepository {
   Future<String> addComment(String idPost, String idUser, String photoURL,
           String text, String valoration) =>
       _cloudFirestoreAPI.addComment(idPost, idUser, photoURL, text, valoration);
+
+  List<CommentsW> buildComments(List<DocumentSnapshot> commentsListSnapshot) =>
+      _cloudFirestoreAPI.buildComments(commentsListSnapshot);
 }

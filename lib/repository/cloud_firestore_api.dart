@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/widgets/card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -22,6 +23,8 @@ class CloudFirestoreAPI {
                 'uid': user.uid,
                 'username': user.userName,
                 'email': user.email,
+                'bank_account': user.bankAccount,
+                'type': user.type
               })
             }
           else
@@ -30,6 +33,12 @@ class CloudFirestoreAPI {
                 'uid': user.uid,
                 'username': user.userName,
                 'email': user.email,
+                'points': "0",
+                'bank_account': "",
+                'cif': "",
+                'location': "",
+                'restaurant_name': "",
+                'type': "default",
               })
             }
         });
@@ -203,7 +212,23 @@ class CloudFirestoreAPI {
       'likes': 0,
       'photo_url': photoURL,
       'text': text,
-      'valoration': valoration
+      'valoration': valoration,
+      'date': Timestamp.now()
     });
+  }
+
+  List<CommentsW> buildComments(List<DocumentSnapshot> commentsListSnapshot) {
+    List<CommentsW> allComments = List<CommentsW>();
+    commentsListSnapshot.forEach((element) {
+      allComments.add(CommentsW(
+        comment: element.get('text'),
+        image: element.get('photo_url'),
+        likes: element.get('likes'),
+        valoration: int.parse(element.get('valoration')),
+        name: "",
+        time: "",
+      ));
+    });
+    return allComments;
   }
 }

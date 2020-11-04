@@ -9,13 +9,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
+  bool showhidden = false;
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool noresult = false;
-  bool showhidden = false;
+
   UserBloc userBloc;
 
   @override
@@ -74,7 +75,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     ubicacionRestauranteController.text = user.location;
     cifController.text = user.cif;
 
-    (user.type == "default") ? showhidden = false : showhidden = true;
+    (user.type == "default")
+        ? widget.showhidden = false
+        : widget.showhidden = true;
 
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: 24),
@@ -158,6 +161,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
         ),
+        /*
         Padding(
           padding: EdgeInsets.symmetric(
               horizontal: 2, vertical: ScreenUtil().setHeight(20)),
@@ -172,6 +176,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
         ),
+        */
         Padding(
           padding: EdgeInsets.only(left: 8, right: 36, top: 12, bottom: 12),
           child: Text(
@@ -222,7 +227,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            showhidden = true;
+                            user.type = "owner";
+                            widget.showhidden = true;
                           });
                         },
                         child: Container(
@@ -243,7 +249,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            showhidden = false;
+                            user.type = "default";
+                            widget.showhidden = false;
                           });
                         },
                         child: Container(
@@ -265,21 +272,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   //
                   IconButton(
                     icon: Icon(
-                      showhidden
+                      widget.showhidden
                           ? Icons.keyboard_arrow_down
                           : Icons.chevron_right,
                       size: 32,
                     ),
                     onPressed: () {
                       setState(() {
-                        showhidden = !showhidden;
+                        widget.showhidden = !widget.showhidden;
                       });
                     },
                   ),
                 ],
               ),
               SizedBox(height: ScreenUtil().setHeight(20)),
-              showhidden
+              widget.showhidden
                   ? Column(
                       children: [
                         Padding(
@@ -348,7 +355,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         SizedBox(height: ScreenUtil().setHeight(50)),
-        ButtAuth("Editar perfil", () {}, border: true),
+        ButtAuth("Editar perfil", () {
+          userBloc.updateUserData(UserModel(
+            uid: user.uid,
+            userName: nombreController.text,
+            email: emailController.text,
+            bankAccount: bankaccountController.text,
+          ));
+        }, border: true),
+        SizedBox(height: ScreenUtil().setHeight(50)),
+        ButtAuth("Cerrar Sesión", () {
+          userBloc.signOut();
+        }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         Divider(color: Colors.black),
         SizedBox(height: ScreenUtil().setHeight(50)),
