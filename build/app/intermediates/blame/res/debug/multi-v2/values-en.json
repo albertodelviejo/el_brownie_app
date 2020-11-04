@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en/values-en.xml",
+            "outputFile": "C:\\Users\\Etudiant\\Documents\\Flutter\\el_brownie_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
             "map": [
                 {
-                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/res/values-en/values-en.xml",
+                    "source": "C:\\Users\\Etudiant\\.gradle\\caches\\transforms-2\\files-2.1\\d285e4f9db0aa01f6eae716baf5f6146\\jetified-stripe-3ds2-android-1.2.2\\res\\values-en\\values-en.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",

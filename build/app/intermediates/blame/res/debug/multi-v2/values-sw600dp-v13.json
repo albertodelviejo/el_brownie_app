@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "C:\\Users\\Etudiant\\Documents\\Flutter\\el_brownie_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/9b806cc71296e01a86c2cbc5d704cc19/appcompat-1.0.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\Etudiant\\.gradle\\caches\\transforms-2\\files-2.1\\9b806cc71296e01a86c2cbc5d704cc19\\appcompat-1.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\Etudiant\\.gradle\\caches\\transforms-2\\files-2.1\\5b8189b26ae1b4d34292ca3a7096c0e3\\material-1.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

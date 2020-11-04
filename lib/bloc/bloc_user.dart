@@ -91,12 +91,13 @@ class UserBloc implements Bloc {
           String comentary,
           double price,
           bool status,
+          String photoUrl,
           int valoration) =>
       _cloudFirestoreRepository.createPost(idPost, currentUser.uid, address,
-          category, name, comentary, price, status, valoration);
+          category, name, comentary, price, status, photoUrl, valoration);
 
-  void addPhotoToPost(String idPost, String imageUrl) =>
-      _cloudFirestoreRepository.addPhotoToPost(idPost, imageUrl);
+  // void addPhotoToPost(String idPost, String imageUrl) =>
+  //      _cloudFirestoreRepository.addPhotoToPost(idPost, imageUrl);
 
 //10. Get my brownies
   Stream<QuerySnapshot> myBrowniesListStream(uid) => FirebaseFirestore.instance

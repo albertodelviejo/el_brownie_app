@@ -8,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:path/path.dart';
 
 class AddCommentScreen extends StatefulWidget {
   int valoration = 0;
@@ -30,317 +32,351 @@ class _AddCommentScreen extends State<AddCommentScreen> {
   UserBloc userBloc;
   var imageFile;
 
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     userBloc = BlocProvider.of(context);
     return SafeArea(
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Mystyle.primarycolo,
-          elevation: 0,
-          title: Container(
-            width: ScreenUtil().setHeight(500),
-            child: Image.asset("assets/appblogo.png"),
+      child: ModalProgressHUD(
+        inAsyncCall: loading,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            backgroundColor: Mystyle.primarycolo,
+            elevation: 0,
+            title: Container(
+              width: ScreenUtil().setHeight(500),
+              child: Image.asset("assets/appblogo.png"),
+            ),
+            centerTitle: true,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: Icon(
+                  Icons.notifications_none,
+                  color: Colors.black,
+                  size: 28,
+                ),
+              ),
+            ],
           ),
-          centerTitle: true,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 12.0),
-              child: Icon(
-                Icons.notifications_none,
-                color: Colors.black,
-                size: 28,
+          body: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 24),
+            children: [
+              SizedBox(height: ScreenUtil().setHeight(60)),
+              Text(
+                "Sube tu foto!",
+                style: Mystyle.titleTextStyle.copyWith(
+                  fontSize: ScreenUtil().setSp(100),
+                  color: Colors.black87,
+                ),
+                textAlign: TextAlign.center,
               ),
-            ),
-          ],
-        ),
-        body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24),
-          children: [
-            SizedBox(height: ScreenUtil().setHeight(60)),
-            Text(
-              "Sube tu foto!",
-              style: Mystyle.titleTextStyle.copyWith(
-                fontSize: ScreenUtil().setSp(100),
-                color: Colors.black87,
+              SizedBox(height: ScreenUtil().setHeight(20)),
+              Text(
+                "Muéstranos lo que ves…",
+                style: Mystyle.regularTextStyle,
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: ScreenUtil().setHeight(20)),
-            Text(
-              "Muéstranos lo que ves…",
-              style: Mystyle.regularTextStyle,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            GestureDetector(
-                onTap: () {
-                  _showSelectionDialog(context);
-                },
-                child: imageFile == null
-                    ? Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black54, width: 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        width: double.infinity,
-                        height: ScreenUtil().setHeight(350),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                _showSelectionDialog(context);
-                              },
-                              child: Container(
-                                height: ScreenUtil().setWidth(160),
-                                width: ScreenUtil().setWidth(160),
-                                child: SvgPicture.asset(
-                                  "assets/svg/camera.svg",
-                                  // color: Colors.red,
+              SizedBox(height: ScreenUtil().setHeight(40)),
+              GestureDetector(
+                  onTap: () {
+                    _showSelectionDialog(context);
+                  },
+                  child: imageFile == null
+                      ? Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black54, width: 1),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          width: double.infinity,
+                          height: ScreenUtil().setHeight(350),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  _showSelectionDialog(context);
+                                },
+                                child: Container(
+                                  height: ScreenUtil().setWidth(160),
+                                  width: ScreenUtil().setWidth(160),
+                                  child: SvgPicture.asset(
+                                    "assets/svg/camera.svg",
+                                    // color: Colors.red,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              "Sube una foto",
-                              style: Mystyle.smallTextStyle.copyWith(
-                                color: Colors.black87,
+                              Text(
+                                "Sube una foto",
+                                style: Mystyle.smallTextStyle.copyWith(
+                                  color: Colors.black87,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      )
-                    : Container(
-                        width: 80,
-                        height: 250,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black54, width: 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Image.file(imageFile, fit: BoxFit.cover),
-                      )),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                "¿Cuán mierdolo consideras que está el baño?",
-                style: Mystyle.regularTextStyle,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(5, (index) {
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      widget.valoration = index;
-                      filled = true;
-                      widget.tapped = true;
-                    });
-                  },
-                  child: Container(
-                      height: ScreenUtil().setWidth(140),
-                      width: ScreenUtil().setWidth(140),
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            spreadRadius: 3,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                            ],
                           ),
-                        ],
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      alignment: Alignment.center,
-                      child: (index <= widget.valoration && widget.tapped)
-                          ? Image.asset("assets/ifull.png")
-                          : Image.asset("assets/iempty.png")),
-                );
-              }),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(60)),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 0, vertical: ScreenUtil().setHeight(20)),
-              child: TextFormField(
-                controller: nombre,
-                keyboardType: TextInputType.emailAddress,
-                decoration: Mystyle.inputWhitebg('Nombre del restaurante'),
-                textInputAction: TextInputAction.done,
-                validator: (value) {
-                  if (value.isEmpty) return 'isEmpty';
-                  return null;
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 0, vertical: ScreenUtil().setHeight(20)),
-              child: TextFormField(
-                controller: categoria,
-                keyboardType: TextInputType.emailAddress,
-                decoration: Mystyle.inputWhitebg(
-                  'Categoría',
-                  icon: IconButton(
-                    icon: Icon(Icons.chevron_right),
-                    onPressed: () {},
-                  ),
-                ),
-                textInputAction: TextInputAction.done,
-                validator: (value) {
-                  if (value.isEmpty) return 'isEmpty';
-                  return null;
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 0, vertical: ScreenUtil().setHeight(20)),
-              child: TextFormField(
-                controller: direccion,
-                keyboardType: TextInputType.emailAddress,
-                decoration: Mystyle.inputWhitebg(
-                  'Dirección',
-                  icon: IconButton(
-                    icon: Container(
-                      height: ScreenUtil().setWidth(50),
-                      width: ScreenUtil().setWidth(50),
-                      child: SvgPicture.asset(
-                        "assets/svg/send.svg",
-                        color: Colors.black54,
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-                textInputAction: TextInputAction.done,
-                validator: (value) {
-                  if (value.isEmpty) return 'isEmpty';
-                  return null;
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 0, vertical: ScreenUtil().setHeight(20)),
-              child: TextFormField(
-                controller: comentario,
-                maxLines: 8,
-                keyboardType: TextInputType.emailAddress,
-                decoration:
-                    Mystyle.inputregularmaxline('Escribe tu comentario aqui…'),
-                textInputAction: TextInputAction.done,
-                validator: (value) {
-                  if (value.isEmpty) return 'isEmpty';
-                  return null;
-                },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 24, vertical: ScreenUtil().setHeight(20)),
-              child: Text(
-                "Precio a cobrar, te recomendamos la mejor opción.",
-                style: Mystyle.regularTextStyle,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Center(
-              child: Text(
-                _value.toStringAsFixed(2) + " €",
-                style: Mystyle.titleregularTextStyle,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(30)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "1 €",
-                  style:
-                      Mystyle.subtitleTextStyle.copyWith(color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
-                Expanded(
-                  child: SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      trackHeight: 16.0,
-                      thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 12.0),
-                    ),
-                    child: Slider(
-                      min: 1,
-                      max: 7,
-                      activeColor: Mystyle.secondrycolo,
-                      inactiveColor: Colors.grey[300],
-                      value: _value,
-                      onChanged: (value) {
-                        setState(() {
-                          _value = value;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                Text(
-                  "7 €",
-                  style:
-                      Mystyle.subtitleTextStyle.copyWith(color: Colors.black),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            SizedBox(height: ScreenUtil().setHeight(60)),
-            DottedBorder(
-              color: Mystyle.secondrycolo,
-              dashPattern: [10, 11],
-              strokeWidth: 4,
-              child: Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                        )
+                      : Container(
+                          width: 80,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black54, width: 1),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Image.file(imageFile, fit: BoxFit.cover),
+                        )),
+              SizedBox(height: ScreenUtil().setHeight(40)),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
-                  "*Recuerda incluir tu tarjeta bancaria en tu perfil si quieres recibir tu dinerito!",
+                  "¿Cuán mierdolo consideras que está el baño?",
                   style: Mystyle.regularTextStyle,
                   textAlign: TextAlign.center,
                 ),
               ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(60)),
-            ButtAuth("Publicar", () {
-              widget.idPost = nombre.text.hashCode.toString();
-              userBloc
-                  .createPost(
-                      nombre.text.hashCode.toString(),
-                      direccion.text,
-                      categoria.text,
-                      nombre.text,
-                      comentario.text,
-                      _value,
-                      false,
-                      widget.valoration)
-                  .whenComplete(() => uploadFile());
-
-              setState(() {
-                nombre.clear();
-                categoria.clear();
-                direccion.clear();
-                comentario.clear();
-                widget.tapped = false;
-                imageFile = null;
-              });
-            }, border: true),
-            SizedBox(height: ScreenUtil().setHeight(100)),
-          ],
+              SizedBox(height: ScreenUtil().setHeight(40)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: List.generate(5, (index) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        widget.valoration = index;
+                        filled = true;
+                        widget.tapped = true;
+                      });
+                    },
+                    child: Container(
+                        height: ScreenUtil().setWidth(140),
+                        width: ScreenUtil().setWidth(140),
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 3,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        alignment: Alignment.center,
+                        child: (index <= widget.valoration && widget.tapped)
+                            ? Image.asset("assets/ifull.png")
+                            : Image.asset("assets/iempty.png")),
+                  );
+                }),
+              ),
+              SizedBox(height: ScreenUtil().setHeight(60)),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: 0, vertical: ScreenUtil().setHeight(20)),
+                child: TextFormField(
+                  controller: nombre,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: Mystyle.inputWhitebg('Nombre del restaurante'),
+                  textInputAction: TextInputAction.done,
+                  validator: (value) {
+                    if (value.isEmpty) return 'isEmpty';
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: 0, vertical: ScreenUtil().setHeight(20)),
+                child: TextFormField(
+                  controller: categoria,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: Mystyle.inputWhitebg(
+                    'Categoría',
+                    icon: IconButton(
+                      icon: Icon(Icons.chevron_right),
+                      onPressed: () {},
+                    ),
+                  ),
+                  textInputAction: TextInputAction.done,
+                  validator: (value) {
+                    if (value.isEmpty) return 'isEmpty';
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: 0, vertical: ScreenUtil().setHeight(20)),
+                child: TextFormField(
+                  controller: direccion,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: Mystyle.inputWhitebg(
+                    'Dirección',
+                    icon: IconButton(
+                      icon: Container(
+                        height: ScreenUtil().setWidth(50),
+                        width: ScreenUtil().setWidth(50),
+                        child: SvgPicture.asset(
+                          "assets/svg/send.svg",
+                          color: Colors.black54,
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                  textInputAction: TextInputAction.done,
+                  validator: (value) {
+                    if (value.isEmpty) return 'isEmpty';
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: 0, vertical: ScreenUtil().setHeight(20)),
+                child: TextFormField(
+                  controller: comentario,
+                  maxLines: 8,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: Mystyle.inputregularmaxline(
+                      'Escribe tu comentario aqui…'),
+                  textInputAction: TextInputAction.done,
+                  validator: (value) {
+                    if (value.isEmpty) return 'isEmpty';
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: 24, vertical: ScreenUtil().setHeight(20)),
+                child: Text(
+                  "Precio a cobrar, te recomendamos la mejor opción.",
+                  style: Mystyle.regularTextStyle,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Center(
+                child: Text(
+                  _value.toStringAsFixed(2) + " €",
+                  style: Mystyle.titleregularTextStyle,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: ScreenUtil().setHeight(30)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "1 €",
+                    style:
+                        Mystyle.subtitleTextStyle.copyWith(color: Colors.black),
+                    textAlign: TextAlign.center,
+                  ),
+                  Expanded(
+                    child: SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        trackHeight: 16.0,
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                      ),
+                      child: Slider(
+                        min: 1,
+                        max: 7,
+                        activeColor: Mystyle.secondrycolo,
+                        inactiveColor: Colors.grey[300],
+                        value: _value,
+                        onChanged: (value) {
+                          setState(() {
+                            _value = value;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "7 €",
+                    style:
+                        Mystyle.subtitleTextStyle.copyWith(color: Colors.black),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+              SizedBox(height: ScreenUtil().setHeight(60)),
+              DottedBorder(
+                color: Mystyle.secondrycolo,
+                dashPattern: [10, 11],
+                strokeWidth: 4,
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                  child: Text(
+                    "*Recuerda incluir tu tarjeta bancaria en tu perfil si quieres recibir tu dinerito!",
+                    style: Mystyle.regularTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              SizedBox(height: ScreenUtil().setHeight(60)),
+              ButtAuth(
+                "Publicar",
+                () {
+                  if (imageFile == null) {
+                    print("Show alert : picture required");
+                  } else {
+                    setState(() {
+                      loading = true;
+                    });
+                    widget.idPost = nombre.text.hashCode.toString();
+                    var name = '${DateTime.now()}' +
+                        basenameWithoutExtension(imageFile.toString());
+                    StorageReference storageReference =
+                        FirebaseStorage.instance.ref().child('posts/$name');
+                    StorageUploadTask uploadTask =
+                        storageReference.putFile(imageFile);
+                    uploadTask.onComplete.then((snapshot) {
+                      snapshot.ref.getDownloadURL().then((url) {
+                        userBloc
+                            .createPost(
+                                nombre.text.hashCode.toString(),
+                                direccion.text,
+                                categoria.text,
+                                nombre.text,
+                                comentario.text,
+                                _value,
+                                false,
+                                url.toString(),
+                                widget.valoration)
+                            .whenComplete(() {
+                          setState(() {
+                            nombre.clear();
+                            categoria.clear();
+                            direccion.clear();
+                            comentario.clear();
+                            widget.tapped = false;
+                            imageFile = null;
+                            loading = false;
+                          });
+                        });
+                      });
+                    }).catchError((onError) {
+                      setState(() {
+                        loading = false;
+                      });
+                      print(onError.message.toString());
+                    });
+                  }
+                },
+                border: true,
+              ),
+              SizedBox(height: ScreenUtil().setHeight(100)),
+            ],
+          ),
         ),
       ),
     );
@@ -396,17 +432,5 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                 ),
               ));
         });
-  }
-
-  Future uploadFile() async {
-    StorageReference storageReference = FirebaseStorage.instance
-        .ref()
-        .child('${nombre.text}/${imageFile.hashCode}');
-    StorageUploadTask uploadTask = storageReference.putFile(imageFile);
-    await uploadTask.onComplete;
-    print('File Uploaded');
-    storageReference.getDownloadURL().then((fileURL) {
-      userBloc.addPhotoToPost(widget.idPost, fileURL);
-    });
   }
 }

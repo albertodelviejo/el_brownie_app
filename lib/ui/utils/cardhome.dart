@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class CardHome extends StatefulWidget {
-  String name, place, view, valo, hace, id, pagename, price;
+  String name, place, view, valo, hace, id, pagename, price, imageUrl;
   bool reclam;
   String myindex = "3";
   bool isTapped = false;
@@ -26,6 +26,7 @@ class CardHome extends StatefulWidget {
       this.reclam,
       this.myindex,
       this.id,
+      this.imageUrl,
       this.pagename,
       this.price});
   @override
@@ -65,7 +66,7 @@ class _CardHomeState extends State<CardHome> {
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
                       image: NetworkImage(
-                        "https://media-cdn.tripadvisor.com/media/photo-s/09/a6/26/ad/pop-s-place.jpg",
+                        widget.imageUrl,
                       ),
                       fit: BoxFit.cover,
                     ),
