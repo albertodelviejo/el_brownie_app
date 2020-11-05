@@ -1,3 +1,5 @@
+import 'dart:wasm';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
@@ -25,7 +27,8 @@ class CloudFirestoreAPI {
                 'email': user.email,
                 'bank_account': user.bankAccount,
                 'type': user.type,
-                'points': user.points
+                'points': user.points,
+                'favorite': {}
               })
             }
           else
@@ -70,7 +73,7 @@ class CloudFirestoreAPI {
         name: element.name,
         valo: "1700 valoraciones",
         place: element.address,
-        reclam: element.status == "true" ? true : false,
+        reclam: element.status.toString() == "true" ? true : false,
         view: "1700 views",
         hace: "Hace 2 dias",
         myindex: element.valoration,
@@ -100,6 +103,7 @@ class CloudFirestoreAPI {
         reclam: element.get('status'),
         view: "1700 views",
         hace: "Hace 2 dias",
+        imageUrl: element.get('photo'),
         myindex: element.get('valoration').toString(),
         id: element.id,
       ));
@@ -146,6 +150,7 @@ class CloudFirestoreAPI {
       String comentary,
       double price,
       bool status,
+      String photoUrl,
       int valoration) async {
     DocumentReference ref = _db.collection("posts").doc();
     ref.set({
@@ -159,15 +164,13 @@ class CloudFirestoreAPI {
       'price': price,
       'status': status,
       'valoration': valoration,
+      'photo': photoUrl
     });
   }
 
-  void addPhotoToPost(String idPost, String imageUrl) {
-    DocumentReference ref = _db.collection("posts").doc(idPost);
-    ref.update({
-      'photos': FieldValue.arrayUnion([imageUrl])
-    });
-  }
+  // void addPhotoToPost(String idPost, String imageUrl) async {
+  //   await _db.collection("posts").doc(idPost).update({'photo': imageUrl.toString()});
+  // }
 
   Post getPost(String idPost) {
     DocumentReference ref = _db.collection("posts").doc(idPost);

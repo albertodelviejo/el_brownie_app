@@ -41,12 +41,13 @@ class CloudFirestoreRepository {
           String comentary,
           double price,
           bool status,
+          String photoUrl,
           int valoration) =>
       _cloudFirestoreAPI.createPost(idPost, uid, address, category, name,
-          comentary, price, status, valoration);
+          comentary, price, status, photoUrl, valoration);
 
-  void addPhotoToPost(String idPost, String imageUrl) =>
-      _cloudFirestoreAPI.addPhotoToPost(idPost, imageUrl);
+  // void addPhotoToPost(String idPost, String imageUrl) =>
+  //     _cloudFirestoreAPI.addPhotoToPost(idPost, imageUrl);
 
   Post getPost(String idPost) => _cloudFirestoreAPI.getPost(idPost);
 

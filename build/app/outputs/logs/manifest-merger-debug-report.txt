@@ -5,32 +5,32 @@ INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/sr
 INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:1:1-61:12
 INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:1:1-61:12
 MERGED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:1:1-61:12
-MERGED from [:google_sign_in] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
-MERGED from [:flutter_facebook_login] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_facebook_login/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-37:12
 MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-22:12
 MERGED from [:flutter_plugin_android_lifecycle] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
-MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-37:12
-MERGED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-10:12
+MERGED from [:flutter_facebook_login] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_facebook_login/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-10:12
-MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
-MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:google_sign_in] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-10:12
 MERGED from [com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:2:1-29:12
 MERGED from [com.stripe:stripe-3ds2-android:1.2.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/AndroidManifest.xml:2:1-20:12
 MERGED from [com.google.firebase:firebase-core:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/26d48a0fbb3c2c272df279d9609f273e/firebase-core-17.4.1/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-analytics:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/27b5f965e5c6c69e8b73fde4d8fcacc6/firebase-analytics-17.4.1/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.multidex:multidex:2.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/1e43ec82407637f465c620e746b223b7/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-wallet:18.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/334b48c5d9cfca510d45c6fa7aa6ae0e/play-services-wallet-18.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:17:1-39:12
 MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/acb3fa4b28b19785a234ef2f2ee8aa7c/jetified-play-services-location-16.0.0/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/efa3c45a600996d849385e6f0e798cec/jetified-play-services-auth-api-phone-16.0.0/AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/687d7c68cf9628a825abe1f1de843f08/jetified-play-services-auth-base-16.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:17:1-39:12
 MERGED from [com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:17:1-42:12
 MERGED from [com.google.firebase:firebase-storage:19.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3ed8519e9abe4e7cb39c076a2d2afc20/firebase-storage-19.1.1/AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.firebase:firebase-firestore:21.4.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/6c645728744918800d88a7ef17ef765b/jetified-firebase-firestore-21.4.3/AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/efa3c45a600996d849385e6f0e798cec/jetified-play-services-auth-api-phone-16.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/687d7c68cf9628a825abe1f1de843f08/jetified-play-services-auth-base-16.0.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e7e3f6b3c80c9791e54cce31183a2eb2/play-services-measurement-api-17.4.1/AndroidManifest.xml:17:1-36:12
 MERGED from [com.google.android.gms:play-services-identity:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/95da4fd25afe1682581f21267744533c/play-services-identity-17.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6f4e6eb26f6c204062e462fe30c558b2/play-services-maps-17.0.0/AndroidManifest.xml:17:1-38:12
@@ -53,15 +53,15 @@ MERGED from [com.google.android.gms:play-services-stats:17.0.0] /home/alberto/.g
 MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/31a3395230a9bd928e78ed2dc5338b8e/firebase-measurement-connector-18.0.0/AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/bf32d33463f95f7bff9ab9ece9656a67/play-services-ads-identifier-17.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.facebook.android:facebook-login:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2f9b7aac2abe2bcbffc179247b4577e/jetified-facebook-login-5.5.1/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-common:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/2d7dd66cae0c9ca90078db10d43a59f6/jetified-facebook-common-5.5.1/AndroidManifest.xml:21:1-37:12
-MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/9b806cc71296e01a86c2cbc5d704cc19/appcompat-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/fb1e5d35f9738a7c29a273d7be7f3e2c/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0d479d426be2ba1f4bdfee2f9a7aa519/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/320f42d94b5dc6740cc97c4e2200da41/recyclerview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.browser:browser:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/33e5ae0b4711709cb339233c513b94a7/browser-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/ec23ebef9249bf34ecf3aa64b9af5fa0/vectordrawable-animated-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.browser:browser:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/33e5ae0b4711709cb339233c513b94a7/browser-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/536c4d230adcf87aec8f00c8955f8127/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4881302d1430cfdcaa10344523e2ce7f/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:21:1-61:12
@@ -72,8 +72,8 @@ MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/alberto/.
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6af37b0dc18acadfaf8b0344ec157d66/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3008a15222323dd0393f3314747b2d3a/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/31cd047ed3ec37dce69ba9f16e10a05d/customview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/7856882cd1467d98d1226d82381c7754/vectordrawable-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.transition:transition:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/d4865292867d69e55df22754c1569e3c/transition-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/7856882cd1467d98d1226d82381c7754/vectordrawable-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media:media:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/477e81a6102496b4df20cd2557cfcd3a/media-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5a5d53679d914b768463e606a8e8f920/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/2ecca17b0eb70fcbc1e9d8148641257d/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -90,9 +90,9 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/a
 MERGED from [com.google.firebase:firebase-components:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/30d722697c2f24b1dfba7333039284d3/jetified-firebase-components-16.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.cardview:cardview:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/53efbc2f03bcefa36056ee4c9c629f19/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/07713a4b02ecb1ede5529340586b2906/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/b59192acc39c8e1083525bb1a0764fd3/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/ec735b528ee8f52f56a38a2f27a69a4b/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/dff04f4f27a157ea6f57a15b661fd9d7/print-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/b59192acc39c8e1083525bb1a0764fd3/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [io.grpc:grpc-android:1.21.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/34268753bded0b91ecc4a1af1815ce82/grpc-android-1.21.0/AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a354eb536d40d44205558c740c860a07/protolite-well-known-types-17.0.0/AndroidManifest.xml:2:1-11:12
 INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/debug/AndroidManifest.xml:1:1-7:12
@@ -140,20 +140,20 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.4.1] /h
 		ADDED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:8:24-66
 application
 ADDED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:10:5-60:19
-MERGED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
-MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-20:19
-MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-20:19
-MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
-MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
-MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-35:19
-MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-35:19
 MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-35:19
+MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-35:19
+MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-20:19
+MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-20:19
+MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
 MERGED from [com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:11:5-27:19
 MERGED from [com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:11:5-27:19
 MERGED from [com.stripe:stripe-3ds2-android:1.2.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/AndroidManifest.xml:11:5-18:19
@@ -162,10 +162,10 @@ MERGED from [com.google.firebase:firebase-core:17.4.1] /home/alberto/.gradle/cac
 MERGED from [com.google.firebase:firebase-core:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/26d48a0fbb3c2c272df279d9609f273e/firebase-core-17.4.1/AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/27b5f965e5c6c69e8b73fde4d8fcacc6/firebase-analytics-17.4.1/AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/27b5f965e5c6c69e8b73fde4d8fcacc6/firebase-analytics-17.4.1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:22:5-37:19
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/acb3fa4b28b19785a234ef2f2ee8aa7c/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/acb3fa4b28b19785a234ef2f2ee8aa7c/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:23:5-40:19
 MERGED from [com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:23:5-40:19
 MERGED from [com.google.firebase:firebase-storage:19.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3ed8519e9abe4e7cb39c076a2d2afc20/firebase-storage-19.1.1/AndroidManifest.xml:29:5-37:19
@@ -210,12 +210,12 @@ MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /home/a
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/bf32d33463f95f7bff9ab9ece9656a67/play-services-ads-identifier-17.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.facebook.android:facebook-login:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2f9b7aac2abe2bcbffc179247b4577e/jetified-facebook-login-5.5.1/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-login:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2f9b7aac2abe2bcbffc179247b4577e/jetified-facebook-login-5.5.1/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-common:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/2d7dd66cae0c9ca90078db10d43a59f6/jetified-facebook-common-5.5.1/AndroidManifest.xml:28:5-35:19
 MERGED from [com.facebook.android:facebook-common:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/2d7dd66cae0c9ca90078db10d43a59f6/jetified-facebook-common-5.5.1/AndroidManifest.xml:28:5-35:19
-MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:28:5-59:19
 MERGED from [com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:28:5-59:19
 MERGED from [androidx.core:core:1.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3aaf6e5219b7f981ec263df919098c6f/core-1.1.0/AndroidManifest.xml:24:5-89
@@ -324,32 +324,32 @@ uses-sdk
 INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml
-MERGED from [:google_sign_in] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:google_sign_in] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_facebook_login] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_facebook_login/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_facebook_login] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_facebook_login/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_facebook_login] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_facebook_login/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_facebook_login] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_facebook_login/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:7:5-9:41
 MERGED from [com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:7:5-9:41
 MERGED from [com.stripe:stripe-3ds2-android:1.2.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/AndroidManifest.xml:7:5-9:41
@@ -362,20 +362,20 @@ MERGED from [androidx.multidex:multidex:2.0.0] /home/alberto/.gradle/caches/tran
 MERGED from [androidx.multidex:multidex:2.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/1e43ec82407637f465c620e746b223b7/multidex-2.0.0/AndroidManifest.xml:20:5-43
 MERGED from [com.google.android.gms:play-services-wallet:18.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/334b48c5d9cfca510d45c6fa7aa6ae0e/play-services-wallet-18.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-wallet:18.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/334b48c5d9cfca510d45c6fa7aa6ae0e/play-services-wallet-18.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/acb3fa4b28b19785a234ef2f2ee8aa7c/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/acb3fa4b28b19785a234ef2f2ee8aa7c/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/efa3c45a600996d849385e6f0e798cec/jetified-play-services-auth-api-phone-16.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/efa3c45a600996d849385e6f0e798cec/jetified-play-services-auth-api-phone-16.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/687d7c68cf9628a825abe1f1de843f08/jetified-play-services-auth-base-16.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/687d7c68cf9628a825abe1f1de843f08/jetified-play-services-auth-base-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-storage:19.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3ed8519e9abe4e7cb39c076a2d2afc20/firebase-storage-19.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-storage:19.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3ed8519e9abe4e7cb39c076a2d2afc20/firebase-storage-19.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-firestore:21.4.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/6c645728744918800d88a7ef17ef765b/jetified-firebase-firestore-21.4.3/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-firestore:21.4.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/6c645728744918800d88a7ef17ef765b/jetified-firebase-firestore-21.4.3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/efa3c45a600996d849385e6f0e798cec/jetified-play-services-auth-api-phone-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/efa3c45a600996d849385e6f0e798cec/jetified-play-services-auth-api-phone-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/687d7c68cf9628a825abe1f1de843f08/jetified-play-services-auth-base-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/687d7c68cf9628a825abe1f1de843f08/jetified-play-services-auth-base-16.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e7e3f6b3c80c9791e54cce31183a2eb2/play-services-measurement-api-17.4.1/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e7e3f6b3c80c9791e54cce31183a2eb2/play-services-measurement-api-17.4.1/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-identity:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/95da4fd25afe1682581f21267744533c/play-services-identity-17.0.0/AndroidManifest.xml:20:5-44
@@ -420,12 +420,12 @@ MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /home/a
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/bf32d33463f95f7bff9ab9ece9656a67/play-services-ads-identifier-17.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.facebook.android:facebook-login:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2f9b7aac2abe2bcbffc179247b4577e/jetified-facebook-login-5.5.1/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-login:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2f9b7aac2abe2bcbffc179247b4577e/jetified-facebook-login-5.5.1/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-common:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/2d7dd66cae0c9ca90078db10d43a59f6/jetified-facebook-common-5.5.1/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-common:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/2d7dd66cae0c9ca90078db10d43a59f6/jetified-facebook-common-5.5.1/AndroidManifest.xml:24:5-26:41
-MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5b8189b26ae1b4d34292ca3a7096c0e3/material-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/9b806cc71296e01a86c2cbc5d704cc19/appcompat-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/9b806cc71296e01a86c2cbc5d704cc19/appcompat-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/fb1e5d35f9738a7c29a273d7be7f3e2c/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
@@ -434,10 +434,10 @@ MERGED from [androidx.fragment:fragment:1.1.0] /home/alberto/.gradle/caches/tran
 MERGED from [androidx.fragment:fragment:1.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0d479d426be2ba1f4bdfee2f9a7aa519/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/320f42d94b5dc6740cc97c4e2200da41/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/320f42d94b5dc6740cc97c4e2200da41/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.browser:browser:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/33e5ae0b4711709cb339233c513b94a7/browser-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.browser:browser:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/33e5ae0b4711709cb339233c513b94a7/browser-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/ec23ebef9249bf34ecf3aa64b9af5fa0/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/ec23ebef9249bf34ecf3aa64b9af5fa0/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/33e5ae0b4711709cb339233c513b94a7/browser-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/33e5ae0b4711709cb339233c513b94a7/browser-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/536c4d230adcf87aec8f00c8955f8127/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/536c4d230adcf87aec8f00c8955f8127/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4881302d1430cfdcaa10344523e2ce7f/viewpager-1.0.0/AndroidManifest.xml:20:5-44
@@ -458,10 +458,10 @@ MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/alberto/.
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3008a15222323dd0393f3314747b2d3a/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/31cd047ed3ec37dce69ba9f16e10a05d/customview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/31cd047ed3ec37dce69ba9f16e10a05d/customview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/7856882cd1467d98d1226d82381c7754/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/7856882cd1467d98d1226d82381c7754/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/d4865292867d69e55df22754c1569e3c/transition-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/d4865292867d69e55df22754c1569e3c/transition-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/7856882cd1467d98d1226d82381c7754/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/7856882cd1467d98d1226d82381c7754/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media:media:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/477e81a6102496b4df20cd2557cfcd3a/media-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.media:media:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/477e81a6102496b4df20cd2557cfcd3a/media-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5a5d53679d914b768463e606a8e8f920/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
@@ -494,12 +494,12 @@ MERGED from [androidx.cardview:cardview:1.0.0] /home/alberto/.gradle/caches/tran
 MERGED from [androidx.cardview:cardview:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/53efbc2f03bcefa36056ee4c9c629f19/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/07713a4b02ecb1ede5529340586b2906/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/07713a4b02ecb1ede5529340586b2906/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/b59192acc39c8e1083525bb1a0764fd3/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/b59192acc39c8e1083525bb1a0764fd3/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/ec735b528ee8f52f56a38a2f27a69a4b/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/ec735b528ee8f52f56a38a2f27a69a4b/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/dff04f4f27a157ea6f57a15b661fd9d7/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/dff04f4f27a157ea6f57a15b661fd9d7/print-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/b59192acc39c8e1083525bb1a0764fd3/interpolator-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/b59192acc39c8e1083525bb1a0764fd3/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [io.grpc:grpc-android:1.21.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/34268753bded0b91ecc4a1af1815ce82/grpc-android-1.21.0/AndroidManifest.xml:7:5-9:41
 MERGED from [io.grpc:grpc-android:1.21.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/34268753bded0b91ecc4a1af1815ce82/grpc-android-1.21.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a354eb536d40d44205558c740c860a07/protolite-well-known-types-17.0.0/AndroidManifest.xml:7:5-9:41
@@ -513,11 +513,11 @@ INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/sr
 		INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml
 		INJECTED from /home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/debug/AndroidManifest.xml
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
-MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
-MERGED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+ADDED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:33:9-39:19
@@ -541,13 +541,59 @@ MERGED from [com.google.firebase:firebase-common:19.3.0] /home/alberto/.gradle/c
 	android:directBootAware
 		ADDED from [com.google.firebase:firebase-common:19.3.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0c84736c53988d2ce886123b665abe9e/jetified-firebase-common-19.3.0/AndroidManifest.xml:34:13-43
 	android:name
-		ADDED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
+		ADDED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar
+ADDED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-134
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar
+ADDED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar
 ADDED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
 	android:value
 		ADDED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-126
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar
+ADDED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+meta-data#com.google.android.gms.wallet.api.enabled
+ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:36
+	android:value
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-33
+	android:name
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-69
+activity#com.gettipsi.stripe.OpenBrowserActivity
+ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-20:75
+	android:launchMode
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-44
+	android:exported
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-37
+	android:theme
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-72
+	android:name
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-67
+activity#com.gettipsi.stripe.RedirectUriReceiver
+ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:21:9-34:20
+	android:launchMode
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-44
+	android:exported
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-36
+	android:theme
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-83
+	android:name
+		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:22:13-67
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:example
+ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-33:29
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-80
 	android:name
@@ -580,48 +626,6 @@ ADDED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/b
 		ADDED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
 	android:name
 		ADDED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
-meta-data#com.google.android.gms.wallet.api.enabled
-ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:36
-	android:value
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-33
-	android:name
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-69
-activity#com.gettipsi.stripe.OpenBrowserActivity
-ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-20:75
-	android:launchMode
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-44
-	android:exported
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-37
-	android:theme
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-72
-	android:name
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-67
-activity#com.gettipsi.stripe.RedirectUriReceiver
-ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:21:9-34:20
-	android:launchMode
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-44
-	android:exported
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-36
-	android:theme
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-83
-	android:name
-		ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:22:13-67
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:example
-ADDED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-33:29
-uses-permission#android.permission.CAMERA
-ADDED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-65
-	android:name
-		ADDED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-62
-uses-permission#android.permission.RECORD_AUDIO
-ADDED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-71
-	android:name
-		ADDED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-68
-meta-data#com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar
-ADDED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-	android:value
-		ADDED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
-	android:name
-		ADDED from [:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-134
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from [:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-81
 	android:name
@@ -630,18 +634,14 @@ uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from [:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-79
 	android:name
 		ADDED from [:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-76
-meta-data#com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar
-ADDED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-	android:value
-		ADDED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+uses-permission#android.permission.CAMERA
+ADDED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-65
 	android:name
-		ADDED from [:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
-meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar
-ADDED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-	android:value
-		ADDED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+		ADDED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-62
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-71
 	android:name
-		ADDED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+		ADDED from [:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-68
 activity#com.stripe.android.view.AddPaymentMethodActivity
 ADDED from [com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:12:9-14:57
 	android:theme
