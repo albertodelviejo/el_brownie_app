@@ -40,7 +40,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          //automaticallyImplyLeading: false,
           backgroundColor: Mystyle.primarycolo,
           elevation: 0,
           title: Container(
@@ -79,6 +79,15 @@ class _AddPostScreenState extends State<AddPostScreen> {
               style: Mystyle.titleTextStyle.copyWith(
                 fontSize: ScreenUtil().setSp(100),
                 color: Colors.black87,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: ScreenUtil().setHeight(20)),
+            Text(
+              "Te has ganado tu minuto de gloria, te gusta el show y el aplauso.\n Añade tu comentario",
+              style: Mystyle.titleTextStyle.copyWith(
+                fontSize: ScreenUtil().setSp(60),
+                color: Colors.black54,
               ),
               textAlign: TextAlign.center,
             ),

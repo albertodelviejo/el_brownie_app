@@ -1,7 +1,7 @@
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
+import 'package:el_brownie_app/repository/auth_exception_handler.dart';
 import 'package:el_brownie_app/ui/screens/home/bottom_tab.dart';
-import 'package:el_brownie_app/ui/screens/home.dart';
 import 'package:el_brownie_app/ui/screens/home/home_screen.dart';
 import 'package:el_brownie_app/ui/screens/auth/register_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
@@ -20,9 +20,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final username = TextEditingController();
-  final password = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
   var scaffoldKey = GlobalKey<ScaffoldState>();
   PageController controller = PageController();
@@ -32,6 +29,19 @@ class _LoginScreenState extends State<LoginScreen> {
   bool pressAttention = false;
   bool pressAttention2 = false;
   bool acceder = false;
+
+  bool _obscureText = true;
+  bool _autoValidate = false;
+
+  final contrasenaController = TextEditingController();
+  final usernameController = TextEditingController();
+
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     userBloc = BlocProvider.of(context);
@@ -52,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget loginScreen(BuildContext context) {
     ScreenUtil.init(context);
+
     return SafeArea(
       child: WillPopScope(
         onWillPop: () async {
@@ -72,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
           backgroundColor: Mystyle.primarycolo,
           body: Form(
             key: _formKey,
+            autovalidate: _autoValidate,
             child: ListView(
               padding: EdgeInsets.symmetric(horizontal: 24),
               children: <Widget>[
@@ -150,31 +162,26 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           SizedBox(height: ScreenUtil().setHeight(50)),
                           Container(
-                            width: ScreenUtil().screenWidth -
-                                ScreenUtil().setWidth(300),
                             child: TextFormField(
-                              controller: username,
+                              controller: usernameController,
                               decoration: Mystyle.inputregular('Usuario'),
                               textInputAction: TextInputAction.done,
-                              validator: (value) {
-                                if (value.isEmpty) return 'isEmpty';
-                                return null;
-                              },
                             ),
                           ),
                           SizedBox(height: ScreenUtil().setHeight(50)),
                           Container(
-                            width: ScreenUtil().screenWidth -
-                                ScreenUtil().setWidth(300),
                             child: TextFormField(
-                              controller: password,
-                              obscureText: true,
+                              obscureText: _obscureText,
                               textInputAction: TextInputAction.done,
+                              controller: contrasenaController,
                               decoration: Mystyle.inputregular(
                                 'Contraseña',
-                                icon: Icon(
-                                  Icons.remove_red_eye,
-                                  color: Colors.grey[400],
+                                icon: IconButton(
+                                  onPressed: _toggle,
+                                  icon: Icon(
+                                    Icons.remove_red_eye,
+                                    color: Colors.grey[400],
+                                  ),
                                 ),
                               ),
                               validator: (value) {
@@ -184,10 +191,20 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.only(top: 5),
-                            alignment: Alignment.centerRight,
-                            child: Text("Olvidaste tu contraseña?"),
-                          ),
+                              padding: EdgeInsets.only(top: 5),
+                              alignment: Alignment.centerRight,
+                              child: RichText(
+                                  text: TextSpan(
+                                      style: Mystyle.normalTextStyle,
+                                      children: <TextSpan>[
+                                    TextSpan(
+                                        text: 'Olvidaste tu contraseña?',
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            userBloc.resetPassword(
+                                                usernameController.text);
+                                          })
+                                  ]))),
                           SizedBox(height: ScreenUtil().setHeight(50)),
                           ButtAuth("Acceder", () {
                             setState(() {
@@ -197,12 +214,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             userBloc
                                 .signIn(
-                                    email: username.text,
-                                    password: password.text)
-                                .then((User value) {
-                              userBloc.user.uid = value.uid;
-                              userBloc.updateUserData(UserModel(
-                                  uid: value.uid, email: value.email));
+                                    email: usernameController.text,
+                                    password: contrasenaController.text)
+                                .then((value) {
+                              if (value is User) {
+                                userBloc.user.uid = value.uid;
+                                userBloc.updateUserData(UserModel(
+                                    uid: value.uid, email: value.email));
+                              } else {
+                                final errorMsg = AuthExceptionHandler
+                                    .generateExceptionMessage(value);
+                                _showAlertDialog(errorMsg);
+                              }
                             });
                           }),
                           Container(
@@ -285,5 +308,19 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  _showAlertDialog(errorMsg) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              'Login Failed',
+              style: TextStyle(color: Colors.black),
+            ),
+            content: Text("Credenciales incorrectas"),
+          );
+        });
   }
 }

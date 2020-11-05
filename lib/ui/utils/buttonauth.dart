@@ -43,7 +43,7 @@ class _ButtAuthState extends State<ButtAuth> {
   Widget build(BuildContext context) {
     return Container(
       height: ScreenUtil().setHeight(120),
-      width: ScreenUtil().screenWidth - ScreenUtil().setWidth(300),
+      width: ScreenUtil().screenWidth, //- ScreenUtil().setWidth(300),
       child: RaisedButton(
         child: Text(
           widget.text,

@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             bottom: 0,
                             child: IconButton(
                               icon: Icon(
-                                Icons.adjust,
+                                Icons.tune,
                               ),
                               onPressed: () {
                                 FocusScope.of(context)
@@ -271,7 +271,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: ScreenUtil().setWidth(80),
                           width: ScreenUtil().setWidth(80),
                           child: SvgPicture.asset(
-                            "assets/svg/occidental.png",
+                            "assets/svg/occidental.svg",
                             // color: Colors.red,
                           ),
                         ),
@@ -302,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: ScreenUtil().setWidth(80),
                           width: ScreenUtil().setWidth(80),
                           child: SvgPicture.asset(
-                            "assets/svg/hipster.png",
+                            "assets/svg/hipster.svg",
                             // color: Colors.red,
                           ),
                         ),
@@ -323,7 +323,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: ScreenUtil().setWidth(80),
                           width: ScreenUtil().setWidth(80),
                           child: SvgPicture.asset(
-                            "assets/svg/lujo.png",
+                            "assets/svg/lujo.svg",
                             // color: Colors.red,
                           ),
                         ),
@@ -361,13 +361,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(height: ScreenUtil().setHeight(100)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 2),
+                  child: Column(
                     children: [
                       InkWell(
                         onTap: () {},
@@ -375,7 +375,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: ScreenUtil().setWidth(80),
                           width: ScreenUtil().setWidth(80),
                           child: SvgPicture.asset(
-                            "assets/svg/brocoli.svg",
+                            "assets/svg/pub.svg",
                             // color: Colors.red,
                           ),
                         ),
@@ -388,7 +388,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  Column(
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: Column(
                     children: [
                       InkWell(
                         onTap: () {},
@@ -409,7 +412,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  Column(
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 25),
+                  child: Column(
                     children: [
                       InkWell(
                         onTap: () {},
@@ -417,7 +423,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: ScreenUtil().setWidth(80),
                           width: ScreenUtil().setWidth(80),
                           child: SvgPicture.asset(
-                            "assets/svg/occidental.png",
+                            "assets/svg/fusion.svg",
                             // color: Colors.red,
                           ),
                         ),
@@ -430,12 +436,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             SizedBox(height: ScreenUtil().setHeight(100)),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 17),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,

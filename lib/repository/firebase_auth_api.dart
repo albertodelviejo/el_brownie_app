@@ -1,40 +1,62 @@
+import 'package:el_brownie_app/repository/auth_result_status.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import 'auth_exception_handler.dart';
 
 class FirebaseAuthAPI {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final FacebookLogin facebookLogin = FacebookLogin();
+  AuthResultStatus _status;
 
-  Future<User> signIn(email, password) async {
-    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email, password: password);
+  Future<dynamic> signIn(email, password) async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
 
-    User _user = userCredential.user;
-    assert(!_user.isAnonymous);
-    assert(await _user.getIdToken() != null);
-    User currentUser = _auth.currentUser;
-    assert(_user.uid == currentUser.uid);
+      User _user = userCredential.user;
 
-    return currentUser;
+      if (_user != null) {
+        _status = AuthResultStatus.successful;
+        return _user;
+      } else {
+        _status = AuthResultStatus.undefined;
+      }
+    } catch (e) {
+      print('Exception @createAccount: $e');
+      _status = AuthExceptionHandler.handleException(e);
+    }
+
+    return _status;
   }
 
-  Future<User> register(email, password) async {
-    UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-        email: email, password: password);
-
-    User _user = userCredential.user;
-
-    assert(!_user.isAnonymous);
-    assert(await _user.getIdToken() != null);
-    User currentUser = _auth.currentUser;
-    assert(_user.uid == currentUser.uid);
-
-    return currentUser;
+  @override
+  Future<void> resetPassword(String email) async {
+    await _auth.sendPasswordResetEmail(email: email);
   }
 
-  Future<User> signInGoogle() async {
+  Future<dynamic> register(email, password) async {
+    try {
+      UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(email: email, password: password);
+
+      if (userCredential.user != null) {
+        _status = AuthResultStatus.successful;
+        return userCredential.user;
+      } else {
+        _status = AuthResultStatus.undefined;
+      }
+    } catch (e) {
+      print('Exception @createAccount: $e');
+      _status = AuthExceptionHandler.handleException(e);
+    }
+
+    return _status;
+  }
+
+  Future<dynamic> signInGoogle() async {
     GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
 
@@ -48,12 +70,14 @@ class FirebaseAuthAPI {
 
     User _user = userCredential.user;
 
-    assert(!_user.isAnonymous);
-    assert(await _user.getIdToken() != null);
-    User currentUser = _auth.currentUser;
-    assert(_user.uid == currentUser.uid);
+    if (_user != null) {
+      _status = AuthResultStatus.successful;
+      return _user;
+    } else {
+      _status = AuthResultStatus.undefined;
+    }
 
-    return currentUser;
+    return _status;
   }
 
   Future<User> signInFacebook() async {

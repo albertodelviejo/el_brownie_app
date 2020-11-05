@@ -1,7 +1,7 @@
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
-import 'package:el_brownie_app/ui/screens/home.dart';
 import 'package:el_brownie_app/ui/screens/auth/login_screen.dart';
+import 'package:el_brownie_app/ui/screens/home/home_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,11 +19,6 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final username = TextEditingController();
-  final email = TextEditingController();
-  final emailconfirm = TextEditingController();
-  final password = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -33,6 +28,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool accepted = false;
 
   UserBloc userBloc;
+
+  bool _obscureText = true;
+
+  var _email;
+  var _emailconfirmation;
+  var _password;
+  var _username;
+
+  bool _validate = false;
+
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,68 +92,67 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               SizedBox(height: ScreenUtil().setHeight(50)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 0),
                 child: TextFormField(
                   keyboardType: TextInputType.text,
-                  controller: username,
                   decoration: Mystyle.inputWhitebg('Usuario'),
                   textInputAction: TextInputAction.done,
-                  validator: (value) {
-                    if (value.isEmpty) return 'isEmpty';
-                    return null;
+                  validator: validateNotEmpty,
+                  onSaved: (String val) {
+                    _username = val;
                   },
                 ),
               ),
               SizedBox(height: ScreenUtil().setHeight(20)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 0),
                 child: TextFormField(
-                  controller: email,
                   keyboardType: TextInputType.emailAddress,
                   decoration: Mystyle.inputWhitebg('Email'),
                   textInputAction: TextInputAction.done,
-                  validator: (value) {
-                    if (value.isEmpty) return 'isEmpty';
-                    return null;
+                  validator: validateEmail,
+                  onSaved: (String val) {
+                    _email = val;
                   },
                 ),
               ),
               SizedBox(height: ScreenUtil().setHeight(20)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 0),
                 child: TextFormField(
-                  controller: emailconfirm,
                   keyboardType: TextInputType.emailAddress,
                   decoration: Mystyle.inputWhitebg('Confirmar email'),
                   textInputAction: TextInputAction.done,
-                  validator: (value) {
-                    if (value.isEmpty) return 'isEmpty';
-                    return null;
+                  validator: validateEmail,
+                  onSaved: (String val) {
+                    _emailconfirmation = val;
                   },
                 ),
               ),
               SizedBox(height: ScreenUtil().setHeight(20)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 0),
                 child: TextFormField(
-                  controller: password,
-                  obscureText: true,
+                  obscureText: _obscureText,
                   textInputAction: TextInputAction.done,
                   decoration: Mystyle.inputWhitebg(
                     'Contraseña',
-                    icon: Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.grey[400],
+                    icon: IconButton(
+                      onPressed: _toggle,
+                      icon: Icon(
+                        Icons.remove_red_eye,
+                        color: Colors.grey[400],
+                      ),
                     ),
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) return 'isEmpty';
-                    return null;
+                  validator: validatePassword,
+                  onSaved: (String val) {
+                    _password = val;
                   },
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 5, bottom: 10),
+                padding: EdgeInsets.only(top: 5, bottom: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -162,6 +171,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextSpan(text: 'Aceptar '),
                           TextSpan(
                               text: 'términos y condiciones',
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   _launchURL();
@@ -170,34 +181,55 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ],
                 ),
               ),
+              !accepted
+                  ? Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Center(
+                        child: Text(
+                          "Acepte los términos para registrarse",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    )
+                  : Container(),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.symmetric(horizontal: 0),
                 child: ButtAuth(
                   "Registrarse",
                   () {
-                    if (accepted) {
-                      setState(() {
-                        pressAttention = false;
-                        //
-                      });
-                      userBloc
-                          .register(email: email.text, password: password.text)
-                          .then((User value) {
-                        userBloc.updateUserData(UserModel(
-                          uid: value.uid,
-                          userName: username.text,
-                          email: value.email,
-                        ));
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) {
-                              return Home(); //register
-                            },
-                          ),
-                        );
-                      });
-                    } else {}
+                    if (_formKey.currentState.validate()) {
+                      _formKey.currentState.save();
+                      if (accepted) {
+                        setState(() {
+                          pressAttention = false;
+                          //
+                        });
+                        userBloc
+                            .register(email: _email, password: _password)
+                            .then((value) {
+                          if (value is User) {
+                            userBloc.updateUserData(UserModel(
+                              uid: value.uid,
+                              userName: _username,
+                              email: value.email,
+                            ));
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return HomeScreen(); //register
+                                },
+                              ),
+                            );
+                          } else {
+                            _showAlertDialog("");
+                          }
+                        });
+                      } else {}
+                    } else {
+                      //validation error
+                      _validate = true;
+                    }
                   },
                   border: true,
                 ),
@@ -278,6 +310,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     );
   }
+
+  _showAlertDialog(errorMsg) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              'Fallo de registro',
+              style: TextStyle(color: Colors.black),
+            ),
+            content: Text("El mail ya está en uso"),
+          );
+        });
+  }
 }
 
 _launchURL() async {
@@ -286,5 +332,30 @@ _launchURL() async {
     await launch(url);
   } else {
     throw 'Could not launch $url';
+  }
+}
+
+String validateEmail(String value) {
+  Pattern pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  RegExp regex = new RegExp(pattern);
+  if (!regex.hasMatch(value))
+    return 'Entre un mail válido';
+  else
+    return null;
+}
+
+String validatePassword(String value) {
+  if (value.length < 8)
+    return 'Contraseña necesita ser mayor a 8 caracteres';
+  else
+    return null;
+}
+
+String validateNotEmpty(String value) {
+  if (value.isEmpty) {
+    return 'Los campos no pueden estar vacios';
+  } else {
+    return null;
   }
 }

@@ -121,7 +121,7 @@ class _PostScreenState extends State<PostScreen> {
       appBar: AppBar(
         backgroundColor: Mystyle.primarycolo,
         elevation: 0,
-        automaticallyImplyLeading: false,
+        //automaticallyImplyLeading: false,
         title: Container(
           width: ScreenUtil().setHeight(500),
           child: Image.asset("assets/appblogo.png"),

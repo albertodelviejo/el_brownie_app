@@ -6,10 +6,12 @@ import 'firebase_auth_api.dart';
 class AuthRepository {
   final _firebaseAuthAPI = FirebaseAuthAPI();
 
-  Future<User> signInFirebase(email, password) =>
+  Future<dynamic> signInFirebase(email, password) =>
       _firebaseAuthAPI.signIn(email, password);
 
-  Future<User> registerFirebase(email, password) =>
+  Future<void> resetPassword(email) => _firebaseAuthAPI.resetPassword(email);
+
+  Future<dynamic> registerFirebase(email, password) =>
       _firebaseAuthAPI.register(email, password);
 
   Future<User> singInGoogle() => _firebaseAuthAPI.signInGoogle();

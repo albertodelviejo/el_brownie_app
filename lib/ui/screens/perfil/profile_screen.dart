@@ -42,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 email: element.get("email"),
                 uid: element.get("uid"),
                 userName: element.get("username"),
-                points: int.parse(element.get("points")),
+                points: element.get("points"),
                 bankAccount: element.get("bank_account"),
                 type: element.get("type"));
             if (userBloc.user.type == "owner") {

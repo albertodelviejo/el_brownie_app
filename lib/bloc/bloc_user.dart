@@ -27,14 +27,14 @@ class UserBloc implements Bloc {
 //Casos de Uso
 
 //1. Login en firebase
-  Future<User> signIn({email, password}) =>
+  Future<dynamic> signIn({email, password}) =>
       _authRepository.signInFirebase(email, password);
 
   void updateUserData(UserModel user) =>
       _cloudFirestoreRepository.updateUserDataFirestore(user);
 
 //2. Register in firebase
-  Future<User> register({email, password}) =>
+  Future<dynamic> register({email, password}) =>
       _authRepository.registerFirebase(email, password);
 
 //3. Log in Google
@@ -123,6 +123,9 @@ class UserBloc implements Bloc {
       .collection("comments")
       .where("id_post", isEqualTo: idPost)
       .snapshots();
+
+  //13. Reset password
+  Future<void> resetPassword(email) => _authRepository.resetPassword(email);
 
   void signOut() {
     _authRepository.signOut();

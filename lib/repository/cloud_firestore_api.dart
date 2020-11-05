@@ -24,7 +24,8 @@ class CloudFirestoreAPI {
                 'username': user.userName,
                 'email': user.email,
                 'bank_account': user.bankAccount,
-                'type': user.type
+                'type': user.type,
+                'points': user.points
               })
             }
           else
@@ -33,7 +34,7 @@ class CloudFirestoreAPI {
                 'uid': user.uid,
                 'username': user.userName,
                 'email': user.email,
-                'points': "0",
+                'points': 0,
                 'bank_account': "",
                 'cif': "",
                 'location': "",
