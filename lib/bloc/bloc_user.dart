@@ -51,16 +51,17 @@ class UserBloc implements Bloc {
       _cloudFirestoreRepository.buildAllPosts(ticketsListSnapshot);
 
 //6. Get favourites posts
-  Future<List<Post>> myFavouritesPostsList() async {
-    List<String> list = new List<String>();
+  Future<List<CardHome>> myFavouritesPostsList() async {
+    List<String> list = [];
     list =
         await _cloudFirestoreRepository.getFavouritesPostFromString(user.uid);
 
-    List<Post> posts = new List<Post>();
+    List<Post> posts = [];
     list.forEach((element) {
       posts.add(_cloudFirestoreRepository.getPost(element));
     });
-    return posts;
+    List<CardHome> favorites = buildMyFavouritesPosts(posts);
+    return favorites;
   }
 
   List<CardHome> buildMyFavouritesPosts(List<Post> favouritesPostsSnapshot) =>

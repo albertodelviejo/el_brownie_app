@@ -1,4 +1,4 @@
-#Wed Nov 04 15:42:55 WET 2020
+#Thu Nov 05 14:03:31 WET 2020
 base.2=C\:\\Users\\Etudiant\\Documents\\Flutter\\el_brownie_app\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
 base.1=C\:\\Users\\Etudiant\\Documents\\Flutter\\el_brownie_app\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
 base.0=C\:\\Users\\Etudiant\\Documents\\Flutter\\el_brownie_app\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex

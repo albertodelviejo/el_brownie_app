@@ -62,7 +62,7 @@ class CloudFirestoreAPI {
         name: element.name,
         valo: "1700 valoraciones",
         place: element.address,
-        reclam: element.status == "true" ? true : false,
+        reclam: element.status.toString() == "true" ? true : false,
         view: "1700 views",
         hace: "Hace 2 dias",
         myindex: element.valoration,

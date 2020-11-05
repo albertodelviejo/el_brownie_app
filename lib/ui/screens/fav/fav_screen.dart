@@ -1,11 +1,10 @@
-import 'package:dotted_border/dotted_border.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
-import 'package:el_brownie_app/ui/utils/noresutlt.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class FavScreen extends StatefulWidget {
@@ -19,15 +18,13 @@ class _FavScreenState extends State<FavScreen> {
   bool noresult = false;
   UserBloc userBloc;
 
+  final db = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     userBloc = BlocProvider.of(context);
-    getPostsfromDB(userBloc.user.uid);
-  }
-
-  Widget favScreen(List<CardHome> favPost) {
-    ScreenUtil.init(context);
-
+    // return getPostsfromDB(userBloc.user.uid);
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
@@ -73,25 +70,58 @@ class _FavScreenState extends State<FavScreen> {
               ),
             ),
             SizedBox(height: ScreenUtil().setHeight(40)),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.only(bottom: 25),
-              scrollDirection: Axis.vertical,
-              reverse: false,
-              itemBuilder: (_, int index) => favPost[index],
-              itemCount: favPost.length,
-            ),
-            SizedBox(height: ScreenUtil().setHeight(100)),
+            StreamBuilder(
+                stream: db.collection('posts').snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.data != null) {
+                    List posts = snapshot.data.docs ?? [];
+                    return StreamBuilder(
+                        stream: db
+                            .collection('users')
+                            .doc(auth.currentUser.uid)
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.data != null) {
+                            List favoritesID =
+                                snapshot.data.data()['favorites'];
+                            List cards = [];
+                            favoritesID.forEach((favoriteID) {
+                              posts.forEach((post) {
+                                if (post.id.toString() == favoriteID) {
+                                  cards.add(post);
+                                }
+                              });
+                            });
+                            return Container(
+                              height: cards.length * ScreenUtil().setHeight(1500),
+                              child: ListView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  itemCount: cards.length,
+                                  itemBuilder: (context, index) {
+                                    return CardHome(
+                                      name: '${cards[index].data()['name']}',
+                                      valo: 'string',
+                                      place: '${cards[index].data()['address']}',
+                                      reclam: cards[index].data()['status'],
+                                      view: "1700 views",
+                                      hace: "Hace 2 dias",
+                                      myindex: '${cards[index].data()['valoration']}',
+                                      id: cards[index].id,
+                                      imageUrl: '${cards[index].data()['photo']}',
+                                    );
+                                  }),
+                            );
+                          } else {
+                            return Container();
+                          }
+                        });
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                }),
           ],
         ),
       ),
     );
-  }
-
-  Widget getPostsfromDB(uid) {
-    userBloc
-        .myFavouritesPostsList()
-        .then((value) => favScreen(userBloc.buildMyFavouritesPosts(value)));
   }
 }
