@@ -12,6 +12,7 @@ MERGED from [:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app
 MERGED from [:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-37:12
 MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-22:12
 MERGED from [:flutter_plugin_android_lifecycle] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_facebook_login] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_facebook_login/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
@@ -338,6 +339,8 @@ MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/
 MERGED from [:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_facebook_login] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_facebook_login/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_facebook_login] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/flutter_facebook_login/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/path_provider/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44

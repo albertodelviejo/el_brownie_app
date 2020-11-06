@@ -57,6 +57,7 @@ class _PostScreenState extends State<PostScreen> {
                 price: element.get('price').toString(),
                 idUser: element.get('id_user'),
                 idPost: widget.id,
+                photo: element.get('photo'),
                 valoration: element.get('valoration').toString());
             Stream.empty();
             return postScreen();
@@ -163,6 +164,7 @@ class _PostScreenState extends State<PostScreen> {
                   reclam: post.status,
                   myindex: "3",
                   pagename: "post",
+                  imageUrl: post.photo,
                 ),
                 SizedBox(height: ScreenUtil().setHeight(40)),
                 Row(

@@ -1,3 +1,4 @@
+import 'package:el_brownie_app/ui/screens/home/losmas_screen.dart';
 import 'package:el_brownie_app/ui/screens/home/todos_screen.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
@@ -120,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
             physics: NeverScrollableScrollPhysics(),
             children: [
               TodosScreen(),
-              Container(),
+              LosMasScreen(),
               Container(),
             ],
           ),

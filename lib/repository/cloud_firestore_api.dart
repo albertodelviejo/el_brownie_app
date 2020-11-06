@@ -28,7 +28,7 @@ class CloudFirestoreAPI {
                 'bank_account': user.bankAccount,
                 'type': user.type,
                 'points': user.points,
-                'favorite': {}
+                'favorites': {}
               })
             }
           else
@@ -61,7 +61,7 @@ class CloudFirestoreAPI {
           date: element.get('date'),
           idUser: element.get('id_user'),
           idPost: element.get('idPost'),
-          photos: element.get('photos')));
+          photo: element.get('photo')));
     });
     return allPost;
   }
@@ -201,6 +201,7 @@ class CloudFirestoreAPI {
         view: "1700 views",
         hace: "Hace 2 dias",
         myindex: element.get('valoration').toString(),
+        imageUrl: element.get('photo'),
         id: element.id,
       ));
     });

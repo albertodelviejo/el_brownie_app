@@ -226,7 +226,7 @@ class _RequestScreenState extends State<RequestScreen> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                widget.price + " €",
+                double.parse(widget.price).toStringAsFixed(2) + " €",
                 style: Mystyle.titleregularTextStyle.copyWith(
                   color: Colors.black87,
                 ),
