@@ -1,13 +1,15 @@
+import 'package:el_brownie_app/repository/stripe_api.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import '../../utils/buttonauth.dart';
 import '../../utils/mystyle.dart';
 
 class RequestScreen extends StatefulWidget {
-  String postId, price;
+  final String postId, price;
 
   RequestScreen({Key key, this.postId, this.price});
   @override
@@ -18,225 +20,262 @@ class _RequestScreenState extends State<RequestScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   int _value = 12;
   bool isfirst = false;
+
+  final _stripeService = StripeService();
+  bool loading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    StripeService.init();
+  }
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
 
     return SafeArea(
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Mystyle.primarycolo,
-          elevation: 0,
-          title: Container(
-            width: ScreenUtil().setHeight(500),
-            child: Image.asset("assets/appblogo.png"),
+      child: ModalProgressHUD(
+        inAsyncCall: loading,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            backgroundColor: Mystyle.primarycolo,
+            elevation: 0,
+            title: Container(
+              width: ScreenUtil().setHeight(500),
+              child: Image.asset("assets/appblogo.png"),
+            ),
+            centerTitle: true,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: Icon(
+                  Icons.notifications_none,
+                  color: Colors.black,
+                  size: 28,
+                ),
+              ),
+            ],
           ),
-          centerTitle: true,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 12.0),
-              child: Icon(
-                Icons.notifications_none,
-                color: Colors.black,
-                size: 28,
-              ),
-            ),
-          ],
-        ),
-        body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24),
-          children: [
-            SizedBox(height: ScreenUtil().setHeight(30)),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                alignment: Alignment.bottomRight,
-                height: ScreenUtil().setWidth(100),
-                width: ScreenUtil().setWidth(100),
-                child: SvgPicture.asset(
-                  "assets/svg/close.svg",
-                ),
-              ),
-            ),
-            Text(
-              "Reclama este local",
-              style: Mystyle.titleTextStyle.copyWith(
-                fontSize: ScreenUtil().setSp(100),
-                color: Colors.black87,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            Padding(
+          body: Builder(
+                      builder : (context) => ListView(
               padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                "¿Por qué quieres que den de baja esta publicación?",
-                style: Mystyle.regularTextStyle,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(100)),
-            Column(
-              children: <Widget>[
-                ListTile(
-                  title: Text(
-                    'Soy propietario del lugar',
-                    style: Mystyle.normalTextStyle,
+              children: [
+                SizedBox(height: ScreenUtil().setHeight(30)),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    alignment: Alignment.bottomRight,
+                    height: ScreenUtil().setWidth(100),
+                    width: ScreenUtil().setWidth(100),
+                    child: SvgPicture.asset(
+                      "assets/svg/pub.svg",
+                    ),
                   ),
-                  leading: Radio(
-                    value: 0,
-                    groupValue: _value,
-                    activeColor: Color(0xFF6200EE),
-                    onChanged: (v) {
-                      setState(() {
-                        _value = v;
-                        isfirst = true;
-                      });
-                    },
-                  ),
-                  trailing: isfirst == false
-                      ? null
-                      : Padding(
-                          padding: const EdgeInsets.only(top: 5.0),
-                          child: IconButton(
-                            icon: Icon(Icons.keyboard_arrow_down),
-                            onPressed: null,
-                          ),
-                        ),
                 ),
-                isfirst == false
-                    ? Container()
-                    : Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black54, width: 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        width: double.infinity,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: ScreenUtil().setHeight(40)),
-                            Padding(
-                              padding: EdgeInsets.only(left: 16, right: 72),
-                              child: Text(
-                                "¿Es este el CIF que tienes registrado con nosotros?",
-                                style: Mystyle.smallTextStyle.copyWith(
-                                  color: Colors.black87,
-                                ),
-                                textAlign: TextAlign.left,
+                Text(
+                  "Reclama este local",
+                  style: Mystyle.titleTextStyle.copyWith(
+                    fontSize: ScreenUtil().setSp(100),
+                    color: Colors.black87,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: ScreenUtil().setHeight(40)),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    "¿Por qué quieres que den de baja esta publicación?",
+                    style: Mystyle.regularTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(height: ScreenUtil().setHeight(100)),
+                Column(
+                  children: <Widget>[
+                    ListTile(
+                      title: Text(
+                        'Soy propietario del lugar',
+                        style: Mystyle.normalTextStyle,
+                      ),
+                      leading: Radio(
+                        value: 0,
+                        groupValue: _value,
+                        activeColor: Color(0xFF6200EE),
+                        onChanged: (v) {
+                          setState(() {
+                            _value = v;
+                            isfirst = true;
+                          });
+                        },
+                      ),
+                      trailing: isfirst == false
+                          ? null
+                          : Padding(
+                              padding: const EdgeInsets.only(top: 5.0),
+                              child: IconButton(
+                                icon: Icon(Icons.keyboard_arrow_down),
+                                onPressed: null,
                               ),
                             ),
-                            SizedBox(height: ScreenUtil().setHeight(40)),
-                            Column(
+                    ),
+                    isfirst == false
+                        ? Container()
+                        : Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black54, width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            width: double.infinity,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 12),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                SizedBox(height: ScreenUtil().setHeight(40)),
                                 Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: ScreenUtil().setHeight(20)),
-                                  child: TextFormField(
-                                    // controller: test,
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: Mystyle.inputWhitebg(
-                                      'B-64738219',
+                                  padding: EdgeInsets.only(left: 16, right: 72),
+                                  child: Text(
+                                    "¿Es este el CIF que tienes registrado con nosotros?",
+                                    style: Mystyle.smallTextStyle.copyWith(
+                                      color: Colors.black87,
                                     ),
-                                    textInputAction: TextInputAction.done,
-                                    validator: (value) {
-                                      if (value.isEmpty) return 'isEmpty';
-                                      return null;
-                                    },
+                                    textAlign: TextAlign.left,
                                   ),
                                 ),
                                 SizedBox(height: ScreenUtil().setHeight(40)),
-                                ButtAuth("Si", () {},
-                                    border: true, press: true),
-                                SizedBox(height: ScreenUtil().setHeight(40)),
+                                Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 8,
+                                          vertical: ScreenUtil().setHeight(20)),
+                                      child: TextFormField(
+                                        // controller: test,
+                                        keyboardType: TextInputType.emailAddress,
+                                        decoration: Mystyle.inputWhitebg(
+                                          'B-64738219',
+                                        ),
+                                        textInputAction: TextInputAction.done,
+                                        validator: (value) {
+                                          if (value.isEmpty) return 'isEmpty';
+                                          return null;
+                                        },
+                                      ),
+                                    ),
+                                    SizedBox(height: ScreenUtil().setHeight(40)),
+                                    ButtAuth("Si", () {},
+                                        border: true, press: true),
+                                    SizedBox(height: ScreenUtil().setHeight(40)),
+                                  ],
+                                ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                    ListTile(
+                      title: Text(
+                        'Soy fan del lugar',
+                        style: Mystyle.normalTextStyle,
                       ),
-                ListTile(
-                  title: Text(
-                    'Soy fan del lugar',
-                    style: Mystyle.normalTextStyle,
-                  ),
-                  leading: Radio(
-                    value: 1,
-                    groupValue: _value,
-                    activeColor: Color(0xFF6200EE),
-                    onChanged: (v) {
-                      setState(() {
-                        _value = v;
-                        isfirst = false;
-                      });
-                    },
+                      leading: Radio(
+                        value: 1,
+                        groupValue: _value,
+                        activeColor: Color(0xFF6200EE),
+                        onChanged: (v) {
+                          setState(() {
+                            _value = v;
+                            isfirst = false;
+                          });
+                        },
+                      ),
+                    ),
+                    ListTile(
+                      title: Text(
+                        'Son mis amiguetes y les quiero',
+                        style: Mystyle.normalTextStyle,
+                      ),
+                      leading: Radio(
+                        value: 2,
+                        groupValue: _value,
+                        activeColor: Color(0xFF6200EE),
+                        onChanged: (v) {
+                          setState(() {
+                            _value = v;
+                            isfirst = false;
+                          });
+                        },
+                      ),
+                    ),
+                    ListTile(
+                      title: Text(
+                        'Por placer',
+                        style: Mystyle.normalTextStyle,
+                      ),
+                      leading: Radio(
+                        value: 3,
+                        groupValue: _value,
+                        activeColor: Color(0xFF6200EE),
+                        onChanged: (v) {
+                          setState(() {
+                            _value = v;
+                            isfirst = false;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: ScreenUtil().setHeight(100)),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    "Precio",
+                    style: Mystyle.subtitleTextStylenoco,
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    'Son mis amiguetes y les quiero',
-                    style: Mystyle.normalTextStyle,
-                  ),
-                  leading: Radio(
-                    value: 2,
-                    groupValue: _value,
-                    activeColor: Color(0xFF6200EE),
-                    onChanged: (v) {
-                      setState(() {
-                        _value = v;
-                        isfirst = false;
-                      });
-                    },
+                SizedBox(height: ScreenUtil().setHeight(40)),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    widget.price + " €",
+                    style: Mystyle.titleregularTextStyle.copyWith(
+                      color: Colors.black87,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    'Por placer',
-                    style: Mystyle.normalTextStyle,
-                  ),
-                  leading: Radio(
-                    value: 3,
-                    groupValue: _value,
-                    activeColor: Color(0xFF6200EE),
-                    onChanged: (v) {
-                      setState(() {
-                        _value = v;
-                        isfirst = false;
-                      });
-                    },
-                  ),
-                ),
+                SizedBox(height: ScreenUtil().setHeight(60)),
+                ButtAuth("Pagar", () async {
+                  setState(() {
+                    loading = true;
+                  });
+                  var response = await StripeService.payWithNewCard(
+                      amount: widget.price + '00', currency: 'EUR');
+                  if (response.success) {
+                    await _stripeService.createClaim(widget.price, widget.postId,
+                        'Set the reason text here', 'Card', response.paymentId);
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text(response.message),
+                      duration: Duration(seconds: 5),
+                    ));
+                  } else {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text(response.message),
+                      duration: Duration(seconds: 5),
+                    ));
+                  }
+                  setState(() {
+                    loading = false;
+                  });
+                }, border: true, press: true),
+                SizedBox(height: ScreenUtil().setHeight(300)),
               ],
             ),
-            SizedBox(height: ScreenUtil().setHeight(100)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                "Precio",
-                style: Mystyle.subtitleTextStylenoco,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                widget.price + " €",
-                style: Mystyle.titleregularTextStyle.copyWith(
-                  color: Colors.black87,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(60)),
-            ButtAuth("Pagar", () {}, border: true, press: true),
-            SizedBox(height: ScreenUtil().setHeight(100)),
-          ],
+          ),
         ),
       ),
     );

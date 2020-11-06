@@ -1,18 +1,18 @@
 [
     {
-        "merged": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
-        "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/3aaf6e5219b7f981ec263df919098c6f/core-1.1.0/res/layout-v21/notification_action_tombstone.xml"
+        "merged": "C:\\Users\\Etudiant\\Documents\\Flutter\\el_brownie_app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Etudiant\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
-        "merged": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
-        "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/3aaf6e5219b7f981ec263df919098c6f/core-1.1.0/res/layout-v21/notification_template_custom_big.xml"
+        "merged": "C:\\Users\\Etudiant\\Documents\\Flutter\\el_brownie_app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Etudiant\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
-        "merged": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
-        "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/3aaf6e5219b7f981ec263df919098c6f/core-1.1.0/res/layout-v21/notification_template_icon_group.xml"
+        "merged": "C:\\Users\\Etudiant\\Documents\\Flutter\\el_brownie_app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Etudiant\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout-v21\\notification_action.xml"
     },
     {
-        "merged": "/home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/res/merged/debug/layout-v21/notification_action.xml",
-        "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/3aaf6e5219b7f981ec263df919098c6f/core-1.1.0/res/layout-v21/notification_action.xml"
+        "merged": "C:\\Users\\Etudiant\\Documents\\Flutter\\el_brownie_app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Etudiant\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\layout-v21\\notification_template_icon_group.xml"
     }
 ]

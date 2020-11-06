@@ -260,7 +260,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
         .child('comments/${widget.idPost}/${imageFile.hashCode}');
     StorageUploadTask uploadTask = storageReference.putFile(imageFile);
     await uploadTask.onComplete;
-    print('File Uploaded');
     storageReference.getDownloadURL().then((fileURL) {
       // userBloc.addPhotoToPost(widget.idPost, fileURL);
     });

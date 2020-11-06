@@ -11,7 +11,7 @@ class CardHome extends StatefulWidget {
   String name, place, view, valo, hace, id, pagename, price, imageUrl;
   bool reclam;
   String myindex = "3";
-  bool isTapped = false;
+  bool isTapped;
   Icon icon = Icon(
     Icons.bookmark_border,
     color: Colors.black87,
@@ -28,7 +28,8 @@ class CardHome extends StatefulWidget {
       this.id,
       this.imageUrl,
       this.pagename,
-      this.price});
+      this.price,
+      this.isTapped = false});
   @override
   _CardHomeState createState() => _CardHomeState();
 }
@@ -40,12 +41,28 @@ class _CardHomeState extends State<CardHome> {
     ScreenUtil.init(context);
 
     return GestureDetector(
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => PostScreen(
-                    id: widget.name.hashCode.toString(),
-                  ))),
+      onTap: () {
+        if (!widget.isTapped) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PostScreen(
+                        id: widget.name.hashCode.toString(),
+                        cardHome: CardHome(
+                          isTapped: true,
+                          name: widget.name,
+                          valo: widget.valo,
+                          place: widget.place,
+                          reclam: widget.reclam,
+                          view: widget.view,
+                          hace: widget.hace,
+                          imageUrl: widget.imageUrl,
+                          myindex: widget.myindex,
+                          id: widget.id,
+                        ),
+                      )));
+        }
+      },
       child: Column(
         children: [
           Stack(children: [

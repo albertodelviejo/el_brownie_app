@@ -12,117 +12,117 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:8:7-68
-14-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:8:24-66
+14-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:8:7-68
+14-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:8:24-66
 15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-15-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-80
-15-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-77
+15-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-80
+15-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-77
 16    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-16-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-81
-16-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-78
-17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-17-->[:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-81
-17-->[:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-78
-18    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-18-->[:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-79
-18-->[:location] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-76
-19    <uses-permission android:name="android.permission.CAMERA" />
-19-->[:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-65
-19-->[:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-62
-20    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
-20-->[:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-71
-20-->[:camera] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/camera/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-68
+16-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
+16-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-78
+17    <uses-permission android:name="android.permission.CAMERA" />
+17-->[:camera] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-65
+17-->[:camera] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-62
+18    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+18-->[:camera] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-71
+18-->[:camera] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-68
+19    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+19-->[:location] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+19-->[:location] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-78
+20    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+20-->[:location] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-79
+20-->[:location] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-76
 21    <!-- <uses-sdk android:minSdkVersion="14"/> -->
 22    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-22-->[com.google.firebase:firebase-storage:19.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3ed8519e9abe4e7cb39c076a2d2afc20/firebase-storage-19.1.1/AndroidManifest.xml:26:5-79
-22-->[com.google.firebase:firebase-storage:19.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3ed8519e9abe4e7cb39c076a2d2afc20/firebase-storage-19.1.1/AndroidManifest.xml:26:22-76
+22-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\3ed8519e9abe4e7cb39c076a2d2afc20\firebase-storage-19.1.1\AndroidManifest.xml:26:5-79
+22-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\3ed8519e9abe4e7cb39c076a2d2afc20\firebase-storage-19.1.1\AndroidManifest.xml:26:22-76
 23    <uses-permission android:name="android.permission.WAKE_LOCK" />
-23-->[com.google.android.gms:play-services-measurement-api:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e7e3f6b3c80c9791e54cce31183a2eb2/play-services-measurement-api-17.4.1/AndroidManifest.xml:24:5-68
-23-->[com.google.android.gms:play-services-measurement-api:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e7e3f6b3c80c9791e54cce31183a2eb2/play-services-measurement-api-17.4.1/AndroidManifest.xml:24:22-65
+23-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\e7e3f6b3c80c9791e54cce31183a2eb2\play-services-measurement-api-17.4.1\AndroidManifest.xml:24:5-68
+23-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\e7e3f6b3c80c9791e54cce31183a2eb2\play-services-measurement-api-17.4.1\AndroidManifest.xml:24:22-65
 24
 25    <uses-feature
-25-->[com.google.android.gms:play-services-maps:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6f4e6eb26f6c204062e462fe30c558b2/play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+25-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6f4e6eb26f6c204062e462fe30c558b2\play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
 26        android:glEsVersion="0x00020000"
-26-->[com.google.android.gms:play-services-maps:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6f4e6eb26f6c204062e462fe30c558b2/play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+26-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6f4e6eb26f6c204062e462fe30c558b2\play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
 27        android:required="true" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-27-->[com.google.android.gms:play-services-maps:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6f4e6eb26f6c204062e462fe30c558b2/play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+27-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6f4e6eb26f6c204062e462fe30c558b2\play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
 28    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-28-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:26:5-82
-28-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:26:22-79
+28-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:26:5-82
+28-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:26:22-79
 29    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-29-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:26:5-110
-29-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:26:22-107
+29-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:26:5-110
+29-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:26:22-107
 30
 31    <application
-31-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:10:5-60:19
+31-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:10:5-60:19
 32        android:name="io.flutter.app.FlutterApplication"
-32-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:11:9-57
+32-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:11:9-57
 33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-33-->[androidx.core:core:1.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3aaf6e5219b7f981ec263df919098c6f/core-1.1.0/AndroidManifest.xml:24:18-86
+33-->[androidx.core:core:1.1.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\3aaf6e5219b7f981ec263df919098c6f\core-1.1.0\AndroidManifest.xml:24:18-86
 34        android:debuggable="true"
 35        android:icon="@mipmap/ic_launcher"
-35-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:13:9-43
+35-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:13:9-43
 36        android:label="el_brownie_app"
-36-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:12:9-39
+36-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:12:9-39
 37        android:supportsRtl="true"
-37-->[com.facebook.android:facebook-login:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2f9b7aac2abe2bcbffc179247b4577e/jetified-facebook-login-5.5.1/AndroidManifest.xml:28:18-44
+37-->[com.facebook.android:facebook-login:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\5d2e9bc98bf734da6b8788c8afe38a60\jetified-facebook-login-5.5.1\AndroidManifest.xml:28:18-44
 38        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-38-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:11:18-74
+38-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:11:18-74
 39        <meta-data
-39-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:15:9-107
+39-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:15:9-107
 40            android:name="com.facebook.sdk.ApplicationId"
-40-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:15:20-65
+40-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:15:20-65
 41            android:value="@string/facebook_app_id" />
-41-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:15:66-105
+41-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:15:66-105
 42
 43        <activity
-43-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:16:9-184
+43-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:16:9-184
 44            android:name="com.facebook.FacebookActivity"
-44-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:16:19-63
+44-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:16:19-63
 45            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-45-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:16:64-148
+45-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:16:64-148
 46            android:label="@string/app_name"
-46-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:16:149-181
+46-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:16:149-181
 47            android:theme="@style/com_facebook_activity_theme" />
-47-->[com.facebook.android:facebook-common:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/2d7dd66cae0c9ca90078db10d43a59f6/jetified-facebook-common-5.5.1/AndroidManifest.xml:32:13-63
+47-->[com.facebook.android:facebook-common:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\4b4417b08c676c1a2541abb0c47b2a43\jetified-facebook-common-5.5.1\AndroidManifest.xml:32:13-63
 48        <activity
-48-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:17:9-23:20
+48-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:17:9-23:20
 49            android:name="com.facebook.CustomTabActivity"
-49-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:17:19-64
+49-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:17:19-64
 50            android:exported="true" >
-50-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:17:65-88
+50-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:17:65-88
 51            <intent-filter>
-51-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:18:9-22:25
+51-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:18:9-22:25
 52                <action android:name="android.intent.action.VIEW" />
-52-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:18:25-77
-52-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:18:33-74
+52-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:18:25-77
+52-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:18:33-74
 53
 54                <category android:name="android.intent.category.DEFAULT" />
-54-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:19:9-68
-54-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:19:19-65
+54-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:19:9-68
+54-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:19:19-65
 55                <category android:name="android.intent.category.BROWSABLE" />
-55-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:20:9-70
-55-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:20:19-67
+55-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:20:9-70
+55-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:20:19-67
 56
 57                <data android:scheme="@string/fb_login_protocol_scheme" />
-57-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:21:9-67
-57-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:21:15-64
+57-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:21:9-67
+57-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:21:15-64
 58            </intent-filter>
 59        </activity>
 60        <activity
-60-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:26:9-54:20
+60-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:26:9-54:20
 61            android:name="com.ideafoster.elbrownie.MainActivity"
-61-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:27:13-41
+61-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:27:13-41
 62            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-62-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:30:13-163
+62-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:30:13-163
 63            android:hardwareAccelerated="true"
-63-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:31:13-47
+63-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:31:13-47
 64            android:launchMode="singleTop"
-64-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:28:13-43
+64-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:28:13-43
 65            android:theme="@style/LaunchTheme"
-65-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:29:13-47
+65-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:29:13-47
 66            android:windowSoftInputMode="adjustResize" >
-66-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:32:13-55
+66-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:32:13-55
 67
 68            <!--
 69                 Specifies an Android theme to apply to this Activity as soon as
@@ -131,11 +131,11 @@
 72                 to determine the Window background behind the Flutter UI.
 73            -->
 74            <meta-data
-74-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:37:13-40:17
+74-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:37:13-40:17
 75                android:name="io.flutter.embedding.android.NormalTheme"
-75-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:38:15-70
+75-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:38:15-70
 76                android:resource="@style/NormalTheme" />
-76-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:39:15-52
+76-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:39:15-52
 77            <!--
 78                 Displays an Android View that continues showing the launch screen
 79                 Drawable until Flutter paints its first frame, then this splash
@@ -144,21 +144,21 @@
 82                 Flutter's first frame.
 83            -->
 84            <meta-data
-84-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:46:13-49:17
+84-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:46:13-49:17
 85                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-85-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:47:15-79
+85-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:47:15-79
 86                android:resource="@drawable/launch_background" />
-86-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:48:15-61
+86-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:48:15-61
 87
 88            <intent-filter>
-88-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:50:13-53:29
+88-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:50:13-53:29
 89                <action android:name="android.intent.action.MAIN" />
-89-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:51:17-68
-89-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:51:25-66
+89-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:51:17-68
+89-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:51:25-66
 90
 91                <category android:name="android.intent.category.LAUNCHER" />
-91-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:52:17-76
-91-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:52:27-74
+91-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:52:17-76
+91-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:52:27-74
 92            </intent-filter>
 93        </activity>
 94        <!--
@@ -166,315 +166,315 @@
 96             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 97        -->
 98        <meta-data
-98-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:57:9-59:33
+98-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:57:9-59:33
 99            android:name="flutterEmbedding"
-99-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:58:13-44
+99-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:58:13-44
 100            android:value="2" />
-100-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:59:13-30
+100-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:59:13-30
 101
 102        <service
-102-->[:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+102-->[:firebase_storage] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 103            android:name="com.google.firebase.components.ComponentDiscoveryService"
-103-->[:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-89
+103-->[:firebase_storage] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
 104            android:directBootAware="true"
-104-->[com.google.firebase:firebase-common:19.3.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0c84736c53988d2ce886123b665abe9e/jetified-firebase-common-19.3.0/AndroidManifest.xml:34:13-43
+104-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\7f7c24e14cf90310ae522a19c78f04e9\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
 105            android:exported="false" >
-105-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:35:13-37
+105-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:35:13-37
 106            <meta-data
-106-->[:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-107                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-107-->[:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-134
+106-->[:firebase_storage] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+107                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
+107-->[:firebase_storage] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-126
 108                android:value="com.google.firebase.components.ComponentRegistrar" />
-108-->[:cloud_firestore] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+108-->[:firebase_storage] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 109            <meta-data
-109-->[:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-110                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-110-->[:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+109-->[:cloud_firestore] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+110                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+110-->[:cloud_firestore] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
 111                android:value="com.google.firebase.components.ComponentRegistrar" />
-111-->[:firebase_auth] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+111-->[:cloud_firestore] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 112            <meta-data
-112-->[:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-113                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
-113-->[:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-126
+112-->[:firebase_auth] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+113                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+113-->[:firebase_auth] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 114                android:value="com.google.firebase.components.ComponentRegistrar" />
-114-->[:firebase_storage] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+114-->[:firebase_auth] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 115            <meta-data
-115-->[:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+115-->[:firebase_core] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 116                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-116-->[:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+116-->[:firebase_core] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 117                android:value="com.google.firebase.components.ComponentRegistrar" />
-117-->[:firebase_core] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+117-->[:firebase_core] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 118            <meta-data
-118-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:36:13-38:85
+118-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:36:13-38:85
 119                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-119-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:37:17-109
+119-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:37:17-109
 120                android:value="com.google.firebase.components.ComponentRegistrar" />
-120-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:38:17-82
+120-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:38:17-82
 121            <meta-data
-121-->[com.google.firebase:firebase-storage:19.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3ed8519e9abe4e7cb39c076a2d2afc20/firebase-storage-19.1.1/AndroidManifest.xml:33:13-35:85
+121-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\3ed8519e9abe4e7cb39c076a2d2afc20\firebase-storage-19.1.1\AndroidManifest.xml:33:13-35:85
 122                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-122-->[com.google.firebase:firebase-storage:19.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3ed8519e9abe4e7cb39c076a2d2afc20/firebase-storage-19.1.1/AndroidManifest.xml:34:17-107
+122-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\3ed8519e9abe4e7cb39c076a2d2afc20\firebase-storage-19.1.1\AndroidManifest.xml:34:17-107
 123                android:value="com.google.firebase.components.ComponentRegistrar" />
-123-->[com.google.firebase:firebase-storage:19.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3ed8519e9abe4e7cb39c076a2d2afc20/firebase-storage-19.1.1/AndroidManifest.xml:35:17-82
+123-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\3ed8519e9abe4e7cb39c076a2d2afc20\firebase-storage-19.1.1\AndroidManifest.xml:35:17-82
 124            <meta-data
-124-->[com.google.firebase:firebase-firestore:21.4.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/6c645728744918800d88a7ef17ef765b/jetified-firebase-firestore-21.4.3/AndroidManifest.xml:20:13-22:85
+124-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6012568f03da9aca1c84f9fd14ca8246\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:20:13-22:85
 125                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-125-->[com.google.firebase:firebase-firestore:21.4.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/6c645728744918800d88a7ef17ef765b/jetified-firebase-firestore-21.4.3/AndroidManifest.xml:21:17-111
+125-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6012568f03da9aca1c84f9fd14ca8246\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:21:17-111
 126                android:value="com.google.firebase.components.ComponentRegistrar" />
-126-->[com.google.firebase:firebase-firestore:21.4.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/6c645728744918800d88a7ef17ef765b/jetified-firebase-firestore-21.4.3/AndroidManifest.xml:22:17-82
+126-->[com.google.firebase:firebase-firestore:21.4.3] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6012568f03da9aca1c84f9fd14ca8246\jetified-firebase-firestore-21.4.3\AndroidManifest.xml:22:17-82
 127            <meta-data
-127-->[com.google.android.gms:play-services-measurement-api:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e7e3f6b3c80c9791e54cce31183a2eb2/play-services-measurement-api-17.4.1/AndroidManifest.xml:30:13-32:85
+127-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\e7e3f6b3c80c9791e54cce31183a2eb2\play-services-measurement-api-17.4.1\AndroidManifest.xml:30:13-32:85
 128                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-128-->[com.google.android.gms:play-services-measurement-api:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e7e3f6b3c80c9791e54cce31183a2eb2/play-services-measurement-api-17.4.1/AndroidManifest.xml:31:17-139
+128-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\e7e3f6b3c80c9791e54cce31183a2eb2\play-services-measurement-api-17.4.1\AndroidManifest.xml:31:17-139
 129                android:value="com.google.firebase.components.ComponentRegistrar" />
-129-->[com.google.android.gms:play-services-measurement-api:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e7e3f6b3c80c9791e54cce31183a2eb2/play-services-measurement-api-17.4.1/AndroidManifest.xml:32:17-82
+129-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\e7e3f6b3c80c9791e54cce31183a2eb2\play-services-measurement-api-17.4.1\AndroidManifest.xml:32:17-82
 130            <meta-data
-130-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:32:13-34:85
+130-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:32:13-34:85
 131                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-131-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:33:17-96
+131-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:33:17-96
 132                android:value="com.google.firebase.components.ComponentRegistrar" />
-132-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:34:17-82
+132-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:34:17-82
 133            <meta-data
-133-->[com.google.firebase:firebase-installations:16.2.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/55955adcfe25eb7f4cca7d61ba210fe4/firebase-installations-16.2.1/AndroidManifest.xml:17:13-19:85
+133-->[com.google.firebase:firebase-installations:16.2.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\55955adcfe25eb7f4cca7d61ba210fe4\firebase-installations-16.2.1\AndroidManifest.xml:17:13-19:85
 134                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-134-->[com.google.firebase:firebase-installations:16.2.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/55955adcfe25eb7f4cca7d61ba210fe4/firebase-installations-16.2.1/AndroidManifest.xml:18:17-127
+134-->[com.google.firebase:firebase-installations:16.2.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\55955adcfe25eb7f4cca7d61ba210fe4\firebase-installations-16.2.1\AndroidManifest.xml:18:17-127
 135                android:value="com.google.firebase.components.ComponentRegistrar" />
-135-->[com.google.firebase:firebase-installations:16.2.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/55955adcfe25eb7f4cca7d61ba210fe4/firebase-installations-16.2.1/AndroidManifest.xml:19:17-82
+135-->[com.google.firebase:firebase-installations:16.2.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\55955adcfe25eb7f4cca7d61ba210fe4\firebase-installations-16.2.1\AndroidManifest.xml:19:17-82
 136        </service>
 137
-138        <meta-data
-138-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:36
-139            android:name="com.google.android.gms.wallet.api.enabled"
-139-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-69
-140            android:value="true" />
-140-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-33
-141
-142        <activity
-142-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-20:75
-143            android:name="com.gettipsi.stripe.OpenBrowserActivity"
-143-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-67
-144            android:exported="false"
-144-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-37
-145            android:launchMode="singleTask"
-145-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-44
-146            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-146-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-72
-147        <activity
-147-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:21:9-34:20
-148            android:name="com.gettipsi.stripe.RedirectUriReceiver"
-148-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:22:13-67
-149            android:exported="true"
-149-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-36
-150            android:launchMode="singleTask"
-150-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-44
-151            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
-151-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-83
-152            <intent-filter>
-152-->[:stripe_payment] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/stripe_payment/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-33:29
-153                <action android:name="android.intent.action.VIEW" />
-153-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:18:25-77
-153-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:18:33-74
-154
-155                <category android:name="android.intent.category.DEFAULT" />
-155-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:19:9-68
-155-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:19:19-65
-156                <category android:name="android.intent.category.BROWSABLE" />
-156-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:20:9-70
-156-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:20:19-67
-157
-158                <data android:scheme="example" />
-158-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:21:9-67
-158-->/home/alberto/FiverrProjects/Brownie/el_brownie_app/android/app/src/main/AndroidManifest.xml:21:15-64
-159            </intent-filter>
-160        </activity>
-161
-162        <provider
-162-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:11:9-19:20
-163            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-163-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-82
-164            android:authorities="com.ideafoster.elbrownie.flutter.image_provider"
-164-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-74
-165            android:exported="false"
-165-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-37
-166            android:grantUriPermissions="true" >
-166-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-47
-167            <meta-data
-167-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-18:75
-168                android:name="android.support.FILE_PROVIDER_PATHS"
-168-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-67
-169                android:resource="@xml/flutter_image_picker_file_paths" />
-169-->[:image_picker] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-72
-170        </provider>
-171
-172        <activity
-172-->[:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
-173            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-173-->[:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
-174            android:exported="false"
-174-->[:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
-175            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-175-->[:url_launcher] /home/alberto/FiverrProjects/Brownie/el_brownie_app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
+138        <provider
+138-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
+139            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+139-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
+140            android:authorities="com.ideafoster.elbrownie.flutter.image_provider"
+140-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
+141            android:exported="false"
+141-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+142            android:grantUriPermissions="true" >
+142-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
+143            <meta-data
+143-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+144                android:name="android.support.FILE_PROVIDER_PATHS"
+144-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+145                android:resource="@xml/flutter_image_picker_file_paths" />
+145-->[:image_picker] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+146        </provider>
+147
+148        <activity
+148-->[:url_launcher] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+149            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+149-->[:url_launcher] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+150            android:exported="false"
+150-->[:url_launcher] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+151            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+151-->[:url_launcher] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+152
+153        <meta-data
+153-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-14:36
+154            android:name="com.google.android.gms.wallet.api.enabled"
+154-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-69
+155            android:value="true" />
+155-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-33
+156
+157        <activity
+157-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-20:75
+158            android:name="com.gettipsi.stripe.OpenBrowserActivity"
+158-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-67
+159            android:exported="false"
+159-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-37
+160            android:launchMode="singleTask"
+160-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-44
+161            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+161-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:20:13-72
+162        <activity
+162-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:21:9-34:20
+163            android:name="com.gettipsi.stripe.RedirectUriReceiver"
+163-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:22:13-67
+164            android:exported="true"
+164-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:23:13-36
+165            android:launchMode="singleTask"
+165-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-44
+166            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+166-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:25:13-83
+167            <intent-filter>
+167-->[:stripe_payment] C:\Users\Etudiant\Documents\Flutter\el_brownie_app\build\stripe_payment\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-33:29
+168                <action android:name="android.intent.action.VIEW" />
+168-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:18:25-77
+168-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:18:33-74
+169
+170                <category android:name="android.intent.category.DEFAULT" />
+170-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:19:9-68
+170-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:19:19-65
+171                <category android:name="android.intent.category.BROWSABLE" />
+171-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:20:9-70
+171-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:20:19-67
+172
+173                <data android:scheme="example" />
+173-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:21:9-67
+173-->C:\Users\Etudiant\Documents\Flutter\el_brownie_app\android\app\src\main\AndroidManifest.xml:21:15-64
+174            </intent-filter>
+175        </activity>
 176        <activity
-176-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:12:9-14:57
+176-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:12:9-14:57
 177            android:name="com.stripe.android.view.AddPaymentMethodActivity"
-177-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:13:13-76
+177-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:13:13-76
 178            android:theme="@style/StripeDefaultTheme" />
-178-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:14:13-54
+178-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:14:13-54
 179        <activity
-179-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:15:9-17:57
+179-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:15:9-17:57
 180            android:name="com.stripe.android.view.PaymentMethodsActivity"
-180-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:16:13-74
+180-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:16:13-74
 181            android:theme="@style/StripeDefaultTheme" />
-181-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:17:13-54
+181-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:17:13-54
 182        <activity
-182-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:18:9-20:57
+182-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:18:9-20:57
 183            android:name="com.stripe.android.view.PaymentFlowActivity"
-183-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:19:13-71
+183-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:19:13-71
 184            android:theme="@style/StripeDefaultTheme" />
-184-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:20:13-54
+184-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:20:13-54
 185        <activity
-185-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:21:9-23:57
+185-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:21:9-23:57
 186            android:name="com.stripe.android.view.PaymentAuthWebViewActivity"
-186-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:22:13-78
+186-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:22:13-78
 187            android:theme="@style/StripeDefaultTheme" />
-187-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:23:13-54
+187-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:23:13-54
 188        <activity
-188-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:24:9-26:57
+188-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:24:9-26:57
 189            android:name="com.stripe.android.view.PaymentRelayActivity"
-189-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:25:13-72
+189-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:25:13-72
 190            android:theme="@style/StripeDefaultTheme" />
-190-->[com.stripe:stripe-android:10.4.6] /home/alberto/.gradle/caches/transforms-2/files-2.1/5f0ac2ec8c7823dbdd820c4b007bdf5d/jetified-stripe-android-10.4.6/AndroidManifest.xml:26:13-54
+190-->[com.stripe:stripe-android:10.4.6] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d699e505ef6cc79ce4c1eadc37b75af0\jetified-stripe-android-10.4.6\AndroidManifest.xml:26:13-54
 191        <activity
-191-->[com.stripe:stripe-3ds2-android:1.2.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/AndroidManifest.xml:12:9-14:54
+191-->[com.stripe:stripe-3ds2-android:1.2.2] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d285e4f9db0aa01f6eae716baf5f6146\jetified-stripe-3ds2-android-1.2.2\AndroidManifest.xml:12:9-14:54
 192            android:name="com.stripe.android.stripe3ds2.views.ChallengeActivity"
-192-->[com.stripe:stripe-3ds2-android:1.2.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/AndroidManifest.xml:13:13-81
+192-->[com.stripe:stripe-3ds2-android:1.2.2] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d285e4f9db0aa01f6eae716baf5f6146\jetified-stripe-3ds2-android-1.2.2\AndroidManifest.xml:13:13-81
 193            android:theme="@style/Stripe3DS2Theme" />
-193-->[com.stripe:stripe-3ds2-android:1.2.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/AndroidManifest.xml:14:13-51
+193-->[com.stripe:stripe-3ds2-android:1.2.2] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d285e4f9db0aa01f6eae716baf5f6146\jetified-stripe-3ds2-android-1.2.2\AndroidManifest.xml:14:13-51
 194        <activity
-194-->[com.stripe:stripe-3ds2-android:1.2.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/AndroidManifest.xml:15:9-17:54
+194-->[com.stripe:stripe-3ds2-android:1.2.2] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d285e4f9db0aa01f6eae716baf5f6146\jetified-stripe-3ds2-android-1.2.2\AndroidManifest.xml:15:9-17:54
 195            android:name="com.stripe.android.stripe3ds2.views.ChallengeProgressDialogActivity"
-195-->[com.stripe:stripe-3ds2-android:1.2.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/AndroidManifest.xml:16:13-95
+195-->[com.stripe:stripe-3ds2-android:1.2.2] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d285e4f9db0aa01f6eae716baf5f6146\jetified-stripe-3ds2-android-1.2.2\AndroidManifest.xml:16:13-95
 196            android:theme="@style/Stripe3DS2Theme" />
-196-->[com.stripe:stripe-3ds2-android:1.2.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/0e2076700b6df7b8d79672651d488fa4/jetified-stripe-3ds2-android-1.2.2/AndroidManifest.xml:17:13-51
+196-->[com.stripe:stripe-3ds2-android:1.2.2] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\d285e4f9db0aa01f6eae716baf5f6146\jetified-stripe-3ds2-android-1.2.2\AndroidManifest.xml:17:13-51
 197        <activity
-197-->[com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:23:9-27:75
+197-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\c98cf61a53cab7e228aaa743739a4aca\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
 198            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-198-->[com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:24:13-93
+198-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\c98cf61a53cab7e228aaa743739a4aca\jetified-play-services-auth-16.0.1\AndroidManifest.xml:24:13-93
 199            android:excludeFromRecents="true"
-199-->[com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:25:13-46
+199-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\c98cf61a53cab7e228aaa743739a4aca\jetified-play-services-auth-16.0.1\AndroidManifest.xml:25:13-46
 200            android:exported="false"
-200-->[com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:26:13-37
+200-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\c98cf61a53cab7e228aaa743739a4aca\jetified-play-services-auth-16.0.1\AndroidManifest.xml:26:13-37
 201            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-201-->[com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:27:13-72
+201-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\c98cf61a53cab7e228aaa743739a4aca\jetified-play-services-auth-16.0.1\AndroidManifest.xml:27:13-72
 202        <!--
 203            Service handling Google Sign-In user revocation. For apps that do not integrate with
 204            Google Sign-In, this service will never be started.
 205        -->
 206        <service
-206-->[com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:33:9-36:110
+206-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\c98cf61a53cab7e228aaa743739a4aca\jetified-play-services-auth-16.0.1\AndroidManifest.xml:33:9-36:110
 207            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-207-->[com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:34:13-89
+207-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\c98cf61a53cab7e228aaa743739a4aca\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
 208            android:exported="true"
-208-->[com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:35:13-36
+208-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\c98cf61a53cab7e228aaa743739a4aca\jetified-play-services-auth-16.0.1\AndroidManifest.xml:35:13-36
 209            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
-209-->[com.google.android.gms:play-services-auth:16.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/a8818911fb99c0cefc97599310e33afd/jetified-play-services-auth-16.0.1/AndroidManifest.xml:36:13-107
+209-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\c98cf61a53cab7e228aaa743739a4aca\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
 210
 211        <activity
-211-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:24:9-31:50
+211-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:24:9-31:50
 212            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-212-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:25:13-85
+212-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:25:13-85
 213            android:excludeFromRecents="true"
-213-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:26:13-46
+213-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:26:13-46
 214            android:exported="true"
-214-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:27:13-36
+214-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:27:13-36
 215            android:launchMode="singleTask"
-215-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:28:13-44
+215-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:28:13-44
 216            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
-216-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:29:13-102
+216-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:29:13-102
 217            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- Needs to be explicitly declared on P+ -->
-217-->[com.google.firebase:firebase-auth:19.3.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/82681f3c0761d655651a14f400b32223/firebase-auth-19.3.1/AndroidManifest.xml:30:13-72
+217-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\82681f3c0761d655651a14f400b32223\firebase-auth-19.3.1\AndroidManifest.xml:30:13-72
 218        <uses-library
-218-->[com.google.android.gms:play-services-maps:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6f4e6eb26f6c204062e462fe30c558b2/play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+218-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6f4e6eb26f6c204062e462fe30c558b2\play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
 219            android:name="org.apache.http.legacy"
-219-->[com.google.android.gms:play-services-maps:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6f4e6eb26f6c204062e462fe30c558b2/play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+219-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6f4e6eb26f6c204062e462fe30c558b2\play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
 220            android:required="false" />
-220-->[com.google.android.gms:play-services-maps:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6f4e6eb26f6c204062e462fe30c558b2/play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+220-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6f4e6eb26f6c204062e462fe30c558b2\play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
 221
 222        <receiver
-222-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:37:9-44:20
+222-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:37:9-44:20
 223            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-223-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:38:13-78
+223-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:38:13-78
 224            android:exported="true"
-224-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:39:13-36
+224-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:39:13-36
 225            android:permission="com.google.android.c2dm.permission.SEND" >
-225-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:40:13-73
+225-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:40:13-73
 226            <intent-filter>
-226-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:41:13-43:29
+226-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:41:13-43:29
 227                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-227-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:42:17-81
-227-->[com.google.firebase:firebase-iid:20.1.5] /home/alberto/.gradle/caches/transforms-2/files-2.1/f2b9a819a257994d42a659f12fa324dd/firebase-iid-20.1.5/AndroidManifest.xml:42:25-78
+227-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:42:17-81
+227-->[com.google.firebase:firebase-iid:20.1.5] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\f2b9a819a257994d42a659f12fa324dd\firebase-iid-20.1.5\AndroidManifest.xml:42:25-78
 228            </intent-filter>
 229        </receiver>
 230
 231        <activity
-231-->[com.google.android.gms:play-services-base:17.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6eb14f512292913515d869914807ad40/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+231-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
 232            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-232-->[com.google.android.gms:play-services-base:17.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6eb14f512292913515d869914807ad40/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+232-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
 233            android:exported="false"
-233-->[com.google.android.gms:play-services-base:17.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6eb14f512292913515d869914807ad40/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+233-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
 234            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-234-->[com.google.android.gms:play-services-base:17.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6eb14f512292913515d869914807ad40/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+234-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\6eb14f512292913515d869914807ad40\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
 235
 236        <provider
-236-->[com.google.firebase:firebase-common:19.3.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0c84736c53988d2ce886123b665abe9e/jetified-firebase-common-19.3.0/AndroidManifest.xml:26:9-30:39
+236-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\7f7c24e14cf90310ae522a19c78f04e9\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
 237            android:name="com.google.firebase.provider.FirebaseInitProvider"
-237-->[com.google.firebase:firebase-common:19.3.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0c84736c53988d2ce886123b665abe9e/jetified-firebase-common-19.3.0/AndroidManifest.xml:27:13-77
+237-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\7f7c24e14cf90310ae522a19c78f04e9\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
 238            android:authorities="com.ideafoster.elbrownie.firebaseinitprovider"
-238-->[com.google.firebase:firebase-common:19.3.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0c84736c53988d2ce886123b665abe9e/jetified-firebase-common-19.3.0/AndroidManifest.xml:28:13-72
+238-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\7f7c24e14cf90310ae522a19c78f04e9\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
 239            android:exported="false"
-239-->[com.google.firebase:firebase-common:19.3.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0c84736c53988d2ce886123b665abe9e/jetified-firebase-common-19.3.0/AndroidManifest.xml:29:13-37
+239-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\7f7c24e14cf90310ae522a19c78f04e9\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
 240            android:initOrder="100" />
-240-->[com.google.firebase:firebase-common:19.3.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0c84736c53988d2ce886123b665abe9e/jetified-firebase-common-19.3.0/AndroidManifest.xml:30:13-36
+240-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\7f7c24e14cf90310ae522a19c78f04e9\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
 241
 242        <receiver
-242-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:29:9-33:20
+242-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:29:9-33:20
 243            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-243-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:30:13-85
+243-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:30:13-85
 244            android:enabled="true"
-244-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:31:13-35
+244-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:31:13-35
 245            android:exported="false" >
-245-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:32:13-37
+245-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:32:13-37
 246        </receiver>
 247
 248        <service
-248-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:35:9-38:40
+248-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:35:9-38:40
 249            android:name="com.google.android.gms.measurement.AppMeasurementService"
-249-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:36:13-84
+249-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:36:13-84
 250            android:enabled="true"
-250-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:37:13-35
+250-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:37:13-35
 251            android:exported="false" />
-251-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:38:13-37
+251-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:38:13-37
 252        <service
-252-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:39:9-43:72
+252-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:39:9-43:72
 253            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-253-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:40:13-87
+253-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:40:13-87
 254            android:enabled="true"
-254-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:41:13-35
+254-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:41:13-35
 255            android:exported="false"
-255-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:42:13-37
+255-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:42:13-37
 256            android:permission="android.permission.BIND_JOB_SERVICE" />
-256-->[com.google.android.gms:play-services-measurement:17.4.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/76c05ba4f7e9122f3787bc7627889336/play-services-measurement-17.4.1/AndroidManifest.xml:43:13-69
+256-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\76c05ba4f7e9122f3787bc7627889336\play-services-measurement-17.4.1\AndroidManifest.xml:43:13-69
 257
 258        <meta-data
-258-->[com.google.android.gms:play-services-basement:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+258-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\2f173cb0af68841f9aec7d41419cb660\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
 259            android:name="com.google.android.gms.version"
-259-->[com.google.android.gms:play-services-basement:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+259-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\2f173cb0af68841f9aec7d41419cb660\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
 260            android:value="@integer/google_play_services_version" />
-260-->[com.google.android.gms:play-services-basement:17.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/44df9c3f3bc7a0544892d3ebe83a9167/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+260-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\2f173cb0af68841f9aec7d41419cb660\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
 261
 262        <activity android:name="com.facebook.CustomTabMainActivity" />
-262-->[com.facebook.android:facebook-common:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/2d7dd66cae0c9ca90078db10d43a59f6/jetified-facebook-common-5.5.1/AndroidManifest.xml:33:9-71
-262-->[com.facebook.android:facebook-common:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/2d7dd66cae0c9ca90078db10d43a59f6/jetified-facebook-common-5.5.1/AndroidManifest.xml:33:19-68
+262-->[com.facebook.android:facebook-common:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\4b4417b08c676c1a2541abb0c47b2a43\jetified-facebook-common-5.5.1\AndroidManifest.xml:33:9-71
+262-->[com.facebook.android:facebook-common:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\4b4417b08c676c1a2541abb0c47b2a43\jetified-facebook-common-5.5.1\AndroidManifest.xml:33:19-68
 263        <!--
 264         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
 265         with the application context. This config is merged in with the host app's manifest,
@@ -485,40 +485,40 @@
 270         a completely different provider.
 271        -->
 272        <provider
-272-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:39:9-42:40
+272-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:39:9-42:40
 273            android:name="com.facebook.internal.FacebookInitProvider"
-273-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:40:13-70
+273-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:40:13-70
 274            android:authorities="com.ideafoster.elbrownie.FacebookInitProvider"
-274-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:41:13-72
+274-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:41:13-72
 275            android:exported="false" />
-275-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:42:13-37
+275-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:42:13-37
 276
 277        <receiver
-277-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:44:9-50:20
+277-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:44:9-50:20
 278            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-278-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:45:13-86
+278-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:45:13-86
 279            android:exported="false" >
-279-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:46:13-37
+279-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:46:13-37
 280            <intent-filter>
-280-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:47:13-49:29
+280-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:47:13-49:29
 281                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-281-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:48:17-95
-281-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:48:25-92
+281-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:48:17-95
+281-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:48:25-92
 282            </intent-filter>
 283        </receiver>
 284        <receiver
-284-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:51:9-58:20
+284-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:51:9-58:20
 285            android:name="com.facebook.CampaignTrackingReceiver"
-285-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:52:13-65
+285-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:52:13-65
 286            android:exported="true"
-286-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:53:13-36
+286-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:53:13-36
 287            android:permission="android.permission.INSTALL_PACKAGES" >
-287-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:54:13-69
+287-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:54:13-69
 288            <intent-filter>
-288-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:55:13-57:29
+288-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:55:13-57:29
 289                <action android:name="com.android.vending.INSTALL_REFERRER" />
-289-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:56:17-79
-289-->[com.facebook.android:facebook-core:5.5.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4bfa806b3ffebc432aa6721e543f0c82/jetified-facebook-core-5.5.1/AndroidManifest.xml:56:25-76
+289-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:56:17-79
+289-->[com.facebook.android:facebook-core:5.5.1] C:\Users\Etudiant\.gradle\caches\transforms-2\files-2.1\911a7c8a17051c69acb15cd52c0a9064\jetified-facebook-core-5.5.1\AndroidManifest.xml:56:25-76
 290            </intent-filter>
 291        </receiver>
 292    </application>

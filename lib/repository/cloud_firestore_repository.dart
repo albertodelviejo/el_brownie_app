@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:el_brownie_app/model/comment.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
-import 'package:el_brownie_app/ui/widgets/card.dart';
 
 import 'cloud_firestore_api.dart';
 
@@ -20,11 +18,11 @@ class CloudFirestoreRepository {
   List<CardHome> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.buildAllPosts(postsListSnapshot);
 
-  List<CardHome> buildFavouritesPosts(List<Post> favouritesListSnapshot) =>
-      _cloudFirestoreAPI.buildFavouritesPosts(favouritesListSnapshot);
+  // List<CardHome> buildFavouritesPosts(List<Post> favouritesListSnapshot) =>
+  //     _cloudFirestoreAPI.buildFavouritesPosts(favouritesListSnapshot);
 
-  Future<List<dynamic>> getFavouritesPostFromString(String uid) =>
-      _cloudFirestoreAPI.getFavouritesPostFromString(uid);
+  // Future<List<dynamic>> getFavouritesPostFromString(String uid) =>
+  //     _cloudFirestoreAPI.getFavouritesPostFromString(uid);
 
   Future likePost(String idPost, String uid) =>
       _cloudFirestoreAPI.likePost(idPost, uid);
