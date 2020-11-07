@@ -46,6 +46,7 @@ class UserBloc implements Bloc {
 //5. Get posts
   Stream<QuerySnapshot> myPostsListStream() => FirebaseFirestore.instance
       .collection(CloudFirestoreAPI().POSTS)
+      .orderBy('date', descending: true)
       .snapshots();
 
   List<CardHome> buildMyPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
