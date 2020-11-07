@@ -18,7 +18,7 @@ class RankTile extends StatelessWidget {
 
     return Container(
       decoration: Mystyle.rankedfirsts(rank < 4 ? true : false),
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
       child: ListTile(
         leading: Text(
           rank.toString(),
@@ -29,7 +29,6 @@ class RankTile extends StatelessWidget {
         ),
         title: Row(
           children: [
-            SizedBox(width: 15),
             Container(
               width: ScreenUtil().setHeight(130),
               height: ScreenUtil().setHeight(130),
@@ -43,7 +42,7 @@ class RankTile extends StatelessWidget {
                 border: Border.all(color: Colors.black, width: 2),
               ),
             ),
-            SizedBox(width: 15),
+            SizedBox(width: 5),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,

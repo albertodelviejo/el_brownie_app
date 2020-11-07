@@ -13,14 +13,15 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import '../../../model/post.dart';
 
 class PostScreen extends StatefulWidget {
-  String id;
+  final String id;
   bool isTapped = false;
   Icon icon = Icon(
     Icons.bookmark_border,
     color: Colors.black87,
   );
+  final CardHome cardHome;
 
-  PostScreen({Key key, this.id});
+  PostScreen({Key key, this.id, this.cardHome});
 
   @override
   _PostScreenState createState() => _PostScreenState();
@@ -57,7 +58,7 @@ class _PostScreenState extends State<PostScreen> {
                 price: element.get('price').toString(),
                 idUser: element.get('id_user'),
                 idPost: widget.id,
-                photo: element.get('photo'),
+                photoUrl: element.get('photo'),
                 valoration: element.get('valoration').toString());
             Stream.empty();
             return postScreen();
@@ -66,33 +67,33 @@ class _PostScreenState extends State<PostScreen> {
         });
   }
 
-  Widget getComments() {
-    return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection("comments")
-            .where('id_post', isEqualTo: widget.id)
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
-          } else {
-            List<CommentsW> list = new List<CommentsW>();
-            snapshot.data.documents.forEach((element) {
-              list.add(CommentsW(
-                comment: element.get('text'),
-                image: "",
-                likes: element.get('likes'),
-                name: "",
-                valoration: int.parse(element.get('valoration')),
-                time: "",
-              ));
-            });
-            Stream.empty();
-            return postScreen();
-            //return getComments();
-          }
-        });
-  }
+  // Widget getComments() {
+  //   return StreamBuilder<QuerySnapshot>(
+  //       stream: FirebaseFirestore.instance
+  //           .collection("comments")
+  //           .where('id_post', isEqualTo: widget.id)
+  //           .snapshots(),
+  //       builder: (BuildContext context, AsyncSnapshot snapshot) {
+  //         if (!snapshot.hasData) {
+  //           return Center(child: CircularProgressIndicator());
+  //         } else {
+  //           List<CommentsW> list = new List<CommentsW>();
+  //           snapshot.data.documents.forEach((element) {
+  //             list.add(CommentsW(
+  //               comment: element.get('text'),
+  //               image: "",
+  //               likes: element.get('likes'),
+  //               name: "",
+  //               valoration: int.parse(element.get('valoration')),
+  //               time: "",
+  //             ));
+  //           });
+  //           Stream.empty();
+  //           return postScreen();
+  //           //return getComments();
+  //         }
+  //       });
+  // }
 
   Widget getComments1() {
     return StreamBuilder(
@@ -155,17 +156,7 @@ class _PostScreenState extends State<PostScreen> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: ScreenUtil().setHeight(20)),
-                CardHome(
-                  name: post.name,
-                  place: post.address,
-                  view: "",
-                  valo: "",
-                  hace: "",
-                  reclam: post.status,
-                  myindex: "3",
-                  pagename: "post",
-                  imageUrl: post.photo,
-                ),
+                widget.cardHome ?? CircularProgressIndicator(),
                 SizedBox(height: ScreenUtil().setHeight(40)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -290,7 +281,8 @@ class _PostScreenState extends State<PostScreen> {
                             builder: (BuildContext context) {
                               return RequestScreen(
                                 postId: widget.id,
-                                price: post.price,
+                                price: (double.parse(post.price))
+                                    .toStringAsFixed(0),
                               ); //register
                             },
                           ),
@@ -341,8 +333,45 @@ class _PostScreenState extends State<PostScreen> {
               textAlign: TextAlign.left,
             ),
           ),
-          getComments()
-          // SizedBox(height: ScreenUtil().setHeight(100)),
+          StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection("comments")
+                  .where('id_post', isEqualTo: widget.id)
+                  .snapshots(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(child: CircularProgressIndicator());
+                } else {
+                  List comments = snapshot.data.docs;
+                  if (comments.length == 0) {
+                    return Container(
+                      padding: EdgeInsets.symmetric(vertical: 15.0),
+                      child: Center(
+                          child: Text('Se el primero en dejar un comentario')),
+                    );
+                  } else {
+                    return Container(
+                      height: comments.length * 500.0,
+                      child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: comments.length,
+                          itemBuilder: (context, index) {
+                            return CommentsW(
+                              comment: comments[index].get('text'),
+                              image: "",
+                              likes: comments[index].get('likes'),
+                              name: "",
+                              valoration:
+                                  int.parse(comments[index].get('valoration')),
+                              time: "",
+                            );
+                          }),
+                    );
+                  }
+                  //return getComments();
+                }
+              }),
+          SizedBox(height: ScreenUtil().setHeight(200)),
         ],
       ),
     );

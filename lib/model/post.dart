@@ -9,7 +9,7 @@ class Post {
   String price;
   String idUser;
   String valoration;
-  String photo;
+  String photoUrl;
   Timestamp date;
   String idPost;
 
@@ -22,7 +22,7 @@ class Post {
       this.price,
       this.idUser,
       this.valoration,
-      this.photo,
+      this.photoUrl,
       this.date,
       this.idPost});
 }

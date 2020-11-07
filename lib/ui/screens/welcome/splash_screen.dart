@@ -1,4 +1,5 @@
 import 'package:after_layout/after_layout.dart';
+import 'package:el_brownie_app/ui/screens/home/bottom_tab.dart';
 import 'package:el_brownie_app/ui/screens/home/home_screen.dart';
 import 'package:el_brownie_app/ui/screens/welcome/onboarding_screen.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
@@ -59,7 +60,7 @@ class _SplashScreenaState extends State<SplashScreena>
 
     if (_seen) {
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => new HomeScreen()));
+          new MaterialPageRoute(builder: (context) => new BottomTabBarr()));
     } else {
       await prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(

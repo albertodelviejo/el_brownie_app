@@ -1,11 +1,8 @@
-import 'dart:wasm';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
-import 'package:el_brownie_app/ui/widgets/card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class CloudFirestoreAPI {
@@ -61,37 +58,38 @@ class CloudFirestoreAPI {
           date: element.get('date'),
           idUser: element.get('id_user'),
           idPost: element.get('idPost'),
-          photo: element.get('photo')));
+          photoUrl: element.get('photo')));
     });
     return allPost;
   }
 
-  List<CardHome> buildFavouritesPosts(List<Post> postListsSnapshot) {
-    List<CardHome> favouritesPosts = List<CardHome>();
-    postListsSnapshot.forEach((element) {
-      favouritesPosts.add(CardHome(
-        name: element.name,
-        valo: "1700 valoraciones",
-        place: element.address,
-        reclam: element.status.toString() == "true" ? true : false,
-        view: "1700 views",
-        hace: "Hace 2 dias",
-        myindex: element.valoration,
-        id: element.idPost,
-      ));
-    });
+  // List<CardHome> buildFavouritesPosts(List<Post> postListsSnapshot) {
+  //   List<CardHome> favouritesPosts = List<CardHome>();
+  //   postListsSnapshot.forEach((element) {
+  //     favouritesPosts.add(CardHome(
+  //       name: element.name,
+  //       valo: "1700 valoraciones",
+  //       place: element.address,
+  //       reclam: element.status.toString() == "true" ? true : false,
+  //       view: "1700 views",
+  //       hace: "Hace 2 dias",
+  //       myindex: element.valoration,
+  //       id: element.idPost,
+  //       imageUrl: element.photoUrl,
+  //     ));
+  //   });
 
-    return favouritesPosts;
-  }
+  //   return favouritesPosts;
+  // }
 
-  Future<List<dynamic>> getFavouritesPostFromString(String uid) async {
-    DocumentReference ref = _db.collection("users").doc(uid);
-    List<dynamic> favoritesPost = new List<String>();
-    await ref.get().then((value) {
-      favoritesPost = value.get('favorites');
-      return favoritesPost;
-    });
-  }
+  // Future<List<dynamic>> getFavouritesPostFromString(String uid) async {
+  //   DocumentReference ref = _db.collection("users").doc(uid);
+  //   List<dynamic> favoritesPost = new List<String>();
+  //   await ref.get().then((value) {
+  //     favoritesPost = value.get('favorites');
+  //     return favoritesPost;
+  //   });
+  // }
 
   List<CardHome> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) {
     List<CardHome> allPost = List<CardHome>();
@@ -185,6 +183,7 @@ class CloudFirestoreAPI {
               name: value.get('name'),
               price: value.get('price'),
               status: value.get('status'),
+              photoUrl: value.get('photo'),
               valoration: value.get('valoration'))
         });
     return aux;
