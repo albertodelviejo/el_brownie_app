@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:el_brownie_app/model/notification.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardnotification.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 
 import 'cloud_firestore_api.dart';
@@ -52,10 +54,22 @@ class CloudFirestoreRepository {
   List<CardHome> buildMyBrownies(List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.buildMyBrownies(postsListSnapshot);
 
-  Future<String> addComment(String idPost, String idUser, String photoURL,
-          String text, String valoration) =>
-      _cloudFirestoreAPI.addComment(idPost, idUser, photoURL, text, valoration);
+  Future<String> addComment(String idPost, String idUser, String username,
+          String avatarURL, String photoURL, String text, String valoration) =>
+      _cloudFirestoreAPI.addComment(
+          idPost, idUser, username, avatarURL, photoURL, text, valoration);
 
   List<CommentsW> buildComments(List<DocumentSnapshot> commentsListSnapshot) =>
       _cloudFirestoreAPI.buildComments(commentsListSnapshot);
+
+  List<CardNotification> buildNotifications(
+          List<DocumentSnapshot> notificationsListSnapshot) =>
+      _cloudFirestoreAPI.buildNotifications(notificationsListSnapshot);
+
+  Future<String> addNotification(
+          String idUser, String notificationType, int points) =>
+      _cloudFirestoreAPI.addNotification(idUser, notificationType, points);
+
+  void deleteNotification(String idNotification) =>
+      _cloudFirestoreAPI.deleteNotification(idNotification);
 }

@@ -1,5 +1,6 @@
 import 'package:el_brownie_app/ui/screens/home/losmas_screen.dart';
 import 'package:el_brownie_app/ui/screens/home/todos_screen.dart';
+import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,10 +34,20 @@ class _HomeScreenState extends State<HomeScreen> {
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 12.0),
-                child: Icon(
-                  Icons.notifications_none,
-                  color: Colors.black,
-                  size: 28,
+                child: IconButton(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return NotificationsScreen(); //register
+                      },
+                    ),
+                  ),
+                  icon: Icon(
+                    Icons.notifications_none,
+                    color: Colors.black,
+                    size: 28,
+                  ),
                 ),
               ),
             ],
@@ -188,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: ScreenUtil().setWidth(80),
                           width: ScreenUtil().setWidth(80),
                           child: SvgPicture.asset(
-                            "assets/svg/brocoli.svg",
+                            "assets/iempty.png",
                             // color: Colors.red,
                           ),
                         ),
@@ -400,7 +411,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: ScreenUtil().setWidth(80),
                           width: ScreenUtil().setWidth(80),
                           child: SvgPicture.asset(
-                            "assets/svg/sushi.svg",
+                            "assets/svg/fastfood.svg",
                             // color: Colors.red,
                           ),
                         ),

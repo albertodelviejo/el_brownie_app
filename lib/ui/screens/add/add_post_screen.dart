@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,6 @@ class _AddCommentScreen extends State<AddCommentScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   double _value = 5;
   final nombre = TextEditingController();
-  final categoria = TextEditingController();
   final direccion = TextEditingController();
   final comentario = TextEditingController();
   bool filled = false;
@@ -33,6 +33,8 @@ class _AddCommentScreen extends State<AddCommentScreen> {
   var imageFile;
 
   bool loading = false;
+
+  var _dropdownvalue;
 
   @override
   Widget build(BuildContext context) {
@@ -192,21 +194,108 @@ class _AddCommentScreen extends State<AddCommentScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: 0, vertical: ScreenUtil().setHeight(20)),
-                child: TextFormField(
-                  controller: categoria,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: Mystyle.inputWhitebg(
-                    'Categoría',
-                    icon: IconButton(
-                      icon: Icon(Icons.chevron_right),
-                      onPressed: () {},
-                    ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButtonFormField(
+                    decoration: Mystyle.inputWhitebg(add_post_category_hint),
+                    value: _dropdownvalue,
+                    items: [
+                      DropdownMenuItem(
+                        child: Text(
+                          category_list[0],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF8b8b8b),
+                          ),
+                        ),
+                        value: 0,
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          category_list[1],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF8b8b8b),
+                          ),
+                        ),
+                        value: 1,
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          category_list[2],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF8b8b8b),
+                          ),
+                        ),
+                        value: 2,
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          category_list[3],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF8b8b8b),
+                          ),
+                        ),
+                        value: 3,
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          category_list[4],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF8b8b8b),
+                          ),
+                        ),
+                        value: 4,
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          category_list[5],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF8b8b8b),
+                          ),
+                        ),
+                        value: 5,
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          category_list[6],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF8b8b8b),
+                          ),
+                        ),
+                        value: 6,
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          category_list[7],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF8b8b8b),
+                          ),
+                        ),
+                        value: 7,
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          category_list[8],
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF8b8b8b),
+                          ),
+                        ),
+                        value: 8,
+                      ),
+                    ],
+                    onChanged: (value) {
+                      setState(() {
+                        _dropdownvalue = value;
+                      });
+                    },
                   ),
-                  textInputAction: TextInputAction.done,
-                  validator: (value) {
-                    if (value.isEmpty) return 'isEmpty';
-                    return null;
-                  },
                 ),
               ),
               Padding(
@@ -345,7 +434,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                             .createPost(
                                 nombre.text.hashCode.toString(),
                                 direccion.text,
-                                categoria.text,
+                                category_list[_dropdownvalue],
                                 nombre.text,
                                 comentario.text,
                                 _value,
@@ -355,7 +444,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                             .whenComplete(() {
                           setState(() {
                             nombre.clear();
-                            categoria.clear();
+                            _dropdownvalue = null;
                             direccion.clear();
                             comentario.clear();
                             widget.tapped = false;

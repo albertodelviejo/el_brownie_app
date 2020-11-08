@@ -100,6 +100,7 @@ class CardLosmas extends StatelessWidget {
               Flexible(
                 child: Text(
                   place,
+                  maxLines: 1,
                   style: Mystyle.placeTextStyle.copyWith(fontSize: 12),
                 ),
               ),

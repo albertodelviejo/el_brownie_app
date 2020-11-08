@@ -1,6 +1,8 @@
 import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/model/notification.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/screens/auth/login_screen.dart';
+import 'package:el_brownie_app/ui/screens/home/bottom_tab.dart';
 import 'package:el_brownie_app/ui/screens/home/home_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
@@ -213,11 +215,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               userName: _username,
                               email: value.email,
                             ));
+                            userBloc.addNotification(value.uid, "Register", 10);
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
-                                  return HomeScreen(); //register
+                                  return BottomTabBarr(); //register
                                 },
                               ),
                             );

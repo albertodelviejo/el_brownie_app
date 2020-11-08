@@ -2,10 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/ui/screens/add/add_comment_screen.dart';
 import 'package:el_brownie_app/ui/screens/add/request_screen.dart';
+import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/popup.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
@@ -31,6 +33,7 @@ class _PostScreenState extends State<PostScreen> {
   Post post;
   bool noresult = false;
   UserBloc userBloc;
+  final db = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -178,7 +181,7 @@ class _PostScreenState extends State<PostScreen> {
                             Icon(Icons.share),
                             SizedBox(height: ScreenUtil().setHeight(10)),
                             Text(
-                              "share",
+                              "Share",
                               style: Mystyle.smallTextStyle
                                   .copyWith(color: Colors.black87),
                               textAlign: TextAlign.center,
@@ -241,6 +244,7 @@ class _PostScreenState extends State<PostScreen> {
                             builder: (BuildContext context) {
                               return AddPostScreen(
                                 idPost: widget.id,
+                                idUserPost: widget.cardHome.idUserPost,
                               ); //register
                             },
                           ),
@@ -323,7 +327,7 @@ class _PostScreenState extends State<PostScreen> {
           SizedBox(height: ScreenUtil().setHeight(40)),
           Divider(color: Colors.black87),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 5),
             child: Text(
               "Comentarios",
               style: Mystyle.titleTextStyle.copyWith(
@@ -344,14 +348,40 @@ class _PostScreenState extends State<PostScreen> {
                 } else {
                   List comments = snapshot.data.docs;
                   if (comments.length == 0) {
-                    return Container(
-                      padding: EdgeInsets.symmetric(vertical: 15.0),
-                      child: Center(
-                          child: Text('Se el primero en dejar un comentario')),
+                    return Column(
+                      children: [
+                        Align(
+                            alignment: Alignment.topLeft,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 24),
+                              child: Text(
+                                no_comments_subtitle,
+                                style: Mystyle.normalTextStyle,
+                              ),
+                            )),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0, vertical: 10),
+                          child: ButtAuth("Añadir valoración", () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return AddPostScreen(
+                                    idPost: widget.id,
+                                  ); //register
+                                },
+                              ),
+                            );
+                          }, border: true),
+                        ),
+                      ],
                     );
                   } else {
                     return Container(
-                      height: comments.length * 500.0,
+                      height: comments.length * 150.0,
+                      width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: comments.length,
@@ -360,7 +390,7 @@ class _PostScreenState extends State<PostScreen> {
                               comment: comments[index].get('text'),
                               image: "",
                               likes: comments[index].get('likes'),
-                              name: "",
+                              name: comments[index].get('username'),
                               valoration:
                                   int.parse(comments[index].get('valoration')),
                               time: "",
@@ -368,7 +398,6 @@ class _PostScreenState extends State<PostScreen> {
                           }),
                     );
                   }
-                  //return getComments();
                 }
               }),
           SizedBox(height: ScreenUtil().setHeight(200)),

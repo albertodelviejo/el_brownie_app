@@ -4,7 +4,6 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
@@ -13,9 +12,10 @@ import 'package:image_picker/image_picker.dart';
 class AddPostScreen extends StatefulWidget {
   int valoration = 0;
   String idPost;
+  String idUserPost;
   bool tapped = false;
 
-  AddPostScreen({Key key, this.idPost});
+  AddPostScreen({Key key, this.idPost, this.idUserPost});
   @override
   _AddPostScreenState createState() => _AddPostScreenState();
 }
@@ -28,7 +28,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   final comentarioController = TextEditingController();
   UserBloc userBloc;
   var imageFile;
-  String photoUrl;
+  String photoUrl = "";
 
   @override
   Widget build(BuildContext context) {
@@ -192,6 +192,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       comentarioController.text, widget.valoration.toString())
                   .whenComplete(() {
                 uploadFile();
+                userBloc.addNotification(widget.idUserPost, "comment", 10);
                 Navigator.pop(context);
               });
             }, border: true, press: true),

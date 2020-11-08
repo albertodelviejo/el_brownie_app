@@ -93,7 +93,8 @@ class _FavScreenState extends State<FavScreen> {
                               });
                             });
                             return Container(
-                              height: cards.length * ScreenUtil().setHeight(1500),
+                              height:
+                                  cards.length * ScreenUtil().setHeight(1500),
                               child: ListView.builder(
                                   physics: NeverScrollableScrollPhysics(),
                                   itemCount: cards.length,
@@ -101,13 +102,18 @@ class _FavScreenState extends State<FavScreen> {
                                     return CardHome(
                                       name: '${cards[index].data()['name']}',
                                       valo: 'string',
-                                      place: '${cards[index].data()['address']}',
+                                      place:
+                                          '${cards[index].data()['address']}',
                                       reclam: cards[index].data()['status'],
                                       view: "1700 views",
                                       hace: "Hace 2 dias",
-                                      myindex: '${cards[index].data()['valoration']}',
+                                      myindex:
+                                          '${cards[index].data()['valoration']}',
                                       id: cards[index].id,
-                                      imageUrl: '${cards[index].data()['photo']}',
+                                      idUserPost:
+                                          cards[index].data()['id_user'],
+                                      imageUrl:
+                                          '${cards[index].data()['photo']}',
                                     );
                                   }),
                             );

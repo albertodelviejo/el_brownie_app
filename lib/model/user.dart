@@ -11,6 +11,7 @@ class UserModel {
   String restaurantName;
   String location;
   String cif;
+  String avatarURL;
 
   UserModel(
       {Key key,
@@ -23,5 +24,6 @@ class UserModel {
       this.type,
       this.restaurantName,
       this.location,
-      this.cif});
+      this.cif,
+      this.avatarURL});
 }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/model/comment.dart';
+import 'package:el_brownie_app/model/notification.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/repository/auth_repository.dart';
@@ -7,6 +8,7 @@ import 'package:el_brownie_app/repository/cloud_firestore_api.dart';
 import 'package:el_brownie_app/repository/cloud_firestore_repository.dart';
 import 'package:el_brownie_app/repository/google_maps_api.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardnotification.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/widgets/card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -115,8 +117,8 @@ class UserBloc implements Bloc {
 
   Future<String> addComment(
           String idPost, String photoUrl, String text, String valoration) =>
-      _cloudFirestoreRepository.addComment(
-          idPost, user.uid, photoUrl, text, valoration);
+      _cloudFirestoreRepository.addComment(idPost, user.uid, user.userName,
+          user.avatarURL, photoUrl, text, valoration);
 
   //12. Build comments
   List<CommentsW> buildComments(List<DocumentSnapshot> ticketsListSnapshot) =>
@@ -133,6 +135,26 @@ class UserBloc implements Bloc {
   void signOut() {
     _authRepository.signOut();
   }
+
+  //14.Add a notification
+  Future<String> addNotification(
+          String idUser, String notificationType, int points) =>
+      _cloudFirestoreRepository.addNotification(
+          idUser, notificationType, points);
+
+  //15. Delete a notification
+  void deleteNotification(String idNotification) =>
+      _cloudFirestoreRepository.deleteNotification(idNotification);
+
+  //16. Build Notification
+  Stream<QuerySnapshot> notificationsListStream() => FirebaseFirestore.instance
+      .collection("notifications")
+      .where("id_user", isEqualTo: currentUser.uid)
+      .snapshots();
+
+  List<CardNotification> buildNotifications(
+          List<DocumentSnapshot> notificationsListSnapshot) =>
+      _cloudFirestoreRepository.buildNotifications(notificationsListSnapshot);
 
   @override
   void dispose() {}

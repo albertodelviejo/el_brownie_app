@@ -1,9 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:el_brownie_app/model/notification.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardnotification.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class CloudFirestoreAPI {
   final String POSTS = "posts";
@@ -25,7 +29,8 @@ class CloudFirestoreAPI {
                 'bank_account': user.bankAccount,
                 'type': user.type,
                 'points': user.points,
-                'favorites': {}
+                'favorites': {},
+                'notifications': {}
               })
             }
           else
@@ -34,7 +39,7 @@ class CloudFirestoreAPI {
                 'uid': user.uid,
                 'username': user.userName,
                 'email': user.email,
-                'points': 0,
+                'points': 10,
                 'bank_account': "",
                 'cif': "",
                 'location': "",
@@ -103,6 +108,7 @@ class CloudFirestoreAPI {
         hace: "Hace 2 dias",
         imageUrl: element.get('photo'),
         myindex: element.get('valoration').toString(),
+        idUserPost: element.get('id_user'),
         id: element.id,
       ));
     });
@@ -202,17 +208,20 @@ class CloudFirestoreAPI {
         myindex: element.get('valoration').toString(),
         imageUrl: element.get('photo'),
         id: element.id,
+        idUserPost: element.get('id_user'),
       ));
     });
     return allPost;
   }
 
-  Future<String> addComment(String idPost, String id_user, String photoURL,
-      String text, String valoration) {
+  Future<String> addComment(String idPost, String id_user, String username,
+      String avatarURL, String photoURL, String text, String valoration) {
     DocumentReference ref = _db.collection("comments").doc();
     ref.set({
       'id_post': idPost,
       'id_user': id_user,
+      'username': username,
+      'avatar_url': avatarURL,
       'likes': 0,
       'photo_url': photoURL,
       'text': text,
@@ -229,10 +238,69 @@ class CloudFirestoreAPI {
         image: element.get('photo_url'),
         likes: element.get('likes'),
         valoration: int.parse(element.get('valoration')),
-        name: "",
+        name: element.get('username'),
         time: "",
       ));
     });
     return allComments;
+  }
+
+  Future<String> addNotification(
+      String idUser, String notificationType, int points) {
+    DocumentReference ref = _db.collection("notifications").doc();
+    ref.set({
+      'id_user': idUser,
+      'notification_type': notificationType,
+      'points': points
+    }).then((value) => ref.id);
+  }
+
+  void deleteNotification(String idNotification) {
+    DocumentReference ref = _db.collection("notifications").doc(idNotification);
+    ref.delete();
+  }
+
+  List<CardNotification> buildNotifications(
+      List<DocumentSnapshot> notificationsListSnapshot) {
+    String icon = "";
+    String text = "";
+    int points = 0;
+    List<CardNotification> allNotifications = List<CardNotification>();
+    notificationsListSnapshot.forEach((element) {
+      String notificationType = element.get('notification_type');
+      switch (notificationType) {
+        case "reclamation":
+          icon = "";
+          text = notification_tile_reclamation;
+          points = element.get('points');
+          break;
+        case "favourite":
+          icon = "";
+          text = notification_tile_favourite;
+          points = element.get('points');
+          break;
+        case "top":
+          icon = "";
+          text = notification_tile_top;
+          points = element.get('points');
+          break;
+        case "welcome":
+          icon = "";
+          text = notification_tile_welcome;
+          points = element.get('points');
+          break;
+        case "comment":
+          icon = "";
+          text = notification_tile_comment;
+          points = element.get('points');
+          break;
+      }
+      allNotifications.add(CardNotification(
+        icon: Icon(Icons.ac_unit),
+        points: points,
+        text: text,
+      ));
+    });
+    return allNotifications;
   }
 }

@@ -19,9 +19,10 @@ class CommentsW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-    return Scaffold(
-      body: Container(
+    return Column(children: [
+      Container(
         padding: EdgeInsets.only(left: 16, right: 16, bottom: 12, top: 8),
+        width: MediaQuery.of(context).size.width,
         child: ListTile(
           leading: Container(
             width: ScreenUtil().setHeight(130),
@@ -43,11 +44,14 @@ class CommentsW extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: Mystyle.regularTextStyle.copyWith(
-                      fontSize: ScreenUtil().setSp(34),
-                      color: Colors.black87,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      name,
+                      style: Mystyle.regularTextStyle.copyWith(
+                        fontSize: ScreenUtil().setSp(34),
+                        color: Colors.black87,
+                      ),
                     ),
                   ),
                   SizedBox(height: 5),
@@ -72,12 +76,16 @@ class CommentsW extends StatelessWidget {
                       }),
                     ),
                   ),
-                  Text(
-                    comment,
-                    style: Mystyle.regularTextStyle.copyWith(
-                      fontSize: ScreenUtil().setSp(40),
-                      color: Colors.black87,
-                      fontStyle: FontStyle.italic,
+                  SizedBox(
+                    width: 200,
+                    child: Text(
+                      comment,
+                      overflow: TextOverflow.clip,
+                      style: Mystyle.regularTextStyle.copyWith(
+                        fontSize: ScreenUtil().setSp(40),
+                        color: Colors.black87,
+                        fontStyle: FontStyle.italic,
+                      ),
                     ),
                   ),
                   SizedBox(height: 6),
@@ -124,6 +132,7 @@ class CommentsW extends StatelessWidget {
           ),
         ),
       ),
-    );
+      Divider(color: Colors.black87),
+    ]);
   }
 }

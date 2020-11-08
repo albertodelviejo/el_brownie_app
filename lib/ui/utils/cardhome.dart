@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/ui/screens/home/post_screen.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class CardHome extends StatefulWidget {
-  String name, place, view, valo, hace, id, pagename, price, imageUrl;
+  String name,
+      place,
+      view,
+      valo,
+      hace,
+      id,
+      pagename,
+      price,
+      imageUrl,
+      idUserPost;
   bool reclam;
   String myindex = "3";
   bool isTapped;
@@ -16,6 +26,7 @@ class CardHome extends StatefulWidget {
     Icons.bookmark_border,
     color: Colors.black87,
   );
+  String notific_id;
 
   CardHome(
       {this.name,
@@ -29,6 +40,7 @@ class CardHome extends StatefulWidget {
       this.imageUrl,
       this.pagename,
       this.price,
+      this.idUserPost,
       this.isTapped = false});
   @override
   _CardHomeState createState() => _CardHomeState();
@@ -92,7 +104,7 @@ class _CardHomeState extends State<CardHome> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -103,40 +115,48 @@ class _CardHomeState extends State<CardHome> {
                       ),
                       padding: EdgeInsets.all(8),
                       child: Text(
-                        "3.5",
+                        widget.myindex,
                         style: Mystyle.subtitleTextStylenoco
                             .copyWith(color: Colors.white),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        if (!widget.isTapped) {
-                          setState(() {
-                            widget.icon = Icon(
-                              Icons.bookmark,
-                              color: Colors.black87,
-                            );
-                          });
-                          userBloc.likePost(widget.id);
-                          widget.isTapped = true;
-                        } else {
-                          setState(() {
-                            widget.icon = Icon(
-                              Icons.bookmark_border,
-                              color: Colors.black87,
-                            );
-                          });
-                          userBloc.unlikePost(widget.id);
-                          widget.isTapped = false;
-                        }
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(60),
-                          ),
-                          padding: EdgeInsets.all(8),
-                          child: widget.icon),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          if (!widget.isTapped) {
+                            setState(() {
+                              widget.icon = Icon(
+                                Icons.bookmark,
+                                color: Colors.black87,
+                              );
+                            });
+                            userBloc.likePost(widget.id);
+                            userBloc
+                                .addNotification(
+                                    widget.idUserPost, "Favorito", 10)
+                                .then((value) => widget.notific_id = value);
+                            widget.isTapped = true;
+                          } else {
+                            setState(() {
+                              widget.icon = Icon(
+                                Icons.bookmark_border,
+                                color: Colors.black87,
+                              );
+                            });
+                            userBloc.unlikePost(widget.id);
+                            userBloc.deleteNotification(widget.notific_id);
+                            widget.isTapped = false;
+                          }
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(60),
+                            ),
+                            padding: EdgeInsets.all(8),
+                            child: widget.icon),
+                      ),
                     ),
                   ]),
             ),
@@ -202,7 +222,7 @@ class _CardHomeState extends State<CardHome> {
             child: Row(
               children: List.generate(5, (index) {
                 //var myindexaux = int.parse(widget.myindex);
-                return index < 3
+                return index < int.parse(widget.myindex)
                     ? Container(
                         height: ScreenUtil().setHeight(90),
                         width: ScreenUtil().setHeight(90),
