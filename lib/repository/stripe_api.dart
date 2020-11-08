@@ -108,6 +108,7 @@ class StripeService {
       'paymentMethod': paymentMethod,
       'paid_at': DateFormat('dd-MM-yyyy').format(DateTime.now()),
     });
+
     if (reason == 'owner') {
       DocumentReference ownerQuery =
           _firestore.collection('users').doc(_auth.currentUser.uid);

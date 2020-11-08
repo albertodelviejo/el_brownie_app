@@ -24,13 +24,11 @@ class CloudFirestoreAPI {
             {
               await ref.update({
                 'uid': user.uid,
-                'username': user.userName,
                 'email': user.email,
                 'bank_account': user.bankAccount,
                 'type': user.type,
                 'points': user.points,
-                'favorites': {},
-                'notifications': {}
+                'avatar_url': user.avatarURL
               })
             }
           else
@@ -45,6 +43,9 @@ class CloudFirestoreAPI {
                 'location': "",
                 'restaurant_name': "",
                 'type': "default",
+                'favorites': {},
+                'notifications': {},
+                'avatar_url': ""
               })
             }
         });

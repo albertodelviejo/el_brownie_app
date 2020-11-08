@@ -1,18 +1,21 @@
+import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/repository/stripe_api.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import '../../utils/buttonauth.dart';
 import '../../utils/mystyle.dart';
 
 class RequestScreen extends StatefulWidget {
-  final String postId, price;
+  String price, idUserPost;
+  String postId = "";
 
-  RequestScreen({Key key, this.postId, this.price});
+  RequestScreen({Key key, this.postId, this.price, this.idUserPost});
   @override
   _RequestScreenState createState() => _RequestScreenState();
 }
@@ -22,6 +25,8 @@ class _RequestScreenState extends State<RequestScreen> {
   int _value = 12;
   bool isfirst = false;
   String reason;
+
+  UserBloc userBloc;
 
   final _stripeService = StripeService();
   bool loading = false;
@@ -35,7 +40,7 @@ class _RequestScreenState extends State<RequestScreen> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-
+    userBloc = BlocProvider.of(context);
     return SafeArea(
       child: ModalProgressHUD(
         inAsyncCall: loading,
@@ -105,7 +110,7 @@ class _RequestScreenState extends State<RequestScreen> {
                       leading: Radio(
                         value: 0,
                         groupValue: _value,
-                        activeColor: Color(0xFF6200EE),
+                        activeColor: Colors.black,
                         onChanged: (v) {
                           setState(() {
                             _value = v;
@@ -189,7 +194,7 @@ class _RequestScreenState extends State<RequestScreen> {
                       leading: Radio(
                         value: 1,
                         groupValue: _value,
-                        activeColor: Color(0xFF6200EE),
+                        activeColor: Colors.black,
                         onChanged: (v) {
                           setState(() {
                             _value = v;
@@ -206,7 +211,7 @@ class _RequestScreenState extends State<RequestScreen> {
                       leading: Radio(
                         value: 2,
                         groupValue: _value,
-                        activeColor: Color(0xFF6200EE),
+                        activeColor: Colors.black,
                         onChanged: (v) {
                           setState(() {
                             _value = v;
@@ -223,7 +228,7 @@ class _RequestScreenState extends State<RequestScreen> {
                       leading: Radio(
                         value: 3,
                         groupValue: _value,
-                        activeColor: Color(0xFF6200EE),
+                        activeColor: Colors.black,
                         onChanged: (v) {
                           setState(() {
                             _value = v;
@@ -282,6 +287,9 @@ class _RequestScreenState extends State<RequestScreen> {
                       content: Text(response.message),
                       duration: Duration(seconds: 5),
                     ));
+
+                    userBloc.addNotification(
+                        widget.idUserPost, "reclamation", 10);
                   } else {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(response.message),

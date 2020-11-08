@@ -270,10 +270,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     userBloc.signOut();
                     userBloc.signInFacebook().then((User value) {
                       userBloc.user.uid = value.uid;
-                      userBloc.updateUserData(UserModel(
-                          uid: value.uid,
-                          userName: value.displayName,
-                          email: value.email));
+                      userBloc.updateUserData(
+                          UserModel(uid: value.uid, email: value.email));
                     });
                   },
                   shape: StadiumBorder(

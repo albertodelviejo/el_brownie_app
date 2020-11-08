@@ -134,7 +134,7 @@ class _CardHomeState extends State<CardHome> {
                             userBloc.likePost(widget.id);
                             userBloc
                                 .addNotification(
-                                    widget.idUserPost, "Favorito", 10)
+                                    widget.idUserPost, "favourite", 10)
                                 .then((value) => widget.notific_id = value);
                             widget.isTapped = true;
                           } else {

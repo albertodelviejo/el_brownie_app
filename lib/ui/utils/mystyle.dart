@@ -94,6 +94,16 @@ class Mystyle {
     );
   }
 
+  static cadredec2() {
+    return BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(50),
+      border: Border.all(
+        color: Colors.black87,
+      ),
+    );
+  }
+
   static rankedfirsts(bool ranked) {
     return ranked
         ? BoxDecoration(

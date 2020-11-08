@@ -284,10 +284,11 @@ class _PostScreenState extends State<PostScreen> {
                           MaterialPageRoute(
                             builder: (BuildContext context) {
                               return RequestScreen(
-                                postId: widget.id,
-                                price: (double.parse(post.price))
-                                    .toStringAsFixed(0),
-                              ); //register
+                                  postId: widget.id,
+                                  price: (double.parse(post.price))
+                                      .toStringAsFixed(0),
+                                  idUserPost:
+                                      widget.cardHome.idUserPost); //register
                             },
                           ),
                         );
@@ -370,6 +371,7 @@ class _PostScreenState extends State<PostScreen> {
                                 builder: (BuildContext context) {
                                   return AddPostScreen(
                                     idPost: widget.id,
+                                    idUserPost: widget.cardHome.idUserPost,
                                   ); //register
                                 },
                               ),

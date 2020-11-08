@@ -20,47 +20,67 @@ class _CardNotificationState extends State<CardNotification> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
 
-    return Dismissible(
-      key: Key("1"),
-      child: Container(
-        decoration: Mystyle.cadredec().copyWith(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        width: ScreenUtil().setWidth(200),
-        height: ScreenUtil().setHeight(250),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+    return Container(
+      child: Column(children: [
+        Stack(children: [
+          Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              alignment: Alignment.topRight,
               child: SvgPicture.asset(
-                "assets/svg/notifmoney.svg",
+                "assets/svg/delete_icon.svg",
+                width: 90,
+                height: 90,
               ),
             ),
-            SizedBox(height: ScreenUtil().setHeight(10)),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: SizedBox(
-                width: 160,
-                child: Text(
-                  widget.text,
-                  style: Mystyle.normalTextStyle,
-                  textAlign: TextAlign.left,
-                  overflow: TextOverflow.clip,
-                ),
+          ),
+          Dismissible(
+            key: Key("1"),
+            child: Container(
+              decoration: Mystyle.cadredec2().copyWith(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              width: ScreenUtil().setWidth(1000),
+              height: ScreenUtil().setHeight(250),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: SvgPicture.asset(
+                      "assets/svg/notifmoney.svg",
+                    ),
+                  ),
+                  SizedBox(height: ScreenUtil().setHeight(10)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: SizedBox(
+                      width: 160,
+                      child: Text(
+                        widget.text,
+                        style: Mystyle.normalTextStyle,
+                        textAlign: TextAlign.left,
+                        overflow: TextOverflow.clip,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "+" + widget.points.toString() + "\npuntos",
+                    style: TextStyle(
+                        color: Color(0xFFD16061),
+                        fontSize: 15,
+                        fontFamily: Mystyle.openS),
+                  )
+                ],
               ),
             ),
-            Text(
-              "+" + widget.points.toString() + "\npuntos",
-              style: TextStyle(
-                  color: Color(0xFFD16061),
-                  fontSize: 15,
-                  fontFamily: Mystyle.openS),
-            )
-          ],
-        ),
-      ),
+          ),
+        ]),
+        Container(
+          height: 10,
+        )
+      ]),
     );
   }
 }

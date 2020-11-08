@@ -187,14 +187,12 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       )),
             SizedBox(height: ScreenUtil().setHeight(60)),
             ButtAuth("Publicar", () {
-              userBloc
-                  .addComment(widget.idPost, photoUrl,
-                      comentarioController.text, widget.valoration.toString())
-                  .whenComplete(() {
-                uploadFile();
-                userBloc.addNotification(widget.idUserPost, "comment", 10);
-                Navigator.pop(context);
-              });
+              userBloc.addComment(widget.idPost, photoUrl,
+                  comentarioController.text, widget.valoration.toString());
+
+              //uploadFile();
+              userBloc.addNotification(widget.idUserPost, "comment", 10);
+              Navigator.pop(context);
             }, border: true, press: true),
             SizedBox(height: ScreenUtil().setHeight(100)),
           ],

@@ -45,6 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 points: element.get("points"),
                 bankAccount: element.get("bank_account"),
                 type: element.get("type"));
+
             if (userBloc.user.type == "owner") {
               userBloc.user.restaurantName = element.get("restaurant_name");
               userBloc.user.location = element.get("location");

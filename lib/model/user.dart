@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 class UserModel {
-  String uid;
-  final String userName;
-  final String email;
-  final int points;
-  final String bankAccount;
-  final List favourites;
-  String type;
-  String restaurantName;
-  String location;
-  String cif;
-  String avatarURL;
+  String uid = "";
+  String userName = "";
+  String email = "";
+  int points = 0;
+  String bankAccount = "";
+  List favourites;
+  String type = "";
+  String restaurantName = "";
+  String location = "";
+  String cif = "";
+  String avatarURL = "";
 
   UserModel(
       {Key key,

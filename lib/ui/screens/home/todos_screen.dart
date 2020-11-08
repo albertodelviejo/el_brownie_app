@@ -26,29 +26,27 @@ class _TodosScreenState extends State<TodosScreen> {
   }
 
   Widget getUserfromDB(uid) {
-    if (userBloc.user.uid == null) {
-      return StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance
-              .collection("users")
-              .where('uid', isEqualTo: uid)
-              .snapshots(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            UserBloc userBloc = BlocProvider.of(context);
-            if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
-            } else {
-              DocumentSnapshot element = snapshot.data.documents[0];
-              userBloc.user = UserModel(
-                  email: element.get("email"),
-                  uid: element.get("uid"),
-                  userName: element.get("username"));
-              Stream.empty();
-              return getPostsfromDB();
-            }
-          });
-    } else {
-      return getPostsfromDB();
-    }
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("users")
+            .where('uid', isEqualTo: uid)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          UserBloc userBloc = BlocProvider.of(context);
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            DocumentSnapshot element = snapshot.data.documents[0];
+            userBloc.user = UserModel(
+                email: element.get("email"),
+                uid: element.get("uid"),
+                userName: element.get("username"),
+                avatarURL: element.get("avatar_url"),
+                points: element.get("points"));
+            Stream.empty();
+            return getPostsfromDB();
+          }
+        });
   }
 
   Widget getPostsfromDB() {
