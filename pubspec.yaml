@@ -32,7 +32,6 @@ dependencies:
   firebase_core: ^0.5.0
   firebase_storage: ^4.0.0
   flutter_facebook_login: ^3.0.0
-  flutter_google_places: ^0.2.6
   flutter_screenutil: ^3.1.1
   flutter_signin_button: ^1.1.0
   flutter_svg: ^0.19.1
@@ -46,6 +45,10 @@ dependencies:
   shared_preferences: ^0.5.12+4
   stripe_payment: ^1.0.8
   url_launcher: ^5.7.2
+  admob_flutter: ^1.0.1
+  google_maps_webservice: ^0.0.18
+  flutter_google_places: ^0.2.6
+  geocoder: ^0.2.1
 
 dev_dependencies:
   flutter_test:

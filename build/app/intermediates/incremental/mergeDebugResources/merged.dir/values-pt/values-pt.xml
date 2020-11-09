@@ -117,7 +117,7 @@
     <string name="price_free">Grátis</string>
     <string msgid="146198913615257606" name="search_menu_title">"Pesquisar"</string>
     <string name="secure_checkout">Finalização de compra segura</string>
-    <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
     <string name="title_add_a_card">Adicionar um cartão</string>
     <string name="title_add_an_address">Adicionar um endereço</string>
     <string name="title_payment_method">Forma de pagamento</string>

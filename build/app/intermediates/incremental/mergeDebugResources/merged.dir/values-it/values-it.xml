@@ -144,9 +144,16 @@
     <string name="payment_method_add_new_card">Aggiungi una nuova carta…</string>
     <string name="price_free">Gratuito</string>
     <string name="processing">Elaborazione in corso\u2026</string>
+    <string msgid="368094699078615544" name="s1">"Salva immagine"</string>
+    <string msgid="4550830452390689489" name="s2">"Consentire ad AdMob di memorizzare l\'immagine nella galleria Immagini?"</string>
+    <string msgid="2435407834265420668" name="s3">"Accetto"</string>
+    <string msgid="9167523597401839819" name="s4">"Rifiuto"</string>
+    <string msgid="1566682516266724847" name="s5">"Crea evento di calendario"</string>
+    <string msgid="5996672174517137271" name="s6">"Consentire ad AdMob di creare un evento di calendario?"</string>
+    <string msgid="7163549807207034258" name="s7">"Annuncio di test"</string>
     <string msgid="146198913615257606" name="search_menu_title">"Ricerca"</string>
     <string name="secure_checkout">Completamento del pagamento sicuro</string>
-    <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
     <string name="title_add_a_card">Aggiungi una carta</string>
     <string name="title_add_an_address">Aggiungi un indirizzo</string>
     <string name="title_payment_method">Metodo di pagamento</string>

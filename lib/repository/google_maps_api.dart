@@ -1,13 +1,27 @@
+import 'package:geocoder/geocoder.dart';
 import 'package:google_maps_webservice/places.dart';
 
-const kGoogleApiKey = "AIzaSyCQarq8zgeo0ksCrI7p1m3yG-JQSpp8bUk";
-
 class GoogleMapsApi {
-  GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: kGoogleApiKey);
 
-  Future<Location> getSearchLocation(text) async {
-    await _places.searchByText(text).then((PlacesSearchResponse response) {
-      return response.results.first.geometry.location;
-    });
+  String apiKey = 'AIzaSyCQarq8zgeo0ksCrI7p1m3yG-JQSpp8bUk';
+
+  GoogleMapsPlaces _places = GoogleMapsPlaces(apiKey: 'AIzaSyCQarq8zgeo0ksCrI7p1m3yG-JQSpp8bUk');
+
+  Future<Null> displayPrediction(Prediction p) async {
+    if (p != null) {
+      PlacesDetailsResponse detail =
+      await _places.getDetailsByPlaceId(p.placeId);
+      double lat = detail.result.geometry.location.lat;
+      double lng = detail.result.geometry.location.lng;
+      var address = await Geocoder.local.findAddressesFromQuery(p.description);
+      //Choose what ever you want from prediction
+      print(address);
+      print(address[0].addressLine);
+      print(p.description);
+      print(lat);
+      print(lng);
+    }
   }
+
+  
 }
