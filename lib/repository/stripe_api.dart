@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -91,7 +92,7 @@ class StripeService {
     }
   }
 
-  Future<void> createClaim(String amount, String idPost, String reason,
+  Future<void> createClaim(String amount, String idPost, String cif, String reason,
       String paymentMethod, String paymentIntentId) async {
     var postQuery = await _firestore
         .collection('posts')
@@ -108,12 +109,16 @@ class StripeService {
       'paymentMethod': paymentMethod,
       'paid_at': DateFormat('dd-MM-yyyy').format(DateTime.now()),
     });
+<<<<<<< HEAD
 
     if (reason == 'owner') {
+=======
+    if (reason == claim_opt_1) {
+>>>>>>> 7b0b8441707ee0776bc85c709b935dba7c37c2ee
       DocumentReference ownerQuery =
           _firestore.collection('users').doc(_auth.currentUser.uid);
       ownerQuery.get().then((value) async {
-        await ownerQuery.update({'type': 'owner', 'cif': 'cif'});
+        await ownerQuery.update({'type': 'owner', 'cif': cif});
       });
     }
   }

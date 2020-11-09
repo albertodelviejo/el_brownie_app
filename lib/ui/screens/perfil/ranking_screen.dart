@@ -33,6 +33,7 @@ class _RankingScreenState extends State<RankingScreen> {
                 List users = snapshot.data.docs ?? [];
                 users.sort(
                     (b, a) => a.data()['points'].compareTo(b.data()['points']));
+                List top10Users = users.take(10).toList();
                 var currentUser = users
                     .firstWhere((user) => _auth.currentUser.uid == user.id);
                 return StreamBuilder(
@@ -59,7 +60,8 @@ class _RankingScreenState extends State<RankingScreen> {
                               rank: getRank(_auth.currentUser.uid, users),
                               image: _auth.currentUser.photoURL ??
                                   "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png",
-                              name: currentUser.data()['username'],
+                              name:
+                                  currentUser.data()['username'] ?? 'username',
                               pub:
                                   "${getPostsCount(_auth.currentUser.uid, posts)} publicaciones",
                               point: currentUser.data()['points'].toString(),
@@ -80,7 +82,7 @@ class _RankingScreenState extends State<RankingScreen> {
                             ListView.builder(
                                 shrinkWrap: true,
                                 physics: ClampingScrollPhysics(),
-                                itemCount: users.length,
+                                itemCount: top10Users.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   return Container(
                                     decoration: BoxDecoration(
@@ -94,18 +96,21 @@ class _RankingScreenState extends State<RankingScreen> {
                                       rank: index + 1,
                                       image:
                                           "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png",
-                                      name: users[index].data()['username'] ??
+                                      name: top10Users[index]
+                                              .data()['username'] ??
                                           'Usuario',
-                                      pub: getPostsCount(users[index].id, posts)
-                                          .toString() + " publicaciones",
-                                      point: users[index]
+                                      pub: getPostsCount(
+                                                  top10Users[index].id, posts)
+                                              .toString() +
+                                          " publicaciones",
+                                      point: top10Users[index]
                                               .data()['points']
                                               .toString() ??
                                           '0',
                                     ),
                                   );
                                 }),
-                                SizedBox(height: ScreenUtil().setHeight(100)),
+                            SizedBox(height: ScreenUtil().setHeight(100)),
                           ],
                         );
                       } else {
@@ -124,11 +129,10 @@ class _RankingScreenState extends State<RankingScreen> {
   }
 }
 
-
 int getPostsCount(String uid, List posts) {
   int sum = 0;
-  posts.forEach((post) { 
-    if(post.data()['id_user'] == uid) sum++;
+  posts.forEach((post) {
+    if (post.data()['id_user'] == uid) sum++;
   });
   return sum;
 }
@@ -137,7 +141,7 @@ int getRank(String uid, List users) {
   int rank = users.length;
   for (var i = 1; i <= users.length; i++) {
     if (users[i].id == uid) {
-      rank = i+1;
+      rank = i + 1;
       break;
     }
   }

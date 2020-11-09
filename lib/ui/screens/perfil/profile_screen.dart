@@ -34,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           UserBloc userBloc = BlocProvider.of(context);
-          if (!snapshot.hasData) {
+          if (snapshot.data == null) {
             return Center(child: CircularProgressIndicator());
           } else {
             DocumentSnapshot element = snapshot.data.documents[0];

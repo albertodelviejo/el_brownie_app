@@ -73,8 +73,8 @@ class UserBloc implements Bloc {
 
 //3. Get Tickets from DB
 
-  Future<Location> getSearchLocation(text) =>
-      _googleMapsApi.getSearchLocation(text);
+  // Future<Location> getSearchLocation(text) =>
+  //     _googleMapsApi.getSearchLocation(text);
 
 // 7. Set post as favourite
 

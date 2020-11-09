@@ -24,7 +24,8 @@ class _RequestScreenState extends State<RequestScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   int _value = 12;
   bool isfirst = false;
-  String reason;
+  String reason = '';
+  final cifController = TextEditingController();
 
   UserBloc userBloc;
 
@@ -162,23 +163,15 @@ class _RequestScreenState extends State<RequestScreen> {
                                           horizontal: 8,
                                           vertical: ScreenUtil().setHeight(20)),
                                       child: TextFormField(
-                                        // controller: test,
+                                        controller: cifController,
                                         keyboardType:
                                             TextInputType.emailAddress,
                                         decoration: Mystyle.inputWhitebg(
                                           'B-64738219',
                                         ),
                                         textInputAction: TextInputAction.done,
-                                        validator: (value) {
-                                          if (value.isEmpty) return 'isEmpty';
-                                          return null;
-                                        },
                                       ),
                                     ),
-                                    SizedBox(
-                                        height: ScreenUtil().setHeight(40)),
-                                    ButtAuth("Si", () {},
-                                        border: true, press: true),
                                     SizedBox(
                                         height: ScreenUtil().setHeight(40)),
                                   ],
@@ -261,44 +254,58 @@ class _RequestScreenState extends State<RequestScreen> {
                 ),
                 SizedBox(height: ScreenUtil().setHeight(60)),
                 ButtAuth("Pagar", () async {
-                  setState(() {
-                    loading = true;
-                  });
-                  var response = await StripeService.payWithNewCard(
-                      amount: widget.price + '00', currency: 'EUR');
-                  switch (_value) {
-                    case 0:
-                      reason = claim_opt_1;
-                      break;
-                    case 1:
-                      reason = claim_opt_2;
-                      break;
-                    case 2:
-                      reason = claim_opt_3;
-                      break;
-                    case 3:
-                      reason = claim_opt_4;
-                      break;
-                  }
-                  if (response.success) {
-                    await _stripeService.createClaim(widget.price,
-                        widget.postId, reason, 'Card', response.paymentId);
+                  if (_value == 0 && cifController.text == '') {
                     Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text(response.message),
-                      duration: Duration(seconds: 5),
-                    ));
+                        content: Text('Must fill CIF field!'),
+                        duration: Duration(seconds: 5)));
 
                     userBloc.addNotification(
                         widget.idUserPost, "reclamation", 10);
                   } else {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text(response.message),
-                      duration: Duration(seconds: 5),
-                    ));
+                    setState(() {
+                      loading = true;
+                    });
+                    String cif = cifController.text;
+                    double price = double.parse(widget.price) * 100;
+                    String finalPrice = price.toStringAsFixed(0);
+                    var response = await StripeService.payWithNewCard(
+                        amount: finalPrice, currency: 'EUR');
+                    switch (_value) {
+                      case 0:
+                        reason = claim_opt_1;
+                        break;
+                      case 1:
+                        reason = claim_opt_2;
+                        break;
+                      case 2:
+                        reason = claim_opt_3;
+                        break;
+                      case 3:
+                        reason = claim_opt_4;
+                        break;
+                    }
+                    if (response.success) {
+                      await _stripeService.createClaim(
+                          widget.price,
+                          widget.postId,
+                          cif,
+                          reason,
+                          'Card',
+                          response.paymentId);
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(response.message),
+                        duration: Duration(seconds: 5),
+                      ));
+                    } else {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(response.message),
+                        duration: Duration(seconds: 5),
+                      ));
+                    }
+                    setState(() {
+                      loading = false;
+                    });
                   }
-                  setState(() {
-                    loading = false;
-                  });
                 }, border: true, press: true),
                 SizedBox(height: ScreenUtil().setHeight(300)),
               ],

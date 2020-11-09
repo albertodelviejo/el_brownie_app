@@ -1,13 +1,16 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/repository/google_maps_api.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:google_maps_webservice/places.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:path/path.dart';
@@ -33,6 +36,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
   var imageFile;
 
   bool loading = false;
+  final googleMapsApi = GoogleMapsApi();
 
   var _dropdownvalue;
 
@@ -315,7 +319,24 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                           color: Colors.black54,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        //you can discover other features like components 
+                        Prediction p = await PlacesAutocomplete.show(
+                          context: context,
+                          apiKey: googleMapsApi.apiKey,
+                          //you can choose full scren or overlay
+                          mode: Mode.fullscreen,
+                          //you can set spain language
+                          language: 'en',
+                          //you can set here what user wrote in textfield
+                          startText: direccion.text,
+                          onError: (onError) {
+                            //the error will be showen is enable billing
+                            print(onError.errorMessage);
+                          },
+                        );
+                        googleMapsApi.displayPrediction(p);
+                      },
                     ),
                   ),
                   textInputAction: TextInputAction.done,
