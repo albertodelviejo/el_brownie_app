@@ -320,14 +320,14 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                         ),
                       ),
                       onPressed: () async {
-                        //you can discover other features like components 
+                        //you can discover other features like components
                         Prediction p = await PlacesAutocomplete.show(
                           context: context,
                           apiKey: googleMapsApi.apiKey,
                           //you can choose full scren or overlay
                           mode: Mode.fullscreen,
                           //you can set spain language
-                          language: 'en',
+                          language: 'es',
                           //you can set here what user wrote in textfield
                           startText: direccion.text,
                           onError: (onError) {

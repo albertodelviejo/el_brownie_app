@@ -25,10 +25,6 @@ class CloudFirestoreAPI {
               await ref.update({
                 'uid': user.uid,
                 'email': user.email,
-                'bank_account': user.bankAccount,
-                'type': user.type,
-                'points': user.points,
-                'avatar_url': user.avatarURL
               })
             }
           else
@@ -45,7 +41,8 @@ class CloudFirestoreAPI {
                 'type': "default",
                 'favorites': {},
                 'notifications': {},
-                'avatar_url': ""
+                'avatar_url': "",
+                'number_of_posts': 0
               })
             }
         });

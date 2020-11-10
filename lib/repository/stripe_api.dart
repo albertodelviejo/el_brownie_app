@@ -92,8 +92,8 @@ class StripeService {
     }
   }
 
-  Future<void> createClaim(String amount, String idPost, String cif, String reason,
-      String paymentMethod, String paymentIntentId) async {
+  Future<void> createClaim(String amount, String idPost, String cif,
+      String reason, String paymentMethod, String paymentIntentId) async {
     var postQuery = await _firestore
         .collection('posts')
         .where('id_post', isEqualTo: idPost)
@@ -109,12 +109,7 @@ class StripeService {
       'paymentMethod': paymentMethod,
       'paid_at': DateFormat('dd-MM-yyyy').format(DateTime.now()),
     });
-<<<<<<< HEAD
-
-    if (reason == 'owner') {
-=======
     if (reason == claim_opt_1) {
->>>>>>> 7b0b8441707ee0776bc85c709b935dba7c37c2ee
       DocumentReference ownerQuery =
           _firestore.collection('users').doc(_auth.currentUser.uid);
       ownerQuery.get().then((value) async {
