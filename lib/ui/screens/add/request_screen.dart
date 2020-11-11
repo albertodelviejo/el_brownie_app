@@ -258,9 +258,6 @@ class _RequestScreenState extends State<RequestScreen> {
                     Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text('Must fill CIF field!'),
                         duration: Duration(seconds: 5)));
-
-                    userBloc.addNotification(
-                        widget.idUserPost, "reclamation", 10);
                   } else {
                     setState(() {
                       loading = true;
@@ -292,6 +289,8 @@ class _RequestScreenState extends State<RequestScreen> {
                           reason,
                           'Card',
                           response.paymentId);
+                      userBloc.addNotification(
+                          widget.idUserPost, "reclamation", 10);
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text(response.message),
                         duration: Duration(seconds: 5),

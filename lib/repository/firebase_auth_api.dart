@@ -103,8 +103,7 @@ class FirebaseAuthAPI {
     return currentUser;
   }
 
-  signOut() {
-    _auth.signOut().then((onValue) => print("Sesión cerrada"));
-    print("Sesiones cerradas");
+  signOut() async {
+    await _auth.signOut().then((onValue) => print("Sesión cerrada"));
   }
 }

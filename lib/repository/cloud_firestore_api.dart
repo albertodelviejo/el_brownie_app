@@ -244,13 +244,13 @@ class CloudFirestoreAPI {
   }
 
   Future<String> addNotification(
-      String idUser, String notificationType, int points) {
-    DocumentReference ref = _db.collection("notifications").doc();
-    ref.set({
+      String idUser, String notificationType, int points) async {
+    var notificationdoc = await _db.collection("notifications").add({
       'id_user': idUser,
       'notification_type': notificationType,
       'points': points
-    }).then((value) => ref.id);
+    });
+    return notificationdoc.id;
   }
 
   void deleteNotification(String idNotification) {

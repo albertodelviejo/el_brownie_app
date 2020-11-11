@@ -114,6 +114,7 @@ class _FavScreenState extends State<FavScreen> {
                                           cards[index].data()['id_user'],
                                       imageUrl:
                                           '${cards[index].data()['photo']}',
+                                      isMarked: true,
                                     );
                                   }),
                             );

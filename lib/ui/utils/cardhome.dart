@@ -19,9 +19,10 @@ class CardHome extends StatefulWidget {
       price,
       imageUrl,
       idUserPost;
+
   bool reclam;
   String myindex = "3";
-  bool isTapped;
+  bool isTapped, isMarked;
   Icon icon = Icon(
     Icons.bookmark_border,
     color: Colors.black87,
@@ -41,7 +42,9 @@ class CardHome extends StatefulWidget {
       this.pagename,
       this.price,
       this.idUserPost,
+      this.isMarked = false,
       this.isTapped = false});
+
   @override
   _CardHomeState createState() => _CardHomeState();
 }
@@ -71,6 +74,8 @@ class _CardHomeState extends State<CardHome> {
                           imageUrl: widget.imageUrl,
                           myindex: widget.myindex,
                           id: widget.id,
+                          isMarked: widget.isMarked,
+                          idUserPost: widget.idUserPost,
                         ),
                       )));
         }
@@ -124,7 +129,7 @@ class _CardHomeState extends State<CardHome> {
                       padding: const EdgeInsets.all(8.0),
                       child: GestureDetector(
                         onTap: () {
-                          if (!widget.isTapped) {
+                          if (!widget.isMarked) {
                             setState(() {
                               widget.icon = Icon(
                                 Icons.bookmark,
@@ -136,7 +141,8 @@ class _CardHomeState extends State<CardHome> {
                                 .addNotification(
                                     widget.idUserPost, "favourite", 10)
                                 .then((value) => widget.notific_id = value);
-                            widget.isTapped = true;
+
+                            widget.isMarked = true;
                           } else {
                             setState(() {
                               widget.icon = Icon(
@@ -146,7 +152,7 @@ class _CardHomeState extends State<CardHome> {
                             });
                             userBloc.unlikePost(widget.id);
                             userBloc.deleteNotification(widget.notific_id);
-                            widget.isTapped = false;
+                            widget.isMarked = false;
                           }
                         },
                         child: Container(
@@ -155,7 +161,12 @@ class _CardHomeState extends State<CardHome> {
                               borderRadius: BorderRadius.circular(60),
                             ),
                             padding: EdgeInsets.all(8),
-                            child: widget.icon),
+                            child: !widget.isMarked
+                                ? widget.icon
+                                : Icon(
+                                    Icons.bookmark,
+                                    color: Colors.black87,
+                                  )),
                       ),
                     ),
                   ]),

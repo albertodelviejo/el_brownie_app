@@ -18,5 +18,5 @@ class AuthRepository {
 
   Future<User> singInFacebook() => _firebaseAuthAPI.signInFacebook();
 
-  signOut() => _firebaseAuthAPI.signOut();
+  signOut() async => await _firebaseAuthAPI.signOut();
 }

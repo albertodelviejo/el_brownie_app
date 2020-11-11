@@ -67,8 +67,9 @@ class CloudFirestoreRepository {
       _cloudFirestoreAPI.buildNotifications(notificationsListSnapshot);
 
   Future<String> addNotification(
-          String idUser, String notificationType, int points) =>
-      _cloudFirestoreAPI.addNotification(idUser, notificationType, points);
+          String idUser, String notificationType, int points) async =>
+      await _cloudFirestoreAPI.addNotification(
+          idUser, notificationType, points);
 
   void deleteNotification(String idNotification) =>
       _cloudFirestoreAPI.deleteNotification(idNotification);

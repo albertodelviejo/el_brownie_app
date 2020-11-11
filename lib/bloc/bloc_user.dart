@@ -132,14 +132,14 @@ class UserBloc implements Bloc {
   //13. Reset password
   Future<void> resetPassword(email) => _authRepository.resetPassword(email);
 
-  void signOut() {
-    _authRepository.signOut();
+  Future<void> signOut() async {
+    await _authRepository.signOut();
   }
 
   //14.Add a notification
   Future<String> addNotification(
-          String idUser, String notificationType, int points) =>
-      _cloudFirestoreRepository.addNotification(
+          String idUser, String notificationType, int points) async =>
+      await _cloudFirestoreRepository.addNotification(
           idUser, notificationType, points);
 
   //15. Delete a notification

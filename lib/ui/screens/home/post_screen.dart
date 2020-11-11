@@ -192,21 +192,26 @@ class _PostScreenState extends State<PostScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        if (!widget.isTapped) {
+                        if (!widget.cardHome.isMarked) {
                           setState(() {
-                            widget.icon = Icon(
+                            widget.cardHome.isMarked = true;
+                            widget.cardHome.icon = Icon(
                               Icons.bookmark,
                               color: Colors.black87,
                             );
+                            widget.icon = widget.cardHome.icon;
                           });
                           userBloc.likePost(widget.id);
                           widget.isTapped = true;
                         } else {
                           setState(() {
-                            widget.icon = Icon(
+                            widget.cardHome.isMarked = false;
+                            widget.cardHome.icon = Icon(
                               Icons.bookmark_border,
                               color: Colors.black87,
                             );
+
+                            widget.icon = widget.cardHome.icon;
                           });
                           userBloc.unlikePost(widget.id);
                           widget.isTapped = false;
@@ -222,7 +227,12 @@ class _PostScreenState extends State<PostScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            widget.icon,
+                            !widget.cardHome.isMarked
+                                ? widget.icon
+                                : Icon(
+                                    Icons.bookmark,
+                                    color: Colors.black87,
+                                  ),
                             SizedBox(height: ScreenUtil().setHeight(10)),
                             Flexible(
                               child: Text(
