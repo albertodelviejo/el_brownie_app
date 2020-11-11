@@ -21,7 +21,7 @@ class CommentsW extends StatelessWidget {
     ScreenUtil.init(context);
     return Column(children: [
       Container(
-        padding: EdgeInsets.only(left: 16, right: 16, bottom: 12, top: 8),
+        padding: EdgeInsets.only(left: 12, right: 0, bottom: 12, top: 8),
         width: MediaQuery.of(context).size.width,
         child: ListTile(
           leading: Container(

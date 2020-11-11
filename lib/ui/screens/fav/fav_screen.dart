@@ -122,7 +122,7 @@ class _FavScreenState extends State<FavScreen> {
                           }
                         });
                   } else {
-                    return CircularProgressIndicator();
+                    return Container(child: CircularProgressIndicator());
                   }
                 }),
           ],

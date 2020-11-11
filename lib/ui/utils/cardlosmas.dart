@@ -23,7 +23,7 @@ class CardLosmas extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(5),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
       child: Column(
         children: [
           Stack(

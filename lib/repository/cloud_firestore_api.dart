@@ -100,6 +100,7 @@ class CloudFirestoreAPI {
       allPost.add(CardHome(
         name: element.get('name'),
         valo: "1700 valoraciones",
+        category: element.get('category'),
         place: element.get('address'),
         reclam: element.get('status'),
         view: "1700 views",
