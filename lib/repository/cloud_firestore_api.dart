@@ -297,6 +297,7 @@ class CloudFirestoreAPI {
         icon: Icon(Icons.ac_unit),
         points: points,
         text: text,
+        idNotification: element.id,
       ));
     });
     return allNotifications;
