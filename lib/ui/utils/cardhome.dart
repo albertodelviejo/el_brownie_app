@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:el_brownie_app/bloc/bloc_user.dart';
-import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/ui/screens/home/post_screen.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,7 @@ class CardHome extends StatefulWidget {
   String name,
       place,
       view,
+      category,
       valo,
       hace,
       id,
@@ -34,6 +34,7 @@ class CardHome extends StatefulWidget {
       this.place,
       this.view,
       this.valo,
+      this.category = '',
       this.hace,
       this.reclam,
       this.myindex,

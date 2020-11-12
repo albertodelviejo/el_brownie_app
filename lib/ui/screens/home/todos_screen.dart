@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,17 +7,24 @@ import 'package:el_brownie_app/repository/admob_api.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/noresutlt.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class TodosScreen extends StatefulWidget {
+  final String search;
+  final String category;
+  final String orderPer;
+
+  const TodosScreen({Key key, this.search, this.category, this.orderPer}) : super(key: key);
   @override
   _TodosScreenState createState() => _TodosScreenState();
 }
 
 class _TodosScreenState extends State<TodosScreen> {
   UserBloc userBloc;
+
 
   final admobService = AdmobService();
   AdmobBannerSize bannerSize;
@@ -44,6 +50,13 @@ class _TodosScreenState extends State<TodosScreen> {
     );
     interstitialAd.load();
     rewardAd.load();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    interstitialAd.dispose();
+    rewardAd.dispose();
   }
 
   
@@ -105,10 +118,25 @@ class _TodosScreenState extends State<TodosScreen> {
         });
   }
 
+  filterPosts(List<CardHome> posts) {
+    List<CardHome> filteredPosts = posts;
+    if(widget.search != '') {
+      posts.removeWhere((post) => !post.name.contains(widget.search));
+    }
+    if(widget.category != '') {
+      posts.removeWhere((post) => !post.category.contains(widget.category));
+    }
+    if(widget.orderPer == orderOption1) {
+      //enable billing
+      // GoogleMapsApi().getNearbyPlcaes(filteredPosts);
+    }
+    return filteredPosts;
+  }
+
   Widget todosScreen(List<CardHome> allPosts) {
     ScreenUtil.init(context);
     bool noresult = false;
-
+    List<CardHome> posts = filterPosts(allPosts);
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: 24),
       children: <Widget>[
@@ -158,8 +186,8 @@ class _TodosScreenState extends State<TodosScreen> {
                     padding: EdgeInsets.only(bottom: 25),
                     scrollDirection: Axis.vertical,
                     reverse: false,
-                    itemBuilder: (_, int index) => allPosts[index],
-                    itemCount: allPosts.length,
+                    itemBuilder: (_, int index) => posts[index],
+                    itemCount: posts.length,
                   ),
                   SizedBox(height: ScreenUtil().setHeight(100)),
                 ],

@@ -1,5 +1,4 @@
 import 'package:el_brownie_app/bloc/bloc_user.dart';
-import 'package:el_brownie_app/ui/utils/cardnotification.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';

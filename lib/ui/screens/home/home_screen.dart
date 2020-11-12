@@ -1,10 +1,13 @@
+import 'package:el_brownie_app/bloc/orderByModel.dart';
+import 'package:el_brownie_app/model/categoryModel.dart';
 import 'package:el_brownie_app/ui/screens/home/losmas_screen.dart';
 import 'package:el_brownie_app/ui/screens/home/todos_screen.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
+import 'package:el_brownie_app/ui/utils/category.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
+import 'package:el_brownie_app/ui/utils/orderBy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,6 +16,28 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
+  final searchController = TextEditingController();
+  String currentCategory = '';
+  String orderPer = '';
+
+
+  List<CategoryModel> categories = [
+    CategoryModel("Veggies", "assets/svg/brocoli.svg", false),
+    CategoryModel("Oriental", "assets/svg/sushi.svg", false),
+    CategoryModel("Occidental", "assets/svg/occidental.svg", false),
+    CategoryModel("Hipster", "assets/svg/hipster.svg", false),
+    CategoryModel("Lujo", "assets/svg/lujo.svg", false),
+    CategoryModel("De barrio", "assets/svg/barrio.svg", false),
+    CategoryModel("Pub musical", "assets/svg/pub.svg", false),
+    CategoryModel("Fast Food", "assets/svg/sushi.svg", false),
+    CategoryModel("Fusión", "assets/svg/fusion.svg", false),
+  ];
+
+  List<OrderBy> orderByList = [
+    OrderBy("Cerca a mi", "assets/svg/send.svg", false),
+    OrderBy("Más Warros!", "assets/svg/brocoli.svg", false),
+  ];
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
@@ -77,6 +102,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               if (value.isEmpty) return 'isEmpty';
                               return null;
                             },
+                            onChanged: (value) {
+                              setState(() {
+                                searchController.text = value;
+                              });
+                            },
                           ),
                           Positioned(
                             right: 0,
@@ -87,16 +117,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Icons.tune,
                               ),
                               onPressed: () {
-                                FocusScope.of(context)
-                                    .requestFocus(FocusNode());
+                                // FocusScope.of(context)
+                                //     .requestFocus(FocusNode());
                                 // Your codes...
                                 showModalBottomSheet(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return modal();
-                                  },
-                                  isScrollControlled: true,
-                                );
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return modal(() {
+                                        setState(() {
+                                          Navigator.pop(context);
+                                        });
+                                      });
+                                    },
+                                    isScrollControlled: true);
                               },
                             ),
                           ),
@@ -131,7 +164,10 @@ class _HomeScreenState extends State<HomeScreen> {
             // controller: _tabController,
             physics: NeverScrollableScrollPhysics(),
             children: [
-              TodosScreen(),
+              TodosScreen(
+                  search: searchController.text,
+                  category: currentCategory,
+                  orderPer: orderPer),
               LosMasScreen(),
               Container(),
             ],
@@ -141,373 +177,178 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  modal() {
-    return Container(
-      color: Color(0xFF737373),
-      // height: 1000,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
-          color: Colors.white,
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              "Ordenar por",
-              style: Mystyle.titleTextStyle.copyWith(
-                color: Colors.black87,
+  modal(Function onPressed) {
+    return StatefulBuilder(
+        builder: (BuildContext context, StateSetter setModalState) {
+      return Container(
+        color: Color(0xFF737373),
+        // height: 1000,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10.0),
+                topRight: Radius.circular(10.0)),
+            color: Colors.white,
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                "Ordenar por",
+                style: Mystyle.titleTextStyle.copyWith(
+                  color: Colors.black87,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/send.svg",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Cerca a mi",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/iempty.png",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Más Warros!",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  Container(
-                    width: ScreenUtil().setHeight(180),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            Text(
-              "Categorías",
-              style: Mystyle.titleTextStyle.copyWith(
-                color: Colors.black87,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/brocoli.svg",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Veggies",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/sushi.svg",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Oriental",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/occidental.svg",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Occidental",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(100)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/hipster.svg",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Hipster",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/lujo.svg",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Lujo",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/barrio.svg",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "De barrio",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(100)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 2),
-                  child: Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/pub.svg",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Pub musical",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+              SizedBox(height: ScreenUtil().setHeight(40)),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Container(
+                  height: ScreenUtil().setWidth(180),
+                  child: GridView.builder(
+                    itemCount: orderByList.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 40,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return OrderByUi(
+                        title: orderByList[index].orderBy,
+                        image: orderByList[index].image,
+                        selected: orderByList[index].isChecked,
+                        onOrderByPressed: () {
+                          if (orderByList[index].isChecked) {
+                              setModalState(() {
+                                orderByList[index].isChecked = false;
+                                orderPer = '';
+                              });
+                            } else {
+                              setModalState(() {
+                                orderByList.forEach(
+                                    (orderBy) => orderBy.isChecked = false);
+                                orderByList[index].isChecked = true;
+                                orderPer = orderByList[index].orderBy;
+                              });
+                            }
+                        },
+                      );
+                    },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/fastfood.svg",
-                            // color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Fast Food",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+              ),
+              SizedBox(height: ScreenUtil().setHeight(40)),
+              Text(
+                "Categorías",
+                style: Mystyle.titleTextStyle.copyWith(
+                  color: Colors.black87,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: ScreenUtil().setHeight(40)),
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30)),
+                child: Container(
+                  height: ScreenUtil().setWidth(750),
+                  child: GridView.builder(
+                    itemCount: categories.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 40,
+                        mainAxisSpacing: 10),
+                    itemBuilder: (BuildContext context, int index) {
+                      return Category(
+                        title: categories[index].category,
+                        image: categories[index].image,
+                        selected: categories[index].isChecked,
+                        onCategoryPressed: () {
+                          if (categories[index].isChecked) {
+                            setModalState(() {
+                              categories[index].isChecked = false;
+                              currentCategory = '';
+                            });
+                          } else {
+                            setModalState(() {
+                              categories.forEach(
+                                  (category) => category.isChecked = false);
+                              categories[index].isChecked = true;
+                              currentCategory = categories[index].category;
+                            });
+                          }
+                        },
+                      );
+                    },
+                    physics: NeverScrollableScrollPhysics(),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 25),
-                  child: Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(80),
-                          width: ScreenUtil().setWidth(80),
-                          child: SvgPicture.asset(
-                            "assets/svg/fusion.svg",
-                            // color: Colors.red,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 17),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: ScreenUtil().setHeight(120),
+                        child: RaisedButton(
+                          child: Text(
+                            "Eliminar todos",
+                            style: Mystyle.normalTextStyle
+                                .copyWith(fontWeight: FontWeight.w600),
                           ),
+                          textColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                            side: BorderSide(color: Colors.black),
+                          ),
+                          color: Colors.white,
+                          splashColor: Colors.black87,
+                          highlightColor: Colors.black87,
+                          onPressed: () {
+                            setModalState(() {
+                              categories.forEach(
+                                  (category) => category.isChecked = false);
+                              currentCategory = '';
+                              orderPer = '';
+                            });
+                          },
                         ),
-                      ),
-                      Text(
-                        "Fusión",
-                        style: Mystyle.smallTextStyle
-                            .copyWith(color: Colors.black87),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: ScreenUtil().setHeight(100)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 17),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: ScreenUtil().setHeight(120),
-                      child: RaisedButton(
-                        child: Text(
-                          "Eliminar todos",
-                          style: Mystyle.normalTextStyle
-                              .copyWith(fontWeight: FontWeight.w600),
-                        ),
-                        textColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          side: BorderSide(color: Colors.black),
-                        ),
-                        color: Colors.white,
-                        splashColor: Colors.black87,
-                        highlightColor: Colors.black87,
-                        onPressed: () {},
                       ),
                     ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: Container(
-                      height: ScreenUtil().setHeight(120),
-                      child: RaisedButton(
-                        child: Text(
-                          "Aplicar",
-                          style: Mystyle.normalTextStyle
-                              .copyWith(fontWeight: FontWeight.w600),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Container(
+                        height: ScreenUtil().setHeight(120),
+                        child: RaisedButton(
+                          child: Text(
+                            "Aplicar",
+                            style: Mystyle.normalTextStyle
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          textColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                            side: BorderSide(color: Colors.black),
+                          ),
+                          color: Colors.white,
+                          splashColor: Colors.black87,
+                          highlightColor: Colors.black87,
+                          onPressed: onPressed,
                         ),
-                        textColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          side: BorderSide(color: Colors.black),
-                        ),
-                        color: Colors.white,
-                        splashColor: Colors.black87,
-                        highlightColor: Colors.black87,
-                        onPressed: () {},
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(50)),
-          ],
+              SizedBox(height: ScreenUtil().setHeight(50)),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

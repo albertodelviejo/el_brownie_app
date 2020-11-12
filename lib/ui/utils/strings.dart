@@ -16,6 +16,9 @@ const String notification_tile_welcome = "Bienvenido a la comunidad elBrownie";
 const String notification_tile_comment =
     "Alguien ha comentado un local que has publicado";
 
+const String orderOption1 = 'cerca_a_mi';
+const String orderOption2 = 'mas_warros';
+
 const category_list = [
   "Veggie",
   "Oriental",
