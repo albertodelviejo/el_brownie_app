@@ -10,12 +10,4 @@ class CategoryModel {
     this.image,
     this.isChecked
   );
-
-  void check() {
-    this.isChecked = true;
-  }
-
-  void uncheck() {
-    this.isChecked = false;
-  }
 }
