@@ -54,8 +54,6 @@ class UserBloc implements Bloc {
   List<CardHome> buildMyPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildAllPosts(ticketsListSnapshot);
 
-      
-
 // //6. Get favourites posts
 //   Future<List<CardHome>> myFavouritesPostsList() async {
 //     List<String> list = [];
@@ -157,6 +155,10 @@ class UserBloc implements Bloc {
   List<CardNotification> buildNotifications(
           List<DocumentSnapshot> notificationsListSnapshot) =>
       _cloudFirestoreRepository.buildNotifications(notificationsListSnapshot);
+
+//17. Actualizar perfil
+  void updateUserProfile(UserModel user) =>
+      _cloudFirestoreRepository.updateUserProfileFirestore(user);
 
   @override
   void dispose() {}

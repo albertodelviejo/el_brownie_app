@@ -48,6 +48,21 @@ class CloudFirestoreAPI {
         });
   }
 
+  void updateUserProfile(UserModel user) {
+    DocumentReference ref = _db.collection("users").doc(user.uid);
+    ref.get().then((value) async => {
+          if (value.exists)
+            {
+              await ref.update({
+                'uid': user.uid,
+                'email': user.email,
+                'bank_account': user.bankAccount,
+                'avatar_url': user.avatarURL
+              })
+            }
+        });
+  }
+
   List<Post> getAllPosts(List<DocumentSnapshot> postsListSnapshot) {
     List<Post> allPost = List<Post>();
     postsListSnapshot.forEach((element) {

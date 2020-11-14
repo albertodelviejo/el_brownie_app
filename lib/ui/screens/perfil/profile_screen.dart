@@ -10,6 +10,17 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   bool showhidden = false;
+  dynamic imageProfile = ExactAssetImage('assets/avatars/avatar1.png');
+  int imageIndex = 1;
+  var imagesUrls = [
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar1.png?alt=media&token=805ef59a-a620-41d2-9257-7e47c56a3e94',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar2.png?alt=media&token=40f7abdb-1e3c-4ec0-8f29-9c1edf06fcd3',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar3.png?alt=media&token=46e4fe12-2882-47bf-a33b-fa69241593e0',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar4.png?alt=media&token=3275e9e8-d4c7-4372-b87a-4336acb6153c',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar5.png?alt=media&token=e949f8fc-67c9-4e74-be27-a6d0e4dac8f7',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar6.png?alt=media&token=14e2a2ff-ef66-4a2e-a677-4ea0473fe37b'
+  ];
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -44,8 +55,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 userName: element.get("username"),
                 points: element.get("points"),
                 bankAccount: element.get("bank_account"),
-                type: element.get("type"));
-
+                type: element.get("type"),
+                avatarURL: element.get("avatar_url"));
             if (userBloc.user.type == "owner") {
               userBloc.user.restaurantName = element.get("restaurant_name");
               userBloc.user.location = element.get("location");
@@ -80,6 +91,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ? widget.showhidden = false
         : widget.showhidden = true;
 
+    (user.avatarURL != "")
+        ? widget.imageProfile = NetworkImage(user.avatarURL)
+        : widget.imageProfile = widget.imageProfile;
+
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: 24),
       children: <Widget>[
@@ -95,18 +110,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(height: ScreenUtil().setHeight(40)),
         Column(
           children: [
-            Container(
-              width: ScreenUtil().setHeight(250),
-              height: ScreenUtil().setHeight(250),
-              decoration: BoxDecoration(
-                color: Mystyle.primarycolo,
-                borderRadius: BorderRadius.circular(100),
-                image: DecorationImage(
-                  image: NetworkImage(
-                      "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"),
-                  fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () => popAvatar(),
+              child: Container(
+                width: ScreenUtil().setHeight(250),
+                height: ScreenUtil().setHeight(250),
+                decoration: BoxDecoration(
+                  color: Mystyle.primarycolo,
+                  borderRadius: BorderRadius.circular(100),
+                  image: DecorationImage(
+                    image: widget.imageProfile,
+                    fit: BoxFit.cover,
+                  ),
+                  border: Border.all(color: Colors.black, width: 2),
                 ),
-                border: Border.all(color: Colors.black, width: 2),
               ),
             ),
             SizedBox(height: ScreenUtil().setHeight(20)),
@@ -357,12 +374,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         SizedBox(height: ScreenUtil().setHeight(50)),
         ButtAuth("Editar perfil", () {
-          userBloc.updateUserData(UserModel(
-            uid: user.uid,
-            userName: nombreController.text,
-            email: emailController.text,
-            bankAccount: bankaccountController.text,
-          ));
+          var avatarUrl = widget.imagesUrls[widget.imageIndex];
+          userBloc.updateUserProfile(UserModel(
+              uid: user.uid,
+              userName: nombreController.text,
+              email: emailController.text,
+              bankAccount: bankaccountController.text,
+              avatarURL: avatarUrl));
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         ButtAuth("Cerrar Sesión", () {
@@ -384,5 +402,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(height: ScreenUtil().setHeight(100)),
       ],
     );
+  }
+
+  popAvatar() {
+    const images = [
+      'assets/avatars/avatar1.png',
+      'assets/avatars/avatar2.png',
+      'assets/avatars/avatar3.png',
+      'assets/avatars/avatar4.png',
+      'assets/avatars/avatar5.png',
+      'assets/avatars/avatar6.png',
+    ];
+
+    return showDialog(
+        context: context,
+        builder: (context) => Dialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: Container(
+              width: ScreenUtil().setHeight(800),
+              height: ScreenUtil().setHeight(1000),
+              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              child: GridView.count(
+                  crossAxisCount: 2,
+                  children: List.generate(6, (index) {
+                    return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            widget.imageProfile =
+                                ExactAssetImage(images[index]);
+
+                            widget.imageIndex = index;
+                          });
+                          Navigator.pop(context);
+                        },
+                        child: Center(child: Image.asset(images[index])));
+                  })),
+            )));
   }
 }

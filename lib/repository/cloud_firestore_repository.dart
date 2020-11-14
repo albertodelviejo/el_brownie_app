@@ -14,6 +14,9 @@ class CloudFirestoreRepository {
   void updateUserDataFirestore(UserModel user) =>
       _cloudFirestoreAPI.updateUserData(user);
 
+  void updateUserProfileFirestore(UserModel user) =>
+      _cloudFirestoreAPI.updateUserProfile(user);
+
   List<Post> getAllPosts(List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.getAllPosts(postsListSnapshot);
 
