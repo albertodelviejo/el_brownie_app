@@ -9,12 +9,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class CardNotification extends StatefulWidget {
-  Icon icon;
+  Image icon;
   String text;
   int points = 10;
   String idNotification;
+  String type;
 
-  CardNotification({this.icon, this.text, this.points, this.idNotification});
+  CardNotification(
+      {this.icon, this.text, this.points, this.idNotification, this.type});
   @override
   _CardNotificationState createState() => _CardNotificationState();
 }
@@ -24,9 +26,10 @@ class _CardNotificationState extends State<CardNotification> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     UserBloc userBloc = BlocProvider.of(context);
+    PopUp popUp = PopUp(type: widget.type);
 
     return GestureDetector(
-      onTap: () => PopUp(),
+      onTap: () => popUp.report(context),
       child: Container(
         child: Column(children: [
           Stack(children: [
@@ -60,14 +63,12 @@ class _CardNotificationState extends State<CardNotification> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: SvgPicture.asset(
-                        "assets/svg/notifmoney.svg",
-                      ),
-                    ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 15),
+                        child: widget.icon),
                     SizedBox(height: ScreenUtil().setHeight(10)),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 13.0),
                       child: SizedBox(
                         width: 160,
                         child: Text(

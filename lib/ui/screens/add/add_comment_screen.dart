@@ -8,12 +8,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 class AddPostScreen extends StatefulWidget {
   int valoration = 0;
   String idPost;
   String idUserPost;
   bool tapped = false;
+  String idComment;
 
   AddPostScreen({Key key, this.idPost, this.idUserPost});
   @override
@@ -187,10 +189,26 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       )),
             SizedBox(height: ScreenUtil().setHeight(60)),
             ButtAuth("Publicar", () {
-              userBloc.addComment(widget.idPost, photoUrl,
-                  comentarioController.text, widget.valoration.toString());
+              widget.idComment =
+                  comentarioController.text.hashCode.toStringAsFixed(15);
+              var name = '${DateTime.now()}' +
+                  basenameWithoutExtension(imageFile.toString());
+              StorageReference storageReference =
+                  FirebaseStorage.instance.ref().child('comments/$name');
+              StorageUploadTask uploadTask =
+                  storageReference.putFile(imageFile);
+              uploadTask.onComplete.then((snapshot) {
+                snapshot.ref.getDownloadURL().then((url) {
+                  userBloc
+                      .addComment(widget.idPost, url, comentarioController.text,
+                          widget.valoration.toString())
+                      .whenComplete(() {
+                    comentarioController.clear();
+                    imageFile = null;
+                  });
+                });
+              });
 
-              //uploadFile();
               userBloc.addNotification(widget.idUserPost, "comment", 10);
               Navigator.pop(context);
             }, border: true, press: true),

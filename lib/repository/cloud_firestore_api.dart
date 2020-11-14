@@ -269,36 +269,37 @@ class CloudFirestoreAPI {
       String notificationType = element.get('notification_type');
       switch (notificationType) {
         case "reclamation":
-          icon = "";
+          icon = "assets/svg/notifmoney.svg";
           text = notification_tile_reclamation;
           points = element.get('points');
           break;
         case "favourite":
-          icon = "";
+          icon = "assets/svg/favorito.svg";
           text = notification_tile_favourite;
           points = element.get('points');
           break;
         case "top":
-          icon = "";
+          icon = "assets/svg/top.svg";
           text = notification_tile_top;
           points = element.get('points');
           break;
         case "welcome":
-          icon = "";
+          icon = "assets/ifull.png";
           text = notification_tile_welcome;
           points = element.get('points');
           break;
         case "comment":
-          icon = "";
+          icon = "assets/svg/descanso.svg";
           text = notification_tile_comment;
           points = element.get('points');
           break;
       }
       allNotifications.add(CardNotification(
-        icon: Icon(Icons.ac_unit),
+        icon: Image.asset(icon),
         points: points,
         text: text,
         idNotification: element.id,
+        type: notificationType,
       ));
     });
     return allNotifications;

@@ -89,31 +89,6 @@ class CommentsW extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 6),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: ScreenUtil().setWidth(70),
-                          width: ScreenUtil().setWidth(70),
-                          child: SvgPicture.asset(
-                            "assets/svg/like.svg",
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 6),
-                      Text(
-                        likes.toString(),
-                        style: Mystyle.smallTextStyle.copyWith(
-                          fontSize: ScreenUtil().setSp(40),
-                          color: Colors.black87,
-                          // height: 1,
-                        ),
-                      ),
-                    ],
-                  )
                 ],
               )
             ],

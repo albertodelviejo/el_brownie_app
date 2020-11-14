@@ -1,13 +1,54 @@
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PopUp {
-  static report(
+  String type;
+  String title;
+  String text;
+  Image icon;
+
+  PopUp({this.type});
+
+  report(
     context,
   ) {
+    switch (type) {
+      case "reclamation":
+        icon = Image.asset("assets/svg/notifmoney.svg");
+        text = notification_pop_text_reclamation;
+        title = notification_pop_title_reclamation;
+        break;
+      case "favourite":
+        icon = Image.asset("assets/svg/favorito.svg");
+        text = notification_pop_text_favourite;
+        title = notification_pop_title_favourite;
+        break;
+      case "top":
+        icon = Image.asset("assets/svg/top.svg");
+        text = notification_pop_text_top;
+        title = notification_pop_title_top;
+        break;
+      case "welcome":
+        icon = Image.asset("assets/ifull.png");
+        text = notification_pop_text_welcome;
+        title = notification_pop_title_welcome;
+        break;
+      case "comment":
+        icon = Image.asset("assets/svg/descanso.svg");
+        text = notification_pop_text_comment;
+        title = notification_pop_title_comment;
+        break;
+      default:
+        icon = Image.asset("assets/ifull.png");
+        text = notification_pop_text_welcome;
+        title = notification_pop_title_welcome;
+        break;
+    }
+
     return showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -26,13 +67,10 @@ class PopUp {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    alignment: Alignment.bottomRight,
-                    height: ScreenUtil().setWidth(100),
-                    width: ScreenUtil().setWidth(100),
-                    child: SvgPicture.asset(
-                      "assets/svg/close.svg",
-                    ),
-                  ),
+                      alignment: Alignment.bottomRight,
+                      height: ScreenUtil().setWidth(100),
+                      width: ScreenUtil().setWidth(100),
+                      child: Image.asset("")),
                 ),
               ),
               Positioned(
@@ -44,24 +82,21 @@ class PopUp {
                   children: <Widget>[
                     SizedBox(height: ScreenUtil().setHeight(60)),
                     Text(
-                      "Eres menos pobre!",
+                      title,
                       style: Mystyle.titleTextStyle
                           .copyWith(color: Colors.black87),
                       textAlign: TextAlign.center,
                     ),
                     Container(
-                      alignment: Alignment.bottomRight,
-                      height: ScreenUtil().setWidth(300),
-                      width: ScreenUtil().setWidth(300),
-                      child: SvgPicture.asset(
-                        "assets/svg/notifmoney.svg",
-                      ),
-                    ),
+                        alignment: Alignment.bottomRight,
+                        height: ScreenUtil().setWidth(300),
+                        width: ScreenUtil().setWidth(300),
+                        child: icon),
                     SizedBox(height: ScreenUtil().setHeight(40)),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24),
                       child: Text(
-                        "Alguien ha reclamado un local que has subido. En breves recibirás dineritooo!",
+                        text,
                         style: Mystyle.normalTextStyle,
                         textAlign: TextAlign.center,
                       ),
@@ -71,7 +106,9 @@ class PopUp {
                       padding: EdgeInsets.symmetric(horizontal: 42),
                       child: ButtAuth(
                         "Aceptar",
-                        () {},
+                        () {
+                          Navigator.pop(context);
+                        },
                         border: true,
                       ),
                     ),

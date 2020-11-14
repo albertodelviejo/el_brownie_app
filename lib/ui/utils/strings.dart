@@ -19,6 +19,23 @@ const String notification_tile_comment =
 const String orderOption1 = 'cerca_a_mi';
 const String orderOption2 = 'mas_warros';
 
+const String notification_pop_title_reclamation = "Eres menos pobre!";
+const String notification_pop_title_favourite = "Eres famoso!";
+const String notification_pop_title_top = "Eres de los mejores!";
+const String notification_pop_title_welcome = "Somos uno más!";
+const String notification_pop_title_comment = "Tómate un respiro...";
+
+const String notification_pop_text_reclamation =
+    "Alguien ha reclamado us local que has subido. En breves recibirás dineritooo!";
+const String notification_pop_text_favourite =
+    "¡Enhorabuena, alguien ha marcado tu restaurante como favorito!";
+const String notification_pop_text_top =
+    "¡Enhorabuena, ahora estás dentro de los Top 3!";
+const String notification_pop_text_welcome =
+    "Queremos darte la bienvenida a la comunidad el Brownie";
+const String notification_pop_text_comment =
+    "Alguien ha comentado un local que has publicado";
+
 const category_list = [
   "Veggie",
   "Oriental",
