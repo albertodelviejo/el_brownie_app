@@ -10,6 +10,8 @@ import 'package:el_brownie_app/ui/utils/popup.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_share_me/flutter_share_me.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 import '../../../model/post.dart';
@@ -166,7 +168,56 @@ class _PostScreenState extends State<PostScreen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        PopUp;
+                        return showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Container(
+                                  width: ScreenUtil().setHeight(800),
+                                  height: ScreenUtil().setHeight(600),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 16, horizontal: 16),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        share_title_pop,
+                                        style: Mystyle.titleTextStyle
+                                            .copyWith(color: Colors.black87),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      SizedBox(
+                                          height: ScreenUtil().setHeight(40)),
+                                      Text(
+                                        share_text_pop,
+                                        style: Mystyle.normalTextStyle,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      SizedBox(
+                                          height: ScreenUtil().setHeight(40)),
+                                      SignInButtonBuilder(
+                                        backgroundColor: Color(0xFF25D366),
+                                        onPressed: () => {
+                                          FlutterShareMe().shareToWhatsApp()
+                                        },
+                                        text: share_button_pop,
+                                        image: Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              0.0, 0.0, 10.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image(
+                                              image: AssetImage(
+                                                  'assets/whatsapp.svg'),
+                                              height: 36.0,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )));
                       },
                       child: Container(
                         decoration: Mystyle.cadredec().copyWith(
@@ -400,7 +451,7 @@ class _PostScreenState extends State<PostScreen> {
                           itemBuilder: (context, index) {
                             return CommentsW(
                               comment: comments[index].get('text'),
-                              image: "",
+                              image: comments[index].get('photo_url'),
                               likes: comments[index].get('likes'),
                               name: comments[index].get('username'),
                               valoration:

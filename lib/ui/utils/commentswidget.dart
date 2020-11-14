@@ -2,6 +2,8 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
 
 class CommentsW extends StatelessWidget {
   String time, comment, name, image;
@@ -89,6 +91,27 @@ class CommentsW extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 6),
+                  (image == "")
+                      ? SizedBox(
+                          height: 1,
+                        )
+                      : GestureDetector(
+                          onTap: () => PhotoViewGalleryPageOptions(
+                            imageProvider: NetworkImage(image),
+                            initialScale:
+                                PhotoViewComputedScale.contained * 0.8,
+                            /*heroAttributes:
+                                HeroAttributes(tag: galleryItems[index].id)*/
+                          ),
+                          child: Container(
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: NetworkImage(image),
+                                    fit: BoxFit.cover),
+                              )),
+                        )
                 ],
               )
             ],

@@ -1,4 +1,3 @@
-
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
@@ -17,14 +16,14 @@ class TodosScreen extends StatefulWidget {
   final String category;
   final String orderPer;
 
-  const TodosScreen({Key key, this.search, this.category, this.orderPer}) : super(key: key);
+  const TodosScreen({Key key, this.search, this.category, this.orderPer})
+      : super(key: key);
   @override
   _TodosScreenState createState() => _TodosScreenState();
 }
 
 class _TodosScreenState extends State<TodosScreen> {
   UserBloc userBloc;
-
 
   final admobService = AdmobService();
   AdmobBannerSize bannerSize;
@@ -58,8 +57,6 @@ class _TodosScreenState extends State<TodosScreen> {
     interstitialAd.dispose();
     rewardAd.dispose();
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -120,13 +117,13 @@ class _TodosScreenState extends State<TodosScreen> {
 
   filterPosts(List<CardHome> posts) {
     List<CardHome> filteredPosts = posts;
-    if(widget.search != '') {
+    if (widget.search != '') {
       posts.removeWhere((post) => !post.name.contains(widget.search));
     }
-    if(widget.category != '') {
+    if (widget.category != '') {
       posts.removeWhere((post) => !post.category.contains(widget.category));
     }
-    if(widget.orderPer == orderOption1) {
+    if (widget.orderPer == orderOption1) {
       //enable billing
       // GoogleMapsApi().getNearbyPlcaes(filteredPosts);
     }
@@ -157,28 +154,6 @@ class _TodosScreenState extends State<TodosScreen> {
                   AdmobBanner(
                     adUnitId: admobService.getBannerAdId(),
                     adSize: AdmobBannerSize.FULL_BANNER,
-                  ),
-                  FlatButton(
-                    color: Colors.blue,
-                    onPressed: () async {
-                      if (await interstitialAd.isLoaded) {
-                        interstitialAd.show();
-                      } else {
-                        print('Interstitial ad is still loading...');
-                      }
-                    },
-                    child: Text('Click me to see ads'),
-                  ),
-                  FlatButton(
-                    color: Colors.blue,
-                    onPressed: () async {
-                      if (await rewardAd.isLoaded) {
-                        rewardAd.show();
-                      } else {
-                        print('reward video Ad is still loading...');
-                      }
-                    },
-                    child: Text('Click me to see video ads'),
                   ),
                   ListView.builder(
                     shrinkWrap: true,
