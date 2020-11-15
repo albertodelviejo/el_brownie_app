@@ -6,17 +6,17 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
 class CommentsW extends StatelessWidget {
-  String time, comment, name, image;
+  String time, comment, name, image, avatarUrl;
   int valoration, likes;
 
-  CommentsW({
-    this.image,
-    this.name,
-    this.valoration,
-    this.comment,
-    this.likes,
-    this.time,
-  });
+  CommentsW(
+      {this.image,
+      this.name,
+      this.valoration,
+      this.comment,
+      this.likes,
+      this.time,
+      this.avatarUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +33,9 @@ class CommentsW extends StatelessWidget {
               color: Mystyle.primarycolo,
               borderRadius: BorderRadius.circular(100),
               image: DecorationImage(
-                image: ExactAssetImage(
-                    '/assets/avatars/avatar1.png'), //NetworkImage(image),
+                image: avatarUrl == ""
+                    ? ExactAssetImage('assets/avatars/avatar1.png')
+                    : NetworkImage(avatarUrl),
                 fit: BoxFit.cover,
               ),
               border: Border.all(color: Colors.black, width: 2),

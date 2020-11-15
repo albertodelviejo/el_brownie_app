@@ -41,22 +41,22 @@ class _LosMasScreenState extends State<LosMasScreen> {
               CardLosmas(
                 name: "Taska Church",
                 place: "Calle Aragón, Vigo, España ",
-                myindex: 3,
+                myindex: "3",
               ),
               CardLosmas(
                 name: "Taska Church",
                 place: "Calle Aragón, Vigo, España ",
-                myindex: 3,
+                myindex: "3",
               ),
               CardLosmas(
                 name: "Taska Church",
                 place: "Calle Aragón, Vigo, España ",
-                myindex: 3,
+                myindex: "3",
               ),
               CardLosmas(
                 name: "Taska Church",
                 place: "Calle Aragón, Vigo, España ",
-                myindex: 3,
+                myindex: "3",
               ),
             ],
           ),

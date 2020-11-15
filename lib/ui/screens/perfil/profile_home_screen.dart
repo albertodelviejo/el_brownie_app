@@ -1,3 +1,4 @@
+import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/screens/perfil/brownie_screen.dart';
 import 'package:el_brownie_app/ui/screens/perfil/profile_screen.dart';
 import 'package:el_brownie_app/ui/screens/perfil/ranking_screen.dart';
@@ -34,10 +35,30 @@ class _ProfileHomeScreenState extends State<ProfileHomeScreen> {
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 12.0),
-                child: Icon(
-                  Icons.notifications_none,
-                  color: Colors.black,
-                  size: 28,
+                child: IconButton(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return NotificationsScreen(); //register
+                      },
+                    ),
+                  ),
+                  icon: IconButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return NotificationsScreen(); //register
+                        },
+                      ),
+                    ),
+                    icon: Icon(
+                      Icons.notifications_none,
+                      color: Colors.black,
+                      size: 28,
+                    ),
+                  ),
                 ),
               ),
             ],

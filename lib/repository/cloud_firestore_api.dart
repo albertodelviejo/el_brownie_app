@@ -3,6 +3,7 @@ import 'package:el_brownie_app/model/notification.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/cardnotification.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
@@ -109,10 +110,10 @@ class CloudFirestoreAPI {
   //   });
   // }
 
-  List<CardHome> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) {
-    List<CardHome> allPost = List<CardHome>();
+  List<CardLosmas> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) {
+    List<CardLosmas> allPost = List<CardLosmas>();
     postsListSnapshot.forEach((element) {
-      allPost.add(CardHome(
+      allPost.add(CardLosmas(
         name: element.get('name'),
         valo: "1700 valoraciones",
         category: element.get('category'),

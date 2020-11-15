@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -48,7 +49,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          //automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
           backgroundColor: Mystyle.primarycolo,
           elevation: 0,
           title: Container(
@@ -59,10 +66,20 @@ class _AddPostScreenState extends State<AddPostScreen> {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: Icon(
-                Icons.notifications_none,
-                color: Colors.black,
-                size: 28,
+              child: IconButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return NotificationsScreen(); //register
+                    },
+                  ),
+                ),
+                icon: Icon(
+                  Icons.notifications_none,
+                  color: Colors.black,
+                  size: 28,
+                ),
               ),
             ),
           ],
@@ -95,7 +112,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               SizedBox(height: ScreenUtil().setHeight(20)),
               Text(
                 "Te has ganado tu minuto de gloria, te gusta el show y el aplauso.\n Añade tu comentario",
-                style: Mystyle.titleTextStyle.copyWith(
+                style: Mystyle.subtitleTextStyle.copyWith(
                   fontSize: ScreenUtil().setSp(60),
                   color: Colors.black54,
                 ),
@@ -218,10 +235,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     uploadTask.onComplete.then((snapshot) {
                       snapshot.ref.getDownloadURL().then((url) {
                         userBloc
-                            .addComment(
-                                widget.idPost,
-                                url,
-                                comentarioController.text,
+                            .addComment(widget.idPost, url, _comment,
                                 widget.valoration.toString())
                             .whenComplete(() {
                           comentarioController.clear();

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -40,10 +41,20 @@ class _FavScreenState extends State<FavScreen> {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: Icon(
-                Icons.notifications_none,
-                color: Colors.black,
-                size: 28,
+              child: IconButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return NotificationsScreen(); //register
+                    },
+                  ),
+                ),
+                icon: Icon(
+                  Icons.notifications_none,
+                  color: Colors.black,
+                  size: 28,
+                ),
               ),
             ),
           ],

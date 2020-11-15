@@ -185,6 +185,7 @@ class _CardHomeState extends State<CardHome> {
                   style: Mystyle.titleTextStyle.copyWith(
                     color: Colors.black87,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Row(
                   children: [

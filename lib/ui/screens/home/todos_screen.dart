@@ -4,6 +4,7 @@ import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/repository/admob_api.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/noresutlt.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
@@ -115,8 +116,8 @@ class _TodosScreenState extends State<TodosScreen> {
         });
   }
 
-  filterPosts(List<CardHome> posts) {
-    List<CardHome> filteredPosts = posts;
+  filterPosts(List<CardLosmas> posts) {
+    List<CardLosmas> filteredPosts = posts;
     if (widget.search != '') {
       posts.removeWhere((post) => !post.name.contains(widget.search));
     }
@@ -130,44 +131,54 @@ class _TodosScreenState extends State<TodosScreen> {
     return filteredPosts;
   }
 
-  Widget todosScreen(List<CardHome> allPosts) {
+  Widget todosScreen(List<CardLosmas> allPosts) {
     ScreenUtil.init(context);
     bool noresult = false;
-    List<CardHome> posts = filterPosts(allPosts);
-    return ListView(
-      padding: EdgeInsets.symmetric(horizontal: 24),
-      children: <Widget>[
-        noresult
-            ? NoResult()
-            : Column(
-                children: [
-                  SizedBox(height: ScreenUtil().setHeight(40)),
-                  Text(
-                    "Todos los Brownies",
-                    style: Mystyle.titleTextStyle.copyWith(
-                      fontSize: ScreenUtil().setSp(100),
-                      color: Colors.black87,
+
+    List<CardLosmas> posts = filterPosts(allPosts);
+    return Container(
+      width: ScreenUtil().scaleWidth,
+      height: ScreenUtil().screenHeight,
+      child: ListView(
+        padding: EdgeInsets.symmetric(vertical: 2),
+        children: <Widget>[
+          noresult
+              ? NoResult()
+              : Column(
+                  children: [
+                    SizedBox(height: ScreenUtil().setHeight(40)),
+                    Text(
+                      "Todos los Brownies",
+                      style: Mystyle.titleTextStyle.copyWith(
+                        fontSize: ScreenUtil().setSp(100),
+                        color: Colors.black87,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: ScreenUtil().setHeight(20)),
-                  AdmobBanner(
-                    adUnitId: admobService.getBannerAdId(),
-                    adSize: AdmobBannerSize.FULL_BANNER,
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.only(bottom: 25),
-                    scrollDirection: Axis.vertical,
-                    reverse: false,
-                    itemBuilder: (_, int index) => posts[index],
-                    itemCount: posts.length,
-                  ),
-                  SizedBox(height: ScreenUtil().setHeight(100)),
-                ],
-              ),
-      ],
+                    SizedBox(height: ScreenUtil().setHeight(20)),
+                    AdmobBanner(
+                      adUnitId: admobService.getBannerAdId(),
+                      adSize: AdmobBannerSize.FULL_BANNER,
+                    ),
+                    GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: .6,
+                        crossAxisSpacing: ScreenUtil().setHeight(30),
+                        mainAxisSpacing: ScreenUtil().setHeight(60),
+                      ),
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (_, int index) => posts[index],
+                      itemCount: posts.length,
+                    ),
+                    SizedBox(height: ScreenUtil().setHeight(100)),
+                  ],
+                ),
+        ],
+      ),
     );
   }
 }

@@ -5,13 +5,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CardLosmas extends StatelessWidget {
-  String name, place;
-  int myindex = 3;
-  CardLosmas({
-    this.name,
-    this.place,
-    this.myindex,
-  });
+  String name,
+      place,
+      view,
+      category,
+      valo,
+      hace,
+      id,
+      pagename,
+      price,
+      imageUrl,
+      idUserPost;
+  String myindex = "3";
+  bool reclam;
+  bool isTapped, isMarked;
+  Icon icon = Icon(
+    Icons.bookmark_border,
+    color: Colors.black87,
+  );
+  String notific_id;
+
+  CardLosmas(
+      {this.name,
+      this.place,
+      this.view,
+      this.valo,
+      this.category = '',
+      this.hace,
+      this.reclam,
+      this.myindex,
+      this.id,
+      this.imageUrl,
+      this.pagename,
+      this.price,
+      this.idUserPost,
+      this.isMarked = false,
+      this.isTapped = false});
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
@@ -23,19 +52,19 @@ class CardLosmas extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(5),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       child: Column(
         children: [
           Stack(
             children: [
               Container(
                 width: ScreenUtil().setWidth(600),
-                height: ScreenUtil().setHeight(450),
+                height: ScreenUtil().setHeight(600),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
                     image: NetworkImage(
-                      "https://media-cdn.tripadvisor.com/media/photo-s/09/a6/26/ad/pop-s-place.jpg",
+                      imageUrl,
                     ),
                     fit: BoxFit.cover,
                   ),
@@ -75,7 +104,7 @@ class CardLosmas extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 16, bottom: 6),
+            padding: const EdgeInsets.only(top: 5, bottom: 1),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -95,28 +124,31 @@ class CardLosmas extends StatelessWidget {
               Icon(
                 Icons.place,
                 color: Mystyle.secondrycolo,
+                size: 7,
               ),
               SizedBox(width: 2),
               Flexible(
                 child: Text(
                   place,
                   maxLines: 1,
-                  style: Mystyle.placeTextStyle.copyWith(fontSize: 12),
+                  style: Mystyle.placeTextStyle.copyWith(fontSize: 7),
                 ),
               ),
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
+            padding: const EdgeInsets.symmetric(vertical: 1),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: List.generate(5, (index) {
-                return index < myindex
+                return index < int.parse(myindex)
                     ? Container(
                         height: ScreenUtil().setHeight(50),
                         width: ScreenUtil().setHeight(50),
-                        margin: EdgeInsets.symmetric(horizontal: 2),
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 2,
+                        ),
                         child: Image.asset("assets/ifull.png"),
                       )
                     : Container(

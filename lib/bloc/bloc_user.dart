@@ -8,6 +8,7 @@ import 'package:el_brownie_app/repository/cloud_firestore_api.dart';
 import 'package:el_brownie_app/repository/cloud_firestore_repository.dart';
 import 'package:el_brownie_app/repository/google_maps_api.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/cardnotification.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/widgets/card.dart';
@@ -48,10 +49,11 @@ class UserBloc implements Bloc {
 //5. Get posts
   Stream<QuerySnapshot> myPostsListStream() => FirebaseFirestore.instance
       .collection(CloudFirestoreAPI().POSTS)
+      .where('status', isEqualTo: false)
       .orderBy('date', descending: true)
       .snapshots();
 
-  List<CardHome> buildMyPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
+  List<CardLosmas> buildMyPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildAllPosts(ticketsListSnapshot);
 
 // //6. Get favourites posts

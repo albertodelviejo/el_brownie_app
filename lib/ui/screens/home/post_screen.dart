@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/ui/screens/add/add_comment_screen.dart';
 import 'package:el_brownie_app/ui/screens/add/request_screen.dart';
+import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
@@ -129,7 +130,13 @@ class _PostScreenState extends State<PostScreen> {
       appBar: AppBar(
         backgroundColor: Mystyle.primarycolo,
         elevation: 0,
-        //automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Container(
           width: ScreenUtil().setHeight(500),
           child: Image.asset("assets/appblogo.png"),
@@ -138,10 +145,20 @@ class _PostScreenState extends State<PostScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 12.0),
-            child: Icon(
-              Icons.notifications_none,
-              color: Colors.black,
-              size: 28,
+            child: IconButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return NotificationsScreen(); //register
+                  },
+                ),
+              ),
+              icon: Icon(
+                Icons.notifications_none,
+                color: Colors.black,
+                size: 28,
+              ),
             ),
           ),
         ],
@@ -465,6 +482,7 @@ class _PostScreenState extends State<PostScreen> {
                               valoration:
                                   int.parse(comments[index].get('valoration')),
                               time: "",
+                              avatarUrl: comments[index].get('avatar_url'),
                             );
                           }),
                     );

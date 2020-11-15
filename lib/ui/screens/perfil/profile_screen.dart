@@ -429,6 +429,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     return GestureDetector(
                         onTap: () {
                           setState(() {
+                            userBloc.user.avatarURL = images[index];
                             widget.imageProfile =
                                 ExactAssetImage(images[index]);
 

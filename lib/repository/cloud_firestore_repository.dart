@@ -3,6 +3,7 @@ import 'package:el_brownie_app/model/notification.dart';
 import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/cardnotification.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 
@@ -20,7 +21,7 @@ class CloudFirestoreRepository {
   List<Post> getAllPosts(List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.getAllPosts(postsListSnapshot);
 
-  List<CardHome> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) =>
+  List<CardLosmas> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.buildAllPosts(postsListSnapshot);
 
   // List<CardHome> buildFavouritesPosts(List<Post> favouritesListSnapshot) =>

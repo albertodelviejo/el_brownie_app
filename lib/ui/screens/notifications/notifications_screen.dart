@@ -57,7 +57,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          //automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
           backgroundColor: Mystyle.primarycolo,
           elevation: 0,
           title: Container(
