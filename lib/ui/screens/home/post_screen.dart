@@ -24,6 +24,7 @@ class PostScreen extends StatefulWidget {
     color: Colors.black87,
   );
   final CardHome cardHome;
+  String notific_id;
 
   PostScreen({Key key, this.id, this.cardHome});
 
@@ -253,6 +254,11 @@ class _PostScreenState extends State<PostScreen> {
                             widget.icon = widget.cardHome.icon;
                           });
                           userBloc.likePost(widget.id);
+                          userBloc
+                              .addNotification(
+                                  widget.cardHome.idUserPost, "favourite", 10)
+                              .then((value) => widget.notific_id = value);
+                          userBloc.addPoints(widget.cardHome.idUserPost);
                           widget.isTapped = true;
                         } else {
                           setState(() {
@@ -265,6 +271,8 @@ class _PostScreenState extends State<PostScreen> {
                             widget.icon = widget.cardHome.icon;
                           });
                           userBloc.unlikePost(widget.id);
+                          userBloc.deleteNotification(widget.notific_id);
+                          userBloc.deletePoints(widget.id);
                           widget.isTapped = false;
                         }
                       },

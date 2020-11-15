@@ -33,7 +33,7 @@ class CloudFirestoreAPI {
                 'uid': user.uid,
                 'username': user.userName,
                 'email': user.email,
-                'points': 10,
+                'points': 0,
                 'bank_account': "",
                 'cif': "",
                 'location': "",
@@ -318,5 +318,29 @@ class CloudFirestoreAPI {
       ));
     });
     return allNotifications;
+  }
+
+  void addPoints(String userId) {
+    DocumentReference docRef = _db.collection("users").doc(userId);
+    int points = 0;
+    docRef.get().then((value) => {
+          if (value.exists)
+            {
+              points = value.get('points') + 10,
+              docRef.update({'points': points})
+            }
+        });
+  }
+
+  void deletePoints(String userId) {
+    DocumentReference docRef = _db.collection("users").doc(userId);
+    int points = 0;
+    docRef.get().then((value) => {
+          if (value.exists)
+            {
+              points = value.get('points') - 10,
+              docRef.update({'points': points})
+            }
+        });
   }
 }

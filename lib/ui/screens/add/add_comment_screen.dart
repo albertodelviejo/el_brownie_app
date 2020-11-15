@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,6 +27,7 @@ class AddPostScreen extends StatefulWidget {
 
 class _AddPostScreenState extends State<AddPostScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
+  final _formKey = GlobalKey<FormState>();
   double _value = 12;
   int rating = 0;
   bool filled = false;
@@ -31,6 +35,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
   UserBloc userBloc;
   var imageFile;
   String photoUrl = "";
+  String _comment;
+  bool _validate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -61,159 +67,180 @@ class _AddPostScreenState extends State<AddPostScreen> {
             ),
           ],
         ),
-        body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24),
-          children: [
-            SizedBox(height: ScreenUtil().setHeight(30)),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                alignment: Alignment.bottomRight,
-                height: ScreenUtil().setWidth(100),
-                width: ScreenUtil().setWidth(100),
-                child: SvgPicture.asset(
-                  "assets/svg/close.svg",
+        body: Form(
+          key: _formKey,
+          child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 24),
+            children: [
+              SizedBox(height: ScreenUtil().setHeight(30)),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  alignment: Alignment.bottomRight,
+                  height: ScreenUtil().setWidth(100),
+                  width: ScreenUtil().setWidth(100),
+                  child: SvgPicture.asset(
+                    "assets/svg/close.svg",
+                  ),
                 ),
               ),
-            ),
-            Text(
-              "Añade tu valoración",
-              style: Mystyle.titleTextStyle.copyWith(
-                fontSize: ScreenUtil().setSp(100),
-                color: Colors.black87,
+              Text(
+                "Añade tu valoración",
+                style: Mystyle.titleTextStyle.copyWith(
+                  fontSize: ScreenUtil().setSp(100),
+                  color: Colors.black87,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: ScreenUtil().setHeight(20)),
-            Text(
-              "Te has ganado tu minuto de gloria, te gusta el show y el aplauso.\n Añade tu comentario",
-              style: Mystyle.titleTextStyle.copyWith(
-                fontSize: ScreenUtil().setSp(60),
-                color: Colors.black54,
+              SizedBox(height: ScreenUtil().setHeight(20)),
+              Text(
+                "Te has ganado tu minuto de gloria, te gusta el show y el aplauso.\n Añade tu comentario",
+                style: Mystyle.titleTextStyle.copyWith(
+                  fontSize: ScreenUtil().setSp(60),
+                  color: Colors.black54,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(5, (index) {
-                return InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.valoration = index;
-                      filled = true;
-                      widget.tapped = true;
-                    });
-                  },
-                  child: Container(
-                    height: ScreenUtil().setWidth(140),
-                    width: ScreenUtil().setWidth(140),
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 3,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(50),
+              SizedBox(height: ScreenUtil().setHeight(40)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: List.generate(5, (index) {
+                  return InkWell(
+                    onTap: () {
+                      setState(() {
+                        widget.valoration = index;
+                        filled = true;
+                        widget.tapped = true;
+                      });
+                    },
+                    child: Container(
+                      height: ScreenUtil().setWidth(140),
+                      width: ScreenUtil().setWidth(140),
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 3,
+                            blurRadius: 7,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      alignment: Alignment.center,
+                      child: (index <= widget.valoration && widget.tapped)
+                          ? Image.asset("assets/ifull.png")
+                          : Image.asset("assets/iempty.png"),
                     ),
-                    alignment: Alignment.center,
-                    child: (index <= widget.valoration && widget.tapped)
-                        ? Image.asset("assets/ifull.png")
-                        : Image.asset("assets/iempty.png"),
-                  ),
-                );
-              }),
-            ),
-            SizedBox(height: ScreenUtil().setHeight(60)),
-            TextFormField(
-              controller: comentarioController,
-              maxLines: 4,
-              keyboardType: TextInputType.emailAddress,
-              decoration:
-                  Mystyle.inputregularmaxline('Escribe tu comentario aqui…'),
-              textInputAction: TextInputAction.done,
-              validator: (value) {
-                if (value.isEmpty) return 'isEmpty';
-                return null;
-              },
-            ),
-            SizedBox(height: ScreenUtil().setHeight(40)),
-            GestureDetector(
-                onTap: () => _showSelectionDialog,
-                child: imageFile == null
-                    ? Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black54, width: 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        width: double.infinity,
-                        height: ScreenUtil().setHeight(600),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                _showSelectionDialog(context);
-                              },
-                              child: Container(
-                                height: ScreenUtil().setWidth(160),
-                                width: ScreenUtil().setWidth(160),
-                                child: SvgPicture.asset(
-                                  "assets/svg/camera.svg",
+                  );
+                }),
+              ),
+              SizedBox(height: ScreenUtil().setHeight(60)),
+              TextFormField(
+                maxLines: 4,
+                keyboardType: TextInputType.emailAddress,
+                decoration:
+                    Mystyle.inputregularmaxline('Escribe tu comentario aqui…'),
+                textInputAction: TextInputAction.done,
+                validator: validateNotEmpty,
+                onSaved: (String val) {
+                  _comment = val;
+                },
+              ),
+              SizedBox(height: ScreenUtil().setHeight(40)),
+              GestureDetector(
+                  onTap: () => _showSelectionDialog,
+                  child: imageFile == null
+                      ? GestureDetector(
+                          onTap: () => _showSelectionDialog(context),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: Colors.black54, width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            width: double.infinity,
+                            height: ScreenUtil().setHeight(600),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  child: Container(
+                                    height: ScreenUtil().setWidth(160),
+                                    width: ScreenUtil().setWidth(160),
+                                    child: SvgPicture.asset(
+                                      "assets/svg/camera.svg",
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Text(
+                                  "Sube una foto",
+                                  style: Mystyle.smallTextStyle.copyWith(
+                                    color: Colors.black87,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
                             ),
-                            Text(
-                              "Sube una foto",
-                              style: Mystyle.smallTextStyle.copyWith(
-                                color: Colors.black87,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      )
-                    : Container(
-                        width: 80,
-                        height: 250,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black54, width: 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Image.file(imageFile, fit: BoxFit.cover),
-                      )),
-            SizedBox(height: ScreenUtil().setHeight(60)),
-            ButtAuth("Publicar", () {
-              widget.idComment =
-                  comentarioController.text.hashCode.toStringAsFixed(15);
-              var name = '${DateTime.now()}' +
-                  basenameWithoutExtension(imageFile.toString());
-              StorageReference storageReference =
-                  FirebaseStorage.instance.ref().child('comments/$name');
-              StorageUploadTask uploadTask =
-                  storageReference.putFile(imageFile);
-              uploadTask.onComplete.then((snapshot) {
-                snapshot.ref.getDownloadURL().then((url) {
-                  userBloc
-                      .addComment(widget.idPost, url, comentarioController.text,
-                          widget.valoration.toString())
-                      .whenComplete(() {
-                    comentarioController.clear();
-                    imageFile = null;
-                  });
-                });
-              });
+                          ),
+                        )
+                      : Container(
+                          width: 80,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black54, width: 1),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Image.file(imageFile, fit: BoxFit.cover),
+                        )),
+              SizedBox(height: ScreenUtil().setHeight(60)),
+              ButtAuth("Publicar", () {
+                if (_formKey.currentState.validate()) {
+                  _formKey.currentState.save();
+                  widget.idComment =
+                      comentarioController.text.hashCode.toStringAsFixed(15);
+                  File compressedFile = new File(
+                      imageFile.path.substring(0, imageFile.path.length - 4) +
+                          "-.jpg");
 
-              userBloc.addNotification(widget.idUserPost, "comment", 10);
-              Navigator.pop(context);
-            }, border: true, press: true),
-            SizedBox(height: ScreenUtil().setHeight(100)),
-          ],
+                  testCompressAndGetFile(imageFile, compressedFile.path)
+                      .then((value) {
+                    compressedFile = value;
+
+                    var name = '${DateTime.now()}' +
+                        basenameWithoutExtension(imageFile.toString());
+                    StorageReference storageReference =
+                        FirebaseStorage.instance.ref().child('comments/$name');
+                    StorageUploadTask uploadTask =
+                        storageReference.putFile(imageFile);
+                    uploadTask.onComplete.then((snapshot) {
+                      snapshot.ref.getDownloadURL().then((url) {
+                        userBloc
+                            .addComment(
+                                widget.idPost,
+                                url,
+                                comentarioController.text,
+                                widget.valoration.toString())
+                            .whenComplete(() {
+                          comentarioController.clear();
+                          imageFile = null;
+                        });
+                      });
+                    });
+                  });
+
+                  userBloc.addNotification(widget.idUserPost, "comment", 10);
+                  userBloc.addPoints(widget.idUserPost);
+                  Navigator.pop(context);
+                } else {
+                  _validate = true;
+                }
+              }, border: true, press: true),
+              SizedBox(height: ScreenUtil().setHeight(100)),
+            ],
+          ),
         ),
       ),
     );
@@ -280,5 +307,26 @@ class _AddPostScreenState extends State<AddPostScreen> {
     storageReference.getDownloadURL().then((fileURL) {
       // userBloc.addPhotoToPost(widget.idPost, fileURL);
     });
+  }
+
+  String validateNotEmpty(String value) {
+    if (value.isEmpty) {
+      return 'Los campos no pueden estar vacios';
+    } else {
+      return null;
+    }
+  }
+
+  Future<File> testCompressAndGetFile(File file, String targetPath) async {
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path,
+      targetPath,
+      quality: 40,
+    );
+
+    print(file.lengthSync());
+    print(result.lengthSync());
+
+    return result;
   }
 }

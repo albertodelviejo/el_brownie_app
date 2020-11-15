@@ -216,6 +216,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               email: value.email,
                             ));
                             userBloc.addNotification(value.uid, "welcome", 10);
+                            userBloc.addPoints(value.uid);
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(

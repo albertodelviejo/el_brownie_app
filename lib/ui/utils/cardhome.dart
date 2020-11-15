@@ -142,6 +142,7 @@ class _CardHomeState extends State<CardHome> {
                                 .addNotification(
                                     widget.idUserPost, "favourite", 10)
                                 .then((value) => widget.notific_id = value);
+                            userBloc.addPoints(widget.idUserPost);
 
                             widget.isMarked = true;
                           } else {
@@ -153,6 +154,7 @@ class _CardHomeState extends State<CardHome> {
                             });
                             userBloc.unlikePost(widget.id);
                             userBloc.deleteNotification(widget.notific_id);
+                            userBloc.deletePoints(widget.idUserPost);
                             widget.isMarked = false;
                           }
                         },

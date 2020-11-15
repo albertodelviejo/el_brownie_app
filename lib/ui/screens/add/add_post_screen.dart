@@ -1,12 +1,16 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/repository/google_maps_api.dart';
+import 'package:el_brownie_app/ui/screens/home/todos_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
@@ -14,6 +18,7 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 class AddCommentScreen extends StatefulWidget {
   int valoration = 0;
@@ -443,42 +448,51 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                       loading = true;
                     });
                     widget.idPost = nombre.text.hashCode.toString();
-                    var name = '${DateTime.now()}' +
-                        basenameWithoutExtension(imageFile.toString());
-                    StorageReference storageReference =
-                        FirebaseStorage.instance.ref().child('posts/$name');
-                    StorageUploadTask uploadTask =
-                        storageReference.putFile(imageFile);
-                    uploadTask.onComplete.then((snapshot) {
-                      snapshot.ref.getDownloadURL().then((url) {
-                        userBloc
-                            .createPost(
-                                nombre.text.hashCode.toString(),
-                                direccion.text,
-                                category_list[_dropdownvalue],
-                                nombre.text,
-                                comentario.text,
-                                _value,
-                                false,
-                                url.toString(),
-                                widget.valoration)
-                            .whenComplete(() {
-                          setState(() {
-                            nombre.clear();
-                            _dropdownvalue = null;
-                            direccion.clear();
-                            comentario.clear();
-                            widget.tapped = false;
-                            imageFile = null;
-                            loading = false;
+                    File compressedFile = new File(
+                        imageFile.path.substring(0, imageFile.path.length - 4) +
+                            "-.jpg");
+
+                    testCompressAndGetFile(imageFile, compressedFile.path)
+                        .then((value) {
+                      compressedFile = value;
+
+                      var name = '${DateTime.now()}' +
+                          basenameWithoutExtension(compressedFile.toString());
+                      StorageReference storageReference =
+                          FirebaseStorage.instance.ref().child('posts/$name');
+                      StorageUploadTask uploadTask =
+                          storageReference.putFile(compressedFile);
+                      uploadTask.onComplete.then((snapshot) {
+                        snapshot.ref.getDownloadURL().then((url) {
+                          userBloc
+                              .createPost(
+                                  nombre.text.hashCode.toString(),
+                                  direccion.text,
+                                  category_list[_dropdownvalue],
+                                  nombre.text,
+                                  comentario.text,
+                                  _value,
+                                  false,
+                                  url.toString(),
+                                  widget.valoration)
+                              .whenComplete(() {
+                            setState(() {
+                              nombre.clear();
+                              _dropdownvalue = null;
+                              direccion.clear();
+                              comentario.clear();
+                              widget.tapped = false;
+                              imageFile = null;
+                              loading = false;
+                            });
                           });
                         });
+                      }).catchError((onError) {
+                        setState(() {
+                          loading = false;
+                        });
+                        print(onError.message.toString());
                       });
-                    }).catchError((onError) {
-                      setState(() {
-                        loading = false;
-                      });
-                      print(onError.message.toString());
                     });
                   }
                 },
@@ -542,5 +556,18 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                 ),
               ));
         });
+  }
+
+  Future<File> testCompressAndGetFile(File file, String targetPath) async {
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path,
+      targetPath,
+      quality: 40,
+    );
+
+    print(file.lengthSync());
+    print(result.lengthSync());
+
+    return result;
   }
 }
