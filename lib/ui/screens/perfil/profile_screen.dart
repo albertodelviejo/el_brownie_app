@@ -128,7 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             SizedBox(height: ScreenUtil().setHeight(20)),
             Text(
-              user.points.toString(),
+              user.points.toString() + " puntos",
               style: Mystyle.smallTextStyle.copyWith(
                 color: Colors.black87,
               ),

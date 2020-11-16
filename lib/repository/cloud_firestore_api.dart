@@ -316,6 +316,7 @@ class CloudFirestoreAPI {
         text: text,
         idNotification: element.id,
         type: notificationType,
+        index: allNotifications.length.toString(),
       ));
     });
     return allNotifications;
@@ -343,5 +344,24 @@ class CloudFirestoreAPI {
               docRef.update({'points': points})
             }
         });
+  }
+
+  List<CardHome> buildMyMostBrownies(List<DocumentSnapshot> postsListSnapshot) {
+    List<CardHome> allPost = List<CardHome>();
+    postsListSnapshot.forEach((element) {
+      allPost.add(CardHome(
+        name: element.get('name'),
+        valo: "1700 valoraciones",
+        place: element.get('address'),
+        reclam: element.get('status'),
+        view: "1700 views",
+        hace: "Hace 2 dias",
+        myindex: element.get('valoration').toString(),
+        imageUrl: element.get('photo'),
+        id: element.id,
+        idUserPost: element.get('id_user'),
+      ));
+    });
+    return allPost;
   }
 }

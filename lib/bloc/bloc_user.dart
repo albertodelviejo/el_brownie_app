@@ -169,6 +169,16 @@ class UserBloc implements Bloc {
   void deletePoints(String idUser) =>
       _cloudFirestoreRepository.deletePoints(idUser);
 
+//19. Get los mas guarros posts
+  Stream<QuerySnapshot> myMostPostsListStream() => FirebaseFirestore.instance
+      .collection(CloudFirestoreAPI().POSTS)
+      .where('status', isEqualTo: false)
+      .orderBy('valoration', descending: true)
+      .snapshots();
+
+  List<CardHome> buildMyMostPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
+      _cloudFirestoreRepository.buildMyMostPosts(ticketsListSnapshot);
+
   @override
   void dispose() {}
 }

@@ -29,18 +29,25 @@ class GoogleMapsApi {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.low);
     posts.sort((a, b) {
-      var currentPosts = [a,b];
+      var currentPosts = [a, b];
       var currentAddress = [];
       currentPosts.forEach((post) async {
         PlacesSearchResponse detailPost =
             await _places.searchByText(post.place);
-        currentAddress.add(Coordinates(detailPost.results[0].geometry.location.lat,
+        currentAddress.add(Coordinates(
+            detailPost.results[0].geometry.location.lat,
             detailPost.results[0].geometry.location.lat));
       });
       double distanceA = Geolocator.distanceBetween(
-          position.latitude, currentAddress[0].latitude, position.longitude, currentAddress[0].longitude);
+          position.latitude,
+          currentAddress[0].latitude,
+          position.longitude,
+          currentAddress[0].longitude);
       double distanceB = Geolocator.distanceBetween(
-          position.latitude, currentAddress[1].latitude, position.longitude, currentAddress[1].longitude);
+          position.latitude,
+          currentAddress[1].latitude,
+          position.longitude,
+          currentAddress[1].longitude);
       return distanceA.round().compareTo(distanceB.round());
     });
   }

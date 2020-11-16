@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:el_brownie_app/ui/screens/home/post_screen.dart';
+import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,124 +46,151 @@ class CardLosmas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-    return Container(
-      // color: Colors.red,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.grey,
-        ),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      child: Column(
-        children: [
-          Stack(
+
+    return GestureDetector(
+        onTap: () {
+          if (!isTapped) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => PostScreen(
+                          id: name.hashCode.toString(),
+                          cardHome: CardHome(
+                            isTapped: true,
+                            name: name,
+                            valo: valo,
+                            place: place,
+                            reclam: reclam,
+                            view: view,
+                            hace: hace,
+                            imageUrl: imageUrl,
+                            myindex: myindex,
+                            id: id,
+                            isMarked: isMarked,
+                            idUserPost: idUserPost,
+                          ),
+                        )));
+          }
+        },
+        child: Container(
+          // color: Colors.red,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.grey,
+            ),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          padding: EdgeInsets.only(top: 5, right: 5, left: 5),
+          child: Column(
             children: [
-              Container(
-                width: ScreenUtil().setWidth(600),
-                height: ScreenUtil().setHeight(600),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      imageUrl,
+              Stack(
+                children: [
+                  Container(
+                    width: ScreenUtil().setWidth(600),
+                    height: ScreenUtil().setHeight(560),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          imageUrl,
+                        ),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    fit: BoxFit.cover,
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black87,
+                            borderRadius: BorderRadius.circular(7),
+                          ),
+                          padding: EdgeInsets.all(7),
+                          child: Text(
+                            myindex,
+                            style: Mystyle.normalTextStyle
+                                .copyWith(color: Colors.white),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(60),
+                          ),
+                          padding: EdgeInsets.all(8),
+                          child: Icon(
+                            Icons.bookmark_border,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                padding: const EdgeInsets.only(top: 5, bottom: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
+                    Text(
+                      name,
+                      style: Mystyle.titleTextStyle.copyWith(
                         color: Colors.black87,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: EdgeInsets.all(8),
-                      child: Text(
-                        "3.5",
-                        style: Mystyle.normalTextStyle
-                            .copyWith(color: Colors.white),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(60),
-                      ),
-                      padding: EdgeInsets.all(8),
-                      child: Icon(
-                        Icons.bookmark_border,
-                        color: Colors.black,
+                        fontSize: 20,
+                        height: 1,
                       ),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5, bottom: 1),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  name,
-                  style: Mystyle.subtitleTextStyle.copyWith(
-                    color: Colors.black87,
-                    height: 1,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.place,
+                    color: Mystyle.secondrycolo,
+                    size: 10,
                   ),
-                ),
-              ],
-            ),
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(
-                Icons.place,
-                color: Mystyle.secondrycolo,
-                size: 7,
+                  SizedBox(width: 4),
+                  Flexible(
+                    child: Text(
+                      place,
+                      maxLines: 1,
+                      style: Mystyle.placeTextStyle.copyWith(fontSize: 10),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(width: 2),
-              Flexible(
-                child: Text(
-                  place,
-                  maxLines: 1,
-                  style: Mystyle.placeTextStyle.copyWith(fontSize: 7),
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: List.generate(5, (index) {
+                    return index < int.parse(myindex)
+                        ? Container(
+                            height: ScreenUtil().setHeight(60),
+                            width: ScreenUtil().setHeight(60),
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 2,
+                            ),
+                            child: Image.asset("assets/ifull.png"),
+                          )
+                        : Container(
+                            height: ScreenUtil().setHeight(60),
+                            width: ScreenUtil().setHeight(60),
+                            margin: EdgeInsets.symmetric(horizontal: 2),
+                            child: Image.asset("assets/iempty.png"),
+                          );
+                  }),
                 ),
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 1),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: List.generate(5, (index) {
-                return index < int.parse(myindex)
-                    ? Container(
-                        height: ScreenUtil().setHeight(50),
-                        width: ScreenUtil().setHeight(50),
-                        margin: EdgeInsets.symmetric(
-                          horizontal: 2,
-                        ),
-                        child: Image.asset("assets/ifull.png"),
-                      )
-                    : Container(
-                        height: ScreenUtil().setHeight(50),
-                        width: ScreenUtil().setHeight(50),
-                        margin: EdgeInsets.symmetric(horizontal: 2),
-                        child: Image.asset("assets/iempty.png"),
-                      );
-              }),
-            ),
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }

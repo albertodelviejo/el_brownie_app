@@ -75,6 +75,9 @@ class CloudFirestoreRepository {
       await _cloudFirestoreAPI.addNotification(
           idUser, notificationType, points);
 
+  List<CardHome> buildMyMostPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
+      _cloudFirestoreAPI.buildMyMostBrownies(ticketsListSnapshot);
+
   void deleteNotification(String idNotification) =>
       _cloudFirestoreAPI.deleteNotification(idNotification);
 

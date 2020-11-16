@@ -14,9 +14,15 @@ class CardNotification extends StatefulWidget {
   int points = 10;
   String idNotification;
   String type;
+  String index;
 
   CardNotification(
-      {this.icon, this.text, this.points, this.idNotification, this.type});
+      {this.icon,
+      this.text,
+      this.points,
+      this.idNotification,
+      this.type,
+      this.index});
   @override
   _CardNotificationState createState() => _CardNotificationState();
 }
@@ -46,7 +52,7 @@ class _CardNotificationState extends State<CardNotification> {
             ),
             Dismissible(
               direction: DismissDirection.horizontal,
-              key: Key("1"),
+              key: Key(widget.index),
               onDismissed: (direction) {
                 if (direction == DismissDirection.endToStart) {
                   userBloc.deleteNotification(widget.idNotification);
