@@ -130,6 +130,27 @@ class CloudFirestoreAPI {
     return allPost;
   }
 
+  List<CardHome> buildMyPostsCardHome(
+      List<DocumentSnapshot> postsListSnapshot) {
+    List<CardHome> allPost = List<CardHome>();
+    postsListSnapshot.forEach((element) {
+      allPost.add(CardHome(
+        name: element.get('name'),
+        valo: "1700 valoraciones",
+        category: element.get('category'),
+        place: element.get('address'),
+        reclam: element.get('status'),
+        view: "1700 views",
+        hace: "Hace 2 dias",
+        imageUrl: element.get('photo'),
+        myindex: element.get('valoration').toString(),
+        idUserPost: element.get('id_user'),
+        id: element.id,
+      ));
+    });
+    return allPost;
+  }
+
   Future likePost(String idPost, String uid) async {
     DocumentReference ref = _db.collection("users").doc(uid);
     ref.get().then((value) => {

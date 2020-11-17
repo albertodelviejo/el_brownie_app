@@ -27,7 +27,7 @@ class GoogleMapsApi {
     }
   }
 
-  void getNearbyPlcaes(List<CardHome> posts) async {
+  void getNearbyPlaces(List<CardHome> posts) async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.low);
     posts.sort((a, b) {

@@ -208,7 +208,7 @@ class _CardHomeState extends State<CardHome> {
                     ),
                     SizedBox(width: 5),
                     Text(
-                      widget.reclam ? "Reclamada" : "Taska Church",
+                      widget.reclam ? "Reclamada" : "Sin Reclamar",
                       style: Mystyle.smallTextStyle.copyWith(
                         color: Mystyle.thirdcolo,
                       ),

@@ -58,8 +58,9 @@ class _RankingScreenState extends State<RankingScreen> {
                             SizedBox(height: ScreenUtil().setHeight(30)),
                             RankTile(
                               rank: getRank(_auth.currentUser.uid, users),
-                              image: _auth.currentUser.photoURL ??
-                                  "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png",
+                              image: currentUser.data()['avatar_url'] == null
+                                  ? "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                                  : currentUser.data()['avatar_url'],
                               name:
                                   currentUser.data()['username'] ?? 'username',
                               pub:
@@ -94,8 +95,12 @@ class _RankingScreenState extends State<RankingScreen> {
                                     ),
                                     child: RankTile(
                                       rank: index + 1,
-                                      image:
-                                          "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png",
+                                      image: top10Users[index]
+                                                  .data()['avatar_url'] ==
+                                              null
+                                          ? "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                                          : top10Users[index]
+                                              .data()['avatar_url'],
                                       name: top10Users[index]
                                               .data()['username'] ??
                                           'Usuario',
@@ -139,7 +144,7 @@ int getPostsCount(String uid, List posts) {
 
 int getRank(String uid, List users) {
   int rank = users.length;
-  for (var i = 1; i <= users.length; i++) {
+  for (var i = 0; i < users.length; i++) {
     if (users[i].id == uid) {
       rank = i + 1;
       break;

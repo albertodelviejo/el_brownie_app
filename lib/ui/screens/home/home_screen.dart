@@ -9,6 +9,8 @@ import 'package:el_brownie_app/ui/utils/orderBy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'cerca_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -19,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final searchController = TextEditingController();
   String currentCategory = '';
   String orderPer = '';
-
 
   List<CategoryModel> categories = [
     CategoryModel("Veggies", "assets/svg/brocoli.svg", false),
@@ -169,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   category: currentCategory,
                   orderPer: orderPer),
               LosMasScreen(),
-              Container(),
+              CercaScreen(),
             ],
           ),
         ),
@@ -221,18 +222,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         selected: orderByList[index].isChecked,
                         onOrderByPressed: () {
                           if (orderByList[index].isChecked) {
-                              setModalState(() {
-                                orderByList[index].isChecked = false;
-                                orderPer = '';
-                              });
-                            } else {
-                              setModalState(() {
-                                orderByList.forEach(
-                                    (orderBy) => orderBy.isChecked = false);
-                                orderByList[index].isChecked = true;
-                                orderPer = orderByList[index].orderBy;
-                              });
-                            }
+                            setModalState(() {
+                              orderByList[index].isChecked = false;
+                              orderPer = '';
+                            });
+                          } else {
+                            setModalState(() {
+                              orderByList.forEach(
+                                  (orderBy) => orderBy.isChecked = false);
+                              orderByList[index].isChecked = true;
+                              orderPer = orderByList[index].orderBy;
+                            });
+                          }
                         },
                       );
                     },

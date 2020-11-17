@@ -112,10 +112,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               SizedBox(height: ScreenUtil().setHeight(20)),
               Text(
                 "Te has ganado tu minuto de gloria, te gusta el show y el aplauso.\n Añade tu comentario",
-                style: Mystyle.smallTextStyle.copyWith(
-                  fontSize: ScreenUtil().setSp(50),
-                  color: Colors.black54,
-                ),
+                style: Mystyle.regularTextStyle,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: ScreenUtil().setHeight(40)),

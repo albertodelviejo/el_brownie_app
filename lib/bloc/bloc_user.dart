@@ -53,8 +53,14 @@ class UserBloc implements Bloc {
       .orderBy('date', descending: true)
       .snapshots();
 
+//With CardLosMas
   List<CardLosmas> buildMyPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildAllPosts(ticketsListSnapshot);
+
+//With CardHome
+  List<CardHome> buildMyPostsCardHome(
+          List<DocumentSnapshot> ticketsListSnapshot) =>
+      _cloudFirestoreRepository.buildMyPostsCardHome(ticketsListSnapshot);
 
 // //6. Get favourites posts
 //   Future<List<CardHome>> myFavouritesPostsList() async {
