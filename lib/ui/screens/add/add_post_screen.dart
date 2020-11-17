@@ -342,7 +342,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                           context: context,
                           apiKey: googleMapsApi.apiKey,
                           //you can choose full scren or overlay
-                          mode: Mode.fullscreen,
+                          mode: Mode.overlay,
                           //you can set spain language
                           language: 'es',
                           //you can set here what user wrote in textfield
@@ -352,7 +352,9 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                             print(onError.errorMessage);
                           },
                         );
-                        googleMapsApi.displayPrediction(p);
+                        googleMapsApi
+                            .displayPrediction(p)
+                            .then((value) => direccion.text = value);
                       },
                     ),
                   ),

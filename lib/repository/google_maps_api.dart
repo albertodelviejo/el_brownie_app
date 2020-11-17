@@ -4,12 +4,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_webservice/places.dart';
 
 class GoogleMapsApi {
-  String apiKey = 'AIzaSyCQarq8zgeo0ksCrI7p1m3yG-JQSpp8bUk';
+  String apiKey = 'AIzaSyB3FgPyKl9zhgPS5fBRlYE1b-SSFkOvcns';
 
   GoogleMapsPlaces _places =
-      GoogleMapsPlaces(apiKey: 'AIzaSyCQarq8zgeo0ksCrI7p1m3yG-JQSpp8bUk');
+      GoogleMapsPlaces(apiKey: 'AIzaSyB3FgPyKl9zhgPS5fBRlYE1b-SSFkOvcns');
 
-  Future<Null> displayPrediction(Prediction p) async {
+  Future<String> displayPrediction(Prediction p) async {
     if (p != null) {
       PlacesDetailsResponse detail =
           await _places.getDetailsByPlaceId(p.placeId);
@@ -22,6 +22,8 @@ class GoogleMapsApi {
       print(p.description);
       print(lat);
       print(lng);
+
+      return address[0].addressLine;
     }
   }
 
