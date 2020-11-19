@@ -215,32 +215,40 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   _formKey.currentState.save();
                   widget.idComment =
                       comentarioController.text.hashCode.toStringAsFixed(15);
-                  File compressedFile = new File(
-                      imageFile.path.substring(0, imageFile.path.length - 4) +
-                          "-.jpg");
 
-                  testCompressAndGetFile(imageFile, compressedFile.path)
-                      .then((value) {
-                    compressedFile = value;
+                  if (imageFile != null) {
+                    File compressedFile = new File(
+                        imageFile.path.substring(0, imageFile.path.length - 4) +
+                            "-.jpg");
 
-                    var name = '${DateTime.now()}' +
-                        basenameWithoutExtension(imageFile.toString());
-                    StorageReference storageReference =
-                        FirebaseStorage.instance.ref().child('comments/$name');
-                    StorageUploadTask uploadTask =
-                        storageReference.putFile(imageFile);
-                    uploadTask.onComplete.then((snapshot) {
-                      snapshot.ref.getDownloadURL().then((url) {
-                        userBloc
-                            .addComment(widget.idPost, url, _comment,
-                                widget.valoration.toString())
-                            .whenComplete(() {
-                          comentarioController.clear();
-                          imageFile = null;
+                    testCompressAndGetFile(imageFile, compressedFile.path)
+                        .then((value) {
+                      compressedFile = value;
+
+                      var name = '${DateTime.now()}' +
+                          basenameWithoutExtension(imageFile.toString());
+                      StorageReference storageReference = FirebaseStorage
+                          .instance
+                          .ref()
+                          .child('comments/$name');
+                      StorageUploadTask uploadTask =
+                          storageReference.putFile(imageFile);
+                      uploadTask.onComplete.then((snapshot) {
+                        snapshot.ref.getDownloadURL().then((url) {
+                          userBloc
+                              .addComment(widget.idPost, url, _comment,
+                                  widget.valoration.toString())
+                              .whenComplete(() {
+                            comentarioController.clear();
+                            imageFile = null;
+                          });
                         });
                       });
                     });
-                  });
+                  } else {
+                    userBloc.addComment(widget.idPost, "", _comment,
+                        widget.valoration.toString());
+                  }
 
                   userBloc.addNotification(widget.idUserPost, "comment", 10);
                   userBloc.addPoints(widget.idUserPost);

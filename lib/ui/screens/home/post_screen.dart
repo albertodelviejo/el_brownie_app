@@ -372,7 +372,7 @@ class _PostScreenState extends State<PostScreen> {
                               return RequestScreen(
                                   postId: widget.id,
                                   price: (double.parse(post.price))
-                                      .toStringAsFixed(0),
+                                      .toStringAsFixed(2),
                                   idUserPost:
                                       widget.cardHome.idUserPost); //register
                             },

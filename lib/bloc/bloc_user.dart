@@ -116,6 +116,7 @@ class UserBloc implements Bloc {
   Stream<QuerySnapshot> myBrowniesListStream(uid) => FirebaseFirestore.instance
       .collection(CloudFirestoreAPI().POSTS)
       .where("id_user", isEqualTo: uid)
+      .orderBy('date', descending: true)
       .snapshots();
 
   List<CardHome> buildMyBrownies(List<DocumentSnapshot> ticketsListSnapshot) =>

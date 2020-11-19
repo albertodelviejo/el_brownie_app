@@ -95,10 +95,11 @@ class _CardHomeState extends State<CardHome> {
                   sigmaY: widget.reclam ? 5 : 0.1,
                 ),
                 child: Container(
-                  width: ScreenUtil().setHeight(900),
+                  width: ScreenUtil().setWidth(widget.reclam ? 900 : 900),
                   height: ScreenUtil().setHeight(widget.reclam ? 900 : 900),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius:
+                        BorderRadius.circular(widget.reclam ? 10 : 10),
                     image: DecorationImage(
                       image: NetworkImage(
                         widget.imageUrl,

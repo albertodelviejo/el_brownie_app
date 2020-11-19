@@ -13,12 +13,12 @@ class ProfileScreen extends StatefulWidget {
   dynamic imageProfile = ExactAssetImage('assets/avatars/avatar1.png');
   int imageIndex = 1;
   var imagesUrls = [
-    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar1.png?alt=media&token=805ef59a-a620-41d2-9257-7e47c56a3e94',
-    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar2.png?alt=media&token=40f7abdb-1e3c-4ec0-8f29-9c1edf06fcd3',
-    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar3.png?alt=media&token=46e4fe12-2882-47bf-a33b-fa69241593e0',
-    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar4.png?alt=media&token=3275e9e8-d4c7-4372-b87a-4336acb6153c',
-    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar5.png?alt=media&token=e949f8fc-67c9-4e74-be27-a6d0e4dac8f7',
-    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar6.png?alt=media&token=14e2a2ff-ef66-4a2e-a677-4ea0473fe37b'
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar1.png?alt=media&token=4e353287-5dbf-4389-8dfb-642d981af388',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar2.png?alt=media&token=3425acfd-e209-41e5-90fa-81e2c6f88b35',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar3.png?alt=media&token=8efd02eb-fa7c-44f0-a617-6e85b0717823',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar4.png?alt=media&token=b6466a43-3669-4a9a-a27a-ed76dc93b8ea',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar5.png?alt=media&token=aa011726-6a4a-470c-8c30-dd68ff713910',
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar6.png?alt=media&token=0828c30c-2cf2-48e7-9f34-dd7b75e07e12'
   ];
 
   @override

@@ -485,7 +485,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                                   category_list[_dropdownvalue],
                                   nombre.text,
                                   comentario.text,
-                                  _value,
+                                  _value + 2,
                                   false,
                                   url.toString(),
                                   widget.valoration)
