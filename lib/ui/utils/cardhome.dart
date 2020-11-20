@@ -58,7 +58,7 @@ class _CardHomeState extends State<CardHome> {
 
     return GestureDetector(
       onTap: () {
-        if (!widget.isTapped) {
+        if (!widget.isTapped && !widget.reclam) {
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -177,7 +177,8 @@ class _CardHomeState extends State<CardHome> {
             ),
           ]),
           Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 12),
+            padding: const EdgeInsets.only(
+                left: 16.0, right: 16.0, top: 12, bottom: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -198,7 +199,7 @@ class _CardHomeState extends State<CardHome> {
                         color: Colors.transparent,
                         border: Border.all(color: Mystyle.thirdcolo),
                       ),
-                      alignment: Alignment.center,
+                      alignment: Alignment.centerLeft,
                       child: widget.reclam
                           ? Icon(
                               Icons.check,
@@ -220,21 +221,23 @@ class _CardHomeState extends State<CardHome> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Row(
               children: [
                 Icon(Icons.place, color: Mystyle.secondrycolo),
                 SizedBox(width: 5),
-                Text(
-                  widget.place,
-                  style: Mystyle.placeTextStyle,
+                Flexible(
+                  child: Text(
+                    widget.place,
+                    style: Mystyle.placeTextStyle,
+                  ),
                 ),
               ],
             ),
           ),
           SizedBox(height: 10),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Row(
               children: List.generate(5, (index) {
                 //var myindexaux = int.parse(widget.myindex);
@@ -260,6 +263,7 @@ class _CardHomeState extends State<CardHome> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                /** 
                 Row(
                   children: [
                     Text(
@@ -278,6 +282,7 @@ class _CardHomeState extends State<CardHome> {
                     ),
                   ],
                 ),
+                */
                 widget.pagename == "mibrownie"
                     ? Text(
                         widget.price,
@@ -290,6 +295,7 @@ class _CardHomeState extends State<CardHome> {
             ),
           ),
           SizedBox(height: 5),
+          /** 
           Container(
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -300,6 +306,7 @@ class _CardHomeState extends State<CardHome> {
               ),
             ),
           ),
+          */
         ],
       ),
     );

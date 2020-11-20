@@ -134,7 +134,7 @@ class _FavScreenState extends State<FavScreen> {
                           }
                         });
                   } else {
-                    return Container(child: CircularProgressIndicator());
+                    return Center(child: CircularProgressIndicator());
                   }
                 }),
           ],

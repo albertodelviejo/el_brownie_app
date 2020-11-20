@@ -51,7 +51,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         });
   }
 
-  Widget notificationScreen(list) {
+  Widget notificationScreen(List list) {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
@@ -98,15 +98,23 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
             ),
             SizedBox(height: ScreenUtil().setHeight(20)),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.only(bottom: 25),
-              scrollDirection: Axis.vertical,
-              reverse: false,
-              itemBuilder: (_, int index) => list[index],
-              itemCount: list.length,
-            ),
+            (list.length == 0)
+                ? Container(
+                    child: Text(
+                      notification_empty_text,
+                      textAlign: TextAlign.center,
+                      style: Mystyle.regularTextStyle,
+                    ),
+                  )
+                : ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.only(bottom: 25),
+                    scrollDirection: Axis.vertical,
+                    reverse: false,
+                    itemBuilder: (_, int index) => list[index],
+                    itemCount: list.length,
+                  ),
           ],
         ),
       ),

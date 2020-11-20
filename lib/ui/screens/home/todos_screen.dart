@@ -135,7 +135,7 @@ class _TodosScreenState extends State<TodosScreen> {
     ScreenUtil.init(context);
     bool noresult = false;
 
-    List<CardLosmas> posts = filterPosts(allPosts);
+    List<dynamic> posts = filterPosts(allPosts);
     return Container(
       width: ScreenUtil().scaleWidth,
       height: ScreenUtil().screenHeight,
@@ -156,10 +156,12 @@ class _TodosScreenState extends State<TodosScreen> {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: ScreenUtil().setHeight(20)),
+                    /** 
                     AdmobBanner(
                       adUnitId: admobService.getBannerAdId(),
                       adSize: AdmobBannerSize.FULL_BANNER,
                     ),
+                    */
                     GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
@@ -171,7 +173,11 @@ class _TodosScreenState extends State<TodosScreen> {
                       physics: ClampingScrollPhysics(),
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       scrollDirection: Axis.vertical,
-                      itemBuilder: (_, int index) => posts[index],
+                      itemBuilder: (_, int index) {
+                        return (index % 4 == 3 || index % 4 == 2)
+                            ? CardLosmas(isAdd: true)
+                            : posts[index];
+                      },
                       itemCount: posts.length,
                     ),
                     SizedBox(height: ScreenUtil().setHeight(100)),
