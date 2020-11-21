@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   final searchController = TextEditingController();
   String currentCategory = '';
+  List<String> selectedCategories = [];
   String orderPer = '';
 
   List<CategoryModel> categories = [
@@ -167,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               TodosScreen(
                   search: searchController.text,
-                  category: currentCategory,
+                  categories: selectedCategories,
                   orderPer: orderPer),
               LosMasScreen(),
               CercaScreen(),
@@ -269,14 +270,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           if (categories[index].isChecked) {
                             setModalState(() {
                               categories[index].isChecked = false;
-                              currentCategory = '';
+                              selectedCategories
+                                  .remove(categories[index].category);
                             });
                           } else {
                             setModalState(() {
                               categories.forEach(
                                   (category) => category.isChecked = false);
                               categories[index].isChecked = true;
-                              currentCategory = categories[index].category;
+                              selectedCategories
+                                  .add(categories[index].category);
                             });
                           }
                         },

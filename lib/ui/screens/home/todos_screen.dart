@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/repository/admob_api.dart';
-import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/noresutlt.dart';
@@ -14,10 +13,12 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class TodosScreen extends StatefulWidget {
   final String search;
-  final String category;
+
+  final List<String> categories;
+
   final String orderPer;
 
-  const TodosScreen({Key key, this.search, this.category, this.orderPer})
+  const TodosScreen({Key key, this.search, this.categories, this.orderPer})
       : super(key: key);
   @override
   _TodosScreenState createState() => _TodosScreenState();
@@ -121,8 +122,10 @@ class _TodosScreenState extends State<TodosScreen> {
     if (widget.search != '') {
       posts.removeWhere((post) => !post.name.contains(widget.search));
     }
-    if (widget.category != '') {
-      posts.removeWhere((post) => !post.category.contains(widget.category));
+    if (!widget.categories.isEmpty) {
+      widget.categories.forEach((element) {
+        posts.removeWhere((post) => !post.category.contains(element));
+      });
     }
     if (widget.orderPer == orderOption1) {
       //enable billing
@@ -174,7 +177,7 @@ class _TodosScreenState extends State<TodosScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       scrollDirection: Axis.vertical,
                       itemBuilder: (_, int index) {
-                        return (index % 4 == 3 || index % 4 == 2)
+                        return (index % 4 == 3)
                             ? CardLosmas(isAdd: true)
                             : posts[index];
                       },

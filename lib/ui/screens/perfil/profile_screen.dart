@@ -12,6 +12,8 @@ class ProfileScreen extends StatefulWidget {
   bool showhidden = false;
   dynamic imageProfile = ExactAssetImage('assets/avatars/avatar1.png');
   int imageIndex = 1;
+  String imagePath = 'assets/avatars/avatar1.png';
+  bool imgChanged = false;
   var imagesUrls = [
     'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar1.png?alt=media&token=4e353287-5dbf-4389-8dfb-642d981af388',
     'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar2.png?alt=media&token=3425acfd-e209-41e5-90fa-81e2c6f88b35',
@@ -49,22 +51,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
             return Center(child: CircularProgressIndicator());
           } else {
             DocumentSnapshot element = snapshot.data.documents[0];
-            userBloc.user = UserModel(
-                email: element.get("email"),
-                uid: element.get("uid"),
-                userName: element.get("username"),
-                points: element.get("points"),
-                bankAccount: element.get("bank_account"),
-                type: element.get("type"),
-                avatarURL: element.get("avatar_url"));
-            if (userBloc.user.type == "owner") {
-              userBloc.user.restaurantName = element.get("restaurant_name");
-              userBloc.user.location = element.get("location");
-              userBloc.user.cif = element.get("cif");
-            }
+            if (element.get("uid") == uid) {
+              userBloc.user = UserModel(
+                  email: element.get("email"),
+                  uid: element.get("uid"),
+                  userName: element.get("username"),
+                  points: element.get("points"),
+                  bankAccount: element.get("bank_account"),
+                  type: element.get("type"),
+                  avatarURL: (widget.imgChanged)
+                      ? widget.imagePath
+                      : element.get("avatar_url"));
+              if (userBloc.user.type == "owner") {
+                userBloc.user.restaurantName = element.get("restaurant_name");
+                userBloc.user.location = element.get("location");
+                userBloc.user.cif = element.get("cif");
+              }
 
-            Stream.empty();
-            return profileScreen(userBloc.user);
+              Stream.empty();
+              return profileScreen(userBloc.user);
+            }
           }
         });
   }
@@ -385,6 +391,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(height: ScreenUtil().setHeight(50)),
         ButtAuth("Cerrar Sesión", () {
           userBloc.signOut();
+          return Center(child: CircularProgressIndicator());
+          /*
+          .then(
+                (value) => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return SplashScreena(); //register
+                    },
+                  ),
+                ),
+              );
+              */
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         Divider(color: Colors.black),
@@ -434,6 +453,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ExactAssetImage(images[index]);
 
                             widget.imageIndex = index;
+                            widget.imgChanged = true;
+                            widget.imagePath = widget.imagesUrls[index];
                           });
                           Navigator.pop(context);
                         },

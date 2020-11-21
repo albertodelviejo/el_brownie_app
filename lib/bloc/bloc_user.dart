@@ -1,7 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:el_brownie_app/model/comment.dart';
-import 'package:el_brownie_app/model/notification.dart';
-import 'package:el_brownie_app/model/post.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/repository/auth_repository.dart';
 import 'package:el_brownie_app/repository/cloud_firestore_api.dart';
@@ -11,10 +8,8 @@ import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/cardnotification.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
-import 'package:el_brownie_app/ui/widgets/card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
-import 'package:google_maps_webservice/places.dart';
 
 class UserBloc implements Bloc {
   final _authRepository = AuthRepository();
