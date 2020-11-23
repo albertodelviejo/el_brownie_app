@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 
 class FavScreen extends StatefulWidget {
   @override
@@ -75,7 +76,7 @@ class _FavScreenState extends State<FavScreen> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                "Lorem ipsum dolor sit amet, consectetuer adipiscing elit,",
+                fav_screen_title,
                 style: Mystyle.regularTextStyle,
                 textAlign: TextAlign.center,
               ),

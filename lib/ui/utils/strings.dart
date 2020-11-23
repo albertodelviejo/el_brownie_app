@@ -43,6 +43,10 @@ const String share_button_pop = "Compartir por Whatsapp";
 const String notification_empty_text =
     "Entérate del estado de tu reclamación,\nnuevos mensajes y más.";
 
+const String fav_screen_title = "Vaya brownies me he encontrado...";
+
+const String los_mas_screen_title = "Los más Warros!";
+
 const category_list = [
   "Veggie",
   "Oriental",

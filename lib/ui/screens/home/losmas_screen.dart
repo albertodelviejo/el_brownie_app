@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
-import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/noresutlt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 
 class LosMasScreen extends StatefulWidget {
   @override
@@ -86,7 +86,7 @@ class _LosMasScreenState extends State<LosMasScreen> {
                 children: [
                   SizedBox(height: ScreenUtil().setHeight(40)),
                   Text(
-                    "Todos los Brownies",
+                    los_mas_screen_title,
                     style: Mystyle.titleTextStyle.copyWith(
                       fontSize: ScreenUtil().setSp(100),
                       color: Colors.black87,

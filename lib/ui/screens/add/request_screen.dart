@@ -273,11 +273,13 @@ class _RequestScreenState extends State<RequestScreen> {
                     setState(() {
                       loading = true;
                     });
+
                     String cif = cifController.text;
                     double price = double.parse(widget.price) * 100;
                     String finalPrice = price.toStringAsFixed(0);
                     var response = await StripeService.payWithNewCard(
                         amount: finalPrice, currency: 'EUR');
+
                     switch (_value) {
                       case 0:
                         reason = claim_opt_1;
@@ -307,6 +309,7 @@ class _RequestScreenState extends State<RequestScreen> {
                         content: Text(response.message),
                         duration: Duration(seconds: 5),
                       ));
+                      Navigator.pop(context);
                     } else {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text(response.message),

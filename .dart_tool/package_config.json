@@ -14,6 +14,18 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "archive",
+      "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/archive-2.0.13",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "args",
+      "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/args-1.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "async",
       "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.5.0-nullsafety.1",
       "packageUri": "lib/",
@@ -78,6 +90,12 @@
       "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "1.17"
+    },
+    {
+      "name": "crypto",
+      "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
     },
     {
       "name": "cupertino_icons",
@@ -180,6 +198,12 @@
       "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_image_compress-0.7.0",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "flutter_launcher_icons",
+      "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.8.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
@@ -288,6 +312,12 @@
       "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.3"
+    },
+    {
+      "name": "image",
+      "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.19",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "image_picker",
@@ -596,13 +626,19 @@
       "languageVersion": "2.7"
     },
     {
+      "name": "yaml",
+      "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/yaml-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
+    },
+    {
       "name": "el_brownie_app",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-11-21T11:40:46.383236Z",
+  "generated": "2020-11-23T18:54:27.351316Z",
   "generator": "pub",
   "generatorVersion": "2.10.1"
 }
