@@ -2,7 +2,6 @@ import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/repository/auth_exception_handler.dart';
 import 'package:el_brownie_app/ui/screens/home/bottom_tab.dart';
-import 'package:el_brownie_app/ui/screens/home/home_screen.dart';
 import 'package:el_brownie_app/ui/screens/auth/register_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
@@ -13,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            '¡Qué bien que estés aquí!',
+                            welcome_login,
                             style: Mystyle.titleTextStyle.copyWith(
                               color: Colors.black87,
                             ),
@@ -164,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Container(
                             child: TextFormField(
                               controller: usernameController,
-                              decoration: Mystyle.inputregular('Usuario'),
+                              decoration: Mystyle.inputregular('Email'),
                               textInputAction: TextInputAction.done,
                             ),
                           ),

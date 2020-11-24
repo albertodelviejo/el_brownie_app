@@ -1,12 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
+import 'package:el_brownie_app/ui/screens/welcome/splash_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatefulWidget {
   bool showhidden = false;
@@ -379,7 +383,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         SizedBox(height: ScreenUtil().setHeight(50)),
-        ButtAuth("Editar perfil", () {
+        ButtAuth(profile_edit_button, () {
           var avatarUrl = widget.imagesUrls[widget.imageIndex];
           userBloc.updateUserProfile(UserModel(
               uid: user.uid,
@@ -390,10 +394,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         ButtAuth("Cerrar Sesión", () {
-          userBloc.signOut();
-          return Center(child: CircularProgressIndicator());
-          /*
-          .then(
+          userBloc.signOut().then(
                 (value) => Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -403,21 +404,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               );
-              */
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         Divider(color: Colors.black),
         SizedBox(height: ScreenUtil().setHeight(50)),
-        Text(
-          "Ayuda?",
-          style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
-          textAlign: TextAlign.left,
-        ),
-        Text(
-          "Politica de privacidad",
-          style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
-          textAlign: TextAlign.left,
-        ),
+        RichText(
+            text: TextSpan(
+                text: "Ayuda?",
+                style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    _launchURLHelp();
+                  })),
+        RichText(
+            text: TextSpan(
+                text: "Politica de privacidad",
+                style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    _launchURLTerms();
+                  })),
         SizedBox(height: ScreenUtil().setHeight(100)),
       ],
     );
@@ -461,5 +467,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Center(child: Image.asset(images[index])));
                   })),
             )));
+  }
+
+  _launchURLHelp() async {
+    const url = 'http://elbrownie.com/index.php#funciona';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _launchURLTerms() async {
+    const url = 'http://elbrownie.com/terms.php';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

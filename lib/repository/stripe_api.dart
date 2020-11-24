@@ -98,6 +98,7 @@ class StripeService {
         .collection('posts')
         .where('id_post', isEqualTo: idPost)
         .get();
+
     await _firestore.collection('claims').add({
       'id_payer': _auth.currentUser.uid,
       'id_poster': postQuery.docs[0].data()['id_user'],
@@ -108,6 +109,7 @@ class StripeService {
       'status': 'requested',
       'paymentMethod': paymentMethod,
       'paid_at': DateFormat('dd-MM-yyyy').format(DateTime.now()),
+      'createdAt': Timestamp.now(),
     });
     if (reason == claim_opt_1) {
       DocumentReference ownerQuery =
@@ -116,5 +118,8 @@ class StripeService {
         await ownerQuery.update({'type': 'owner', 'cif': cif});
       });
     }
+
+    DocumentReference docRef = postQuery.docs[0].reference;
+    docRef.update({'status': true});
   }
 }

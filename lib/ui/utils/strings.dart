@@ -47,6 +47,10 @@ const String fav_screen_title = "Vaya brownies me he encontrado...";
 
 const String los_mas_screen_title = "Los más Warros!";
 
+const String welcome_login = "¡Qué bien que estés aquí!";
+
+const String profile_edit_button = "Guardar Cambios";
+
 const category_list = [
   "Veggie",
   "Oriental",
