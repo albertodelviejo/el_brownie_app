@@ -150,6 +150,10 @@ class UserBloc implements Bloc {
   void deleteNotification(String idNotification) =>
       _cloudFirestoreRepository.deleteNotification(idNotification);
 
+  //16. Set no notification
+  void setNoNotifications(String idUser) =>
+      _cloudFirestoreRepository.setNoNotifications(idUser);
+
   //16. Build Notification
   Stream<QuerySnapshot> notificationsListStream() => FirebaseFirestore.instance
       .collection("notifications")

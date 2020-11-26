@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class CardNotification extends StatefulWidget {
-  Image icon;
+  SvgPicture icon;
   String text;
   int points = 10;
   String idNotification;
@@ -52,7 +52,7 @@ class _CardNotificationState extends State<CardNotification> {
             ),
             Dismissible(
               direction: DismissDirection.horizontal,
-              key: Key(widget.index),
+              key: Key(widget.idNotification),
               onDismissed: (direction) {
                 if (direction == DismissDirection.endToStart) {
                   userBloc.deleteNotification(widget.idNotification);

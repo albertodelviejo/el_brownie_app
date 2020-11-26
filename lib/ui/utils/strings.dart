@@ -15,6 +15,7 @@ const String notification_tile_top = "¡Enhorabuena! Estas en el top 3";
 const String notification_tile_welcome = "Bienvenido a la comunidad elBrownie";
 const String notification_tile_comment =
     "Alguien ha comentado un local que has publicado";
+const String notification_tile_added = "Has subido un local!";
 
 const String orderOption1 = 'cerca_a_mi';
 const String orderOption2 = 'mas_warros';
@@ -24,6 +25,7 @@ const String notification_pop_title_favourite = "Eres famoso!";
 const String notification_pop_title_top = "Eres de los mejores!";
 const String notification_pop_title_welcome = "Somos uno más!";
 const String notification_pop_title_comment = "Tómate un respiro...";
+const String notification_pop_title_added = "Vaya baño!";
 
 const String notification_pop_text_reclamation =
     "Alguien ha reclamado us local que has subido. En breves recibirás dineritooo!";
@@ -35,13 +37,18 @@ const String notification_pop_text_welcome =
     "Queremos darte la bienvenida a la comunidad el Brownie";
 const String notification_pop_text_comment =
     "Alguien ha comentado un local que has publicado";
+const String notification_pop_text_added =
+    "Gracias por compartir, juntos vamos a acabar con este desastre!";
 
 const String share_title_pop = "Share!";
 const String share_text_pop = "Comparte esta mierda con tus colegas!";
 const String share_button_pop = "Compartir por Whatsapp";
 
-const String notification_empty_text =
+const String notification_screen_subtitle =
     "Entérate del estado de tu reclamación,\nnuevos mensajes y más.";
+const String notification_screen_empty =
+    "¡Estrenamos nuestros nuevos Mensajes!";
+const String notification_screen_no_message = "No tienes mensajes.";
 
 const String fav_screen_title = "Vaya brownies me he encontrado...";
 
@@ -50,6 +57,8 @@ const String los_mas_screen_title = "Los más Warros!";
 const String welcome_login = "¡Qué bien que estés aquí!";
 
 const String profile_edit_button = "Guardar Cambios";
+
+const String empty_list = "Nada por aquí, nada por allá!";
 
 const category_list = [
   "Veggie",

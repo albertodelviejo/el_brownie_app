@@ -4,6 +4,7 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 
 class MiBrownieScreen extends StatefulWidget {
   @override
@@ -74,15 +75,35 @@ class _MiBrownieScreenState extends State<MiBrownieScreen> {
               ),
             ),
             SizedBox(height: ScreenUtil().setHeight(40)),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.only(bottom: 25),
-              scrollDirection: Axis.vertical,
-              reverse: false,
-              itemBuilder: (_, int index) => listaBrownies[index],
-              itemCount: listaBrownies.length,
-            ),
+            (listaBrownies.length == 0)
+                ? Column(
+                    children: [
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 30.0, bottom: 10),
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                            child: Image.asset("assets/splash4.png"),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        empty_list,
+                        textAlign: TextAlign.center,
+                        style: Mystyle.regularTextStyle,
+                      ),
+                    ],
+                  )
+                : ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.only(bottom: 25),
+                    scrollDirection: Axis.vertical,
+                    reverse: false,
+                    itemBuilder: (_, int index) => listaBrownies[index],
+                    itemCount: listaBrownies.length,
+                  ),
             SizedBox(height: ScreenUtil().setHeight(100)),
           ],
         ),

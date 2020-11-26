@@ -4,6 +4,7 @@ import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class NotificationsScreen extends StatefulWidget {
@@ -52,6 +53,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   }
 
   Widget notificationScreen(List list) {
+    if (list.length == 0) userBloc.setNoNotifications(userBloc.user.uid);
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
@@ -98,12 +100,40 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
             ),
             SizedBox(height: ScreenUtil().setHeight(20)),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Text(
+                notification_screen_subtitle,
+                textAlign: TextAlign.center,
+                style: Mystyle.regularTextStyle,
+              ),
+            ),
             (list.length == 0)
-                ? Container(
-                    child: Text(
-                      notification_empty_text,
-                      textAlign: TextAlign.center,
-                      style: Mystyle.regularTextStyle,
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Container(
+                      child: Column(children: [
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              height: 70,
+                              width: 70,
+                              child: SvgPicture.asset("assets/svg/chat.svg"),
+                            ),
+                          ),
+                        ),
+                        Text(
+                          notification_screen_empty,
+                          textAlign: TextAlign.center,
+                          style: Mystyle.regularGrayTextStyle,
+                        ),
+                        Text(
+                          notification_screen_no_message,
+                          textAlign: TextAlign.center,
+                          style: Mystyle.regularGrayTextStyle,
+                        ),
+                      ]),
                     ),
                   )
                 : ListView.builder(

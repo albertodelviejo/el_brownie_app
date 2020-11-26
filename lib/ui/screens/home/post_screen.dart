@@ -179,7 +179,10 @@ class _PostScreenState extends State<PostScreen> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: ScreenUtil().setHeight(20)),
-                widget.cardHome ?? CircularProgressIndicator(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: widget.cardHome ?? CircularProgressIndicator(),
+                ),
                 SizedBox(height: ScreenUtil().setHeight(40)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -428,6 +431,7 @@ class _PostScreenState extends State<PostScreen> {
               stream: FirebaseFirestore.instance
                   .collection("comments")
                   .where('id_post', isEqualTo: widget.id)
+                  .orderBy('date', descending: true)
                   .snapshots(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (!snapshot.hasData) {

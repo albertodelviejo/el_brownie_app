@@ -9,6 +9,7 @@ import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CloudFirestoreAPI {
   final String POSTS = "posts";
@@ -43,7 +44,9 @@ class CloudFirestoreAPI {
                 'favorites': {},
                 'notifications': {},
                 'avatar_url': "",
-                'number_of_posts': 0
+                'number_of_posts': 0,
+                'createdAt': Timestamp.now(),
+                'hasNotifications': true
               })
             }
         });
@@ -288,12 +291,20 @@ class CloudFirestoreAPI {
       'notification_type': notificationType,
       'points': points
     });
+    var user = await _db.collection("users").doc(idUser);
+    user.update({'hasNotifications': true});
+
     return notificationdoc.id;
   }
 
   void deleteNotification(String idNotification) {
     DocumentReference ref = _db.collection("notifications").doc(idNotification);
     ref.delete();
+  }
+
+  void setNoNotifications(String idUser) {
+    DocumentReference ref = _db.collection("users").doc(idUser);
+    ref.update({'hasNotifications': false});
   }
 
   List<CardNotification> buildNotifications(
@@ -330,9 +341,13 @@ class CloudFirestoreAPI {
           text = notification_tile_comment;
           points = element.get('points');
           break;
+        case "added":
+          icon = "assets/ifull.png";
+          text = notification_tile_added;
+          points = element.get('points');
       }
       allNotifications.add(CardNotification(
-        icon: Image.asset(icon),
+        icon: SvgPicture.asset(icon),
         points: points,
         text: text,
         idNotification: element.id,

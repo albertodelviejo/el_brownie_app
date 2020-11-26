@@ -237,7 +237,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         snapshot.ref.getDownloadURL().then((url) {
                           userBloc
                               .addComment(widget.idPost, url, _comment,
-                                  widget.valoration.toString())
+                                  (widget.valoration + 1).toString())
                               .whenComplete(() {
                             comentarioController.clear();
                             imageFile = null;

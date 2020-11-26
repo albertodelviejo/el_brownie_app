@@ -6,6 +6,7 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 
@@ -104,34 +105,76 @@ class _FavScreenState extends State<FavScreen> {
                                 }
                               });
                             });
-                            return Container(
-                              height:
-                                  cards.length * ScreenUtil().setHeight(1500),
-                              child: ListView.builder(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  itemCount: cards.length,
-                                  itemBuilder: (context, index) {
-                                    return CardHome(
-                                      name: '${cards[index].data()['name']}',
-                                      valo: 'string',
-                                      place:
-                                          '${cards[index].data()['address']}',
-                                      reclam: cards[index].data()['status'],
-                                      view: "1700 views",
-                                      hace: "Hace 2 dias",
-                                      myindex:
-                                          '${cards[index].data()['valoration']}',
-                                      id: cards[index].id,
-                                      idUserPost:
-                                          cards[index].data()['id_user'],
-                                      imageUrl:
-                                          '${cards[index].data()['photo']}',
-                                      isMarked: true,
-                                    );
-                                  }),
-                            );
+                            return (cards.length == 0)
+                                ? Column(
+                                    children: [
+                                      Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 30.0, bottom: 10),
+                                          child: Container(
+                                            height: 70,
+                                            width: 70,
+                                            child: Image.asset(
+                                                "assets/splash4.png"),
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        empty_list,
+                                        textAlign: TextAlign.center,
+                                        style: Mystyle.regularTextStyle,
+                                      ),
+                                    ],
+                                  )
+                                : Container(
+                                    height: cards.length *
+                                        ScreenUtil().setHeight(1500),
+                                    child: ListView.builder(
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemCount: cards.length,
+                                        itemBuilder: (context, index) {
+                                          return CardHome(
+                                            name:
+                                                '${cards[index].data()['name']}',
+                                            valo: 'string',
+                                            place:
+                                                '${cards[index].data()['address']}',
+                                            reclam:
+                                                cards[index].data()['status'],
+                                            view: "1700 views",
+                                            hace: "Hace 2 dias",
+                                            myindex:
+                                                '${cards[index].data()['valoration']}',
+                                            id: cards[index].id,
+                                            idUserPost:
+                                                cards[index].data()['id_user'],
+                                            imageUrl:
+                                                '${cards[index].data()['photo']}',
+                                            isMarked: true,
+                                          );
+                                        }),
+                                  );
                           } else {
-                            return Container();
+                            return Column(
+                              children: [
+                                Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Container(
+                                      height: 70,
+                                      width: 70,
+                                      child: Image.asset("assets/splash4.png"),
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  empty_list,
+                                  textAlign: TextAlign.center,
+                                  style: Mystyle.regularTextStyle,
+                                ),
+                              ],
+                            );
                           }
                         });
                   } else {

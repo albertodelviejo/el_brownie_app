@@ -53,6 +53,13 @@ class Mystyle {
     fontSize: ScreenUtil().setSp(48),
   );
 
+  static TextStyle regularGrayTextStyle = TextStyle(
+    color: Colors.black45,
+    fontWeight: FontWeight.normal,
+    fontFamily: openS,
+    fontSize: ScreenUtil().setSp(48),
+  );
+
   static TextStyle normalTextStyle = TextStyle(
     color: Colors.black87,
     fontWeight: FontWeight.normal,

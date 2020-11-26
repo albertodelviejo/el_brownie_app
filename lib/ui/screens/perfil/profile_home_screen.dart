@@ -44,20 +44,10 @@ class _ProfileHomeScreenState extends State<ProfileHomeScreen> {
                       },
                     ),
                   ),
-                  icon: IconButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) {
-                          return NotificationsScreen(); //register
-                        },
-                      ),
-                    ),
-                    icon: Icon(
-                      Icons.notifications_none,
-                      color: Colors.black,
-                      size: 28,
-                    ),
+                  icon: Icon(
+                    Icons.notifications_none,
+                    color: Colors.black,
+                    size: 28,
                   ),
                 ),
               ),

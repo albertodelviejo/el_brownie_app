@@ -33,6 +33,9 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
   bool _autoValidate = false;
 
+  var _emailconfirmation;
+  bool _validate = false;
+
   final contrasenaController = TextEditingController();
   final usernameController = TextEditingController();
 
@@ -166,9 +169,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               controller: usernameController,
                               decoration: Mystyle.inputregular('Email'),
                               textInputAction: TextInputAction.done,
+                              validator: validateEmail,
+                              onSaved: (String val) {
+                                _emailconfirmation = val;
+                              },
                             ),
                           ),
-                          SizedBox(height: ScreenUtil().setHeight(50)),
+                          SizedBox(height: ScreenUtil().setHeight(40)),
                           Container(
                             child: TextFormField(
                               obscureText: _obscureText,
@@ -184,10 +191,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               ),
+                              /*
                               validator: (value) {
                                 if (value.isEmpty) return 'isEmpty';
                                 return null;
                               },
+                              */
                             ),
                           ),
                           Container(
@@ -201,11 +210,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                         text: 'Olvidaste tu contraseña?',
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
-                                            userBloc.resetPassword(
-                                                usernameController.text);
+                                            if (_formKey.currentState
+                                                .validate()) {
+                                              _formKey.currentState.save();
+                                              userBloc.resetPassword(
+                                                  usernameController.text);
+                                              _showPasswordRecoveryDialog();
+                                            } else {
+                                              _validate = true;
+                                            }
                                           })
                                   ]))),
-                          SizedBox(height: ScreenUtil().setHeight(50)),
+                          SizedBox(height: ScreenUtil().setHeight(30)),
                           ButtAuth("Acceder", () {
                             setState(() {
                               acceder = false;
@@ -229,7 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
                           }),
                           Container(
-                              padding: EdgeInsets.only(top: 15),
+                              padding: EdgeInsets.only(top: 9),
                               alignment: Alignment.center,
                               child: RichText(
                                   text: TextSpan(
@@ -320,5 +336,29 @@ class _LoginScreenState extends State<LoginScreen> {
             content: Text("Credenciales incorrectas"),
           );
         });
+  }
+
+  _showPasswordRecoveryDialog() {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              'Recuperar contraseña',
+              style: TextStyle(color: Colors.black),
+            ),
+            content: Text("Consulta tu email para restaurar la contraseña"),
+          );
+        });
+  }
+
+  String validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Entre un email válido';
+    else
+      return null;
   }
 }

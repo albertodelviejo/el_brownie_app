@@ -9,7 +9,7 @@ class PopUp {
   String type;
   String title;
   String text;
-  Image icon;
+  var icon;
 
   PopUp({this.type});
 
@@ -18,17 +18,17 @@ class PopUp {
   ) {
     switch (type) {
       case "reclamation":
-        icon = Image.asset("assets/svg/notifmoney.svg");
+        icon = SvgPicture.asset("assets/svg/notifmoney.svg");
         text = notification_pop_text_reclamation;
         title = notification_pop_title_reclamation;
         break;
       case "favourite":
-        icon = Image.asset("assets/svg/favorito.svg");
+        icon = SvgPicture.asset("assets/svg/favorito.svg");
         text = notification_pop_text_favourite;
         title = notification_pop_title_favourite;
         break;
       case "top":
-        icon = Image.asset("assets/svg/top.svg");
+        icon = SvgPicture.asset("assets/svg/top.svg");
         text = notification_pop_text_top;
         title = notification_pop_title_top;
         break;
@@ -38,7 +38,7 @@ class PopUp {
         title = notification_pop_title_welcome;
         break;
       case "comment":
-        icon = Image.asset("assets/svg/descanso.svg");
+        icon = SvgPicture.asset("assets/svg/descanso.svg");
         text = notification_pop_text_comment;
         title = notification_pop_title_comment;
         break;
@@ -70,7 +70,7 @@ class PopUp {
                       alignment: Alignment.bottomRight,
                       height: ScreenUtil().setWidth(100),
                       width: ScreenUtil().setWidth(100),
-                      child: Image.asset("")),
+                      child: SvgPicture.asset("")),
                 ),
               ),
               Positioned(
@@ -88,7 +88,7 @@ class PopUp {
                       textAlign: TextAlign.center,
                     ),
                     Container(
-                        alignment: Alignment.bottomRight,
+                        alignment: Alignment.center,
                         height: ScreenUtil().setWidth(300),
                         width: ScreenUtil().setWidth(300),
                         child: icon),

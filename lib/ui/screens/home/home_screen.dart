@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/bloc/orderByModel.dart';
 import 'package:el_brownie_app/model/categoryModel.dart';
+import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/screens/home/losmas_screen.dart';
 import 'package:el_brownie_app/ui/screens/home/todos_screen.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
@@ -8,6 +11,7 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/orderBy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 import 'cerca_screen.dart';
 
@@ -22,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String currentCategory = '';
   List<String> selectedCategories = [];
   String orderPer = '';
+  UserBloc userBloc;
 
   List<CategoryModel> categories = [
     CategoryModel("Veggies", "assets/svg/brocoli.svg", false),
@@ -44,6 +49,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
 
+    userBloc = BlocProvider.of(context);
+    if (userBloc.user.uid == null) {
+      userBloc.user = UserModel(uid: userBloc.currentUser.uid);
+    }
+
+    return getUserfromDB(userBloc.user.uid);
+  }
+
+  Widget homeScreen() {
     return SafeArea(
       child: DefaultTabController(
         length: 3,
@@ -62,20 +76,25 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.only(right: 12.0),
                 child: IconButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return NotificationsScreen(); //register
-                      },
-                    ),
-                  ),
-                  icon: Icon(
-                    Icons.notifications_none,
-                    color: Colors.black,
-                    size: 28,
-                  ),
-                ),
+                    onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return NotificationsScreen(); //register
+                            },
+                          ),
+                        ),
+                    icon: (userBloc.user.hasNotifications)
+                        ? Icon(
+                            Icons.notification_important,
+                            color: Colors.black,
+                            size: 28,
+                          )
+                        : Icon(
+                            Icons.notifications_none,
+                            color: Colors.black,
+                            size: 28,
+                          )),
               ),
             ],
             bottom: PreferredSize(
@@ -177,6 +196,31 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  Widget getUserfromDB(uid) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("users")
+            .where('uid', isEqualTo: uid)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          UserBloc userBloc = BlocProvider.of(context);
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            DocumentSnapshot element = snapshot.data.documents[0];
+            userBloc.user = UserModel(
+                email: element.get("email"),
+                uid: element.get("uid"),
+                userName: element.get("username"),
+                avatarURL: element.get("avatar_url"),
+                points: element.get("points"),
+                hasNotifications: element.get("hasNotifications"));
+            Stream.empty();
+          }
+          return homeScreen();
+        });
   }
 
   modal(Function onPressed) {
