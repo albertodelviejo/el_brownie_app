@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 import '../../../model/post.dart';
@@ -183,7 +184,7 @@ class _PostScreenState extends State<PostScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 6),
                   child: widget.cardHome ?? CircularProgressIndicator(),
                 ),
-                SizedBox(height: ScreenUtil().setHeight(40)),
+                SizedBox(height: ScreenUtil().setHeight(20)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -196,7 +197,7 @@ class _PostScreenState extends State<PostScreen> {
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Container(
                                   width: ScreenUtil().setHeight(800),
-                                  height: ScreenUtil().setHeight(600),
+                                  height: ScreenUtil().setHeight(400),
                                   padding: EdgeInsets.symmetric(
                                       vertical: 16, horizontal: 16),
                                   child: Column(
@@ -228,14 +229,11 @@ class _PostScreenState extends State<PostScreen> {
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
-                                            child: Image(
-                                              image: AssetImage(
-                                                  'assets/whatsapp.svg'),
-                                              height: 36.0,
-                                            ),
+                                            child: SvgPicture.asset(
+                                                'assets/whatsapp.svg'),
                                           ),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 )));

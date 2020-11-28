@@ -46,7 +46,8 @@ class CloudFirestoreAPI {
                 'avatar_url': "",
                 'number_of_posts': 0,
                 'createdAt': Timestamp.now(),
-                'hasNotifications': true
+                'hasNotifications': true,
+                'isTop3': false
               })
             }
         });
@@ -289,7 +290,8 @@ class CloudFirestoreAPI {
     var notificationdoc = await _db.collection("notifications").add({
       'id_user': idUser,
       'notification_type': notificationType,
-      'points': points
+      'points': points,
+      'date': Timestamp.now()
     });
     var user = await _db.collection("users").doc(idUser);
     user.update({'hasNotifications': true});
@@ -347,7 +349,9 @@ class CloudFirestoreAPI {
           points = element.get('points');
       }
       allNotifications.add(CardNotification(
-        icon: SvgPicture.asset(icon),
+        icon: (icon.substring(icon.length - 3, icon.length) == "svg")
+            ? SvgPicture.asset(icon)
+            : Image.asset(icon),
         points: points,
         text: text,
         idNotification: element.id,
@@ -399,5 +403,25 @@ class CloudFirestoreAPI {
       ));
     });
     return allPost;
+  }
+
+  void updateAddTop3Notification(String uid, bool isTop3) {
+    DocumentReference docRef = _db.collection("users").doc(uid);
+    bool isTop3db;
+    docRef.get().then((value) => {
+          if (value.exists)
+            {
+              isTop3db = value.get('isTop3'),
+              if (isTop3db && !isTop3)
+                {
+                  docRef.update({'isTop3': false})
+                },
+              if (!isTop3db && isTop3)
+                {
+                  docRef.update({'isTop3': true}),
+                  addNotification(uid, "top", 10)
+                }
+            }
+        });
   }
 }

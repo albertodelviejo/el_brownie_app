@@ -12,12 +12,13 @@ class NoResult extends StatelessWidget {
       width: ScreenUtil().scaleWidth,
       alignment: Alignment.center,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(height: ScreenUtil().setHeight(130)),
           Text(
-            "“No hay resultados aplicando estos filtros”",
+            "“No hay resultados\naplicando estos filtros”",
             style: Mystyle.titleTextStyle.copyWith(
-              fontSize: ScreenUtil().setSp(100),
+              fontSize: ScreenUtil().setSp(80),
               color: Colors.black87,
             ),
             textAlign: TextAlign.center,

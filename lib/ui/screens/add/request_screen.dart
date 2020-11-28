@@ -5,6 +5,7 @@ import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_signin_button/button_builder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -82,18 +83,7 @@ class _RequestScreenState extends State<RequestScreen> {
             builder: (context) => ListView(
               padding: EdgeInsets.symmetric(horizontal: 24),
               children: [
-                SizedBox(height: ScreenUtil().setHeight(30)),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    alignment: Alignment.bottomRight,
-                    height: ScreenUtil().setWidth(100),
-                    width: ScreenUtil().setWidth(100),
-                    child: SvgPicture.asset(
-                      "assets/svg/pub.svg",
-                    ),
-                  ),
-                ),
+                SizedBox(height: ScreenUtil().setHeight(60)),
                 Text(
                   "Reclama este local",
                   style: Mystyle.titleTextStyle.copyWith(
@@ -310,6 +300,37 @@ class _RequestScreenState extends State<RequestScreen> {
                         duration: Duration(seconds: 5),
                       ));
                       Navigator.pop(context);
+                      return showDialog(
+                          context: context,
+                          builder: (context) => Dialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Container(
+                                width: ScreenUtil().setHeight(800),
+                                height: ScreenUtil().setHeight(400),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 16, horizontal: 16),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      transference_succesfull,
+                                      style: Mystyle.titleTextStyle
+                                          .copyWith(color: Colors.black87),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(
+                                        height: ScreenUtil().setHeight(40)),
+                                    ButtAuth(
+                                      "Aceptar",
+                                      () {
+                                        Navigator.of(context)
+                                            .popUntil((route) => route.isFirst);
+                                      },
+                                      border: true,
+                                    )
+                                  ],
+                                ),
+                              )));
                     } else {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text(response.message),

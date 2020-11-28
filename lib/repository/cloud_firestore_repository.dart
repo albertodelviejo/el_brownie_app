@@ -91,4 +91,7 @@ class CloudFirestoreRepository {
   void addPoints(String idUser) => _cloudFirestoreAPI.addPoints(idUser);
 
   void deletePoints(String idUser) => _cloudFirestoreAPI.deletePoints(idUser);
+
+  void updateAddTop3Notification(String uid, bool isTop3) =>
+      _cloudFirestoreAPI.updateAddTop3Notification(uid, isTop3);
 }

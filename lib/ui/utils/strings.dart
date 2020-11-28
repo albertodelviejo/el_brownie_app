@@ -11,7 +11,7 @@ const String notification_tile_reclamation =
     "Alguien ha reclamado un local que has subido.";
 const String notification_tile_favourite =
     "Alguien ha marcado tu local como favorito";
-const String notification_tile_top = "¡Enhorabuena! Estas en el top 3";
+const String notification_tile_top = "¡Enhorabuena!\nEstas en el top 3";
 const String notification_tile_welcome = "Bienvenido a la comunidad elBrownie";
 const String notification_tile_comment =
     "Alguien ha comentado un local que has publicado";
@@ -59,6 +59,9 @@ const String welcome_login = "¡Qué bien que estés aquí!";
 const String profile_edit_button = "Guardar Cambios";
 
 const String empty_list = "Nada por aquí, nada por allá!";
+const String empty_filter = "No hay resultados\naplicando estos filtros";
+
+const String transference_succesfull = "Transferencia completada!";
 
 const category_list = [
   "Veggie",

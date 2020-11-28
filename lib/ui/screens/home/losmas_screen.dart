@@ -76,6 +76,7 @@ class _LosMasScreenState extends State<LosMasScreen> {
   Widget todosScreen(List<CardHome> allPosts) {
     ScreenUtil.init(context);
     bool noresult = false;
+    (allPosts.length == 0) ? noresult = true : noresult = false;
 
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: 24),

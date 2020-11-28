@@ -60,6 +60,7 @@ class _CercaScreenState extends State<CercaScreen> {
 
     ScreenUtil.init(context);
     bool noresult = false;
+    (allPosts.length == 0) ? noresult = true : noresult = false;
 
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: 24),

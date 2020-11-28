@@ -158,6 +158,7 @@ class UserBloc implements Bloc {
   Stream<QuerySnapshot> notificationsListStream() => FirebaseFirestore.instance
       .collection("notifications")
       .where("id_user", isEqualTo: currentUser.uid)
+      .orderBy("date", descending: true)
       .snapshots();
 
   List<CardNotification> buildNotifications(
@@ -184,6 +185,10 @@ class UserBloc implements Bloc {
 
   List<CardHome> buildMyMostPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildMyMostPosts(ticketsListSnapshot);
+
+  //20. Top 3 notification
+  void updateAddTop3Notification(bool isTop3) =>
+      _cloudFirestoreRepository.updateAddTop3Notification(user.uid, isTop3);
 
   @override
   void dispose() {}

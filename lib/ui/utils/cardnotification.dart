@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class CardNotification extends StatefulWidget {
-  SvgPicture icon;
+  var icon;
   String text;
   int points = 10;
   String idNotification;

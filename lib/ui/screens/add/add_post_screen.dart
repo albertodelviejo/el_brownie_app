@@ -37,6 +37,11 @@ class _AddCommentScreen extends State<AddCommentScreen> {
   final comentario = TextEditingController();
   bool filled = false;
   String _uploadedFileURL;
+  var _name;
+  var _address;
+  var _comment;
+
+  bool _validate = false;
 
   UserBloc userBloc;
   var imageFile;
@@ -50,6 +55,20 @@ class _AddCommentScreen extends State<AddCommentScreen> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     userBloc = BlocProvider.of(context);
+
+    _showAlertDialog(errorMsg) {
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+                title: Text(
+                  'Complete el formulario',
+                  style: TextStyle(color: Colors.black),
+                ),
+                content: Text(errorMsg));
+          });
+    }
+
     return SafeArea(
       child: ModalProgressHUD(
         inAsyncCall: loading,
@@ -209,9 +228,9 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: Mystyle.inputWhitebg('Nombre del restaurante'),
                     textInputAction: TextInputAction.done,
-                    validator: (value) {
-                      if (value.isEmpty) return 'isEmpty';
-                      return null;
+                    validator: validateNotEmpty,
+                    onSaved: (String val) {
+                      _name = val;
                     },
                   ),
                 ),
@@ -363,9 +382,9 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                       ),
                     ),
                     textInputAction: TextInputAction.done,
-                    validator: (value) {
-                      if (value.isEmpty) return 'isEmpty';
-                      return null;
+                    validator: validateNotEmpty,
+                    onSaved: (String val) {
+                      _address = val;
                     },
                   ),
                 ),
@@ -379,9 +398,9 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                     decoration: Mystyle.inputregularmaxline(
                         'Escribe tu comentario aqui…'),
                     textInputAction: TextInputAction.done,
-                    validator: (value) {
-                      if (value.isEmpty) return 'isEmpty';
-                      return null;
+                    validator: validateNotEmpty,
+                    onSaved: (String val) {
+                      _comment = val;
                     },
                   ),
                 ),
@@ -459,66 +478,82 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                 ButtAuth(
                   "Publicar",
                   () {
-                    if (imageFile == null) {
-                      print("Show alert : picture required");
-                    } else {
-                      setState(() {
-                        loading = true;
-                      });
-                      widget.idPost = nombre.text.hashCode.toString();
-                      File compressedFile = new File(imageFile.path
-                              .substring(0, imageFile.path.length - 4) +
-                          "-.jpg");
+                    if (_formKey.currentState.validate()) {
+                      _formKey.currentState.save();
+                      if (imageFile == null) {
+                        print("Show alert : picture required");
+                        _showAlertDialog("Por favor, añade una foto!");
+                      } else if (!widget.tapped) {
+                        print("Show alert: Tap valorate");
+                        _showAlertDialog("Por favor, valore su foto!");
+                      } else if (_dropdownvalue == null) {
+                        _showAlertDialog(
+                            "Seleccione una categoría de restaurante");
+                      } else {
+                        setState(() {
+                          loading = true;
+                        });
+                        widget.idPost = nombre.text.hashCode.toString();
+                        File compressedFile = new File(imageFile.path
+                                .substring(0, imageFile.path.length - 4) +
+                            "-.jpg");
 
-                      testCompressAndGetFile(imageFile, compressedFile.path)
-                          .then((value) {
-                        compressedFile = value;
+                        testCompressAndGetFile(imageFile, compressedFile.path)
+                            .then((value) {
+                          compressedFile = value;
 
-                        var name = '${DateTime.now()}' +
-                            basenameWithoutExtension(compressedFile.toString());
-                        StorageReference storageReference =
-                            FirebaseStorage.instance.ref().child('posts/$name');
-                        StorageUploadTask uploadTask =
-                            storageReference.putFile(compressedFile);
-                        uploadTask.onComplete.then((snapshot) {
-                          snapshot.ref.getDownloadURL().then((url) {
-                            userBloc.addNotification(
-                                userBloc.user.uid, "added", 5);
-                            userBloc
-                                .createPost(
-                                    nombre.text.hashCode.toString(),
-                                    direccion.text,
-                                    category_list[_dropdownvalue],
-                                    nombre.text,
-                                    comentario.text,
-                                    _value + 2,
-                                    false,
-                                    url.toString(),
-                                    widget.valoration + 1)
-                                .whenComplete(() {
-                              setState(() {
-                                nombre.clear();
-                                _dropdownvalue = null;
-                                direccion.clear();
-                                comentario.clear();
-                                widget.tapped = false;
-                                imageFile = null;
-                                loading = false;
+                          var name = '${DateTime.now()}' +
+                              basenameWithoutExtension(
+                                  compressedFile.toString());
+                          StorageReference storageReference = FirebaseStorage
+                              .instance
+                              .ref()
+                              .child('posts/$name');
+                          StorageUploadTask uploadTask =
+                              storageReference.putFile(compressedFile);
+                          userBloc.addNotification(
+                              userBloc.user.uid, "added", 5);
+                          uploadTask.onComplete.then((snapshot) {
+                            snapshot.ref.getDownloadURL().then((url) {
+                              userBloc
+                                  .createPost(
+                                      nombre.text.hashCode.toString(),
+                                      direccion.text,
+                                      category_list[_dropdownvalue],
+                                      nombre.text,
+                                      comentario.text,
+                                      _value + 2,
+                                      false,
+                                      url.toString(),
+                                      widget.valoration + 1)
+                                  .whenComplete(() {
+                                setState(() {
+                                  nombre.clear();
+                                  _dropdownvalue = null;
+                                  direccion.clear();
+                                  comentario.clear();
+                                  widget.tapped = false;
+                                  imageFile = null;
+                                  loading = false;
+                                });
                               });
                             });
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BottomTabBarr()),
+                            );
+                          }).catchError((onError) {
+                            setState(() {
+                              loading = false;
+                            });
+                            print(onError.message.toString());
                           });
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => BottomTabBarr()),
-                          );
-                        }).catchError((onError) {
-                          setState(() {
-                            loading = false;
-                          });
-                          print(onError.message.toString());
                         });
-                      });
+                      }
+                    } else {
+                      //validation error
+                      _validate = true;
                     }
                   },
                   border: true,

@@ -72,6 +72,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 userBloc.user.cif = element.get("cif");
               }
 
+              (userBloc.user.type == "default")
+                  ? widget.showhidden = false
+                  : widget.showhidden = true;
+
               Stream.empty();
               return profileScreen(userBloc.user);
             }
@@ -96,10 +100,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     nombreRestauranteController.text = user.restaurantName;
     ubicacionRestauranteController.text = user.location;
     cifController.text = user.cif;
-
-    (user.type == "default")
-        ? widget.showhidden = false
-        : widget.showhidden = true;
 
     (user.avatarURL != "")
         ? widget.imageProfile = NetworkImage(user.avatarURL)
@@ -155,6 +155,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             keyboardType: TextInputType.emailAddress,
             decoration: Mystyle.inputWhitebg('Usuario'),
             textInputAction: TextInputAction.done,
+            enabled: false,
             validator: (value) {
               if (value.isEmpty) return 'isEmpty';
               return null;
@@ -169,6 +170,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             keyboardType: TextInputType.emailAddress,
             decoration: Mystyle.inputWhitebg('Nombre'),
             textInputAction: TextInputAction.done,
+            enabled: false,
             validator: (value) {
               if (value.isEmpty) return 'isEmpty';
               return null;
@@ -183,6 +185,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             keyboardType: TextInputType.emailAddress,
             decoration: Mystyle.inputWhitebg('Email'),
             textInputAction: TextInputAction.done,
+            enabled: false,
             validator: (value) {
               if (value.isEmpty) return 'isEmpty';
               return null;

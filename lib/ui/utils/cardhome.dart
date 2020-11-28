@@ -77,6 +77,7 @@ class _CardHomeState extends State<CardHome> {
                           id: widget.id,
                           isMarked: widget.isMarked,
                           idUserPost: widget.idUserPost,
+                          pagename: "post",
                         ),
                       )));
         }
@@ -178,17 +179,43 @@ class _CardHomeState extends State<CardHome> {
           ]),
           Padding(
             padding: const EdgeInsets.only(
-                left: 16.0, right: 16.0, top: 12, bottom: 5),
+                left: 4.0, right: 4.0, top: 12, bottom: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  widget.name,
-                  style: Mystyle.titleTextStyle.copyWith(
-                    color: Colors.black87,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
+                (widget.pagename == "post")
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Row(
+                          children: List.generate(5, (index) {
+                            //var myindexaux = int.parse(widget.myindex);
+                            return index < int.parse(widget.myindex)
+                                ? Container(
+                                    height: ScreenUtil().setHeight(90),
+                                    width: ScreenUtil().setHeight(90),
+                                    margin: EdgeInsets.symmetric(horizontal: 3),
+                                    child: Image.asset("assets/ifull.png"),
+                                  )
+                                : Container(
+                                    height: ScreenUtil().setHeight(90),
+                                    width: ScreenUtil().setHeight(90),
+                                    margin: EdgeInsets.symmetric(horizontal: 3),
+                                    child: Image.asset("assets/iempty.png"),
+                                  );
+                          }),
+                        ),
+                      )
+                    : Container(
+                        width: ScreenUtil().setWidth(500),
+                        child: Text(
+                          widget.name,
+                          style: Mystyle.titleTextStyle.copyWith(
+                            color: Colors.black87,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ),
                 Row(
                   children: [
                     Container(
@@ -204,7 +231,7 @@ class _CardHomeState extends State<CardHome> {
                           ? Icon(
                               Icons.check,
                               color: Mystyle.thirdcolo,
-                              size: 12,
+                              size: 15,
                             )
                           : Container(),
                     ),
@@ -221,7 +248,7 @@ class _CardHomeState extends State<CardHome> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: Row(
               children: [
                 Icon(Icons.place, color: Mystyle.secondrycolo),
@@ -236,27 +263,30 @@ class _CardHomeState extends State<CardHome> {
             ),
           ),
           SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: Row(
-              children: List.generate(5, (index) {
-                //var myindexaux = int.parse(widget.myindex);
-                return index < int.parse(widget.myindex)
-                    ? Container(
-                        height: ScreenUtil().setHeight(90),
-                        width: ScreenUtil().setHeight(90),
-                        margin: EdgeInsets.symmetric(horizontal: 2),
-                        child: Image.asset("assets/ifull.png"),
-                      )
-                    : Container(
-                        height: ScreenUtil().setHeight(90),
-                        width: ScreenUtil().setHeight(90),
-                        margin: EdgeInsets.symmetric(horizontal: 2),
-                        child: Image.asset("assets/iempty.png"),
-                      );
-              }),
-            ),
-          ),
+          (widget.pagename == "post")
+              ? Container()
+              : Padding(
+                  padding:
+                      const EdgeInsets.only(right: 4.0, left: 4.0, bottom: 5),
+                  child: Row(
+                    children: List.generate(5, (index) {
+                      //var myindexaux = int.parse(widget.myindex);
+                      return index < int.parse(widget.myindex)
+                          ? Container(
+                              height: ScreenUtil().setHeight(90),
+                              width: ScreenUtil().setHeight(90),
+                              margin: EdgeInsets.symmetric(horizontal: 2),
+                              child: Image.asset("assets/ifull.png"),
+                            )
+                          : Container(
+                              height: ScreenUtil().setHeight(90),
+                              width: ScreenUtil().setHeight(90),
+                              margin: EdgeInsets.symmetric(horizontal: 2),
+                              child: Image.asset("assets/iempty.png"),
+                            );
+                    }),
+                  ),
+                ),
           SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),

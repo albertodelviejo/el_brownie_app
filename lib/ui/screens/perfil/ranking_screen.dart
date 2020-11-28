@@ -5,6 +5,7 @@ import 'package:el_brownie_app/ui/utils/rankwidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class RankingScreen extends StatefulWidget {
   @override
@@ -18,9 +19,12 @@ class _RankingScreenState extends State<RankingScreen> {
   final _db = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
 
+  UserBloc userBloc;
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+    userBloc = BlocProvider.of(context);
 
     return SafeArea(
       child: Scaffold(
@@ -41,6 +45,9 @@ class _RankingScreenState extends State<RankingScreen> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         List posts = snapshot.data.docs;
+                        (getRank(_auth.currentUser.uid, users) <= 3)
+                            ? userBloc.updateAddTop3Notification(true)
+                            : userBloc.updateAddTop3Notification(false);
                         return ListView(
                           children: [
                             SizedBox(height: ScreenUtil().setHeight(60)),
@@ -71,7 +78,7 @@ class _RankingScreenState extends State<RankingScreen> {
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 24),
                               child: Text(
-                                "Tu posición",
+                                "Global",
                                 style: Mystyle.titleTextStyle.copyWith(
                                   fontSize: ScreenUtil().setSp(100),
                                   color: Colors.black87,

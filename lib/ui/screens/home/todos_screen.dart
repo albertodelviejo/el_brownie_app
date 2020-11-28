@@ -76,6 +76,7 @@ class _TodosScreenState extends State<TodosScreen> {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
               return Center(child: CircularProgressIndicator());
+
             case ConnectionState.done:
               return todosScreen(
                   userBloc.buildMyPosts(snapshot.data.documents));
@@ -86,6 +87,7 @@ class _TodosScreenState extends State<TodosScreen> {
 
             case ConnectionState.none:
               return Center(child: CircularProgressIndicator());
+
             default:
               return todosScreen(
                   userBloc.buildMyPosts(snapshot.data.documents));
@@ -115,6 +117,7 @@ class _TodosScreenState extends State<TodosScreen> {
     bool noresult = false;
 
     List<dynamic> posts = filterPosts(allPosts);
+    (posts.length == 0) ? noresult = true : noresult = false;
     return Container(
       width: ScreenUtil().scaleWidth,
       height: ScreenUtil().screenHeight,
@@ -135,12 +138,6 @@ class _TodosScreenState extends State<TodosScreen> {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: ScreenUtil().setHeight(20)),
-                    /** 
-                    AdmobBanner(
-                      adUnitId: admobService.getBannerAdId(),
-                      adSize: AdmobBannerSize.FULL_BANNER,
-                    ),
-                    */
                     GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,

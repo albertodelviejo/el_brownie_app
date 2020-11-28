@@ -87,6 +87,7 @@ class CardLosmas extends StatelessWidget {
                                 id: id,
                                 isMarked: isMarked,
                                 idUserPost: idUserPost,
+                                pagename: "post",
                               ),
                             )));
               }
@@ -155,12 +156,17 @@ class CardLosmas extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          name,
-                          style: Mystyle.titleTextStyle.copyWith(
-                            color: Colors.black87,
-                            fontSize: 20,
-                            height: 1,
+                        Container(
+                          width: ScreenUtil().setWidth(425),
+                          child: Text(
+                            name,
+                            style: Mystyle.titleTextStyle.copyWith(
+                              color: Colors.black87,
+                              fontSize: 20,
+                              height: 1,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
                           ),
                         ),
                       ],

@@ -42,6 +42,11 @@ class PopUp {
         text = notification_pop_text_comment;
         title = notification_pop_title_comment;
         break;
+      case "added":
+        icon = Image.asset("assets/ifull.png");
+        text = notification_pop_text_added;
+        title = notification_pop_title_added;
+        break;
       default:
         icon = Image.asset("assets/ifull.png");
         text = notification_pop_text_welcome;
