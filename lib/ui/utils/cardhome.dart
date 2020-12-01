@@ -90,27 +90,35 @@ class _CardHomeState extends State<CardHome> {
                 //horizontal: widget.reclam ? 16 : 16,
                 vertical: widget.reclam ? 12 : 12,
               ),
+              /*
               child: ImageFiltered(
                 imageFilter: ImageFilter.blur(
                   sigmaX: widget.reclam ? 5 : 0.1,
                   sigmaY: widget.reclam ? 5 : 0.1,
                 ),
-                child: Container(
+                */
+              child: Container(
                   width: ScreenUtil().setWidth(widget.reclam ? 900 : 900),
                   height: ScreenUtil().setHeight(widget.reclam ? 900 : 900),
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(widget.reclam ? 10 : 10),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        widget.imageUrl,
+                  child: ImageFiltered(
+                      imageFilter: ImageFilter.blur(
+                        sigmaX: widget.reclam ? 3 : 0.1,
+                        sigmaY: widget.reclam ? 3 : 0.1,
                       ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(widget.reclam ? 10 : 10),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              widget.imageUrl,
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ))),
             ),
+            //),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Row(

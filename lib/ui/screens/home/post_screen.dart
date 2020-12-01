@@ -7,7 +7,6 @@ import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
-import 'package:el_brownie_app/ui/utils/popup.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,13 +19,11 @@ import '../../../model/post.dart';
 
 class PostScreen extends StatefulWidget {
   final String id;
-  bool isTapped = false;
-  Icon icon = Icon(
-    Icons.bookmark_border,
-    color: Colors.black87,
-  );
   final CardHome cardHome;
   String notific_id;
+  Post post;
+  bool isTapped;
+  bool isFavorite;
 
   PostScreen({Key key, this.id, this.cardHome});
 
@@ -35,15 +32,21 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
-  Post post;
   bool noresult = false;
   UserBloc userBloc;
   final db = FirebaseFirestore.instance;
 
+  Icon icon;
+  /* = Icon(
+    Icons.bookmark_border,
+    color: Colors.black87,
+  );
+*/
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     userBloc = BlocProvider.of(context);
+    checkIfFavourite(widget.cardHome.id);
     return getPostfromDB(widget.id);
   }
 
@@ -58,7 +61,7 @@ class _PostScreenState extends State<PostScreen> {
             return Center(child: CircularProgressIndicator());
           } else {
             DocumentSnapshot element = snapshot.data.documents[0];
-            post = Post(
+            widget.post = Post(
                 name: element.get('name'),
                 address: element.get('address'),
                 category: element.get('category'),
@@ -68,6 +71,7 @@ class _PostScreenState extends State<PostScreen> {
                 idPost: widget.id,
                 photoUrl: element.get('photo'),
                 valoration: element.get('valoration').toString());
+
             Stream.empty();
             return postScreen();
             //return getComments();
@@ -172,7 +176,7 @@ class _PostScreenState extends State<PostScreen> {
               children: [
                 SizedBox(height: ScreenUtil().setHeight(40)),
                 Text(
-                  post.name,
+                  widget.post.name,
                   style: Mystyle.titleTextStyle.copyWith(
                     fontSize: ScreenUtil().setSp(100),
                     color: Colors.black87,
@@ -262,36 +266,32 @@ class _PostScreenState extends State<PostScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        if (!widget.cardHome.isMarked) {
+                        if (!widget.isFavorite) {
                           setState(() {
                             widget.cardHome.isMarked = true;
                             widget.cardHome.icon = Icon(
                               Icons.bookmark,
                               color: Colors.black87,
                             );
-                            widget.icon = widget.cardHome.icon;
+                            widget.isFavorite = true;
                           });
-                          userBloc.likePost(widget.id);
+                          userBloc.likePost(widget.cardHome.id);
                           userBloc
                               .addNotification(
                                   widget.cardHome.idUserPost, "favourite", 10)
                               .then((value) => widget.notific_id = value);
                           userBloc.addPoints(widget.cardHome.idUserPost);
-                          widget.isTapped = true;
                         } else {
                           setState(() {
-                            widget.cardHome.isMarked = false;
                             widget.cardHome.icon = Icon(
                               Icons.bookmark_border,
                               color: Colors.black87,
                             );
-
-                            widget.icon = widget.cardHome.icon;
+                            widget.isFavorite = false;
                           });
-                          userBloc.unlikePost(widget.id);
+                          userBloc.unlikePost(widget.cardHome.id);
                           userBloc.deleteNotification(widget.notific_id);
                           userBloc.deletePoints(widget.id);
-                          widget.isTapped = false;
                         }
                       },
                       child: Container(
@@ -304,10 +304,13 @@ class _PostScreenState extends State<PostScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            !widget.cardHome.isMarked
-                                ? widget.icon
-                                : Icon(
+                            widget.isFavorite
+                                ? Icon(
                                     Icons.bookmark,
+                                    color: Colors.black87,
+                                  )
+                                : Icon(
+                                    Icons.bookmark_border,
                                     color: Colors.black87,
                                   ),
                             SizedBox(height: ScreenUtil().setHeight(10)),
@@ -372,7 +375,7 @@ class _PostScreenState extends State<PostScreen> {
                             builder: (BuildContext context) {
                               return RequestScreen(
                                   postId: widget.id,
-                                  price: (double.parse(post.price))
+                                  price: (double.parse(widget.post.price))
                                       .toStringAsFixed(2),
                                   idUserPost:
                                       widget.cardHome.idUserPost); //register
@@ -514,5 +517,29 @@ class _PostScreenState extends State<PostScreen> {
               itemCount: commentsList.length,
             ),
           );
+  }
+
+  void checkIfFavourite(String idPost) {
+    Stream stream = FirebaseFirestore.instance
+        .collection("users")
+        .doc(userBloc.user.uid)
+        .snapshots();
+
+    stream.listen((event) {
+      if (event.data != null) {
+        List favoritesID = event.data()['favorites'];
+        if (favoritesID.contains(idPost)) {
+          setState(() {
+            widget.isFavorite = true;
+            widget.cardHome.isMarked = widget.isFavorite;
+          });
+        } else {
+          setState(() {
+            widget.isFavorite = false;
+            widget.cardHome.isMarked = widget.isFavorite;
+          });
+        }
+      }
+    });
   }
 }

@@ -1,5 +1,4 @@
 import 'package:admob_flutter/admob_flutter.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/repository/admob_api.dart';
@@ -14,11 +13,11 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 class TodosScreen extends StatefulWidget {
   final String search;
 
-  final List<String> categories;
+  final String category;
 
   final String orderPer;
 
-  const TodosScreen({Key key, this.search, this.categories, this.orderPer})
+  const TodosScreen({Key key, this.search, this.category, this.orderPer})
       : super(key: key);
   @override
   _TodosScreenState createState() => _TodosScreenState();
@@ -100,10 +99,8 @@ class _TodosScreenState extends State<TodosScreen> {
     if (widget.search != '') {
       posts.removeWhere((post) => !post.name.contains(widget.search));
     }
-    if (!widget.categories.isEmpty) {
-      widget.categories.forEach((element) {
-        posts.removeWhere((post) => !post.category.contains(element));
-      });
+    if (widget.category != '') {
+      posts.removeWhere((post) => !post.category.contains(widget.category));
     }
     if (widget.orderPer == orderOption1) {
       //enable billing

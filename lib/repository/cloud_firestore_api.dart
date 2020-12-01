@@ -58,12 +58,24 @@ class CloudFirestoreAPI {
     ref.get().then((value) async => {
           if (value.exists)
             {
-              await ref.update({
-                'uid': user.uid,
-                'email': user.email,
-                'bank_account': user.bankAccount,
-                'avatar_url': user.avatarURL
-              })
+              user.type.contains("default")
+                  ? await ref.update({
+                      'uid': user.uid,
+                      'email': user.email,
+                      'bank_account': user.bankAccount,
+                      'avatar_url': user.avatarURL,
+                      'type': user.type
+                    })
+                  : await ref.update({
+                      'uid': user.uid,
+                      'email': user.email,
+                      'bank_account': user.bankAccount,
+                      'avatar_url': user.avatarURL,
+                      'type': user.type,
+                      'restaurant_name': user.restaurantName,
+                      'cif': user.cif,
+                      'location': user.location
+                    })
             }
         });
   }

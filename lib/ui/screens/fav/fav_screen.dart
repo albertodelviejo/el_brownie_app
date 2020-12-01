@@ -134,24 +134,28 @@ class _FavScreenState extends State<FavScreen> {
                                         physics: NeverScrollableScrollPhysics(),
                                         itemCount: cards.length,
                                         itemBuilder: (context, index) {
-                                          return CardHome(
-                                            name:
-                                                '${cards[index].data()['name']}',
-                                            valo: 'string',
-                                            place:
-                                                '${cards[index].data()['address']}',
-                                            reclam:
-                                                cards[index].data()['status'],
-                                            view: "1700 views",
-                                            hace: "Hace 2 dias",
-                                            myindex:
-                                                '${cards[index].data()['valoration']}',
-                                            id: cards[index].id,
-                                            idUserPost:
-                                                cards[index].data()['id_user'],
-                                            imageUrl:
-                                                '${cards[index].data()['photo']}',
-                                            isMarked: true,
+                                          return Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6),
+                                            child: CardHome(
+                                              name:
+                                                  '${cards[index].data()['name']}',
+                                              valo: 'string',
+                                              place:
+                                                  '${cards[index].data()['address']}',
+                                              reclam:
+                                                  cards[index].data()['status'],
+                                              view: "1700 views",
+                                              hace: "Hace 2 dias",
+                                              myindex:
+                                                  '${cards[index].data()['valoration']}',
+                                              id: cards[index].id,
+                                              idUserPost: cards[index]
+                                                  .data()['id_user'],
+                                              imageUrl:
+                                                  '${cards[index].data()['photo']}',
+                                              isMarked: true,
+                                            ),
                                           );
                                         }),
                                   );

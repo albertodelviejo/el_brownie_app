@@ -11,6 +11,7 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/orderBy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 import 'cerca_screen.dart';
@@ -24,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   final searchController = TextEditingController();
   String currentCategory = '';
-  List<String> selectedCategories = [];
+  //List<String> selectedCategories = [];
   String orderPer = '';
   UserBloc userBloc;
 
@@ -85,10 +86,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                     icon: (userBloc.user.hasNotifications)
-                        ? Icon(
-                            Icons.notification_important,
-                            color: Colors.black,
-                            size: 28,
+                        ? SvgPicture.asset(
+                            "assets/svg/notification.svg",
+                            height: 28,
+                            width: 28,
                           )
                         : Icon(
                             Icons.notifications_none,
@@ -187,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               TodosScreen(
                   search: searchController.text,
-                  categories: selectedCategories,
+                  category: currentCategory,
                   orderPer: orderPer),
               LosMasScreen(),
               CercaScreen(),
@@ -314,16 +315,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           if (categories[index].isChecked) {
                             setModalState(() {
                               categories[index].isChecked = false;
-                              selectedCategories
-                                  .remove(categories[index].category);
+                              currentCategory = '';
                             });
                           } else {
                             setModalState(() {
                               categories.forEach(
                                   (category) => category.isChecked = false);
                               categories[index].isChecked = true;
-                              selectedCategories
-                                  .add(categories[index].category);
+                              currentCategory = categories[index].category;
                             });
                           }
                         },

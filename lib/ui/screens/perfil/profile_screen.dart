@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
@@ -18,6 +20,8 @@ class ProfileScreen extends StatefulWidget {
   int imageIndex = 1;
   String imagePath = 'assets/avatars/avatar1.png';
   bool imgChanged = false;
+  bool isTappedYes = false;
+  bool isTappedNo = false;
   var imagesUrls = [
     'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar1.png?alt=media&token=4e353287-5dbf-4389-8dfb-642d981af388',
     'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar2.png?alt=media&token=3425acfd-e209-41e5-90fa-81e2c6f88b35',
@@ -66,15 +70,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   avatarURL: (widget.imgChanged)
                       ? widget.imagePath
                       : element.get("avatar_url"));
+
               if (userBloc.user.type == "owner") {
                 userBloc.user.restaurantName = element.get("restaurant_name");
                 userBloc.user.location = element.get("location");
                 userBloc.user.cif = element.get("cif");
               }
 
-              (userBloc.user.type == "default")
-                  ? widget.showhidden = false
-                  : widget.showhidden = true;
+              if (!widget.isTappedYes && !widget.isTappedNo) {
+                (userBloc.user.type == "default")
+                    ? {widget.showhidden = false, widget.isTappedNo = true}
+                    : {widget.showhidden = true, widget.isTappedYes = true};
+              }
 
               Stream.empty();
               return profileScreen(userBloc.user);
@@ -87,7 +94,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final usuarioController = TextEditingController();
     final nombreController = TextEditingController();
     final emailController = TextEditingController();
-    final passwordController = TextEditingController();
     final bankaccountController = TextEditingController();
     final nombreRestauranteController = TextEditingController();
     final ubicacionRestauranteController = TextEditingController();
@@ -260,19 +266,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           setState(() {
                             user.type = "owner";
                             widget.showhidden = true;
+                            widget.isTappedYes = true;
+                            widget.isTappedNo = false;
                           });
                         },
                         child: Container(
                           height: ScreenUtil().setWidth(90),
                           width: ScreenUtil().setWidth(180),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(color: Colors.black, width: 1),
-                          ),
+                          decoration: widget.isTappedYes
+                              ? BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border:
+                                      Border.all(color: Colors.black, width: 1),
+                                  color: Colors.black)
+                              : BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border:
+                                      Border.all(color: Colors.black, width: 1),
+                                  color: Colors.white),
                           alignment: Alignment.center,
                           child: Text(
                             "Si",
-                            style: Mystyle.normalTextStyle,
+                            style: widget.isTappedYes
+                                ? Mystyle.normalTextStyle
+                                    .copyWith(color: Colors.white)
+                                : Mystyle.normalTextStyle,
                           ),
                         ),
                       ),
@@ -281,20 +299,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onTap: () {
                           setState(() {
                             user.type = "default";
+
                             widget.showhidden = false;
+                            widget.isTappedYes = false;
+                            widget.isTappedNo = true;
                           });
                         },
                         child: Container(
                           height: ScreenUtil().setWidth(90),
                           width: ScreenUtil().setWidth(180),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(color: Colors.black, width: 1),
-                          ),
+                          decoration: widget.isTappedNo
+                              ? BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border:
+                                      Border.all(color: Colors.black, width: 1),
+                                  color: Colors.black)
+                              : BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border:
+                                      Border.all(color: Colors.black, width: 1),
+                                  color: Colors.white),
                           alignment: Alignment.center,
                           child: Text(
                             "No",
-                            style: Mystyle.normalTextStyle,
+                            style: widget.isTappedNo
+                                ? Mystyle.normalTextStyle
+                                    .copyWith(color: Colors.white)
+                                : Mystyle.normalTextStyle,
                           ),
                         ),
                       ),
@@ -393,20 +424,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
               userName: nombreController.text,
               email: emailController.text,
               bankAccount: bankaccountController.text,
-              avatarURL: avatarUrl));
+              avatarURL: avatarUrl,
+              type: user.type,
+              cif: user.cif,
+              location: user.location,
+              restaurantName: user.restaurantName));
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         ButtAuth("Cerrar Sesión", () {
-          userBloc.signOut().then(
-                (value) => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return SplashScreena(); //register
-                    },
-                  ),
-                ),
-              );
+          userBloc.signOut().then((value) {
+            sleep(const Duration(seconds: 3));
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return SplashScreena(); //register
+                },
+              ),
+            );
+            userBloc.user = null;
+          });
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         Divider(color: Colors.black),

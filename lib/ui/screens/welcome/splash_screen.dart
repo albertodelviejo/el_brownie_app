@@ -12,24 +12,28 @@ class SplashScreena extends StatefulWidget {
   _SplashScreenaState createState() => _SplashScreenaState();
 }
 
-class _SplashScreenaState extends State<SplashScreena>
-    with AfterLayoutMixin<SplashScreena> {
+class _SplashScreenaState extends State<SplashScreena> {
+  //with AfterLayoutMixin<SplashScreena> {
   @override
   void initState() {
     super.initState();
     Future.delayed(Duration(
-      seconds: 6,
+      seconds: 3,
     )).then((value) {
+      /*
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => OnBoarding()),
       );
+      */
+      checkFirstSeen();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
     return Scaffold(
       backgroundColor: Mystyle.primarycolo,
       body: Container(
@@ -68,6 +72,9 @@ class _SplashScreenaState extends State<SplashScreena>
     }
   }
 
+/*
+
   @override
   void afterFirstLayout(BuildContext context) => checkFirstSeen();
+  */
 }

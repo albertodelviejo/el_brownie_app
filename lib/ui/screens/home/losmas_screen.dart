@@ -100,7 +100,10 @@ class _LosMasScreenState extends State<LosMasScreen> {
                     padding: EdgeInsets.only(bottom: 25),
                     scrollDirection: Axis.vertical,
                     reverse: false,
-                    itemBuilder: (_, int index) => allPosts[index],
+                    itemBuilder: (_, int index) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: allPosts[index],
+                    ),
                     itemCount: allPosts.length,
                   ),
                   SizedBox(height: ScreenUtil().setHeight(100)),

@@ -84,7 +84,10 @@ class _CercaScreenState extends State<CercaScreen> {
                     padding: EdgeInsets.only(bottom: 25),
                     scrollDirection: Axis.vertical,
                     reverse: false,
-                    itemBuilder: (_, int index) => posts[index],
+                    itemBuilder: (_, int index) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: posts[index],
+                    ),
                     itemCount: posts.length,
                   ),
                   SizedBox(height: ScreenUtil().setHeight(100)),
