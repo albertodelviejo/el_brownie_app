@@ -13,6 +13,7 @@ class UserModel {
   String cif = "";
   String avatarURL = "";
   bool hasNotifications = false;
+  bool hasRequestedNotification = false;
 
   UserModel(
       {Key key,
@@ -27,5 +28,6 @@ class UserModel {
       this.location,
       this.cif,
       this.avatarURL,
-      this.hasNotifications});
+      this.hasNotifications,
+      this.hasRequestedNotification});
 }

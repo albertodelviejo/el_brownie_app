@@ -7,6 +7,7 @@ import 'package:el_brownie_app/ui/screens/home/bottom_tab.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
+import 'package:el_brownie_app/ui/utils/popup.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class AddCommentScreen extends StatefulWidget {
   int valoration = 0;
   String idPost;
   bool tapped = false;
+  bool isFirstTimeAdded;
   @override
   _AddCommentScreen createState() => _AddCommentScreen();
 }
@@ -42,6 +44,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
   var _comment;
 
   bool _validate = false;
+  final _picker = ImagePicker();
 
   UserBloc userBloc;
   var imageFile;
@@ -513,6 +516,11 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                               storageReference.putFile(compressedFile);
                           userBloc.addNotification(
                               userBloc.user.uid, "added", 5);
+                          Stream stream =
+                              userBloc.myBrowniesListStream(userBloc.user.uid);
+                          stream.length == 0
+                              ? widget.isFirstTimeAdded = false
+                              : widget.isFirstTimeAdded = true;
                           uploadTask.onComplete.then((snapshot) {
                             snapshot.ref.getDownloadURL().then((url) {
                               userBloc
@@ -535,13 +543,17 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                                   widget.tapped = false;
                                   imageFile = null;
                                   loading = false;
+                                  widget.valoration = 0;
                                 });
                               });
                             });
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => BottomTabBarr()),
+                                  builder: (context) => BottomTabBarr(
+                                        isFirstTimeAdded:
+                                            widget.isFirstTimeAdded,
+                                      )),
                             );
                           }).catchError((onError) {
                             setState(() {
@@ -568,17 +580,19 @@ class _AddCommentScreen extends State<AddCommentScreen> {
   }
 
   void _openGallery(BuildContext context) async {
-    var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+    PickedFile picture = await _picker.getImage(source: ImageSource.gallery);
+    final File file = File(picture.path);
     this.setState(() {
-      imageFile = picture;
+      imageFile = file;
     });
     Navigator.of(context).pop();
   }
 
   void _openCamera(BuildContext context) async {
-    var picture = await ImagePicker.pickImage(source: ImageSource.camera);
+    PickedFile picture = await _picker.getImage(source: ImageSource.camera);
+    final File file = File(picture.path);
     this.setState(() {
-      imageFile = picture;
+      imageFile = file;
     });
     Navigator.of(context).pop();
   }

@@ -16,13 +16,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatefulWidget {
   bool showhidden = false;
-  dynamic imageProfile = ExactAssetImage('assets/avatars/avatar1.png');
+  dynamic imageProfile = ExactAssetImage('assets/avatars/default.png');
   int imageIndex = 1;
-  String imagePath = 'assets/avatars/avatar1.png';
+  String imagePath = 'assets/avatars/default.png';
   bool imgChanged = false;
   bool isTappedYes = false;
   bool isTappedNo = false;
   var imagesUrls = [
+    'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Fdefault.png?alt=media&token=f2afa6be-730c-46b1-81c0-b80da431a8af',
     'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar1.png?alt=media&token=4e353287-5dbf-4389-8dfb-642d981af388',
     'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar2.png?alt=media&token=3425acfd-e209-41e5-90fa-81e2c6f88b35',
     'https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Favatar3.png?alt=media&token=8efd02eb-fa7c-44f0-a617-6e85b0717823',
@@ -431,9 +432,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               restaurantName: user.restaurantName));
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
-        ButtAuth("Cerrar Sesión", () {
-          userBloc.signOut().then((value) {
-            sleep(const Duration(seconds: 3));
+        ButtAuth("Cerrar Sesión", () async {
+          return await userBloc.signOut().then((value) {
+            //sleep(const Duration(seconds: 3));
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -471,6 +472,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   popAvatar() {
     const images = [
+      'assets/avatars/default.png',
       'assets/avatars/avatar1.png',
       'assets/avatars/avatar2.png',
       'assets/avatars/avatar3.png',

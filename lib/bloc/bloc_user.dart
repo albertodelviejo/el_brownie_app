@@ -18,7 +18,7 @@ class UserBloc implements Bloc {
   var user = UserModel();
 
 //Streams
-  Stream<User> streamFirebase = FirebaseAuth.instance.authStateChanges();
+  Stream<User> get streamFirebase => FirebaseAuth.instance.authStateChanges();
   Stream<User> get authStatus => streamFirebase;
   User get currentUser => FirebaseAuth.instance.currentUser;
 
@@ -153,6 +153,10 @@ class UserBloc implements Bloc {
   //16. Set no notification
   void setNoNotifications(String idUser) =>
       _cloudFirestoreRepository.setNoNotifications(idUser);
+
+  //17. Set no request notification
+  void setNoRequestNotifications(String idUser) =>
+      _cloudFirestoreRepository.setNoRequestNotifications(idUser);
 
   //16. Build Notification
   Stream<QuerySnapshot> notificationsListStream() => FirebaseFirestore.instance

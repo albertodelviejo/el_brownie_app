@@ -88,6 +88,9 @@ class CloudFirestoreRepository {
   void setNoNotifications(String idUser) =>
       _cloudFirestoreAPI.setNoNotifications(idUser);
 
+  void setNoRequestNotifications(String idUser) =>
+      _cloudFirestoreAPI.setNoRequestNotifications(idUser);
+
   void addPoints(String idUser) => _cloudFirestoreAPI.addPoints(idUser);
 
   void deletePoints(String idUser) => _cloudFirestoreAPI.deletePoints(idUser);

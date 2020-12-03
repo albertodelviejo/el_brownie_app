@@ -221,7 +221,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
-                                  return BottomTabBarr(); //register
+                                  return BottomTabBarr(
+                                    isFirstTime: true,
+                                  ); //register
                                 },
                               ),
                             );

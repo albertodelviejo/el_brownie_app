@@ -9,7 +9,9 @@ import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dar
 import 'package:el_brownie_app/ui/utils/category.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/orderBy.dart';
+import 'package:el_brownie_app/ui/utils/popup.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
@@ -17,6 +19,8 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'cerca_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  bool isFirstTime;
+  HomeScreen({this.isFirstTime});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -51,6 +55,14 @@ class _HomeScreenState extends State<HomeScreen> {
     ScreenUtil.init(context);
 
     userBloc = BlocProvider.of(context);
+
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (userBloc.user.hasRequestedNotification) {
+        userBloc.user.hasRequestedNotification = false;
+        userBloc.setNoRequestNotifications(userBloc.user.uid);
+        addRequestNotification();
+      }
+    });
     if (userBloc.user.uid == null) {
       userBloc.user = UserModel(uid: userBloc.currentUser.uid);
     }
@@ -189,7 +201,8 @@ class _HomeScreenState extends State<HomeScreen> {
               TodosScreen(
                   search: searchController.text,
                   category: currentCategory,
-                  orderPer: orderPer),
+                  orderPer: orderPer,
+                  isFirstTime: widget.isFirstTime),
               LosMasScreen(),
               CercaScreen(),
             ],
@@ -217,7 +230,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 userName: element.get("username"),
                 avatarURL: element.get("avatar_url"),
                 points: element.get("points"),
-                hasNotifications: element.get("hasNotifications"));
+                hasNotifications: element.get("hasNotifications"),
+                hasRequestedNotification:
+                    element.get("hasRequestedNotification"));
             Stream.empty();
           }
           return homeScreen();
@@ -397,5 +412,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
     });
+  }
+
+  Widget addRequestNotification() {
+    PopUp popUp = PopUp(type: "reclamation");
+    return popUp.report(context);
   }
 }

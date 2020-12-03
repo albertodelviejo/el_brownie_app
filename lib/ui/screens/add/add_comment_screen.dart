@@ -33,6 +33,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   int rating = 0;
   bool filled = false;
   final comentarioController = TextEditingController();
+  final _picker = ImagePicker();
   UserBloc userBloc;
   var imageFile;
   String photoUrl = "";
@@ -266,7 +267,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
   }
 
   void _openGallery(BuildContext context) async {
-    var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+    PickedFile picture = await _picker.getImage(source: ImageSource.gallery);
+    final File file = File(picture.path);
     this.setState(() {
       imageFile = picture;
     });
@@ -274,7 +276,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
   }
 
   void _openCamera(BuildContext context) async {
-    var picture = await ImagePicker.pickImage(source: ImageSource.camera);
+    PickedFile picture = await _picker.getImage(source: ImageSource.camera);
+    final File file = File(picture.path);
     this.setState(() {
       imageFile = picture;
     });

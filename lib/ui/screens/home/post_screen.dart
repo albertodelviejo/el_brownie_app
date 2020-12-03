@@ -23,7 +23,7 @@ class PostScreen extends StatefulWidget {
   String notific_id;
   Post post;
   bool isTapped;
-  bool isFavorite;
+  bool isFavorite = false;
 
   PostScreen({Key key, this.id, this.cardHome});
 
@@ -201,7 +201,7 @@ class _PostScreenState extends State<PostScreen> {
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Container(
                                   width: ScreenUtil().setHeight(800),
-                                  height: ScreenUtil().setHeight(400),
+                                  height: ScreenUtil().setHeight(550),
                                   padding: EdgeInsets.symmetric(
                                       vertical: 16, horizontal: 16),
                                   child: Column(
@@ -234,7 +234,7 @@ class _PostScreenState extends State<PostScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: SvgPicture.asset(
-                                                'assets/whatsapp.svg'),
+                                                'assets/whatsapp.sv'),
                                           ),
                                         ),
                                       ),

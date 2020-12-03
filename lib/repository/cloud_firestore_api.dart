@@ -47,6 +47,7 @@ class CloudFirestoreAPI {
                 'number_of_posts': 0,
                 'createdAt': Timestamp.now(),
                 'hasNotifications': true,
+                'hasRequestedNotification': false,
                 'isTop3': false
               })
             }
@@ -306,8 +307,11 @@ class CloudFirestoreAPI {
       'date': Timestamp.now()
     });
     var user = await _db.collection("users").doc(idUser);
-    user.update({'hasNotifications': true});
-
+    if (notificationType == "requested") {
+      user.update({'hasNotifications': true, 'hasRequestedNotification': true});
+    } else {
+      user.update({'hasNotifications': true});
+    }
     return notificationdoc.id;
   }
 
@@ -319,6 +323,11 @@ class CloudFirestoreAPI {
   void setNoNotifications(String idUser) {
     DocumentReference ref = _db.collection("users").doc(idUser);
     ref.update({'hasNotifications': false});
+  }
+
+  void setNoRequestNotifications(String idUser) {
+    DocumentReference ref = _db.collection("users").doc(idUser);
+    ref.update({'hasRequestedNotification': false});
   }
 
   List<CardNotification> buildNotifications(

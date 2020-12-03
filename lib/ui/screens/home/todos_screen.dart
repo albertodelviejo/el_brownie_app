@@ -5,8 +5,10 @@ import 'package:el_brownie_app/repository/admob_api.dart';
 import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/noresutlt.dart';
+import 'package:el_brownie_app/ui/utils/popup.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
@@ -17,7 +19,10 @@ class TodosScreen extends StatefulWidget {
 
   final String orderPer;
 
-  const TodosScreen({Key key, this.search, this.category, this.orderPer})
+  final bool isFirstTime;
+
+  const TodosScreen(
+      {Key key, this.search, this.category, this.orderPer, this.isFirstTime})
       : super(key: key);
   @override
   _TodosScreenState createState() => _TodosScreenState();
@@ -65,6 +70,7 @@ class _TodosScreenState extends State<TodosScreen> {
     if (userBloc.user.uid == null) {
       userBloc.user = UserModel(uid: userBloc.currentUser.uid);
     }
+
     return getPostsfromDB();
   }
 
@@ -159,5 +165,10 @@ class _TodosScreenState extends State<TodosScreen> {
         ],
       ),
     );
+  }
+
+  Widget welcomeNotification() {
+    PopUp popUp = PopUp(type: "welcome");
+    return popUp.report(context);
   }
 }

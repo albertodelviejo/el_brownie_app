@@ -21,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _form2Key = GlobalKey<FormState>();
   var scaffoldKey = GlobalKey<ScaffoldState>();
   PageController controller = PageController();
   UserBloc userBloc;
@@ -38,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final contrasenaController = TextEditingController();
   final usernameController = TextEditingController();
+  final recoverControler = TextEditingController();
 
   void _toggle() {
     setState(() {
@@ -210,15 +212,86 @@ class _LoginScreenState extends State<LoginScreen> {
                                         text: 'Olvidaste tu contraseña?',
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
-                                            if (_formKey.currentState
-                                                .validate()) {
-                                              _formKey.currentState.save();
-                                              userBloc.resetPassword(
-                                                  usernameController.text);
-                                              _showPasswordRecoveryDialog();
-                                            } else {
-                                              _validate = true;
-                                            }
+                                            return showDialog(
+                                                context: context,
+                                                builder: (context) => Dialog(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10)),
+                                                    child: Container(
+                                                      width: ScreenUtil()
+                                                          .setHeight(800),
+                                                      height: ScreenUtil()
+                                                          .setHeight(560),
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              vertical: 16,
+                                                              horizontal: 16),
+                                                      child: Column(
+                                                        children: [
+                                                          Text(
+                                                            recover_password_title,
+                                                            style: Mystyle
+                                                                .titleTextStyle
+                                                                .copyWith(
+                                                                    color: Colors
+                                                                        .black87),
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                          ),
+                                                          SizedBox(
+                                                              height:
+                                                                  ScreenUtil()
+                                                                      .setHeight(
+                                                                          40)),
+                                                          Form(
+                                                            key: _form2Key,
+                                                            child:
+                                                                TextFormField(
+                                                              textInputAction:
+                                                                  TextInputAction
+                                                                      .done,
+                                                              decoration: Mystyle
+                                                                  .inputWhitebg(
+                                                                      'Email'),
+                                                              validator:
+                                                                  validateEmail,
+                                                              onSaved:
+                                                                  (String val) {
+                                                                _emailconfirmation =
+                                                                    val;
+                                                              },
+                                                              controller:
+                                                                  recoverControler,
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                              height:
+                                                                  ScreenUtil()
+                                                                      .setHeight(
+                                                                          40)),
+                                                          ButtAuth("Recuperar",
+                                                              () {
+                                                            if (_form2Key
+                                                                .currentState
+                                                                .validate()) {
+                                                              _form2Key
+                                                                  .currentState
+                                                                  .save();
+                                                              userBloc.resetPassword(
+                                                                  recoverControler
+                                                                      .text);
+                                                              _showPasswordRecoveryDialog();
+                                                            } else {
+                                                              _validate = true;
+                                                            }
+                                                          }, border: true)
+                                                        ],
+                                                      ),
+                                                    )));
                                           })
                                   ]))),
                           SizedBox(height: ScreenUtil().setHeight(30)),

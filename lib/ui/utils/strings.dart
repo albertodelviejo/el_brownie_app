@@ -44,6 +44,8 @@ const String share_title_pop = "Share!";
 const String share_text_pop = "Comparte esta mierda con tus colegas!";
 const String share_button_pop = "Compartir por Whatsapp";
 
+const String recover_password_title = "Recuperar contraseña";
+
 const String notification_screen_subtitle =
     "Entérate del estado de tu reclamación,\nnuevos mensajes y más.";
 const String notification_screen_empty =
