@@ -284,6 +284,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                                               userBloc.resetPassword(
                                                                   recoverControler
                                                                       .text);
+                                                              Navigator.pop(
+                                                                  context);
                                                               _showPasswordRecoveryDialog();
                                                             } else {
                                                               _validate = true;
