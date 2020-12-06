@@ -18,7 +18,7 @@ class UserBloc implements Bloc {
   var user = UserModel();
 
 //Streams
-  Stream<User> get streamFirebase => FirebaseAuth.instance.authStateChanges();
+  Stream<User> streamFirebase = FirebaseAuth.instance.authStateChanges();
   Stream<User> get authStatus => streamFirebase;
   User get currentUser => FirebaseAuth.instance.currentUser;
 
@@ -57,6 +57,10 @@ class UserBloc implements Bloc {
           List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildMyPostsCardHome(ticketsListSnapshot);
 
+/*
+  List<CardHome> buildMyPostsCerca(List<DocumentSnapshot> snapshot) =>
+      _cloudFirestoreRepository.buildMyPostsCerca(snapshot);
+*/
 // //6. Get favourites posts
 //   Future<List<CardHome>> myFavouritesPostsList() async {
 //     List<String> list = [];
@@ -136,9 +140,7 @@ class UserBloc implements Bloc {
   //13. Reset password
   Future<void> resetPassword(email) => _authRepository.resetPassword(email);
 
-  Future<void> signOut() async {
-    await _authRepository.signOut();
-  }
+  signOut() => _authRepository.signOut();
 
   //14.Add a notification
   Future<String> addNotification(
@@ -193,6 +195,11 @@ class UserBloc implements Bloc {
   //20. Top 3 notification
   void updateAddTop3Notification(bool isTop3) =>
       _cloudFirestoreRepository.updateAddTop3Notification(user.uid, isTop3);
+
+  Future<void> reautenticate() async {
+// Reauthenticate
+    await FirebaseAuth.instance.currentUser.reload();
+  }
 
   @override
   void dispose() {}

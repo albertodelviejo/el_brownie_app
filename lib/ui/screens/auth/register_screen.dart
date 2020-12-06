@@ -210,6 +210,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             .register(email: _email, password: _password)
                             .then((value) {
                           if (value is User) {
+                            userBloc.user = UserModel(uid: value.uid);
                             userBloc.updateUserData(UserModel(
                               uid: value.uid,
                               userName: _username,

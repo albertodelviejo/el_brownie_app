@@ -42,6 +42,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
   var _name;
   var _address;
   var _comment;
+  String _retrieveDataError;
 
   bool _validate = false;
   final _picker = ImagePicker();
@@ -71,6 +72,8 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                 content: Text(errorMsg));
           });
     }
+
+    retrieveLostData();
 
     return SafeArea(
       child: ModalProgressHUD(
@@ -577,6 +580,25 @@ class _AddCommentScreen extends State<AddCommentScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> retrieveLostData() async {
+    final LostData response = await _picker.getLostData();
+    if (response.isEmpty) {
+      return;
+    }
+    if (response.file != null) {
+      setState(() {
+        if (response.type == RetrieveType.video) {
+          //_handleVideo(response.file);
+        } else {
+          final File file = File(response.file.path);
+          imageFile = file;
+        }
+      });
+    } else {
+      _retrieveDataError = response.exception.code;
+    }
   }
 
   void _openGallery(BuildContext context) async {

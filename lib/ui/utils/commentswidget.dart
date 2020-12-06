@@ -34,7 +34,7 @@ class CommentsW extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
               image: DecorationImage(
                 image: avatarUrl == ""
-                    ? ExactAssetImage('assets/avatars/avatar1.png')
+                    ? ExactAssetImage('assets/avatars/default.png')
                     : NetworkImage(avatarUrl),
                 fit: BoxFit.cover,
               ),

@@ -57,9 +57,14 @@ class _LoginScreenState extends State<LoginScreen> {
     return StreamBuilder(
         stream: userBloc.authStatus,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (!snapshot.hasData || snapshot.hasError) {
+          userBloc = BlocProvider.of(context);
+          if (!snapshot.hasData ||
+              snapshot.hasError ||
+              snapshot.data.uid == null ||
+              userBloc.currentUser == null) {
             return loginScreen(context);
           } else {
+            userBloc.user = UserModel(uid: snapshot.data.uid);
             return BottomTabBarr();
           }
         });

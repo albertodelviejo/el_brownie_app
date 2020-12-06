@@ -135,6 +135,7 @@ class CardLosmas extends StatelessWidget {
                                     .copyWith(color: Colors.white),
                               ),
                             ),
+                            /*
                             Container(
                               decoration: BoxDecoration(
                                 color: Colors.white,
@@ -146,6 +147,7 @@ class CardLosmas extends StatelessWidget {
                                 color: Colors.black,
                               ),
                             ),
+                            */
                           ],
                         ),
                       ),

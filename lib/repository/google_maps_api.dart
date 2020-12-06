@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
@@ -27,18 +29,14 @@ class GoogleMapsApi {
     }
   }
 
-  void getNearbyPlaces(List<CardHome> posts) async {
+  Future<List<CardHome>> getNearbyPlaces(List<CardHome> posts) async {
     Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low);
+        desiredAccuracy: LocationAccuracy.medium);
     posts.sort((a, b) {
       var currentPosts = [a, b];
       var currentAddress = [];
-      currentPosts.forEach((post) async {
-        PlacesSearchResponse detailPost =
-            await _places.searchByText(post.place);
-        currentAddress.add(Coordinates(
-            detailPost.results[0].geometry.location.lat,
-            detailPost.results[0].geometry.location.lat));
+      currentPosts.forEach((post) {
+        currentAddress.add(Coordinates(post.longitude, post.latitude));
       });
       double distanceA = Geolocator.distanceBetween(
           position.latitude,
@@ -52,5 +50,10 @@ class GoogleMapsApi {
           currentAddress[1].longitude);
       return distanceA.round().compareTo(distanceB.round());
     });
+    return posts;
+  }
+
+  Future<PlacesSearchResponse> getLatitudeAndLongitude(String location) async {
+    return await _places.searchByText(location);
   }
 }

@@ -28,6 +28,8 @@ class CardHome extends StatefulWidget {
     color: Colors.black87,
   );
   String notific_id;
+  double longitude;
+  double latitude;
 
   CardHome(
       {this.name,
@@ -43,6 +45,8 @@ class CardHome extends StatefulWidget {
       this.pagename,
       this.price,
       this.idUserPost,
+      this.longitude,
+      this.latitude,
       this.isMarked = false,
       this.isTapped = false});
 

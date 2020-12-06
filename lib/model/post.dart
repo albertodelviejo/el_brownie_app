@@ -12,6 +12,8 @@ class Post {
   String photoUrl;
   Timestamp date;
   String idPost;
+  double longitude;
+  double latitude;
 
   Post(
       {Key key,
@@ -24,5 +26,7 @@ class Post {
       this.valoration,
       this.photoUrl,
       this.date,
-      this.idPost});
+      this.idPost,
+      this.latitude,
+      this.longitude});
 }

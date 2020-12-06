@@ -248,7 +248,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     });
                   } else {
                     userBloc.addComment(widget.idPost, "", _comment,
-                        widget.valoration.toString());
+                        (widget.valoration + 1).toString());
                   }
 
                   userBloc.addNotification(widget.idUserPost, "comment", 10);
@@ -270,7 +270,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     PickedFile picture = await _picker.getImage(source: ImageSource.gallery);
     final File file = File(picture.path);
     this.setState(() {
-      imageFile = picture;
+      imageFile = file;
     });
     Navigator.of(context).pop();
   }
@@ -279,7 +279,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     PickedFile picture = await _picker.getImage(source: ImageSource.camera);
     final File file = File(picture.path);
     this.setState(() {
-      imageFile = picture;
+      imageFile = file;
     });
     Navigator.of(context).pop();
   }

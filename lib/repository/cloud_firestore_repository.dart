@@ -28,6 +28,10 @@ class CloudFirestoreRepository {
           List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.buildMyPostsCardHome(postsListSnapshot);
 
+/*
+  List<CardHome> buildMyPostsCerca(List<DocumentSnapshot> postListSnapshot) =>
+      _cloudFirestoreAPI.buildMyPostsCerca(postListSnapshot);
+*/
   // List<CardHome> buildFavouritesPosts(List<Post> favouritesListSnapshot) =>
   //     _cloudFirestoreAPI.buildFavouritesPosts(favouritesListSnapshot);
 

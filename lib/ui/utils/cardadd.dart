@@ -20,8 +20,8 @@ class CardAdd extends StatelessWidget {
       padding: EdgeInsets.only(top: 5, right: 5, left: 5),
       child: AdmobBanner(
         adUnitId: admobService.getBannerAdId(),
-        adSize:
-            AdmobBannerSize.ADAPTIVE_BANNER(width: ScreenUtil().setWidth(600)),
+        adSize: AdmobBannerSize.ADAPTIVE_BANNER(
+            width: ScreenUtil().setWidth(600).toInt()),
       ),
     );
   }

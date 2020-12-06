@@ -11,6 +11,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'google_maps_api.dart';
+
 class CloudFirestoreAPI {
   final String POSTS = "posts";
   final String PACIENTES = "pacientes";
@@ -41,7 +43,7 @@ class CloudFirestoreAPI {
                 'location': "",
                 'restaurant_name': "",
                 'type': "default",
-                'favorites': {},
+                'favorites': [],
                 'notifications': {},
                 'avatar_url': "",
                 'number_of_posts': 0,
@@ -163,10 +165,39 @@ class CloudFirestoreAPI {
         myindex: element.get('valoration').toString(),
         idUserPost: element.get('id_user'),
         id: element.id,
+        longitude: element.get('longitude'),
+        latitude: element.get('latitude'),
       ));
     });
     return allPost;
   }
+
+/*
+  List<CardHome> buildMyPostsCerca(List<DocumentSnapshot> postsListSnapshot) {
+    List<CardHome> allPost = List<CardHome>();
+    postsListSnapshot.forEach((element) {
+      allPost.add(CardHome(
+        name: element.get('name'),
+        valo: "1700 valoraciones",
+        category: element.get('category'),
+        place: element.get('address'),
+        reclam: element.get('status'),
+        view: "1700 views",
+        hace: "Hace 2 dias",
+        imageUrl: element.get('photo'),
+        myindex: element.get('valoration').toString(),
+        idUserPost: element.get('id_user'),
+        id: element.id,
+        longitude: element.get('longitude'),
+        latitude: element.get('latitude'),
+      ));
+    });
+    return GoogleMapsApi().getNearbyPlaces(allPost).then((value) {
+      return value;
+    });
+    //return allPost;
+  }
+  */
 
   Future likePost(String idPost, String uid) async {
     DocumentReference ref = _db.collection("users").doc(uid);
@@ -210,18 +241,22 @@ class CloudFirestoreAPI {
       String photoUrl,
       int valoration) async {
     DocumentReference ref = _db.collection("posts").doc();
-    ref.set({
-      'address': address,
-      'category': category,
-      'comentary': comentary,
-      'date': Timestamp.now(),
-      'id_post': idPost,
-      'id_user': uid,
-      'name': name,
-      'price': price,
-      'status': status,
-      'valoration': valoration,
-      'photo': photoUrl
+    GoogleMapsApi().getLatitudeAndLongitude(address).then((value) {
+      ref.set({
+        'address': address,
+        'category': category,
+        'comentary': comentary,
+        'date': Timestamp.now(),
+        'id_post': idPost,
+        'id_user': uid,
+        'name': name,
+        'price': price,
+        'status': status,
+        'valoration': valoration,
+        'photo': photoUrl,
+        'latitude': value.results[0].geometry.location.lat,
+        'longitude': value.results[0].geometry.location.lng
+      });
     });
   }
 

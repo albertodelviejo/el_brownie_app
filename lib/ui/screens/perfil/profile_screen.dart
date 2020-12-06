@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
+import 'package:el_brownie_app/ui/screens/auth/login_screen.dart';
 import 'package:el_brownie_app/ui/screens/welcome/splash_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
@@ -111,6 +112,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     (user.avatarURL != "")
         ? widget.imageProfile = NetworkImage(user.avatarURL)
         : widget.imageProfile = widget.imageProfile;
+
+    userBloc.reautenticate();
 
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: 24),
@@ -433,18 +436,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         ButtAuth("Cerrar Sesión", () async {
-          return await userBloc.signOut().then((value) {
-            //sleep(const Duration(seconds: 3));
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return SplashScreena(); //register
-                },
-              ),
-            );
-            userBloc.user = null;
-          });
+          userBloc.signOut();
+
+          sleep(const Duration(seconds: 2));
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return LoginScreen(); //register
+              },
+            ),
+          );
+
+          userBloc.user = null;
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         Divider(color: Colors.black),
@@ -492,7 +497,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
               child: GridView.count(
                   crossAxisCount: 2,
-                  children: List.generate(6, (index) {
+                  children: List.generate(7, (index) {
                     return GestureDetector(
                         onTap: () {
                           setState(() {

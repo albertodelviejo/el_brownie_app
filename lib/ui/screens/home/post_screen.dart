@@ -223,9 +223,8 @@ class _PostScreenState extends State<PostScreen> {
                                           height: ScreenUtil().setHeight(40)),
                                       SignInButtonBuilder(
                                         backgroundColor: Color(0xFF25D366),
-                                        onPressed: () => {
-                                          FlutterShareMe().shareToWhatsApp()
-                                        },
+                                        onPressed: () =>
+                                            FlutterShareMe().shareToWhatsApp(),
                                         text: share_button_pop,
                                         image: Container(
                                           margin: EdgeInsets.fromLTRB(
