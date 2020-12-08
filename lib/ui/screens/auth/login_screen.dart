@@ -364,10 +364,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 16),
                   onPressed: () {
                     userBloc.signOut();
-                    userBloc.signInFacebook().then((User value) {
-                      userBloc.user.uid = value.uid;
-                      userBloc.updateUserData(
-                          UserModel(uid: value.uid, email: value.email));
+                    userBloc.signInFacebook().then((value) {
+                      if (value is User) {
+                        userBloc.user = UserModel(
+                            uid: value.uid,
+                            email: value.email,
+                            userName: value.displayName);
+                        userBloc.updateUserData(
+                            UserModel(uid: value.uid, email: value.email));
+                      } else {
+                        final errorMsg =
+                            AuthExceptionHandler.generateExceptionMessage(
+                                value);
+                        _showAlertDialog(errorMsg);
+                      }
                     });
                   },
                   shape: StadiumBorder(
@@ -381,12 +391,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   Buttons.Google,
                   padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
                   onPressed: () {
-                    userBloc.signInGoogle().then((User value) {
-                      userBloc.user.uid = value.uid;
-                      userBloc.updateUserData(UserModel(
-                          uid: value.uid,
-                          userName: value.displayName,
-                          email: value.email));
+                    userBloc.signInGoogle().then((value) {
+                      if (value is User) {
+                        userBloc.user = UserModel(
+                            uid: value.uid,
+                            email: value.email,
+                            userName: value.displayName);
+                        userBloc.updateUserData(UserModel(
+                            uid: value.uid,
+                            userName: value.displayName,
+                            email: value.email));
+                      } else {
+                        final errorMsg =
+                            AuthExceptionHandler.generateExceptionMessage(
+                                value);
+                        _showAlertDialog(errorMsg);
+                      }
                     });
                   },
                   shape: StadiumBorder(

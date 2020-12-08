@@ -124,7 +124,7 @@ class _CardHomeState extends State<CardHome> {
             ),
             //),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -140,52 +140,59 @@ class _CardHomeState extends State<CardHome> {
                             .copyWith(color: Colors.white),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          if (!widget.isMarked) {
-                            setState(() {
-                              widget.icon = Icon(
-                                Icons.bookmark,
-                                color: Colors.black87,
-                              );
-                            });
-                            userBloc.likePost(widget.id);
-                            userBloc
-                                .addNotification(
-                                    widget.idUserPost, "favourite", 10)
-                                .then((value) => widget.notific_id = value);
-                            userBloc.addPoints(widget.idUserPost);
+                    (widget.pagename == "post")
+                        ? Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: Container(),
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                if (!widget.isMarked) {
+                                  setState(() {
+                                    widget.icon = Icon(
+                                      Icons.bookmark,
+                                      color: Colors.black87,
+                                    );
+                                  });
+                                  userBloc.likePost(widget.id);
+                                  userBloc
+                                      .addNotification(
+                                          widget.idUserPost, "favourite", 10)
+                                      .then(
+                                          (value) => widget.notific_id = value);
+                                  userBloc.addPoints(widget.idUserPost);
 
-                            widget.isMarked = true;
-                          } else {
-                            setState(() {
-                              widget.icon = Icon(
-                                Icons.bookmark_border,
-                                color: Colors.black87,
-                              );
-                            });
-                            userBloc.unlikePost(widget.id);
-                            userBloc.deleteNotification(widget.notific_id);
-                            userBloc.deletePoints(widget.idUserPost);
-                            widget.isMarked = false;
-                          }
-                        },
-                        child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(60),
+                                  widget.isMarked = true;
+                                } else {
+                                  setState(() {
+                                    widget.icon = Icon(
+                                      Icons.bookmark_border,
+                                      color: Colors.black87,
+                                    );
+                                  });
+                                  userBloc.unlikePost(widget.id);
+                                  userBloc
+                                      .deleteNotification(widget.notific_id);
+                                  userBloc.deletePoints(widget.idUserPost);
+                                  widget.isMarked = false;
+                                }
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(60),
+                                  ),
+                                  padding: EdgeInsets.all(8),
+                                  child: !widget.isMarked
+                                      ? widget.icon
+                                      : Icon(
+                                          Icons.bookmark,
+                                          color: Colors.black87,
+                                        )),
                             ),
-                            padding: EdgeInsets.all(8),
-                            child: !widget.isMarked
-                                ? widget.icon
-                                : Icon(
-                                    Icons.bookmark,
-                                    color: Colors.black87,
-                                  )),
-                      ),
-                    ),
+                          ),
                   ]),
             ),
           ]),

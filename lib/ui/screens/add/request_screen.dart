@@ -327,7 +327,9 @@ class _RequestScreenState extends State<RequestScreen> {
                                             .popUntil((route) => route.isFirst);
                                       },
                                       border: true,
-                                    )
+                                    ),
+                                    SizedBox(
+                                        height: ScreenUtil().setHeight(40)),
                                   ],
                                 ),
                               )));

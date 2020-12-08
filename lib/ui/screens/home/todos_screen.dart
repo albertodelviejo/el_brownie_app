@@ -8,7 +8,7 @@ import 'package:el_brownie_app/ui/utils/noresutlt.dart';
 import 'package:el_brownie_app/ui/utils/popup.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
@@ -144,9 +144,9 @@ class _TodosScreenState extends State<TodosScreen> {
                     GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: .6,
+                        childAspectRatio: (57 / 100),
                         crossAxisSpacing: ScreenUtil().setHeight(30),
-                        mainAxisSpacing: ScreenUtil().setHeight(60),
+                        mainAxisSpacing: ScreenUtil().setHeight(30),
                       ),
                       shrinkWrap: true,
                       physics: ClampingScrollPhysics(),

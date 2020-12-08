@@ -36,10 +36,10 @@ class UserBloc implements Bloc {
       _authRepository.registerFirebase(email, password);
 
 //3. Log in Google
-  Future<User> signInGoogle() => _authRepository.singInGoogle();
+  Future<dynamic> signInGoogle() => _authRepository.singInGoogle();
 
 //4. Log in Facebook
-  Future<User> signInFacebook() => _authRepository.singInFacebook();
+  Future<dynamic> signInFacebook() => _authRepository.singInFacebook();
 
 //5. Get posts
   Stream<QuerySnapshot> myPostsListStream() => FirebaseFirestore.instance

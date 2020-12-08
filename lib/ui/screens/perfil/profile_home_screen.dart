@@ -1,3 +1,4 @@
+import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/screens/perfil/brownie_screen.dart';
 import 'package:el_brownie_app/ui/screens/perfil/profile_screen.dart';
@@ -6,6 +7,7 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class ProfileHomeScreen extends StatefulWidget {
   @override
@@ -17,6 +19,7 @@ class _ProfileHomeScreenState extends State<ProfileHomeScreen> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+    UserBloc userBloc = BlocProvider.of(context);
 
     return SafeArea(
       child: DefaultTabController(
@@ -36,20 +39,31 @@ class _ProfileHomeScreenState extends State<ProfileHomeScreen> {
               Padding(
                 padding: const EdgeInsets.only(right: 12.0),
                 child: IconButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return NotificationsScreen(); //register
-                      },
-                    ),
-                  ),
-                  icon: Icon(
-                    Icons.notifications_none,
-                    color: Colors.black,
-                    size: 28,
-                  ),
-                ),
+                    onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return NotificationsScreen(); //register
+                            },
+                          ),
+                        ),
+                    icon: (userBloc.user.hasNotifications == null)
+                        ? Icon(
+                            Icons.notifications_none,
+                            color: Colors.black,
+                            size: 28,
+                          )
+                        : (userBloc.user.hasNotifications)
+                            ? SvgPicture.asset(
+                                "assets/svg/notification.svg",
+                                height: 28,
+                                width: 28,
+                              )
+                            : Icon(
+                                Icons.notifications_none,
+                                color: Colors.black,
+                                size: 28,
+                              )),
               ),
             ],
             bottom: PreferredSize(

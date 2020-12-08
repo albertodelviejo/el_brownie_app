@@ -244,13 +244,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.0"
-  flutter_share_me:
-    dependency: "direct main"
-    description:
-      name: flutter_share_me
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.2"
   flutter_signin_button:
     dependency: "direct main"
     description:
@@ -588,6 +581,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  social_share:
+    dependency: "direct main"
+    description:
+      name: social_share
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.5"
   source_span:
     dependency: transitive
     description:

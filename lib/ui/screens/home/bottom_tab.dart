@@ -45,8 +45,6 @@ class _BottomTabBarrState extends State<BottomTabBarr> {
 
   @override
   Widget build(BuildContext context) {
-    UserBloc userBloc = BlocProvider.of(context);
-
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (widget.isFirstTime) {
         welcomeNotification();

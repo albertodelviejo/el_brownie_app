@@ -93,20 +93,31 @@ class _AddCommentScreen extends State<AddCommentScreen> {
               Padding(
                 padding: const EdgeInsets.only(right: 12.0),
                 child: IconButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return NotificationsScreen(); //register
-                      },
-                    ),
-                  ),
-                  icon: Icon(
-                    Icons.notifications_none,
-                    color: Colors.black,
-                    size: 28,
-                  ),
-                ),
+                    onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return NotificationsScreen(); //register
+                            },
+                          ),
+                        ),
+                    icon: (userBloc.user.hasNotifications == null)
+                        ? Icon(
+                            Icons.notifications_none,
+                            color: Colors.black,
+                            size: 28,
+                          )
+                        : (userBloc.user.hasNotifications)
+                            ? SvgPicture.asset(
+                                "assets/svg/notification.svg",
+                                height: 28,
+                                width: 28,
+                              )
+                            : Icon(
+                                Icons.notifications_none,
+                                color: Colors.black,
+                                size: 28,
+                              )),
               ),
             ],
           ),
