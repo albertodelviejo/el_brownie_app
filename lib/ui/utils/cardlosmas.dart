@@ -106,7 +106,7 @@ class CardLosmas extends StatelessWidget {
                     children: [
                       Container(
                         width: ScreenUtil().setWidth(600),
-                        height: ScreenUtil().setHeight(530),
+                        height: ScreenUtil().setHeight(550),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(

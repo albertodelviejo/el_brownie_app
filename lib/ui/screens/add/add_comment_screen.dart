@@ -65,6 +65,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
           ),
           centerTitle: true,
           actions: [
+            /*
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
               child: IconButton(
@@ -83,6 +84,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 ),
               ),
             ),
+            */
           ],
         ),
         body: Form(

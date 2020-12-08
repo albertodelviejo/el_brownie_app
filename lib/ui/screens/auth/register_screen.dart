@@ -210,7 +210,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             .register(email: _email, password: _password)
                             .then((value) {
                           if (value is User) {
-                            userBloc.user = UserModel(uid: value.uid);
+                            userBloc.user =
+                                UserModel(uid: value.uid, userName: _username);
                             userBloc.updateUserData(UserModel(
                               uid: value.uid,
                               userName: _username,
@@ -277,7 +278,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 16),
                 onPressed: () {
                   userBloc.signOut();
-                  userBloc.signInFacebook().then((User value) {
+                  userBloc.signInFacebook().then((value) {
                     userBloc.user.uid = value.uid;
                     userBloc.updateUserData(UserModel(
                         uid: value.uid,
@@ -296,7 +297,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Buttons.Google,
                 padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
                 onPressed: () {
-                  userBloc.signInGoogle().then((User value) {
+                  userBloc.signInGoogle().then((value) {
                     userBloc.user.uid = value.uid;
                     userBloc.updateUserData(UserModel(
                         uid: value.uid,

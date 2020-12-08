@@ -45,7 +45,8 @@ class CloudFirestoreAPI {
                 'type': "default",
                 'favorites': [],
                 'notifications': {},
-                'avatar_url': "",
+                'avatar_url':
+                    "https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Fdefault.png?alt=media&token=f2afa6be-730c-46b1-81c0-b80da431a8af",
                 'number_of_posts': 0,
                 'createdAt': Timestamp.now(),
                 'hasNotifications': true,

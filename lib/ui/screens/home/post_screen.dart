@@ -10,10 +10,11 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_share_me/flutter_share_me.dart';
+
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:social_share/social_share.dart';
 
 import '../../../model/post.dart';
 
@@ -148,6 +149,7 @@ class _PostScreenState extends State<PostScreen> {
         ),
         centerTitle: true,
         actions: [
+          /*
           Padding(
             padding: const EdgeInsets.only(right: 12.0),
             child: IconButton(
@@ -166,6 +168,7 @@ class _PostScreenState extends State<PostScreen> {
               ),
             ),
           ),
+          */
         ],
       ),
       body: ListView(
@@ -223,8 +226,11 @@ class _PostScreenState extends State<PostScreen> {
                                           height: ScreenUtil().setHeight(40)),
                                       SignInButtonBuilder(
                                         backgroundColor: Color(0xFF25D366),
-                                        onPressed: () =>
-                                            FlutterShareMe().shareToWhatsApp(),
+                                        onPressed: () => SocialShare.shareWhatsapp(
+                                                "No sabes la cantidad de brownies que hay por toda la ciudad... \n http://elbrownie.com/")
+                                            .then((data) {
+                                          print(data);
+                                        }),
                                         text: share_button_pop,
                                         image: Container(
                                           margin: EdgeInsets.fromLTRB(
