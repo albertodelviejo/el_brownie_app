@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
+import 'package:el_brownie_app/repository/google_maps_api.dart';
 import 'package:el_brownie_app/ui/screens/auth/login_screen.dart';
 import 'package:el_brownie_app/ui/screens/welcome/splash_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
@@ -10,9 +11,11 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:google_maps_webservice/places.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -109,6 +112,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     ubicacionRestauranteController.text = user.location;
     cifController.text = user.cif;
 
+    final googleMapsApi = GoogleMapsApi();
+
     (user.avatarURL != "")
         ? widget.imageProfile = NetworkImage(user.avatarURL)
         : widget.imageProfile = widget.imageProfile;
@@ -163,7 +168,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: TextFormField(
             controller: usuarioController,
             keyboardType: TextInputType.emailAddress,
-            decoration: Mystyle.inputWhitebg('Usuario'),
+            decoration: Mystyle.inputDisabledWhitebg('Usuario'),
             textInputAction: TextInputAction.done,
             enabled: false,
             validator: (value) {
@@ -178,7 +183,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: TextFormField(
             controller: nombreController,
             keyboardType: TextInputType.emailAddress,
-            decoration: Mystyle.inputWhitebg('Nombre'),
+            decoration: Mystyle.inputDisabledWhitebg('Nombre'),
             textInputAction: TextInputAction.done,
             enabled: false,
             validator: (value) {
@@ -193,7 +198,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: TextFormField(
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
-            decoration: Mystyle.inputWhitebg('Email'),
+            decoration: Mystyle.inputDisabledWhitebg('Email'),
             textInputAction: TextInputAction.done,
             enabled: false,
             validator: (value) {
@@ -378,6 +383,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: TextFormField(
                             controller: ubicacionRestauranteController,
                             keyboardType: TextInputType.emailAddress,
+                            onChanged: (text) async {
+                              //you can discover other features like components
+                              Prediction p = await PlacesAutocomplete.show(
+                                context: context,
+                                apiKey: googleMapsApi.apiKey,
+                                //you can choose full scren or overlay
+                                mode: Mode.overlay,
+                                //you can set spain language
+                                language: 'es',
+                                //you can set here what user wrote in textfield
+                                startText: ubicacionRestauranteController.text,
+                                onError: (onError) {
+                                  //the error will be showen is enable billing
+                                  print(onError.errorMessage);
+                                },
+                              );
+                              googleMapsApi.displayPrediction(p).then((value) =>
+                                  ubicacionRestauranteController.text = value);
+                            },
                             decoration: Mystyle.inputWhitebg(
                               'Ubicación',
                               icon: IconButton(

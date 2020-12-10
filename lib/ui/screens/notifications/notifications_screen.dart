@@ -73,6 +73,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             child: Image.asset("assets/appblogo.png"),
           ),
           centerTitle: true,
+          /*
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
@@ -83,6 +84,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
             ),
           ],
+          */
         ),
         body: ListView(
           padding: EdgeInsets.symmetric(horizontal: 24),

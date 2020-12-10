@@ -156,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Container(
                 padding: EdgeInsets.only(top: 5, bottom: 0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
                       value: accepted,
@@ -183,10 +183,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ],
                 ),
               ),
-              !accepted
-                  ? Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Center(
+              /*
+              (!accepted)
+                  ? Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
                         child: Text(
                           "Acepte los términos para registrarse",
                           style: TextStyle(color: Colors.red),
@@ -194,51 +195,58 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     )
                   : Container(),
+                  */
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 0),
                 child: ButtAuth(
                   "Registrarse",
-                  () {
-                    if (_formKey.currentState.validate()) {
-                      _formKey.currentState.save();
-                      if (accepted) {
-                        setState(() {
-                          pressAttention = false;
-                          //
-                        });
-                        userBloc
-                            .register(email: _email, password: _password)
-                            .then((value) {
-                          if (value is User) {
-                            userBloc.user =
-                                UserModel(uid: value.uid, userName: _username);
-                            userBloc.updateUserData(UserModel(
-                              uid: value.uid,
-                              userName: _username,
-                              email: value.email,
-                            ));
-                            userBloc.addNotification(value.uid, "welcome", 10);
-                            userBloc.addPoints(value.uid);
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) {
-                                  return BottomTabBarr(
-                                    isFirstTime: true,
-                                  ); //register
-                                },
-                              ),
-                            );
+                  accepted
+                      ? () {
+                          if (_formKey.currentState.validate()) {
+                            _formKey.currentState.save();
+                            if (accepted) {
+                              setState(() {
+                                pressAttention = false;
+
+                                //
+                              });
+                              userBloc
+                                  .register(email: _email, password: _password)
+                                  .then((value) {
+                                if (value is User) {
+                                  userBloc.user = UserModel(
+                                      uid: value.uid, userName: _username);
+                                  userBloc.updateUserData(UserModel(
+                                    uid: value.uid,
+                                    userName: _username,
+                                    email: value.email,
+                                  ));
+
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) {
+                                        return BottomTabBarr(
+                                          isFirstTime: true,
+                                        ); //register
+                                      },
+                                    ),
+                                  );
+                                } else {
+                                  _showAlertDialog("");
+                                }
+                              });
+                            } else {
+                              setState(() {
+                                accepted = false;
+                              });
+                            }
                           } else {
-                            _showAlertDialog("");
+                            //validation error
+                            _validate = true;
                           }
-                        });
-                      } else {}
-                    } else {
-                      //validation error
-                      _validate = true;
-                    }
-                  },
+                        }
+                      : null,
                   border: true,
                 ),
               ),
@@ -326,7 +334,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           return AlertDialog(
             title: Text(
               'Fallo de registro',
-              style: TextStyle(color: Colors.black),
+              style: Mystyle.titleTextStyle.copyWith(color: Colors.black87),
             ),
             content: Text("El mail ya está en uso"),
           );

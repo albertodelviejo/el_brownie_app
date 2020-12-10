@@ -37,7 +37,7 @@ class CloudFirestoreAPI {
                 'uid': user.uid,
                 'username': user.userName,
                 'email': user.email,
-                'points': 0,
+                'points': 10,
                 'bank_account': "",
                 'cif': "",
                 'location': "",
@@ -52,7 +52,9 @@ class CloudFirestoreAPI {
                 'hasNotifications': true,
                 'hasRequestedNotification': false,
                 'isTop3': false
-              })
+              }),
+              addNotification(user.uid, "welcome", 10),
+              //addPoints(user.uid, 10)
             }
         });
   }
@@ -145,6 +147,8 @@ class CloudFirestoreAPI {
         myindex: element.get('valoration').toString(),
         idUserPost: element.get('id_user'),
         id: element.id,
+        longitude: element.get('longitude'),
+        latitude: element.get('latitude'),
       ));
     });
     return allPost;
@@ -419,13 +423,13 @@ class CloudFirestoreAPI {
     return allNotifications;
   }
 
-  void addPoints(String userId) {
+  void addPoints(String userId, int value) {
     DocumentReference docRef = _db.collection("users").doc(userId);
     int points = 0;
     docRef.get().then((value) => {
           if (value.exists)
             {
-              points = value.get('points') + 10,
+              points = value.get('points') + value,
               docRef.update({'points': points})
             }
         });

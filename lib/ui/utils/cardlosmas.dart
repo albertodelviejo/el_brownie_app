@@ -30,6 +30,8 @@ class CardLosmas extends StatelessWidget {
   String notific_id;
   final admobService = AdmobService();
   bool isAdd;
+  double longitude;
+  double latitude;
 
   CardLosmas(
       {this.name,
@@ -45,6 +47,8 @@ class CardLosmas extends StatelessWidget {
       this.pagename,
       this.price,
       this.idUserPost,
+      this.latitude,
+      this.longitude,
       this.isMarked = false,
       this.isTapped = false,
       this.isAdd = false});

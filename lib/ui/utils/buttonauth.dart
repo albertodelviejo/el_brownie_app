@@ -49,17 +49,23 @@ class _ButtAuthState extends State<ButtAuth> {
           widget.text,
           style: Mystyle.regularTextStyle.copyWith(
             fontWeight: FontWeight.w600,
-            color: widget.press ? Colors.white : Colors.black87,
+            color: widget.fun == null
+                ? Colors.grey[400]
+                : (widget.press ? Colors.white : Colors.black87),
           ),
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
-          side:
-              widget.border ? BorderSide(color: Colors.black) : BorderSide.none,
+          side: widget.border
+              ? (widget.fun == null
+                  ? BorderSide(color: Colors.grey[300])
+                  : BorderSide(color: Colors.black))
+              : BorderSide.none,
         ),
         color: widget.press ? Colors.black87 : Colors.white,
         splashColor: Colors.black87,
         highlightColor: Colors.black87,
+        disabledColor: Colors.grey[300],
         onPressed: widget.fun,
         /*
         () {
