@@ -140,6 +140,7 @@ class _CardHomeState extends State<CardHome> {
                             .copyWith(color: Colors.white),
                       ),
                     ),
+                    /*
                     (widget.pagename == "post")
                         ? Padding(
                             padding: const EdgeInsets.all(6.0),
@@ -162,7 +163,7 @@ class _CardHomeState extends State<CardHome> {
                                           widget.idUserPost, "favourite", 10)
                                       .then(
                                           (value) => widget.notific_id = value);
-                                  userBloc.addPoints(widget.idUserPost);
+                                  userBloc.addPoints(widget.idUserPost, 10);
 
                                   widget.isMarked = true;
                                 } else {
@@ -193,6 +194,7 @@ class _CardHomeState extends State<CardHome> {
                                         )),
                             ),
                           ),
+                          */
                   ]),
             ),
           ]),

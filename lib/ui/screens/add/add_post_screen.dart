@@ -1,13 +1,14 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/repository/google_maps_api.dart';
 import 'package:el_brownie_app/ui/screens/home/bottom_tab.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
-import 'package:el_brownie_app/ui/utils/popup.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -60,6 +61,38 @@ class _AddCommentScreen extends State<AddCommentScreen> {
     ScreenUtil.init(context);
     userBloc = BlocProvider.of(context);
 
+    retrieveLostData();
+    return getUserfromDB(userBloc.user.uid);
+  }
+
+  Widget getUserfromDB(uid) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("users")
+            .where('uid', isEqualTo: uid)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          UserBloc userBloc = BlocProvider.of(context);
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            DocumentSnapshot element = snapshot.data.documents[0];
+            userBloc.user = UserModel(
+                email: element.get("email"),
+                uid: element.get("uid"),
+                userName: element.get("username"),
+                avatarURL: element.get("avatar_url"),
+                points: element.get("points"),
+                hasNotifications: element.get("hasNotifications"),
+                hasRequestedNotification:
+                    element.get("hasRequestedNotification"));
+            Stream.empty();
+          }
+          return addPostScreen(context);
+        });
+  }
+
+  Widget addPostScreen(context) {
     _showAlertDialog(errorMsg) {
       return showDialog(
           context: context,
@@ -72,8 +105,6 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                 content: Text(errorMsg));
           });
     }
-
-    retrieveLostData();
 
     return SafeArea(
       child: ModalProgressHUD(
@@ -355,6 +386,8 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                           _dropdownvalue = value;
                         });
                       },
+                      validator: (value) =>
+                          value == null ? 'Seleccione una categoría' : null,
                     ),
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_webservice/places.dart';
@@ -29,7 +30,7 @@ class GoogleMapsApi {
     }
   }
 
-  Future<List<CardHome>> getNearbyPlaces(List<CardHome> posts) async {
+  Future<List<CardLosmas>> getNearbyPlaces(List<CardLosmas> posts) async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.medium);
     posts.sort((a, b) {

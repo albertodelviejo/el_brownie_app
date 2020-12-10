@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
@@ -27,7 +28,37 @@ class _FavScreenState extends State<FavScreen> {
   @override
   Widget build(BuildContext context) {
     userBloc = BlocProvider.of(context);
-    // return getPostsfromDB(userBloc.user.uid);
+    return getUserfromDB(userBloc.user.uid);
+  }
+
+  Widget getUserfromDB(uid) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("users")
+            .where('uid', isEqualTo: uid)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          UserBloc userBloc = BlocProvider.of(context);
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            DocumentSnapshot element = snapshot.data.documents[0];
+            userBloc.user = UserModel(
+                email: element.get("email"),
+                uid: element.get("uid"),
+                userName: element.get("username"),
+                avatarURL: element.get("avatar_url"),
+                points: element.get("points"),
+                hasNotifications: element.get("hasNotifications"),
+                hasRequestedNotification:
+                    element.get("hasRequestedNotification"));
+            Stream.empty();
+          }
+          return favscreen();
+        });
+  }
+
+  Widget favscreen() {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,

@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return StreamBuilder(
         stream: userBloc.authStatus,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          userBloc = BlocProvider.of(context);
+          //userBloc = BlocProvider.of(context);
           if (!snapshot.hasData ||
               snapshot.hasError ||
               snapshot.data.uid == null ||
@@ -370,8 +370,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             uid: value.uid,
                             email: value.email,
                             userName: value.displayName);
-                        userBloc.updateUserData(
-                            UserModel(uid: value.uid, email: value.email));
+                        userBloc.updateUserData(UserModel(
+                            uid: value.uid,
+                            email: value.email,
+                            userName: value.displayName));
                       } else {
                         final errorMsg =
                             AuthExceptionHandler.generateExceptionMessage(
@@ -430,8 +432,8 @@ class _LoginScreenState extends State<LoginScreen> {
         builder: (context) {
           return AlertDialog(
             title: Text(
-              'Login Failed',
-              style: TextStyle(color: Colors.black),
+              'Login fallido',
+              style: Mystyle.titleTextStyle.copyWith(color: Colors.black87),
             ),
             content: Text("Credenciales incorrectas"),
           );
@@ -445,7 +447,7 @@ class _LoginScreenState extends State<LoginScreen> {
           return AlertDialog(
             title: Text(
               'Recuperar contraseña',
-              style: TextStyle(color: Colors.black),
+              style: Mystyle.titleTextStyle.copyWith(color: Colors.black87),
             ),
             content: Text("Consulta tu email para restaurar la contraseña"),
           );

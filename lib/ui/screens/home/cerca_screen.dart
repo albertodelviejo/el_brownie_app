@@ -1,6 +1,7 @@
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/repository/google_maps_api.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/noresutlt.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,7 +13,7 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 class CercaScreen extends StatefulWidget {
   final String orderPer = "";
   bool noresult = false;
-  List<CardHome> finalPosts;
+  List<CardLosmas> finalPosts;
 
   @override
   _CercaScreenState createState() => _CercaScreenState();
@@ -35,29 +36,29 @@ class _CercaScreenState extends State<CercaScreen> {
               return Center(child: CircularProgressIndicator());
             case ConnectionState.done:
               return cercaScreen(
-                  userBloc.buildMyPostsCardHome(snapshot.data.documents));
+                  userBloc.buildMyPosts(snapshot.data.documents));
 
             case ConnectionState.active:
               return cercaScreen(
-                  userBloc.buildMyPostsCardHome(snapshot.data.documents));
+                  userBloc.buildMyPosts(snapshot.data.documents));
 
             case ConnectionState.none:
               return Center(child: CircularProgressIndicator());
             default:
               return cercaScreen(
-                  userBloc.buildMyPostsCardHome(snapshot.data.documents));
+                  userBloc.buildMyPosts(snapshot.data.documents));
           }
         });
   }
 
-  Future<List<CardHome>> filterPosts(List<CardHome> posts) async {
+  Future<List<CardLosmas>> filterPosts(List<CardLosmas> posts) async {
     //enable billing
     //List<CardHome> filteredPosts;
     return await GoogleMapsApi().getNearbyPlaces(posts).then((value) => value);
   }
 
-  Widget cercaScreen(List<CardHome> allPosts) {
-    List<CardHome> posts;
+  Widget cercaScreen(List<CardLosmas> allPosts) {
+    List<CardLosmas> posts;
     if (widget.finalPosts == null) {
       filterPosts(allPosts).then((value) {
         setState(() {
@@ -73,7 +74,7 @@ class _CercaScreenState extends State<CercaScreen> {
     return widget.finalPosts == null
         ? Center(child: CircularProgressIndicator())
         : ListView(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.symmetric(horizontal: 2),
             children: <Widget>[
               widget.noresult
                   ? NoResult()
@@ -88,16 +89,23 @@ class _CercaScreenState extends State<CercaScreen> {
                           ),
                         ),
                         SizedBox(height: ScreenUtil().setHeight(20)),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: EdgeInsets.only(bottom: 25),
-                          scrollDirection: Axis.vertical,
-                          reverse: false,
-                          itemBuilder: (_, int index) => Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 6),
-                            child: widget.finalPosts[index],
+                        GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: (57 / 100),
+                            crossAxisSpacing: ScreenUtil().setHeight(30),
+                            mainAxisSpacing: ScreenUtil().setHeight(30),
                           ),
+                          shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (_, int index) {
+                            return (index % 4 == 3)
+                                ? CardLosmas(isAdd: true)
+                                : widget.finalPosts[index];
+                          },
                           itemCount: widget.finalPosts.length,
                         ),
                         SizedBox(height: ScreenUtil().setHeight(100)),

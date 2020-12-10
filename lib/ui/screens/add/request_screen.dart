@@ -294,7 +294,7 @@ class _RequestScreenState extends State<RequestScreen> {
                           response.paymentId);
                       userBloc.addNotification(
                           widget.idUserPost, "reclamation", 10);
-                      userBloc.addPoints(widget.idUserPost);
+                      userBloc.addPoints(widget.idUserPost, 10);
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text(response.message),
                         duration: Duration(seconds: 5),

@@ -283,6 +283,60 @@ class Mystyle {
     );
   }
 
+  static inputDisabledWhitebg(hint, {icon}) {
+    return InputDecoration(
+      hintText: hint,
+      hintStyle: TextStyle(
+        fontSize: 14,
+        color: Color(0xFF8b8b8b),
+      ),
+      fillColor: Color(0xFFe6e6e6),
+
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.transparent,
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      // bo
+      suffixIcon: icon,
+      filled: true,
+      contentPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 0),
+      labelStyle: TextStyle(
+        fontSize: 14,
+      ),
+    );
+  }
+
   static inputSearch(hint, {icon, icon2}) {
     return InputDecoration(
       hintText: hint,

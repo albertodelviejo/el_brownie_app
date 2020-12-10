@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget homeScreen() {
     return SafeArea(
       child: DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: Colors.white,
@@ -179,13 +179,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       indicatorWeight: 4,
                       unselectedLabelColor: Colors.black87.withOpacity(.5),
                       labelStyle: TextStyle(
-                        fontSize: 11,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: Mystyle.secondrycolo,
                       ),
                       tabs: [
                         Tab(text: 'Todos'),
-                        Tab(text: 'Los más Warros!'),
+                        // Tab(text: 'Los más Warros!'),
                         Tab(text: 'Cerca a mi'),
                       ],
                     ),
@@ -203,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   category: currentCategory,
                   orderPer: orderPer,
                   isFirstTime: widget.isFirstTime),
-              LosMasScreen(),
+              //LosMasScreen(),
               CercaScreen(),
             ],
           ),

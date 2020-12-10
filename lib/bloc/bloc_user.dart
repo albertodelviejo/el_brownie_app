@@ -123,10 +123,10 @@ class UserBloc implements Bloc {
 
   //11. Add comment
 
-  Future<String> addComment(
-          String idPost, String photoUrl, String text, String valoration) =>
-      _cloudFirestoreRepository.addComment(idPost, user.uid, user.userName,
-          user.avatarURL, photoUrl, text, valoration);
+  Future<String> addComment(String idPost, String uid, String userName,
+          String avatarURL, String photoUrl, String text, String valoration) =>
+      _cloudFirestoreRepository.addComment(
+          idPost, uid, userName, avatarURL, photoUrl, text, valoration);
 
   //12. Build comments
   List<CommentsW> buildComments(List<DocumentSnapshot> ticketsListSnapshot) =>
@@ -177,7 +177,8 @@ class UserBloc implements Bloc {
 
 //18. Add and Delete points
 
-  void addPoints(String idUser) => _cloudFirestoreRepository.addPoints(idUser);
+  void addPoints(String idUser, int value) =>
+      _cloudFirestoreRepository.addPoints(idUser, value);
 
   void deletePoints(String idUser) =>
       _cloudFirestoreRepository.deletePoints(idUser);

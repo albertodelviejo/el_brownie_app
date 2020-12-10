@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
+import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
@@ -45,6 +47,37 @@ class _AddPostScreenState extends State<AddPostScreen> {
     ScreenUtil.init(context);
     userBloc = BlocProvider.of(context);
 
+    return getUserfromDB(userBloc.user.uid);
+  }
+
+  Widget getUserfromDB(uid) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("users")
+            .where('uid', isEqualTo: uid)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          UserBloc userBloc = BlocProvider.of(context);
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            DocumentSnapshot element = snapshot.data.documents[0];
+            userBloc.user = UserModel(
+                email: element.get("email"),
+                uid: element.get("uid"),
+                userName: element.get("username"),
+                avatarURL: element.get("avatar_url"),
+                points: element.get("points"),
+                hasNotifications: element.get("hasNotifications"),
+                hasRequestedNotification:
+                    element.get("hasRequestedNotification"));
+            Stream.empty();
+          }
+          return addCommentView(context, userBloc.user.userName);
+        });
+  }
+
+  Widget addCommentView(context, String username) {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
@@ -239,7 +272,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       uploadTask.onComplete.then((snapshot) {
                         snapshot.ref.getDownloadURL().then((url) {
                           userBloc
-                              .addComment(widget.idPost, url, _comment,
+                              .addComment(
+                                  widget.idPost,
+                                  userBloc.user.uid,
+                                  username,
+                                  userBloc.user.avatarURL,
+                                  url,
+                                  _comment,
                                   (widget.valoration + 1).toString())
                               .whenComplete(() {
                             comentarioController.clear();
@@ -249,12 +288,18 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       });
                     });
                   } else {
-                    userBloc.addComment(widget.idPost, "", _comment,
+                    userBloc.addComment(
+                        widget.idPost,
+                        userBloc.user.uid,
+                        username,
+                        userBloc.user.avatarURL,
+                        "",
+                        _comment,
                         (widget.valoration + 1).toString());
                   }
 
                   userBloc.addNotification(widget.idUserPost, "comment", 10);
-                  userBloc.addPoints(widget.idUserPost);
+                  userBloc.addPoints(widget.idUserPost, 10);
                   Navigator.pop(context);
                 } else {
                   _validate = true;

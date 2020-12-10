@@ -285,7 +285,7 @@ class _PostScreenState extends State<PostScreen> {
                               .addNotification(
                                   widget.cardHome.idUserPost, "favourite", 10)
                               .then((value) => widget.notific_id = value);
-                          userBloc.addPoints(widget.cardHome.idUserPost);
+                          userBloc.addPoints(widget.cardHome.idUserPost, 5);
                         } else {
                           setState(() {
                             widget.cardHome.icon = Icon(
