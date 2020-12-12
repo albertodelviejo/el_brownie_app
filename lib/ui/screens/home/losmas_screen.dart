@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
+import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/noresutlt.dart';
 import 'package:flutter/material.dart';
@@ -46,12 +47,12 @@ class _LosMasScreenState extends State<LosMasScreen> {
                 avatarURL: element.get("avatar_url"),
                 points: element.get("points"));
             Stream.empty();
-            return getPostsfromDB();
+            return getPostsfromDBmas();
           }
         });
   }
 
-  Widget getPostsfromDB() {
+  Widget getPostsfromDBmas() {
     return StreamBuilder(
         stream: userBloc.myMostPostsListStream(),
         builder: (context, AsyncSnapshot snapshot) {
@@ -59,21 +60,21 @@ class _LosMasScreenState extends State<LosMasScreen> {
             case ConnectionState.waiting:
               return Center(child: CircularProgressIndicator());
             case ConnectionState.done:
-              return todosScreen(
+              return todosMasScreen(
                   userBloc.buildMyMostPosts(snapshot.data.documents));
             case ConnectionState.active:
-              return todosScreen(
+              return todosMasScreen(
                   userBloc.buildMyMostPosts(snapshot.data.documents));
             case ConnectionState.none:
               return Center(child: CircularProgressIndicator());
             default:
-              return todosScreen(
+              return todosMasScreen(
                   userBloc.buildMyMostPosts(snapshot.data.documents));
           }
         });
   }
 
-  Widget todosScreen(List<CardHome> allPosts) {
+  Widget todosMasScreen(List<CardLosmas> allPosts) {
     ScreenUtil.init(context);
     bool noresult = false;
     (allPosts.length == 0) ? noresult = true : noresult = false;
@@ -94,16 +95,24 @@ class _LosMasScreenState extends State<LosMasScreen> {
                     ),
                   ),
                   SizedBox(height: ScreenUtil().setHeight(20)),
-                  ListView.builder(
+                  GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: (57 / 100),
+                      crossAxisSpacing: ScreenUtil().setHeight(30),
+                      mainAxisSpacing: ScreenUtil().setHeight(30),
+                    ),
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     padding: EdgeInsets.only(bottom: 25),
                     scrollDirection: Axis.vertical,
-                    reverse: false,
-                    itemBuilder: (_, int index) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 6),
-                      child: allPosts[index],
-                    ),
+                    itemBuilder: (_, int index) {
+                      return (index % 4 == 3)
+                          ? CardLosmas(
+                              isAdd: true,
+                            )
+                          : allPosts[index];
+                    },
                     itemCount: allPosts.length,
                   ),
                   SizedBox(height: ScreenUtil().setHeight(100)),

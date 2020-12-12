@@ -332,6 +332,7 @@ class Mystyle {
       filled: true,
       contentPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 0),
       labelStyle: TextStyle(
+        color: Colors.blueGrey,
         fontSize: 14,
       ),
     );

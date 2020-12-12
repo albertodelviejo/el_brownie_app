@@ -134,6 +134,35 @@ class CloudFirestoreAPI {
 
   List<CardLosmas> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) {
     List<CardLosmas> allPost = List<CardLosmas>();
+    int index = 0;
+    postsListSnapshot.forEach((element) {
+      if (index % 4 == 3) {
+        allPost.add(CardLosmas(isAdd: true, name: ""));
+        index++;
+      }
+      allPost.add(CardLosmas(
+        name: element.get('name'),
+        valo: "1700 valoraciones",
+        category: element.get('category'),
+        place: element.get('address'),
+        reclam: element.get('status'),
+        view: "1700 views",
+        hace: "Hace 2 dias",
+        imageUrl: element.get('photo'),
+        myindex: element.get('valoration').toString(),
+        idUserPost: element.get('id_user'),
+        id: element.id,
+        longitude: element.get('longitude'),
+        latitude: element.get('latitude'),
+      ));
+      index++;
+    });
+    return allPost;
+  }
+
+  List<CardLosmas> buildCercaPosts(List<DocumentSnapshot> postsListSnapshot) {
+    List<CardLosmas> allPost = List<CardLosmas>();
+
     postsListSnapshot.forEach((element) {
       allPost.add(CardLosmas(
         name: element.get('name'),
@@ -423,13 +452,13 @@ class CloudFirestoreAPI {
     return allNotifications;
   }
 
-  void addPoints(String userId, int value) {
+  void addPoints(String userId, int addPoints) {
     DocumentReference docRef = _db.collection("users").doc(userId);
     int points = 0;
     docRef.get().then((value) => {
           if (value.exists)
             {
-              points = value.get('points') + value,
+              points = value.get('points') + addPoints,
               docRef.update({'points': points})
             }
         });
@@ -447,10 +476,16 @@ class CloudFirestoreAPI {
         });
   }
 
-  List<CardHome> buildMyMostBrownies(List<DocumentSnapshot> postsListSnapshot) {
-    List<CardHome> allPost = List<CardHome>();
+  List<CardLosmas> buildMyMostBrownies(
+      List<DocumentSnapshot> postsListSnapshot) {
+    List<CardLosmas> allPost = List<CardLosmas>();
+    int index = 0;
     postsListSnapshot.forEach((element) {
-      allPost.add(CardHome(
+      if (index % 4 == 3) {
+        allPost.add(CardLosmas(isAdd: true, name: ""));
+        index++;
+      }
+      allPost.add(CardLosmas(
         name: element.get('name'),
         valo: "1700 valoraciones",
         place: element.get('address'),
@@ -462,6 +497,7 @@ class CloudFirestoreAPI {
         id: element.id,
         idUserPost: element.get('id_user'),
       ));
+      index++;
     });
     return allPost;
   }
@@ -480,7 +516,8 @@ class CloudFirestoreAPI {
               if (!isTop3db && isTop3)
                 {
                   docRef.update({'isTop3': true}),
-                  addNotification(uid, "top", 10)
+                  addNotification(uid, "top", 10),
+                  addPoints(uid, 10)
                 }
             }
         });

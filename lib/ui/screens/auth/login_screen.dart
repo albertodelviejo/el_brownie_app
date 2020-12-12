@@ -50,6 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     userBloc = BlocProvider.of(context);
+    //userBloc.signOut();
     return _handleCurrentSession();
   }
 
@@ -60,7 +61,6 @@ class _LoginScreenState extends State<LoginScreen> {
           //userBloc = BlocProvider.of(context);
           if (!snapshot.hasData ||
               snapshot.hasError ||
-              snapshot.data.uid == null ||
               userBloc.currentUser == null) {
             return loginScreen(context);
           } else {

@@ -166,6 +166,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           padding: EdgeInsets.symmetric(
               horizontal: 2, vertical: ScreenUtil().setHeight(20)),
           child: TextFormField(
+            style: TextStyle(color: Colors.grey),
             controller: usuarioController,
             keyboardType: TextInputType.emailAddress,
             decoration: Mystyle.inputDisabledWhitebg('Usuario'),
@@ -181,6 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           padding: EdgeInsets.symmetric(
               horizontal: 2, vertical: ScreenUtil().setHeight(20)),
           child: TextFormField(
+            style: TextStyle(color: Colors.grey),
             controller: nombreController,
             keyboardType: TextInputType.emailAddress,
             decoration: Mystyle.inputDisabledWhitebg('Nombre'),
@@ -196,6 +198,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           padding: EdgeInsets.symmetric(
               horizontal: 2, vertical: ScreenUtil().setHeight(20)),
           child: TextFormField(
+            style: TextStyle(color: Colors.grey),
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
             decoration: Mystyle.inputDisabledWhitebg('Email'),
@@ -453,10 +456,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               email: emailController.text,
               bankAccount: bankaccountController.text,
               avatarURL: avatarUrl,
-              type: user.type,
-              cif: user.cif,
-              location: user.location,
-              restaurantName: user.restaurantName));
+              type: widget.showhidden ? "owner" : "default",
+              cif: cifController.text,
+              location: ubicacionRestauranteController.text,
+              restaurantName: nombreRestauranteController.text));
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         ButtAuth("Cerrar Sesión", () async {

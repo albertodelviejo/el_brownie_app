@@ -18,37 +18,37 @@ class PopUp {
   ) {
     switch (type) {
       case "reclamation":
-        icon = SvgPicture.asset("assets/svg/notifmoney.svg");
+        icon = Image.asset("assets/pop/reclam.png");
         text = notification_pop_text_reclamation;
         title = notification_pop_title_reclamation;
         break;
       case "favourite":
-        icon = SvgPicture.asset("assets/svg/favorito.svg");
+        icon = Image.asset("assets/pop/favorite.png");
         text = notification_pop_text_favourite;
         title = notification_pop_title_favourite;
         break;
       case "top":
-        icon = SvgPicture.asset("assets/svg/top.svg");
+        icon = Image.asset("assets/pop/top.png");
         text = notification_pop_text_top;
         title = notification_pop_title_top;
         break;
       case "welcome":
-        icon = Image.asset("assets/ifull.png");
+        icon = Image.asset("assets/pop/caca10.png");
         text = notification_pop_text_welcome;
         title = notification_pop_title_welcome;
         break;
       case "comment":
-        icon = SvgPicture.asset("assets/svg/descanso.svg");
+        icon = Image.asset("assets/pop/coffee.png");
         text = notification_pop_text_comment;
         title = notification_pop_title_comment;
         break;
       case "added":
-        icon = Image.asset("assets/ifull.png");
+        icon = Image.asset("assets/pop/caca5.png");
         text = notification_pop_text_added;
         title = notification_pop_title_added;
         break;
       default:
-        icon = Image.asset("assets/ifull.png");
+        icon = Image.asset("assets/pop/caca10.png");
         text = notification_pop_text_welcome;
         title = notification_pop_title_welcome;
         break;
@@ -94,8 +94,8 @@ class PopUp {
                     ),
                     Container(
                         alignment: Alignment.center,
-                        height: ScreenUtil().setWidth(300),
-                        width: ScreenUtil().setWidth(300),
+                        height: ScreenUtil().setWidth(330),
+                        width: ScreenUtil().setWidth(330),
                         child: icon),
                     SizedBox(height: ScreenUtil().setHeight(40)),
                     Padding(
