@@ -36,17 +36,17 @@ class _CercaScreenState extends State<CercaScreen> {
               return Center(child: CircularProgressIndicator());
             case ConnectionState.done:
               return cercaScreen(
-                  userBloc.buildMyPosts(snapshot.data.documents));
+                  userBloc.buildCercaPosts(snapshot.data.documents));
 
             case ConnectionState.active:
               return cercaScreen(
-                  userBloc.buildMyPosts(snapshot.data.documents));
+                  userBloc.buildCercaPosts(snapshot.data.documents));
 
             case ConnectionState.none:
               return Center(child: CircularProgressIndicator());
             default:
               return cercaScreen(
-                  userBloc.buildMyPosts(snapshot.data.documents));
+                  userBloc.buildCercaPosts(snapshot.data.documents));
           }
         });
   }
@@ -102,9 +102,7 @@ class _CercaScreenState extends State<CercaScreen> {
                           padding: EdgeInsets.symmetric(horizontal: 16),
                           scrollDirection: Axis.vertical,
                           itemBuilder: (_, int index) {
-                            return (index % 4 == 3)
-                                ? CardLosmas(isAdd: true)
-                                : widget.finalPosts[index];
+                            return widget.finalPosts[index];
                           },
                           itemCount: widget.finalPosts.length,
                         ),

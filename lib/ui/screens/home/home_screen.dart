@@ -3,7 +3,6 @@ import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/bloc/orderByModel.dart';
 import 'package:el_brownie_app/model/categoryModel.dart';
 import 'package:el_brownie_app/model/user.dart';
-import 'package:el_brownie_app/ui/screens/home/losmas_screen.dart';
 import 'package:el_brownie_app/ui/screens/home/todos_screen.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/category.dart';

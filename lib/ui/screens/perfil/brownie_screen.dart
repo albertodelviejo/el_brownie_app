@@ -101,7 +101,12 @@ class _MiBrownieScreenState extends State<MiBrownieScreen> {
                     padding: EdgeInsets.only(bottom: 25),
                     scrollDirection: Axis.vertical,
                     reverse: false,
-                    itemBuilder: (_, int index) => listaBrownies[index],
+                    itemBuilder: (_, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        child: listaBrownies[index],
+                      );
+                    },
                     itemCount: listaBrownies.length,
                   ),
             SizedBox(height: ScreenUtil().setHeight(100)),

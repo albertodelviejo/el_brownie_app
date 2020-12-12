@@ -52,6 +52,11 @@ class UserBloc implements Bloc {
   List<CardLosmas> buildMyPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildAllPosts(ticketsListSnapshot);
 
+  //With CardLosMas
+  List<CardLosmas> buildCercaPosts(
+          List<DocumentSnapshot> ticketsListSnapshot) =>
+      _cloudFirestoreRepository.buildCercaPosts(ticketsListSnapshot);
+
 //With CardHome
   List<CardHome> buildMyPostsCardHome(
           List<DocumentSnapshot> ticketsListSnapshot) =>
@@ -190,7 +195,8 @@ class UserBloc implements Bloc {
       .orderBy('valoration', descending: true)
       .snapshots();
 
-  List<CardHome> buildMyMostPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
+  List<CardLosmas> buildMyMostPosts(
+          List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildMyMostPosts(ticketsListSnapshot);
 
   //20. Top 3 notification

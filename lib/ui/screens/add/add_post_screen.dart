@@ -563,6 +563,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                               storageReference.putFile(compressedFile);
                           userBloc.addNotification(
                               userBloc.user.uid, "added", 5);
+                          userBloc.addPoints(userBloc.user.uid, 5);
                           Stream stream =
                               userBloc.myBrowniesListStream(userBloc.user.uid);
                           stream.length == 0

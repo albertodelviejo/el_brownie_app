@@ -17,8 +17,8 @@ const String notification_tile_comment =
     "Alguien ha comentado un local que has publicado";
 const String notification_tile_added = "Has subido un local!";
 
-const String orderOption1 = 'cerca_a_mi';
-const String orderOption2 = 'mas_warros';
+const String orderOption1 = 'Cerca a mi';
+const String orderOption2 = 'Más Warros!';
 
 const String notification_pop_title_reclamation = "Eres menos pobre!";
 const String notification_pop_title_favourite = "Eres famoso!";

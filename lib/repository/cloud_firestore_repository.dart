@@ -24,6 +24,9 @@ class CloudFirestoreRepository {
   List<CardLosmas> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.buildAllPosts(postsListSnapshot);
 
+  List<CardLosmas> buildCercaPosts(List<DocumentSnapshot> postsListSnapshot) =>
+      _cloudFirestoreAPI.buildCercaPosts(postsListSnapshot);
+
   List<CardHome> buildMyPostsCardHome(
           List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.buildMyPostsCardHome(postsListSnapshot);
@@ -83,7 +86,8 @@ class CloudFirestoreRepository {
       await _cloudFirestoreAPI.addNotification(
           idUser, notificationType, points);
 
-  List<CardHome> buildMyMostPosts(List<DocumentSnapshot> ticketsListSnapshot) =>
+  List<CardLosmas> buildMyMostPosts(
+          List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreAPI.buildMyMostBrownies(ticketsListSnapshot);
 
   void deleteNotification(String idNotification) =>
