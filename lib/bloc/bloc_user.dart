@@ -180,6 +180,9 @@ class UserBloc implements Bloc {
   void updateUserProfile(UserModel user) =>
       _cloudFirestoreRepository.updateUserProfileFirestore(user);
 
+  void updateCommentsPhoto(UserModel user, String id) =>
+      _cloudFirestoreRepository.updateCommentsPhoto(user, id);
+
 //18. Add and Delete points
 
   void addPoints(String idUser, int value) =>

@@ -37,19 +37,19 @@ class GoogleMapsApi {
       var currentPosts = [a, b];
       var currentAddress = [];
       currentPosts.forEach((post) {
-        currentAddress.add(Coordinates(post.longitude, post.latitude));
+        currentAddress.add(Coordinates(post.latitude, post.longitude));
       });
       double distanceA = Geolocator.distanceBetween(
           position.latitude,
-          currentAddress[0].latitude,
           position.longitude,
+          currentAddress[0].latitude,
           currentAddress[0].longitude);
       double distanceB = Geolocator.distanceBetween(
           position.latitude,
-          currentAddress[1].latitude,
           position.longitude,
+          currentAddress[1].latitude,
           currentAddress[1].longitude);
-      return distanceA.round().compareTo(distanceB.round());
+      return distanceA.compareTo(distanceB);
     });
     return posts;
   }

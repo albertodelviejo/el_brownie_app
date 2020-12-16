@@ -2,12 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>instagram-stories</string>
+	<string>facebook-stories</string>
+	<string>facebook</string>
+	<string>instagram</string>
+	<string>twitter</string>
+	<string>whatsapp</string>
+    <string>tg</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to location when open.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app needs access to location when in the background.</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<string>ca-app-pub-2936019539842342~4390432301</string>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
@@ -50,7 +60,7 @@
               Replace "000000000000" with your Facebook App ID here.
               **NOTE**: The scheme needs to start with `fb` and then your ID.
             -->
-            <string>fb802494653904274</string>
+            <string>fb3373282022781847</string>
         </array>
     </dict>
 </array>
@@ -58,7 +68,7 @@
 <key>FacebookAppID</key>
 
 <!-- Replace "000000000000" with your Facebook App ID here. -->
-<string>802494653904274</string>
+<string>3373282022781847</string>
 <key>FacebookDisplayName</key>
 
 <!-- Replace "YOUR_APP_NAME" with your Facebook App name. -->

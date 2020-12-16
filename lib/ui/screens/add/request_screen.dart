@@ -51,6 +51,13 @@ class _RequestScreenState extends State<RequestScreen> {
           key: scaffoldKey,
           backgroundColor: Colors.white,
           appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              ),
+              onPressed: () => Navigator.pop(context),
+            ),
             backgroundColor: Mystyle.primarycolo,
             elevation: 0,
             title: Container(
@@ -58,6 +65,7 @@ class _RequestScreenState extends State<RequestScreen> {
               child: Image.asset("assets/appblogo.png"),
             ),
             centerTitle: true,
+            /*
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 12.0),
@@ -78,6 +86,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 ),
               ),
             ],
+            */
           ),
           body: Builder(
             builder: (context) => ListView(
@@ -107,7 +116,7 @@ class _RequestScreenState extends State<RequestScreen> {
                     ListTile(
                       title: Text(
                         'Soy propietario del lugar',
-                        style: Mystyle.normalTextStyle,
+                        style: Mystyle.regularTextStyle,
                       ),
                       leading: Radio(
                         value: 0,
@@ -183,7 +192,7 @@ class _RequestScreenState extends State<RequestScreen> {
                     ListTile(
                       title: Text(
                         'Soy fan del lugar',
-                        style: Mystyle.normalTextStyle,
+                        style: Mystyle.regularTextStyle,
                       ),
                       leading: Radio(
                         value: 1,
@@ -200,7 +209,7 @@ class _RequestScreenState extends State<RequestScreen> {
                     ListTile(
                       title: Text(
                         'Son mis amiguetes y les quiero',
-                        style: Mystyle.normalTextStyle,
+                        style: Mystyle.regularTextStyle,
                       ),
                       leading: Radio(
                         value: 2,
@@ -217,7 +226,7 @@ class _RequestScreenState extends State<RequestScreen> {
                     ListTile(
                       title: Text(
                         'Por placer',
-                        style: Mystyle.normalTextStyle,
+                        style: Mystyle.regularTextStyle,
                       ),
                       leading: Radio(
                         value: 3,
@@ -306,33 +315,79 @@ class _RequestScreenState extends State<RequestScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
                               child: Container(
-                                width: ScreenUtil().setHeight(800),
-                                height: ScreenUtil().setHeight(400),
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 16, horizontal: 16),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      transference_succesfull,
-                                      style: Mystyle.titleTextStyle
-                                          .copyWith(color: Colors.black87),
-                                      textAlign: TextAlign.center,
+                                  width: ScreenUtil().setHeight(800),
+                                  height: ScreenUtil().setHeight(1000),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 16, horizontal: 16),
+                                  child: Stack(children: [
+                                    Positioned(
+                                      right: 0,
+                                      top: 0,
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Container(
+                                            alignment: Alignment.bottomRight,
+                                            height: ScreenUtil().setWidth(100),
+                                            width: ScreenUtil().setWidth(100),
+                                            child: SvgPicture.asset("")),
+                                      ),
                                     ),
-                                    SizedBox(
-                                        height: ScreenUtil().setHeight(40)),
-                                    ButtAuth(
-                                      "Aceptar",
-                                      () {
-                                        Navigator.of(context)
-                                            .popUntil((route) => route.isFirst);
-                                      },
-                                      border: true,
-                                    ),
-                                    SizedBox(
-                                        height: ScreenUtil().setHeight(40)),
-                                  ],
-                                ),
-                              )));
+                                    Positioned(
+                                      left: 0,
+                                      right: 0,
+                                      top: 0,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          SizedBox(
+                                              height:
+                                                  ScreenUtil().setHeight(60)),
+                                          Text(
+                                            transference_succesfull,
+                                            style: Mystyle.titleTextStyle
+                                                .copyWith(
+                                                    color: Colors.black87),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 15),
+                                            child: Container(
+                                                alignment: Alignment.center,
+                                                height:
+                                                    ScreenUtil().setWidth(330),
+                                                width:
+                                                    ScreenUtil().setWidth(330),
+                                                child: Image.asset(
+                                                    "assets/pop/check_mark.png")),
+                                          ),
+                                          SizedBox(
+                                              height:
+                                                  ScreenUtil().setHeight(40)),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 24),
+                                            child: Expanded(
+                                              child: ButtAuth(
+                                                "Aceptar",
+                                                () {
+                                                  Navigator.of(context)
+                                                      .popUntil((route) =>
+                                                          route.isFirst);
+                                                },
+                                                border: true,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                              height:
+                                                  ScreenUtil().setHeight(40)),
+                                        ],
+                                      ),
+                                    )
+                                  ]))));
                     } else {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text(response.message),
