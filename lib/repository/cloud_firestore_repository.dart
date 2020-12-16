@@ -18,6 +18,9 @@ class CloudFirestoreRepository {
   void updateUserProfileFirestore(UserModel user) =>
       _cloudFirestoreAPI.updateUserProfile(user);
 
+  void updateCommentsPhoto(UserModel user, String id) =>
+      _cloudFirestoreAPI.updateCommentsPhoto(user, id);
+
   List<Post> getAllPosts(List<DocumentSnapshot> postsListSnapshot) =>
       _cloudFirestoreAPI.getAllPosts(postsListSnapshot);
 

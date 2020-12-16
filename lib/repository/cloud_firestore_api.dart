@@ -86,6 +86,16 @@ class CloudFirestoreAPI {
         });
   }
 
+  void updateCommentsPhoto(UserModel user, String id) {
+    DocumentReference ref = _db.collection("comments").doc(id);
+    ref.get().then((value) async => {
+          if (value.exists)
+            {
+              await ref.update({'avatar_url': user.avatarURL})
+            }
+        });
+  }
+
   List<Post> getAllPosts(List<DocumentSnapshot> postsListSnapshot) {
     List<Post> allPost = List<Post>();
     postsListSnapshot.forEach((element) {

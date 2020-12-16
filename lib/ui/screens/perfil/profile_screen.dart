@@ -460,6 +460,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               cif: cifController.text,
               location: ubicacionRestauranteController.text,
               restaurantName: nombreRestauranteController.text));
+          // getUserComments(user.uid);
         }, border: true),
         SizedBox(height: ScreenUtil().setHeight(50)),
         ButtAuth("Cerrar Sesión", () async {

@@ -20,7 +20,7 @@ class StripeService {
   static String apiBase = 'https://api.stripe.com/v1';
   static String paymentApiUrl = '${StripeService.apiBase}/payment_intents';
   static String _secret =
-      'sk_test_51HUbVjAVe6Y71mtiopEpVNo8VX8jteZFpIn3yxJRNqHWWmGke1EwyQ6Dv7cgJ05gqdmnbsuK5d6UlzCctzxIyvHp00UIHeVkwh';
+      'sk_test_51HY6HVF9HIhtXc1AOWhPWHJjSrLhd9tPthQpLp0dsbaspQLRUPZzIXWPPLLOhHIqnZMFbDnFJh7Wr2jTiAYOEDwk00LQ2X7xIw';
   static String getSecretKey() {
     return _secret;
   }
@@ -32,7 +32,7 @@ class StripeService {
   static init() {
     StripePayment.setOptions(StripeOptions(
         publishableKey:
-            "pk_test_51HUbVjAVe6Y71mtiMXyUuV8ESXwOuw8rmLDI1o9jhjkB9JsTmO3DTyyGvXBxTjoptCsYeat4rh1NVj0sb0B3TklJ00BTctjATw",
+            "pk_test_51HY6HVF9HIhtXc1A76nAFRoYLmz2xzIJH5G8rWmTv893VK3PLYgbLuTfkkH9Op0wLH5dfKE2B9YDp7YoIESddHbC00f0ioNhw4",
         merchantId: "Test",
         androidPayMode: 'test'));
   }

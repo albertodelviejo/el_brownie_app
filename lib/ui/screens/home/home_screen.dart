@@ -374,7 +374,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               categories.forEach(
                                   (category) => category.isChecked = false);
                               currentCategory = '';
+                              orderByList.forEach(
+                                  (element) => element.isChecked = false);
                               orderPer = '';
+                            });
+
+                            setState(() {
+                              Navigator.pop(context);
                             });
                           },
                         ),
