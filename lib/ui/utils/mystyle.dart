@@ -117,7 +117,7 @@ class Mystyle {
             gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              colors: [
+              List: [
                 Mystyle.primarycolo.withOpacity(.3),
                 Colors.white,
                 Colors.white,
