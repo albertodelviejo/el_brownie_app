@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/ui/screens/add/add_comment_screen.dart';
 import 'package:el_brownie_app/ui/screens/add/request_screen.dart';
-import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/commentswidget.dart';
@@ -14,7 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
-import 'package:social_share/social_share.dart';
+import 'package:share/share.dart';
 
 import '../../../model/post.dart';
 
@@ -132,6 +131,7 @@ class _PostScreenState extends State<PostScreen> {
   }
 
   Widget postScreen() {
+    final RenderBox box = context.findRenderObject();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Mystyle.primarycolo,
@@ -226,11 +226,19 @@ class _PostScreenState extends State<PostScreen> {
                                           height: ScreenUtil().setHeight(40)),
                                       SignInButtonBuilder(
                                         backgroundColor: Color(0xFF25D366),
-                                        onPressed: () => SocialShare.shareWhatsapp(
+                                        onPressed: () => Share.share(
+                                            'Descárgate la app y no te pierdas este pedazo de brownie que te comparten! http://elbrownie.com/',
+                                            subject:
+                                                "No sabes la cantidad de brownies que hay por toda la ciudad...",
+                                            sharePositionOrigin:
+                                                box.localToGlobal(Offset.zero) &
+                                                    box.size),
+                                        /* SocialShare.shareWhatsapp(
                                                 "No sabes la cantidad de brownies que hay por toda la ciudad... \n http://elbrownie.com/")
                                             .then((data) {
                                           print(data);
                                         }),
+                                        */
                                         text: share_button_pop,
                                         image: Container(
                                           margin: EdgeInsets.fromLTRB(
