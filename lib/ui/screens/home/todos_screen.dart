@@ -167,7 +167,7 @@ class _TodosScreenState extends State<TodosScreen> {
     (posts.length % 4) >= 0.5 ? sumaOno = 1 : sumaOno = 0;
     finalLength = posts.length + (posts.length ~/ 4) + sumaOno;
     return (widget.orderPer == orderOption1)
-        ? CercaScreen()
+        ? CercaScreen(currentCategory: widget.category)
         : Container(
             width: ScreenUtil().scaleWidth,
             height: ScreenUtil().screenHeight,

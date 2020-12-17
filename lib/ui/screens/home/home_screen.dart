@@ -292,6 +292,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   (orderBy) => orderBy.isChecked = false);
                               orderByList[index].isChecked = true;
                               orderPer = orderByList[index].orderBy;
+                              categories.forEach((element) {
+                                if (element.isChecked) {
+                                  currentCategory = element.category;
+                                }
+                              });
                             });
                           }
                         },
@@ -337,6 +342,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   (category) => category.isChecked = false);
                               categories[index].isChecked = true;
                               currentCategory = categories[index].category;
+                              orderByList.forEach((element) {
+                                if (element.isChecked) {
+                                  orderPer = element.orderBy;
+                                }
+                              });
                             });
                           }
                         },

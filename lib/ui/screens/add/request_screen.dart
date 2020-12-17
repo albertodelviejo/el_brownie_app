@@ -314,80 +314,65 @@ class _RequestScreenState extends State<RequestScreen> {
                           builder: (context) => Dialog(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              child: Container(
-                                  width: ScreenUtil().setHeight(800),
-                                  height: ScreenUtil().setHeight(1000),
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 16, horizontal: 16),
-                                  child: Stack(children: [
-                                    Positioned(
-                                      right: 0,
-                                      top: 0,
-                                      child: InkWell(
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Container(
-                                            alignment: Alignment.bottomRight,
-                                            height: ScreenUtil().setWidth(100),
-                                            width: ScreenUtil().setWidth(100),
-                                            child: SvgPicture.asset("")),
-                                      ),
+                              child: Wrap(children: <Widget>[
+                                Stack(children: [
+                                  Positioned(
+                                    right: 0,
+                                    top: 0,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Container(
+                                          alignment: Alignment.bottomRight,
+                                          height: ScreenUtil().setWidth(100),
+                                          width: ScreenUtil().setWidth(100),
+                                          child: SvgPicture.asset("")),
                                     ),
-                                    Positioned(
-                                      left: 0,
-                                      right: 0,
-                                      top: 0,
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          SizedBox(
-                                              height:
-                                                  ScreenUtil().setHeight(60)),
-                                          Text(
-                                            transference_succesfull,
-                                            style: Mystyle.titleTextStyle
-                                                .copyWith(
-                                                    color: Colors.black87),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 15),
-                                            child: Container(
-                                                alignment: Alignment.center,
-                                                height:
-                                                    ScreenUtil().setWidth(330),
-                                                width:
-                                                    ScreenUtil().setWidth(330),
-                                                child: Image.asset(
-                                                    "assets/pop/check_mark.png")),
-                                          ),
-                                          SizedBox(
-                                              height:
-                                                  ScreenUtil().setHeight(40)),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 24),
-                                            child: Expanded(
-                                              child: ButtAuth(
-                                                "Aceptar",
-                                                () {
-                                                  Navigator.of(context)
-                                                      .popUntil((route) =>
-                                                          route.isFirst);
-                                                },
-                                                border: true,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                              height:
-                                                  ScreenUtil().setHeight(40)),
-                                        ],
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      SizedBox(
+                                          height: ScreenUtil().setHeight(60)),
+                                      Text(
+                                        transference_succesfull,
+                                        style: Mystyle.titleTextStyle
+                                            .copyWith(color: Colors.black87),
+                                        textAlign: TextAlign.center,
                                       ),
-                                    )
-                                  ]))));
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 15),
+                                        child: Container(
+                                            alignment: Alignment.center,
+                                            height: ScreenUtil().setWidth(330),
+                                            width: ScreenUtil().setWidth(330),
+                                            child: Image.asset(
+                                                "assets/pop/check_mark.png")),
+                                      ),
+                                      SizedBox(
+                                          height: ScreenUtil().setHeight(40)),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 24),
+                                        child: Expanded(
+                                          child: ButtAuth(
+                                            "Aceptar",
+                                            () {
+                                              Navigator.of(context).popUntil(
+                                                  (route) => route.isFirst);
+                                            },
+                                            border: true,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                          height: ScreenUtil().setHeight(40)),
+                                    ],
+                                  ),
+                                ]),
+                              ])));
                     } else {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text(response.message),

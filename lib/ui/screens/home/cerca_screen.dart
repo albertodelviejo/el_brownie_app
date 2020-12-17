@@ -11,9 +11,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class CercaScreen extends StatefulWidget {
-  final String orderPer = "";
+  String currentCategory = "";
   bool noresult = false;
   List<CardLosmas> finalPosts;
+
+  CercaScreen({this.currentCategory = ""});
 
   @override
   _CercaScreenState createState() => _CercaScreenState();
@@ -57,10 +59,20 @@ class _CercaScreenState extends State<CercaScreen> {
     return await GoogleMapsApi().getNearbyPlaces(posts).then((value) => value);
   }
 
+  filterPosts2(List<CardLosmas> posts) {
+    List<CardLosmas> filteredPosts = posts;
+
+    return filteredPosts;
+  }
+
   Widget cercaScreen(List<CardLosmas> allPosts) {
     List<CardLosmas> posts;
     if (widget.finalPosts == null) {
       filterPosts(allPosts).then((value) {
+        if (widget.currentCategory != '') {
+          value.removeWhere(
+              (post) => !post.category.contains(widget.currentCategory));
+        }
         setState(() {
           widget.finalPosts = value;
           ScreenUtil.init(context);

@@ -506,6 +506,7 @@ class CloudFirestoreAPI {
         imageUrl: element.get('photo'),
         id: element.id,
         idUserPost: element.get('id_user'),
+        category: element.get('category'),
       ));
       index++;
     });
