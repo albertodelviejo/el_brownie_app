@@ -356,15 +356,13 @@ class _RequestScreenState extends State<RequestScreen> {
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 24),
-                                        child: Expanded(
-                                          child: ButtAuth(
-                                            "Aceptar",
-                                            () {
-                                              Navigator.of(context).popUntil(
-                                                  (route) => route.isFirst);
-                                            },
-                                            border: true,
-                                          ),
+                                        child: ButtAuth(
+                                          "Aceptar",
+                                          () {
+                                            Navigator.of(context).popUntil(
+                                                (route) => route.isFirst);
+                                          },
+                                          border: true,
                                         ),
                                       ),
                                       SizedBox(
