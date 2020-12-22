@@ -9,6 +9,7 @@ import 'package:el_brownie_app/ui/utils/category.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/orderBy.dart';
 import 'package:el_brownie_app/ui/utils/popup.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,12 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
     CategoryModel("Lujo", "assets/svg/lujo.svg", false),
     CategoryModel("De barrio", "assets/svg/barrio.svg", false),
     CategoryModel("Pub musical", "assets/svg/pub.svg", false),
-    CategoryModel("Fast Food", "assets/svg/sushi.svg", false),
+    CategoryModel("Comida rápida", "assets/svg/fastfood.svg", false),
     CategoryModel("Fusión", "assets/svg/fusion.svg", false),
   ];
 
   List<OrderBy> orderByList = [
-    OrderBy("Cerca a mi", "assets/svg/send.svg", false),
+    OrderBy("Cerca de mi", "assets/svg/send.svg", false),
     OrderBy("Más Warros!", "assets/svg/brocoli.svg", false),
   ];
 
@@ -126,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           TextFormField(
                             keyboardType: TextInputType.text,
                             decoration: Mystyle.inputSearch(
-                              'Search',
+                              todos_search_text,
                               icon2: IconButton(
                                   icon: Icon(Icons.search), onPressed: null),
                             ),
@@ -185,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       tabs: [
                         Tab(text: 'Todos'),
                         // Tab(text: 'Los más Warros!'),
-                        Tab(text: 'Cerca a mi'),
+                        Tab(text: 'Cerca de mi'),
                       ],
                     ),
                   ),

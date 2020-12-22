@@ -119,20 +119,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Bienvenido!',
+                            welcome_titulo,
                             style: Mystyle.titleTextStyle.copyWith(
                               color: Colors.black87,
                             ),
                           ),
                           SizedBox(height: ScreenUtil().setHeight(10)),
                           Text(
-                            'Vamos a pasarlo genial.',
+                            welcome_text,
                             style: Mystyle.titleTextStyle.copyWith(
                               color: Colors.black87,
                             ),
                           ),
                           SizedBox(height: ScreenUtil().setHeight(50)),
-                          ButtAuth("Acceder", () {
+                          ButtAuth(welcome_text, () {
                             setState(() {
                               pressAttention2 = !pressAttention2;
                               pressAttention = false;
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
                           }),
                           SizedBox(height: ScreenUtil().setHeight(50)),
-                          ButtAuth("Registrarse", () {
+                          ButtAuth(welcome_register, () {
                             setState(() {
                               pressAttention = !pressAttention;
                               pressAttention2 = false;
@@ -174,7 +174,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           Container(
                             child: TextFormField(
                               controller: usernameController,
-                              decoration: Mystyle.inputregular('Email'),
+                              decoration:
+                                  Mystyle.inputregular(login_form_usuario),
                               textInputAction: TextInputAction.done,
                               validator: validateEmail,
                               onSaved: (String val) {
@@ -189,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               textInputAction: TextInputAction.done,
                               controller: contrasenaController,
                               decoration: Mystyle.inputregular(
-                                'Contraseña',
+                                login_form_password,
                                 icon: IconButton(
                                   onPressed: _toggle,
                                   icon: Icon(
@@ -214,7 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       style: Mystyle.normalTextStyle,
                                       children: <TextSpan>[
                                     TextSpan(
-                                        text: 'Olvidaste tu contraseña?',
+                                        text: login_password_recover,
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
                                             return showDialog(

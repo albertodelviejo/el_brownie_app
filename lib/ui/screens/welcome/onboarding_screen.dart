@@ -3,6 +3,7 @@ import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 
 class OnBoarding extends StatefulWidget {
   @override
@@ -13,27 +14,23 @@ class _OnBoardingState extends State<OnBoarding> {
   int currentIndex = 0;
   List onBoardingData = [
     OnBoardingData(
-      title: " ¡Quéjate!",
-      desc:
-          "El estado de los baños indica cómo está la cocina así que, valora los restaurantes por la MIERDA y no por lo que comes.",
+      title: carrousel_title_0,
+      desc: carrousel_text_0,
       imageAssetsPath: "assets/splash1.png",
     ),
     OnBoardingData(
-      title: "¡Saca foto y comparte!",
-      desc:
-          "No pierdas tiempo en aplicar filtros, la mierda es mierda y no hay que camuflarla. Además de pasártelo genial, con elBrownie ganarás pasta!",
+      title: carrousel_title_1,
+      desc: carrousel_text_1,
       imageAssetsPath: "assets/splash2.png",
     ),
     OnBoardingData(
-      title: "¡Ponle precio al desastre!",
-      desc:
-          "Deberán pagarte por dar de baja tu publicación; así que, incluso puedes ganar algo de dinerito. ¿Qué esperas?",
+      title: carrousel_title_2,
+      desc: carrousel_text_2,
       imageAssetsPath: "assets/splash3.png",
     ),
     OnBoardingData(
-      title: "¡No te quedes igual, queremos un mundo mejor!",
-      desc:
-          "Suena a anuncio de televisión, pero ¡co** es lo que queremos en nuestro plato!",
+      title: carrousel_title_3,
+      desc: carrousel_text_3,
       imageAssetsPath: "assets/splash4.png",
     )
   ];
@@ -145,7 +142,7 @@ class _OnBoardingState extends State<OnBoarding> {
                   decoration: Mystyle.cadredec(),
                   child: Center(
                     child: Text(
-                      currentIndex == 3 ? "Empezar" : 'Skip',
+                      currentIndex == 3 ? carrousel_cta_3 : carrousel_cta_2,
                       style: Mystyle.subtitleTextStyle,
                     ),
                   ),

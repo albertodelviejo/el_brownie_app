@@ -6,6 +6,7 @@ import 'package:el_brownie_app/ui/screens/home/bottom_tab.dart';
 import 'package:el_brownie_app/ui/screens/home/home_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Regístrate',
+                    register_title,
                     style: Mystyle.titleTextStyle.copyWith(
                       color: Colors.black87, // normalTextStyle
                     ),
@@ -85,7 +86,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
-                      'Completa este formulario para formar parte de nuestra comunidad.',
+                      register_text,
                       style: Mystyle.regularTextStyle,
                       textAlign: TextAlign.center,
                     ),
@@ -97,7 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 0),
                 child: TextFormField(
                   keyboardType: TextInputType.text,
-                  decoration: Mystyle.inputWhitebg('Usuario'),
+                  decoration: Mystyle.inputWhitebg(register_form_user),
                   textInputAction: TextInputAction.done,
                   validator: validateNotEmpty,
                   onSaved: (String val) {
@@ -110,7 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 0),
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  decoration: Mystyle.inputWhitebg('Email'),
+                  decoration: Mystyle.inputWhitebg(register_form_email),
                   textInputAction: TextInputAction.done,
                   validator: validateEmail,
                   onSaved: (String val) {
@@ -123,7 +124,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 0),
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  decoration: Mystyle.inputWhitebg('Confirmar email'),
+                  decoration: Mystyle.inputWhitebg(register_form_email2),
                   textInputAction: TextInputAction.done,
                   validator: validateEmail,
                   onSaved: (String val) {
@@ -138,7 +139,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   obscureText: _obscureText,
                   textInputAction: TextInputAction.done,
                   decoration: Mystyle.inputWhitebg(
-                    'Contraseña',
+                    register_form_password,
                     icon: IconButton(
                       onPressed: _toggle,
                       icon: Icon(
@@ -170,9 +171,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         text: TextSpan(
                             style: Mystyle.normalTextStyle,
                             children: <TextSpan>[
-                          TextSpan(text: 'Aceptar '),
+                          TextSpan(text: 'Al registarte, aceptas nuestras'),
                           TextSpan(
-                              text: 'términos y condiciones',
+                              text: 'condiciones.',
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  _launchURL();
+                                }),
+                          TextSpan(
+                              text:
+                                  'Obtén más información sobre cómo recopilamos y usamos tu información en la '),
+                          TextSpan(
+                              text: 'política de privacidad.',
                               style: TextStyle(
                                   decoration: TextDecoration.underline),
                               recognizer: TapGestureRecognizer()
@@ -199,7 +211,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 0),
                 child: ButtAuth(
-                  "Registrarse",
+                  register_cta,
                   accepted
                       ? () {
                           if (_formKey.currentState.validate()) {

@@ -4,6 +4,7 @@ import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/noresutlt.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -94,7 +95,7 @@ class _CercaScreenState extends State<CercaScreen> {
                       children: [
                         SizedBox(height: ScreenUtil().setHeight(40)),
                         Text(
-                          "Cerca de mi",
+                          cerca_title,
                           style: Mystyle.titleTextStyle.copyWith(
                             fontSize: ScreenUtil().setSp(100),
                             color: Colors.black87,

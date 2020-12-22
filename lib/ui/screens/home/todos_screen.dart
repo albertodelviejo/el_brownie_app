@@ -180,7 +180,7 @@ class _TodosScreenState extends State<TodosScreen> {
                         children: [
                           SizedBox(height: ScreenUtil().setHeight(40)),
                           Text(
-                            "Todos los Brownies",
+                            todos_title,
                             style: Mystyle.titleTextStyle.copyWith(
                               fontSize: ScreenUtil().setSp(100),
                               color: Colors.black87,
