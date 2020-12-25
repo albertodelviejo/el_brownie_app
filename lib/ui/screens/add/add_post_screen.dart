@@ -159,7 +159,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
               children: [
                 SizedBox(height: ScreenUtil().setHeight(60)),
                 Text(
-                  "Sube tu foto!",
+                  add_post_title,
                   style: Mystyle.titleTextStyle.copyWith(
                     fontSize: ScreenUtil().setSp(100),
                     color: Colors.black87,
@@ -168,7 +168,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                 ),
                 SizedBox(height: ScreenUtil().setHeight(20)),
                 Text(
-                  "Muéstranos lo que ves…",
+                  add_post_text,
                   style: Mystyle.regularTextStyle,
                   textAlign: TextAlign.center,
                 ),
@@ -445,8 +445,8 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                     controller: comentario,
                     maxLines: 8,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: Mystyle.inputregularmaxline(
-                        'Escribe tu comentario aqui…'),
+                    decoration:
+                        Mystyle.inputregularmaxline(addvaloration_form_comment),
                     textInputAction: TextInputAction.done,
                     validator: validateNotEmpty,
                     onSaved: (String val) {
@@ -458,7 +458,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                   padding: EdgeInsets.symmetric(
                       horizontal: 24, vertical: ScreenUtil().setHeight(20)),
                   child: Text(
-                    "Precio a cobrar, te recomendamos la mejor opción.",
+                    add_post_pretext,
                     style: Mystyle.regularTextStyle,
                     textAlign: TextAlign.center,
                   ),
@@ -518,7 +518,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                     alignment: Alignment.center,
                     padding: EdgeInsets.symmetric(horizontal: 32, vertical: 24),
                     child: Text(
-                      "*Recuerda incluir tu tarjeta bancaria en tu perfil si quieres recibir tu dinerito!",
+                      add_post_description,
                       style: Mystyle.regularTextStyle,
                       textAlign: TextAlign.center,
                     ),
@@ -526,7 +526,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                 ),
                 SizedBox(height: ScreenUtil().setHeight(60)),
                 ButtAuth(
-                  "Publicar",
+                  "Publicar el desastre",
                   () {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();

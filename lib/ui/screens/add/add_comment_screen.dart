@@ -6,6 +6,7 @@ import 'package:el_brownie_app/model/user.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
 import 'package:el_brownie_app/ui/utils/buttonauth.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
+import 'package:el_brownie_app/ui/utils/strings.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
@@ -192,7 +193,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 maxLines: 4,
                 keyboardType: TextInputType.emailAddress,
                 decoration:
-                    Mystyle.inputregularmaxline('Escribe tu comentario aqui…'),
+                    Mystyle.inputregularmaxline(addvaloration_form_comment),
                 textInputAction: TextInputAction.done,
                 validator: validateNotEmpty,
                 onSaved: (String val) {
@@ -246,7 +247,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           child: Image.file(imageFile, fit: BoxFit.cover),
                         )),
               SizedBox(height: ScreenUtil().setHeight(60)),
-              ButtAuth("Publicar", () {
+              ButtAuth("Publicar valoración", () {
                 if (_formKey.currentState.validate()) {
                   _formKey.currentState.save();
                   widget.idComment =

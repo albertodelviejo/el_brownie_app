@@ -54,7 +54,7 @@ class _RankingScreenState extends State<RankingScreen> {
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 24),
                               child: Text(
-                                "Tu posición",
+                                "Tu posición (puntos)",
                                 style: Mystyle.titleTextStyle.copyWith(
                                   fontSize: ScreenUtil().setSp(100),
                                   color: Colors.black87,
@@ -78,7 +78,7 @@ class _RankingScreenState extends State<RankingScreen> {
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 24),
                               child: Text(
-                                "Global",
+                                "Ranking Global",
                                 style: Mystyle.titleTextStyle.copyWith(
                                   fontSize: ScreenUtil().setSp(100),
                                   color: Colors.black87,

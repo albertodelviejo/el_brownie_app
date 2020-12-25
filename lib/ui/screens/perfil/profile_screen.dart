@@ -166,12 +166,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           padding: EdgeInsets.symmetric(
               horizontal: 2, vertical: ScreenUtil().setHeight(20)),
           child: TextFormField(
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.black),
             controller: usuarioController,
             keyboardType: TextInputType.emailAddress,
             decoration: Mystyle.inputDisabledWhitebg('Usuario'),
             textInputAction: TextInputAction.done,
-            enabled: false,
+            enabled: true,
             validator: (value) {
               if (value.isEmpty) return 'isEmpty';
               return null;
@@ -182,12 +182,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           padding: EdgeInsets.symmetric(
               horizontal: 2, vertical: ScreenUtil().setHeight(20)),
           child: TextFormField(
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.black),
             controller: nombreController,
             keyboardType: TextInputType.emailAddress,
             decoration: Mystyle.inputDisabledWhitebg('Nombre'),
             textInputAction: TextInputAction.done,
-            enabled: false,
+            enabled: true,
             validator: (value) {
               if (value.isEmpty) return 'isEmpty';
               return null;
@@ -484,7 +484,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(height: ScreenUtil().setHeight(50)),
         RichText(
             text: TextSpan(
-                text: "Ayuda?",
+                text: profile_screen_help,
                 style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
@@ -492,7 +492,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   })),
         RichText(
             text: TextSpan(
-                text: "Politica de privacidad",
+                text: profile_screen_privacy,
                 style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {

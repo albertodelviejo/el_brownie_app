@@ -268,7 +268,7 @@ class _PostScreenState extends State<PostScreen> {
                             Icon(Icons.share),
                             SizedBox(height: ScreenUtil().setHeight(10)),
                             Text(
-                              "Comparte con los coleguis",
+                              "Share",
                               style: Mystyle.smallTextStyle
                                   .copyWith(color: Colors.black87),
                               textAlign: TextAlign.center,

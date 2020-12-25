@@ -16,6 +16,7 @@ import '../../utils/mystyle.dart';
 class RequestScreen extends StatefulWidget {
   String price, idUserPost;
   String postId = "";
+  bool isEnabled = false;
 
   RequestScreen({Key key, this.postId, this.price, this.idUserPost});
   @override
@@ -123,6 +124,7 @@ class _RequestScreenState extends State<RequestScreen> {
                         groupValue: _value,
                         activeColor: Colors.black,
                         onChanged: (v) {
+                          widget.isEnabled = true;
                           setState(() {
                             _value = v;
                             isfirst = true;
@@ -199,6 +201,7 @@ class _RequestScreenState extends State<RequestScreen> {
                         groupValue: _value,
                         activeColor: Colors.black,
                         onChanged: (v) {
+                          widget.isEnabled = true;
                           setState(() {
                             _value = v;
                             isfirst = false;
@@ -216,6 +219,7 @@ class _RequestScreenState extends State<RequestScreen> {
                         groupValue: _value,
                         activeColor: Colors.black,
                         onChanged: (v) {
+                          widget.isEnabled = true;
                           setState(() {
                             _value = v;
                             isfirst = false;
@@ -233,6 +237,7 @@ class _RequestScreenState extends State<RequestScreen> {
                         groupValue: _value,
                         activeColor: Colors.black,
                         onChanged: (v) {
+                          widget.isEnabled = true;
                           setState(() {
                             _value = v;
                             isfirst = false;
@@ -246,7 +251,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
-                    "Precio",
+                    "Precio requerido",
                     style: Mystyle.subtitleTextStylenoco,
                     textAlign: TextAlign.center,
                   ),
@@ -263,125 +268,249 @@ class _RequestScreenState extends State<RequestScreen> {
                   ),
                 ),
                 SizedBox(height: ScreenUtil().setHeight(60)),
-                ButtAuth("Pagar", () async {
-                  if (_value == 0 && cifController.text == '') {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text('Must fill CIF field!'),
-                        duration: Duration(seconds: 5)));
-                  } else {
-                    setState(() {
-                      loading = true;
-                    });
+                ButtAuth(
+                    "Pagar",
+                    widget.isEnabled
+                        ? () async {
+                            if (_value == 0 && cifController.text == '') {
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Text('Must fill CIF field!'),
+                                  duration: Duration(seconds: 5)));
+                            } else {
+                              setState(() {
+                                loading = true;
+                              });
 
-                    String cif = cifController.text;
-                    double price = double.parse(widget.price) * 100;
-                    String finalPrice = price.toStringAsFixed(0);
-                    var response = await StripeService.payWithNewCard(
-                        amount: finalPrice, currency: 'EUR');
+                              String cif = cifController.text;
+                              double price = double.parse(widget.price) * 100;
+                              String finalPrice = price.toStringAsFixed(0);
+                              var response = await StripeService.payWithNewCard(
+                                  amount: finalPrice, currency: 'EUR');
 
-                    switch (_value) {
-                      case 0:
-                        reason = claim_opt_1;
-                        break;
-                      case 1:
-                        reason = claim_opt_2;
-                        break;
-                      case 2:
-                        reason = claim_opt_3;
-                        break;
-                      case 3:
-                        reason = claim_opt_4;
-                        break;
-                    }
-                    if (response.success) {
-                      await _stripeService.createClaim(
-                          widget.price,
-                          widget.postId,
-                          cif,
-                          reason,
-                          'Card',
-                          response.paymentId);
-                      userBloc.addNotification(
-                          widget.idUserPost, "reclamation", 10);
-                      userBloc.addPoints(widget.idUserPost, 10);
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text(response.message),
-                        duration: Duration(seconds: 5),
-                      ));
-                      Navigator.pop(context);
-                      return showDialog(
-                          context: context,
-                          builder: (context) => Dialog(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Wrap(children: <Widget>[
-                                Stack(children: [
-                                  Positioned(
-                                    right: 0,
-                                    top: 0,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Container(
-                                          alignment: Alignment.bottomRight,
-                                          height: ScreenUtil().setWidth(100),
-                                          width: ScreenUtil().setWidth(100),
-                                          child: SvgPicture.asset("")),
-                                    ),
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      SizedBox(
-                                          height: ScreenUtil().setHeight(60)),
-                                      Text(
-                                        transference_succesfull,
-                                        style: Mystyle.titleTextStyle
-                                            .copyWith(color: Colors.black87),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 15),
-                                        child: Container(
-                                            alignment: Alignment.center,
-                                            height: ScreenUtil().setWidth(330),
-                                            width: ScreenUtil().setWidth(330),
-                                            child: Image.asset(
-                                                "assets/pop/check_mark.png")),
-                                      ),
-                                      SizedBox(
-                                          height: ScreenUtil().setHeight(40)),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 24),
-                                        child: ButtAuth(
-                                          "Aceptar",
-                                          () {
-                                            Navigator.of(context).popUntil(
-                                                (route) => route.isFirst);
-                                          },
-                                          border: true,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                          height: ScreenUtil().setHeight(40)),
-                                    ],
-                                  ),
-                                ]),
-                              ])));
-                    } else {
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text(response.message),
-                        duration: Duration(seconds: 5),
-                      ));
-                    }
-                    setState(() {
-                      loading = false;
-                    });
-                  }
-                }, border: true, press: true),
+                              switch (_value) {
+                                case 0:
+                                  reason = claim_opt_1;
+                                  break;
+                                case 1:
+                                  reason = claim_opt_2;
+                                  break;
+                                case 2:
+                                  reason = claim_opt_3;
+                                  break;
+                                case 3:
+                                  reason = claim_opt_4;
+                                  break;
+                              }
+                              if (response.success) {
+                                await _stripeService.createClaim(
+                                    widget.price,
+                                    widget.postId,
+                                    cif,
+                                    reason,
+                                    'Card',
+                                    response.paymentId);
+                                userBloc.addNotification(
+                                    widget.idUserPost, "reclamation", 10);
+                                userBloc.addPoints(widget.idUserPost, 10);
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Text(response.message),
+                                  duration: Duration(seconds: 5),
+                                ));
+                                Navigator.pop(context);
+                                return showDialog(
+                                    context: context,
+                                    builder: (context) => Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Wrap(children: <Widget>[
+                                          Stack(children: [
+                                            Positioned(
+                                              right: 0,
+                                              top: 0,
+                                              child: InkWell(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Container(
+                                                    alignment:
+                                                        Alignment.bottomRight,
+                                                    height: ScreenUtil()
+                                                        .setWidth(100),
+                                                    width: ScreenUtil()
+                                                        .setWidth(100),
+                                                    child:
+                                                        SvgPicture.asset("")),
+                                              ),
+                                            ),
+                                            Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                SizedBox(
+                                                    height: ScreenUtil()
+                                                        .setHeight(60)),
+                                                Text(
+                                                  transference_succesfull,
+                                                  style: Mystyle.titleTextStyle
+                                                      .copyWith(
+                                                          color:
+                                                              Colors.black87),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(vertical: 15),
+                                                  child: Container(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      height: ScreenUtil()
+                                                          .setWidth(330),
+                                                      width: ScreenUtil()
+                                                          .setWidth(330),
+                                                      child: SvgPicture.asset(
+                                                          "assets/svg/tarjeta-de-credito-ok.svg")),
+                                                ),
+                                                SizedBox(
+                                                    height: ScreenUtil()
+                                                        .setHeight(40)),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 24),
+                                                  child: Text(
+                                                    "Gracias por su pago.\nSu transacción ha terminado y recibirá un correo electrónico confirmando la operación.",
+                                                    style:
+                                                        Mystyle.normalTextStyle,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                    height: ScreenUtil()
+                                                        .setHeight(40)),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 24),
+                                                  child: ButtAuth(
+                                                    "Aceptar",
+                                                    () {
+                                                      Navigator.of(context)
+                                                          .popUntil((route) =>
+                                                              route.isFirst);
+                                                    },
+                                                    border: true,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                    height: ScreenUtil()
+                                                        .setHeight(40)),
+                                              ],
+                                            ),
+                                          ]),
+                                        ])));
+                              } else {
+                                return showDialog(
+                                    context: context,
+                                    builder: (context) => Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Wrap(children: <Widget>[
+                                          Stack(children: [
+                                            Positioned(
+                                              right: 0,
+                                              top: 0,
+                                              child: InkWell(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Container(
+                                                    alignment:
+                                                        Alignment.bottomRight,
+                                                    height: ScreenUtil()
+                                                        .setWidth(100),
+                                                    width: ScreenUtil()
+                                                        .setWidth(100),
+                                                    child:
+                                                        SvgPicture.asset("")),
+                                              ),
+                                            ),
+                                            Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                SizedBox(
+                                                    height: ScreenUtil()
+                                                        .setHeight(60)),
+                                                Text(
+                                                  "Pago cancelado",
+                                                  style: Mystyle.titleTextStyle
+                                                      .copyWith(
+                                                          color:
+                                                              Colors.black87),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(vertical: 15),
+                                                  child: Container(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      height: ScreenUtil()
+                                                          .setWidth(330),
+                                                      width: ScreenUtil()
+                                                          .setWidth(330),
+                                                      child: SvgPicture.asset(
+                                                          "assets/svg/tarjeta-de-credito-nok.svg")),
+                                                ),
+                                                SizedBox(
+                                                    height: ScreenUtil()
+                                                        .setHeight(40)),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 24),
+                                                  child: Text(
+                                                    "Se ha cancelado el pago.\nPor favor, revise los datos e inténtelo de nuevo. Gracias",
+                                                    style:
+                                                        Mystyle.normalTextStyle,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                    height: ScreenUtil()
+                                                        .setHeight(40)),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 24),
+                                                  child: ButtAuth(
+                                                    "Aceptar",
+                                                    () {
+                                                      Navigator.of(context)
+                                                          .popUntil((route) =>
+                                                              route.isFirst);
+                                                    },
+                                                    border: true,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                    height: ScreenUtil()
+                                                        .setHeight(40)),
+                                              ],
+                                            ),
+                                          ]),
+                                        ])));
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Text(response.message),
+                                  duration: Duration(seconds: 5),
+                                ));
+                              }
+                              setState(() {
+                                loading = false;
+                              });
+                            }
+                          }
+                        : null,
+                    border: true,
+                    press: true),
                 SizedBox(height: ScreenUtil().setHeight(300)),
               ],
             ),

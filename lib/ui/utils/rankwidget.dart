@@ -23,7 +23,7 @@ class RankTile extends StatelessWidget {
         leading: Text(
           rank.toString(),
           style: Mystyle.titleTextStyle.copyWith(
-            fontSize: ScreenUtil().setSp(120),
+            fontSize: ScreenUtil().setSp(110),
             color: Mystyle.thirdcolo,
           ),
         ),
@@ -50,7 +50,7 @@ class RankTile extends StatelessWidget {
                 Text(
                   name,
                   style: Mystyle.titleTextStyle.copyWith(
-                    fontSize: ScreenUtil().setSp(50),
+                    fontSize: ScreenUtil().setSp(60),
                     color: Colors.black87,
                   ),
                 ),
@@ -59,7 +59,6 @@ class RankTile extends StatelessWidget {
                   style: Mystyle.regularTextStyle.copyWith(
                     fontSize: ScreenUtil().setSp(30),
                     color: Colors.black87,
-                    fontStyle: FontStyle.italic,
                   ),
                 ),
               ],

@@ -55,17 +55,17 @@ const String recover_text_instruction =
 
 /*******************Home Screen *******************************/
 
-const String todos_title = "Encuentra el desastre perfecto.";
+const String todos_title = "Encuentra el desastre perfecto";
 const String todos_search_text = "¿Adonde vas?";
 const String cerca_title = "Brownies cerca de mi";
 const String todos_empty_title = "Buenas noticias";
 const String todos_empty_text =
     "No se ha encontrado ningún Brownie con los criterios seleccionados.";
 
-const String claim_opt_1 = "Soy propietario del lugar";
+const String claim_opt_1 = "Soy el propietario";
 const String claim_opt_2 = "Soy fan del lugar";
-const String claim_opt_3 = "Son mis amiguetes y les quiero";
-const String claim_opt_4 = "Por placer";
+const String claim_opt_3 = "Son mis amiguetes y les quiero ayudar";
+const String claim_opt_4 = "Por placer. Me sobra el dinero.";
 const String no_comments_subtitle = "Sé el primero en dejar un \ncomentario";
 const String add_post_category_hint = "Categoría";
 
@@ -112,13 +112,51 @@ const String share_text_pop =
 const String share_button_pop = "Compartir por Whatsapp";
 
 /******************************Nofications Screen  **********************/
+
 const String notification_screen_subtitle =
     "Entérate de los puntos que has obtenido,\nnuevos mensajes y más.";
 const String notification_screen_empty =
     "¡Estrenamos nuestros nuevos Mensajes!";
 const String notification_screen_no_message = "No tienes mensajes.";
 
-const String fav_screen_title = "Vaya brownies me he encontrado...";
+/******************************Add valoration Screen **************************/
+
+const String addvaloration_form_comment =
+    "Añade el comentario que quieras! Algunos ejemplos:\nEstá mas sucio que los pies de tarzán.\nEstá más duro que la armadura de Iron Man.\nEsto como el anuncio.2 Fortasec y pim pam fuera.";
+
+/******************************Favorites Screen *************************/
+const String fav_screen_title =
+    "Vaya brownies me he encontrado...Estos son los que más gracia me hacen.";
+
+/******************************Add post screen **************************/
+
+const String add_post_title = "¡Sube foto del drama!";
+const String add_post_text =
+    "No pierdas tiempo en aplicar filtros, la mierda no hay que camuflarla";
+const String add_post_valoration_text = "¿Cuán mierdolo consideras está el WC?";
+const String add_post_form_name = "Nombre del local";
+const String add_post_form_category = "Selecciona una categoría";
+const String add_post_form_address = "Dirección";
+const String add_post_pretext = "Precio para solucionar el drama:";
+const String add_post_description =
+    "¿Cuanto dinero cobrarías (€/hora) por limpiar el Brownie? Esto servirá para comparar con personal de limpieza.";
+
+/*******************************Profile Screen **************************/
+const String profile_screen_username = "Nombre de usuario";
+const String profile_screen_name = "Nombre y Apellido";
+const String profile_screen_email = "Correo electrónico";
+const String profile_screen_password = "Contraseña";
+const String profile_screen_bank = "Cuenta Bancaria";
+const String profile_screen_text =
+    "Pedimos estos datos por si, en un futuro se cobra recompensa, contactar contigo.";
+const String profile_screen_owner = "¿Eres propietario de un local?";
+const String profile_screen_owner_name = "Nombre del local";
+const String profile_screen_owner_address = "Dirección";
+const String profile_screen_owner_cif = "CIF propiedad";
+const String profile_screen_help = "¿Necesitas ayuda?";
+const String profile_screen_privacy = "Política de privacidad";
+
+/******************************* */
 
 const String los_mas_screen_title = "Los más Warros!";
 
@@ -137,6 +175,6 @@ const category_list = [
   "Lujo",
   "De barrio",
   "Pub musical",
-  "Fast Food",
+  "Comida rápida",
   "Fusión"
 ];
