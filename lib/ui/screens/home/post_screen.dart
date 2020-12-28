@@ -230,6 +230,17 @@ class _PostScreenState extends State<PostScreen> {
                                         ),
                                         SizedBox(
                                             height: ScreenUtil().setHeight(40)),
+                                        Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 15),
+                                            child: Container(
+                                                alignment: Alignment.center,
+                                                height:
+                                                    ScreenUtil().setWidth(330),
+                                                width:
+                                                    ScreenUtil().setWidth(330),
+                                                child: SvgPicture.asset(
+                                                    "assets/svg/whatsapp.svg"))),
                                         Text(
                                           share_text_pop,
                                           style: Mystyle.normalTextStyle,
