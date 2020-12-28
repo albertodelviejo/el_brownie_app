@@ -155,7 +155,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 5, bottom: 0),
+                padding: EdgeInsets.only(top: 15, bottom: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -169,9 +169,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     RichText(
                         text: TextSpan(
-                            style: Mystyle.normalTextStyle,
+                            style: Mystyle.normalTextStyle
+                                .copyWith(fontSize: ScreenUtil().setSp(35)),
                             children: <TextSpan>[
-                          TextSpan(text: 'Al registarte, aceptas nuestras'),
+                          TextSpan(text: 'Al registarte, aceptas nuestras '),
                           TextSpan(
                               text: 'condiciones.',
                               style: TextStyle(
@@ -182,9 +183,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 }),
                           TextSpan(
                               text:
-                                  'Obtén más información sobre cómo recopilamos y usamos tu información en la '),
+                                  '\nObtén más información sobre cómo\nrecopilamos y usamos tu información en la '),
                           TextSpan(
-                              text: 'política de privacidad.',
+                              text: '\npolítica de privacidad.',
                               style: TextStyle(
                                   decoration: TextDecoration.underline),
                               recognizer: TapGestureRecognizer()
@@ -209,7 +210,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   : Container(),
                   */
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0),
+                padding: EdgeInsets.symmetric(vertical: 15),
                 child: ButtAuth(
                   register_cta,
                   accepted

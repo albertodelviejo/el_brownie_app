@@ -24,7 +24,7 @@ const String carrousel_cta_3 = "Empezar";
 
 const String welcome_titulo = "Bienvenid@";
 const String welcome_text =
-    "Nos alegra saber que has llegado hasta aquí. Entra, vamos a pasarlo genial";
+    "Nos alegra saber que has llegado hasta aquí.\nEntra, vamos a pasarlo genial";
 const String welcome_login = "Acceder";
 const String welcome_register = "Registrarse";
 const String welcome_google = "Inicia sesión con Google";
@@ -56,7 +56,7 @@ const String recover_text_instruction =
 /*******************Home Screen *******************************/
 
 const String todos_title = "Encuentra el desastre perfecto";
-const String todos_search_text = "¿Adonde vas?";
+const String todos_search_text = "¿A donde vas?";
 const String cerca_title = "Brownies cerca de mi";
 const String todos_empty_title = "Buenas noticias";
 const String todos_empty_text =

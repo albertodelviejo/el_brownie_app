@@ -194,7 +194,7 @@ class Mystyle {
       hintText: hint,
       hintStyle: TextStyle(
         fontSize: 14,
-        color: Colors.black,
+        color: Colors.grey,
         fontStyle: FontStyle.italic,
       ),
       fillColor: Colors.white,

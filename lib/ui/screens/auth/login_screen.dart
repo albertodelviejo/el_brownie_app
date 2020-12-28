@@ -127,12 +127,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(height: ScreenUtil().setHeight(10)),
                           Text(
                             welcome_text,
+                            textAlign: TextAlign.center,
                             style: Mystyle.titleTextStyle.copyWith(
-                              color: Colors.black87,
-                            ),
+                                color: Colors.black87,
+                                fontSize: ScreenUtil().setSp(72)),
                           ),
                           SizedBox(height: ScreenUtil().setHeight(50)),
-                          ButtAuth(welcome_text, () {
+                          ButtAuth(welcome_login, () {
                             setState(() {
                               pressAttention2 = !pressAttention2;
                               pressAttention = false;
