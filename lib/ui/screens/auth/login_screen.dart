@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
 
@@ -166,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            welcome_login,
+                            "¡Qué bien que estés aquí!",
                             style: Mystyle.titleTextStyle.copyWith(
                               color: Colors.black87,
                             ),
@@ -229,77 +230,126 @@ class _LoginScreenState extends State<LoginScreen> {
                                                                     .circular(
                                                                         10)),
                                                     child: Container(
-                                                      width: ScreenUtil()
-                                                          .setHeight(800),
-                                                      height: ScreenUtil()
-                                                          .setHeight(560),
                                                       padding:
                                                           EdgeInsets.symmetric(
-                                                              vertical: 16,
                                                               horizontal: 16),
-                                                      child: Column(
-                                                        children: [
-                                                          Text(
-                                                            recover_password_title,
-                                                            style: Mystyle
-                                                                .titleTextStyle
-                                                                .copyWith(
-                                                                    color: Colors
-                                                                        .black87),
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                          ),
-                                                          SizedBox(
-                                                              height:
-                                                                  ScreenUtil()
-                                                                      .setHeight(
-                                                                          40)),
-                                                          Form(
-                                                            key: _form2Key,
-                                                            child:
-                                                                TextFormField(
-                                                              textInputAction:
-                                                                  TextInputAction
-                                                                      .done,
-                                                              decoration: Mystyle
-                                                                  .inputWhitebg(
-                                                                      'Email'),
-                                                              validator:
-                                                                  validateEmail,
-                                                              onSaved:
-                                                                  (String val) {
-                                                                _emailconfirmation =
-                                                                    val;
-                                                              },
-                                                              controller:
-                                                                  recoverControler,
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                              height:
-                                                                  ScreenUtil()
-                                                                      .setHeight(
-                                                                          40)),
-                                                          ButtAuth("Recuperar",
-                                                              () {
-                                                            if (_form2Key
-                                                                .currentState
-                                                                .validate()) {
-                                                              _form2Key
-                                                                  .currentState
-                                                                  .save();
-                                                              userBloc.resetPassword(
-                                                                  recoverControler
-                                                                      .text);
-                                                              Navigator.pop(
-                                                                  context);
-                                                              _showPasswordRecoveryDialog();
-                                                            } else {
-                                                              _validate = true;
-                                                            }
-                                                          }, border: true)
-                                                        ],
-                                                      ),
+                                                      child: Wrap(
+                                                          children: <Widget>[
+                                                            Stack(children: [
+                                                              Positioned(
+                                                                  right: 0,
+                                                                  top: 0,
+                                                                  child:
+                                                                      InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child: Container(
+                                                                              alignment: Alignment.bottomRight,
+                                                                              width: ScreenUtil().setHeight(100),
+                                                                              height: ScreenUtil().setHeight(100),
+                                                                              child: SvgPicture.asset("")))),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                children: [
+                                                                  SizedBox(
+                                                                      height: ScreenUtil()
+                                                                          .setHeight(
+                                                                              60)),
+                                                                  Text(
+                                                                    recover_password_title,
+                                                                    style: Mystyle
+                                                                        .titleTextStyle
+                                                                        .copyWith(
+                                                                            color:
+                                                                                Colors.black87),
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                  ),
+                                                                  SizedBox(
+                                                                      height: ScreenUtil()
+                                                                          .setHeight(
+                                                                              40)),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                            .symmetric(
+                                                                        horizontal:
+                                                                            5),
+                                                                    child: Text(
+                                                                      recover_text_model,
+                                                                      /*
+                                                                      style: Mystyle
+                                                                          .subtitleTextStyle
+                                                                          .copyWith(
+                                                                              fontSize: ScreenUtil().setSp(40)),
+                                                                              */
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                      height: ScreenUtil()
+                                                                          .setHeight(
+                                                                              40)),
+                                                                  Form(
+                                                                    key:
+                                                                        _form2Key,
+                                                                    child:
+                                                                        TextFormField(
+                                                                      textInputAction:
+                                                                          TextInputAction
+                                                                              .done,
+                                                                      decoration:
+                                                                          Mystyle.inputWhitebg(
+                                                                              'Email'),
+                                                                      validator:
+                                                                          validateEmail,
+                                                                      onSaved:
+                                                                          (String
+                                                                              val) {
+                                                                        _emailconfirmation =
+                                                                            val;
+                                                                      },
+                                                                      controller:
+                                                                          recoverControler,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                      height: ScreenUtil()
+                                                                          .setHeight(
+                                                                              40)),
+                                                                  ButtAuth(
+                                                                      "Enviar enlace de Acceso",
+                                                                      () {
+                                                                    if (_form2Key
+                                                                        .currentState
+                                                                        .validate()) {
+                                                                      _form2Key
+                                                                          .currentState
+                                                                          .save();
+                                                                      userBloc.resetPassword(
+                                                                          recoverControler
+                                                                              .text);
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                      _showPasswordRecoveryDialog();
+                                                                    } else {
+                                                                      _validate =
+                                                                          true;
+                                                                    }
+                                                                  },
+                                                                      border:
+                                                                          true),
+                                                                  SizedBox(
+                                                                      height: ScreenUtil()
+                                                                          .setHeight(
+                                                                              60)),
+                                                                ],
+                                                              ),
+                                                            ])
+                                                          ]),
                                                     )));
                                           })
                                   ]))),
@@ -451,7 +501,7 @@ class _LoginScreenState extends State<LoginScreen> {
               'Recuperar contraseña',
               style: Mystyle.titleTextStyle.copyWith(color: Colors.black87),
             ),
-            content: Text("Consulta tu email para restaurar la contraseña"),
+            content: Text(recover_text_instruction),
           );
         });
   }

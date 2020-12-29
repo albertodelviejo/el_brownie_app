@@ -59,30 +59,25 @@ class PopUp {
       builder: (context) => Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Container(
-          width: ScreenUtil().setHeight(800),
-          height: ScreenUtil().setHeight(1000),
-          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-          child: Stack(
-            children: [
-              Positioned(
-                right: 0,
-                top: 0,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.bottomRight,
-                      height: ScreenUtil().setWidth(100),
-                      width: ScreenUtil().setWidth(100),
-                      child: SvgPicture.asset("")),
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Wrap(
+            children: <Widget>[
+              Stack(children: [
+                Positioned(
+                  right: 0,
+                  top: 0,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.bottomRight,
+                        height: ScreenUtil().setWidth(100),
+                        width: ScreenUtil().setWidth(100),
+                        child: SvgPicture.asset("")),
+                  ),
                 ),
-              ),
-              Positioned(
-                left: 0,
-                right: 0,
-                top: 0,
-                child: Column(
+                Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     SizedBox(height: ScreenUtil().setHeight(60)),
@@ -117,9 +112,10 @@ class PopUp {
                         border: true,
                       ),
                     ),
+                    SizedBox(height: ScreenUtil().setHeight(60)),
                   ],
                 ),
-              ),
+              ])
             ],
           ),
         ),

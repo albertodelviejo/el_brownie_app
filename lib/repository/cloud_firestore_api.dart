@@ -67,6 +67,7 @@ class CloudFirestoreAPI {
               user.type.contains("default")
                   ? await ref.update({
                       'uid': user.uid,
+                      'username': user.userName,
                       'email': user.email,
                       'bank_account': user.bankAccount,
                       'avatar_url': user.avatarURL,
@@ -74,6 +75,7 @@ class CloudFirestoreAPI {
                     })
                   : await ref.update({
                       'uid': user.uid,
+                      'username': user.userName,
                       'email': user.email,
                       'bank_account': user.bankAccount,
                       'avatar_url': user.avatarURL,

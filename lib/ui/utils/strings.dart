@@ -52,12 +52,14 @@ const String login_password_recover = "¿Has olvidado la contraseña?";
 const String recover_password_title = "Recuperar contraseña";
 const String recover_text_instruction =
     "Te hemos enviado un correo electrónico con un enlace para que recuperes el acceso a tu cuenta";
+const String recover_text_model =
+    "Introduce tu correo electrónico y te enviaremos un enlace para que vuelvas a entrar en tu cuenta.";
 
 /*******************Home Screen *******************************/
 
 const String todos_title = "Encuentra el desastre perfecto";
 const String todos_search_text = "¿A donde vas?";
-const String cerca_title = "Brownies cerca de mi";
+const String cerca_title = "Brownies cerca de mí";
 const String todos_empty_title = "Buenas noticias";
 const String todos_empty_text =
     "No se ha encontrado ningún Brownie con los criterios seleccionados.";
@@ -108,7 +110,7 @@ const String notification_pop_text_added =
 
 const String share_title_pop = "Comparte con los coleguis";
 const String share_text_pop =
-    "¿Quién de tus coleguis ha comido ahi?\nCompártelo con ellos, seguro os echáis unas risas.";
+    "¿Quién de tus coleguis ha comido ahi? Compártelo con ellos, seguro os echáis unas risas.";
 const String share_button_pop = "Compartir por Whatsapp";
 
 /******************************Nofications Screen  **********************/

@@ -49,7 +49,7 @@ class _SplashScreenaState extends State<SplashScreena> {
                 height: SizeConfig.screenWidth * 0.5,
                 child: Image(
                   fit: BoxFit.cover,
-                  image: AssetImage("assets/icon/icon.png"),
+                  image: AssetImage("assets/Logo.png"),
                 ),
               ),
             ),

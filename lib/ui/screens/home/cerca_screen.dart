@@ -1,6 +1,5 @@
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/repository/google_maps_api.dart';
-import 'package:el_brownie_app/ui/utils/cardhome.dart';
 import 'package:el_brownie_app/ui/utils/cardlosmas.dart';
 import 'package:el_brownie_app/ui/utils/mystyle.dart';
 import 'package:el_brownie_app/ui/utils/noresutlt.dart';
@@ -12,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
 class CercaScreen extends StatefulWidget {
-  String currentCategory = "";
+  String currentCategory;
   bool noresult = false;
   List<CardLosmas> finalPosts;
 

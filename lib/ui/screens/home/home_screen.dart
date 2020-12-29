@@ -204,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   orderPer: orderPer,
                   isFirstTime: widget.isFirstTime),
               //LosMasScreen(),
-              CercaScreen(),
+              CercaScreen(currentCategory: currentCategory),
             ],
           ),
         ),

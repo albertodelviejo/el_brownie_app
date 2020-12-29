@@ -167,7 +167,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               horizontal: 2, vertical: ScreenUtil().setHeight(20)),
           child: TextFormField(
             style: TextStyle(color: Colors.black),
-            controller: usuarioController,
+            controller: nombreController,
             keyboardType: TextInputType.emailAddress,
             decoration: Mystyle.inputDisabledWhitebg('Usuario'),
             textInputAction: TextInputAction.done,
@@ -229,7 +229,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Padding(
           padding: EdgeInsets.only(left: 8, right: 36, top: 12, bottom: 12),
           child: Text(
-            "Esto lo pedimos para que puedas cobrar tu recompensa!",
+            "Pedimos estos datos por si, en un futuro se cobra recompensa, contactar contigo.",
             style: Mystyle.normalTextStyle,
             textAlign: TextAlign.left,
           ),

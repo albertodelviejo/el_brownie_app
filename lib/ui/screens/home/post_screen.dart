@@ -202,86 +202,98 @@ class _PostScreenState extends State<PostScreen> {
                             builder: (context) => Dialog(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
-                                child: Wrap(children: <Widget>[
-                                  Stack(children: [
-                                    Positioned(
-                                      right: 0,
-                                      top: 0,
-                                      child: InkWell(
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Container(
-                                            alignment: Alignment.bottomRight,
-                                            height: ScreenUtil().setWidth(100),
-                                            width: ScreenUtil().setWidth(100),
-                                            child: SvgPicture.asset("")),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 16),
+                                  child: Wrap(children: <Widget>[
+                                    Stack(children: [
+                                      Positioned(
+                                        right: 0,
+                                        top: 0,
+                                        child: InkWell(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Container(
+                                              alignment: Alignment.bottomRight,
+                                              height:
+                                                  ScreenUtil().setWidth(100),
+                                              width: ScreenUtil().setWidth(100),
+                                              child: SvgPicture.asset("")),
+                                        ),
                                       ),
-                                    ),
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                            height: ScreenUtil().setHeight(60)),
-                                        Text(
-                                          share_title_pop,
-                                          style: Mystyle.titleTextStyle
-                                              .copyWith(color: Colors.black87),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        SizedBox(
-                                            height: ScreenUtil().setHeight(40)),
-                                        Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 15),
-                                            child: Container(
-                                                alignment: Alignment.center,
-                                                height:
-                                                    ScreenUtil().setWidth(330),
-                                                width:
-                                                    ScreenUtil().setWidth(330),
+                                      Column(
+                                        children: [
+                                          SizedBox(
+                                              height:
+                                                  ScreenUtil().setHeight(60)),
+                                          Text(
+                                            share_title_pop,
+                                            style: Mystyle.titleTextStyle
+                                                .copyWith(
+                                                    color: Colors.black87),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          SizedBox(
+                                              height:
+                                                  ScreenUtil().setHeight(40)),
+                                          Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 15),
+                                              child: Container(
+                                                  alignment: Alignment.center,
+                                                  height: ScreenUtil()
+                                                      .setWidth(330),
+                                                  width: ScreenUtil()
+                                                      .setWidth(330),
+                                                  child: SvgPicture.asset(
+                                                      "assets/svg/whatsapp.svg"))),
+                                          Container(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 20),
+                                            child: Text(share_text_pop,
+                                                style: Mystyle.normalTextStyle,
+                                                textAlign: TextAlign.center),
+                                          ),
+                                          SizedBox(
+                                              height:
+                                                  ScreenUtil().setHeight(40)),
+                                          SignInButtonBuilder(
+                                            backgroundColor: Color(0xFF25D366),
+                                            onPressed: () => Share.share(
+                                                'Descárgate la app y no te pierdas este pedazo de brownie que te comparten! http://elbrownie.com/',
+                                                subject:
+                                                    "No sabes la cantidad de brownies que hay por toda la ciudad...",
+                                                sharePositionOrigin:
+                                                    box.localToGlobal(
+                                                            Offset.zero) &
+                                                        box.size),
+                                            /* SocialShare.shareWhatsapp(
+                                                  "No sabes la cantidad de brownies que hay por toda la ciudad... \n http://elbrownie.com/")
+                                              .then((data) {
+                                            print(data);
+                                          }),
+                                          */
+                                            text: share_button_pop,
+                                            image: Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0.0, 0.0, 10.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                                 child: SvgPicture.asset(
-                                                    "assets/svg/whatsapp.svg"))),
-                                        Text(
-                                          share_text_pop,
-                                          style: Mystyle.normalTextStyle,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        SizedBox(
-                                            height: ScreenUtil().setHeight(40)),
-                                        SignInButtonBuilder(
-                                          backgroundColor: Color(0xFF25D366),
-                                          onPressed: () => Share.share(
-                                              'Descárgate la app y no te pierdas este pedazo de brownie que te comparten! http://elbrownie.com/',
-                                              subject:
-                                                  "No sabes la cantidad de brownies que hay por toda la ciudad...",
-                                              sharePositionOrigin:
-                                                  box.localToGlobal(
-                                                          Offset.zero) &
-                                                      box.size),
-                                          /* SocialShare.shareWhatsapp(
-                                                "No sabes la cantidad de brownies que hay por toda la ciudad... \n http://elbrownie.com/")
-                                            .then((data) {
-                                          print(data);
-                                        }),
-                                        */
-                                          text: share_button_pop,
-                                          image: Container(
-                                            margin: EdgeInsets.fromLTRB(
-                                                0.0, 0.0, 10.0, 0.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: SvgPicture.asset(
-                                                  'assets/whatsapp.sv'),
+                                                    'assets/whatsapp.sv'),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                            height: ScreenUtil().setHeight(60)),
-                                      ],
-                                    ),
-                                  ])
-                                ])));
+                                          SizedBox(
+                                              height:
+                                                  ScreenUtil().setHeight(60)),
+                                        ],
+                                      ),
+                                    ])
+                                  ]),
+                                )));
                       },
                       child: Container(
                         decoration: Mystyle.cadredec().copyWith(

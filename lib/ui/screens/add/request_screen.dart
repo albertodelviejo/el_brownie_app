@@ -116,7 +116,7 @@ class _RequestScreenState extends State<RequestScreen> {
                   children: <Widget>[
                     ListTile(
                       title: Text(
-                        'Soy propietario del lugar',
+                        claim_opt_1,
                         style: Mystyle.regularTextStyle,
                       ),
                       leading: Radio(
@@ -193,7 +193,7 @@ class _RequestScreenState extends State<RequestScreen> {
                           ),
                     ListTile(
                       title: Text(
-                        'Soy fan del lugar',
+                        claim_opt_2,
                         style: Mystyle.regularTextStyle,
                       ),
                       leading: Radio(
@@ -211,7 +211,7 @@ class _RequestScreenState extends State<RequestScreen> {
                     ),
                     ListTile(
                       title: Text(
-                        'Son mis amiguetes y les quiero',
+                        claim_opt_3,
                         style: Mystyle.regularTextStyle,
                       ),
                       leading: Radio(
@@ -229,7 +229,7 @@ class _RequestScreenState extends State<RequestScreen> {
                     ),
                     ListTile(
                       title: Text(
-                        'Por placer',
+                        claim_opt_4,
                         style: Mystyle.regularTextStyle,
                       ),
                       leading: Radio(

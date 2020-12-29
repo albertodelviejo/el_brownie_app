@@ -14,7 +14,7 @@
    
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="ElBrownie"
+        android:label="elBrownie.com"
         android:icon="@mipmap/ic_launcher">
         <provider
             android:name="androidx.core.content.FileProvider"
