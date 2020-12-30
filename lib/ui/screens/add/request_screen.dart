@@ -274,7 +274,7 @@ class _RequestScreenState extends State<RequestScreen> {
                         ? () async {
                             if (_value == 0 && cifController.text == '') {
                               Scaffold.of(context).showSnackBar(SnackBar(
-                                  content: Text('Must fill CIF field!'),
+                                  content: Text('Rellene el CIF!'),
                                   duration: Duration(seconds: 5)));
                             } else {
                               setState(() {

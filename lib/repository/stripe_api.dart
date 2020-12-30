@@ -49,27 +49,27 @@ class StripeService {
           paymentMethodId: paymentMethod.id));
       if (response.status == 'succeeded') {
         return new StripeTransaction(
-            message: 'Transaction successful',
+            message: 'Pago realizado correctamente',
             success: true,
             paymentId: response.paymentIntentId);
       } else {
         return new StripeTransaction(
-          message: 'Transaction failed',
+          message: 'Error en el pago',
           success: false,
         );
       }
     } on PlatformException catch (err) {
       return StripeService.getPlatformExceptionErrorResult(err);
     } catch (err) {
-      String error = 'Transaction failed: ${err.toString()}';
+      String error = 'Error en el pago: ${err.toString()}';
       return new StripeTransaction(message: error, success: false);
     }
   }
 
   static getPlatformExceptionErrorResult(err) {
-    String message = 'Something went wrong';
+    String message = 'Algo fue mal';
     if (err.code == 'cancelled') {
-      message = 'Transaction cancelled';
+      message = 'Pago cancelado';
     }
 
     return new StripeTransaction(message: message, success: false);
