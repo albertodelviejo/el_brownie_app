@@ -117,7 +117,8 @@ class _RequestScreenState extends State<RequestScreen> {
                     ListTile(
                       title: Text(
                         claim_opt_1,
-                        style: Mystyle.regularTextStyle,
+                        style: Mystyle.regularTextStyle
+                            .copyWith(fontSize: ScreenUtil().setSp(45)),
                       ),
                       leading: Radio(
                         value: 0,
@@ -194,7 +195,8 @@ class _RequestScreenState extends State<RequestScreen> {
                     ListTile(
                       title: Text(
                         claim_opt_2,
-                        style: Mystyle.regularTextStyle,
+                        style: Mystyle.regularTextStyle
+                            .copyWith(fontSize: ScreenUtil().setSp(45)),
                       ),
                       leading: Radio(
                         value: 1,
@@ -212,7 +214,8 @@ class _RequestScreenState extends State<RequestScreen> {
                     ListTile(
                       title: Text(
                         claim_opt_3,
-                        style: Mystyle.regularTextStyle,
+                        style: Mystyle.regularTextStyle
+                            .copyWith(fontSize: ScreenUtil().setSp(45)),
                       ),
                       leading: Radio(
                         value: 2,
@@ -230,7 +233,8 @@ class _RequestScreenState extends State<RequestScreen> {
                     ListTile(
                       title: Text(
                         claim_opt_4,
-                        style: Mystyle.regularTextStyle,
+                        style: Mystyle.regularTextStyle
+                            .copyWith(fontSize: ScreenUtil().setSp(45)),
                       ),
                       leading: Radio(
                         value: 3,

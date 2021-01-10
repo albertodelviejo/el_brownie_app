@@ -69,7 +69,7 @@ class _MiBrownieScreenState extends State<MiBrownieScreen> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
-                "B-r-a-v-o!. Aquí están tus locales. Ahora a por tu recompensa!!!!",
+                "Enhorabuena cazador,\nEstos son los brownies que has encontrado",
                 style: Mystyle.regularTextStyle,
                 textAlign: TextAlign.center,
               ),

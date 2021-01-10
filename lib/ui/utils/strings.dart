@@ -24,7 +24,7 @@ const String carrousel_cta_3 = "Empezar";
 
 const String welcome_titulo = "Bienvenid@";
 const String welcome_text =
-    "Nos alegra saber que has llegado hasta aquí.\nEntra, vamos a pasarlo genial";
+    "Nos alegra saber que\nhas llegado hasta aquí.\nEntra, vamos a pasarlo genial";
 const String welcome_login = "Acceder";
 const String welcome_register = "Registrarse";
 const String welcome_google = "Inicia sesión con Google";
@@ -69,7 +69,7 @@ const String claim_opt_2 = "Soy fan del lugar";
 const String claim_opt_3 = "Son mis amiguetes y les quiero ayudar";
 const String claim_opt_4 = "Por placer. Me sobra el dinero.";
 const String no_comments_subtitle = "Sé el primero en dejar un \ncomentario";
-const String add_post_category_hint = "Categoría";
+const String add_post_category_hint = "Selecciona una categoria";
 
 const String notification_screen_title = "Notificaciones";
 

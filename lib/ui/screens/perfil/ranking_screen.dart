@@ -56,7 +56,7 @@ class _RankingScreenState extends State<RankingScreen> {
                               child: Text(
                                 "Tu posición (puntos)",
                                 style: Mystyle.titleTextStyle.copyWith(
-                                  fontSize: ScreenUtil().setSp(100),
+                                  fontSize: ScreenUtil().setSp(90),
                                   color: Colors.black87,
                                 ),
                                 textAlign: TextAlign.left,
@@ -80,7 +80,7 @@ class _RankingScreenState extends State<RankingScreen> {
                               child: Text(
                                 "Ranking Global",
                                 style: Mystyle.titleTextStyle.copyWith(
-                                  fontSize: ScreenUtil().setSp(100),
+                                  fontSize: ScreenUtil().setSp(90),
                                   color: Colors.black87,
                                 ),
                                 textAlign: TextAlign.left,

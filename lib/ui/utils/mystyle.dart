@@ -12,7 +12,7 @@ class Mystyle {
   static TextStyle titleTextStyle = TextStyle(
     color: secondrycolo,
     fontFamily: tragickmarker,
-    fontSize: ScreenUtil().setSp(82),
+    fontSize: ScreenUtil().setSp(80),
   );
 
   static TextStyle titleregularTextStyle = TextStyle(

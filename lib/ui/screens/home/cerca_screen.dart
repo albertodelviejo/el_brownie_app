@@ -96,7 +96,7 @@ class _CercaScreenState extends State<CercaScreen> {
                         Text(
                           cerca_title,
                           style: Mystyle.titleTextStyle.copyWith(
-                            fontSize: ScreenUtil().setSp(100),
+                            fontSize: ScreenUtil().setSp(90),
                             color: Colors.black87,
                           ),
                         ),

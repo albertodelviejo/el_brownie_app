@@ -308,7 +308,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: ScreenUtil().setHeight(40)),
               Text(
-                "Categorías",
+                "Por categoría",
                 style: Mystyle.titleTextStyle.copyWith(
                   color: Colors.black87,
                 ),

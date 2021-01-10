@@ -31,7 +31,7 @@ class _OnBoardingState extends State<OnBoarding> {
     OnBoardingData(
       title: carrousel_title_3,
       desc: carrousel_text_3,
-      imageAssetsPath: "assets/splash4.png",
+      imageAssetsPath: "assets/splash4color.png",
     )
   ];
 
@@ -75,7 +75,8 @@ class _OnBoardingState extends State<OnBoarding> {
                       ),
                       Text(
                         '${onBoardingData[index].title}',
-                        style: Mystyle.titleTextStyle,
+                        style: Mystyle.titleTextStyle
+                            .copyWith(color: Colors.black),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(
@@ -85,7 +86,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         margin: EdgeInsets.symmetric(
                           horizontal: ScreenUtil().setWidth(100),
                         ),
-                        height: ScreenUtil().setHeight(350),
+                        height: ScreenUtil().setHeight(400),
                         alignment: Alignment.topCenter,
                         child: Text(
                           '${onBoardingData[index].desc}',

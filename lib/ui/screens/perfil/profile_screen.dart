@@ -371,7 +371,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             controller: nombreRestauranteController,
                             keyboardType: TextInputType.emailAddress,
                             decoration:
-                                Mystyle.inputWhitebg('Nombre del restaurante'),
+                                Mystyle.inputWhitebg('Nombre del local'),
                             textInputAction: TextInputAction.done,
                             validator: (value) {
                               if (value.isEmpty) return 'isEmpty';
@@ -406,7 +406,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ubicacionRestauranteController.text = value);
                             },
                             decoration: Mystyle.inputWhitebg(
-                              'Ubicación',
+                              'Dirección',
                               icon: IconButton(
                                 icon: Container(
                                   height: ScreenUtil().setWidth(50),
@@ -433,7 +433,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: TextFormField(
                             controller: cifController,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: Mystyle.inputWhitebg('CIF'),
+                            decoration: Mystyle.inputWhitebg('CIF propiedad'),
                             textInputAction: TextInputAction.done,
                             validator: (value) {
                               if (value.isEmpty) return 'isEmpty';

@@ -175,8 +175,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextSpan(text: 'Al registarte, aceptas nuestras '),
                           TextSpan(
                               text: 'condiciones.',
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline),
+                              style: TextStyle(fontWeight: FontWeight.bold),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   _launchURL();
@@ -186,8 +185,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   '\nObtén más información sobre cómo\nrecopilamos y usamos tu información en la '),
                           TextSpan(
                               text: '\npolítica de privacidad.',
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline),
+                              style: TextStyle(fontWeight: FontWeight.bold),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   _launchURL();

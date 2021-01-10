@@ -20,18 +20,18 @@ class NoResult extends StatelessWidget {
           Text(
             todos_empty_title,
             style: Mystyle.titleTextStyle.copyWith(
-              fontSize: ScreenUtil().setSp(80),
+              fontSize: ScreenUtil().setSp(90),
               color: Colors.black87,
             ),
             textAlign: TextAlign.center,
           ),
-          Text(
-            todos_empty_text,
-            style: Mystyle.titleTextStyle.copyWith(
-              fontSize: ScreenUtil().setSp(60),
-              color: Colors.black87,
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Text(
+              todos_empty_text,
+              style: Mystyle.normalTextStyle,
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
           SizedBox(height: ScreenUtil().setHeight(50)),
           Container(

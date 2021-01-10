@@ -258,9 +258,9 @@ class _PostScreenState extends State<PostScreen> {
                                           SizedBox(
                                               height:
                                                   ScreenUtil().setHeight(40)),
-                                          SignInButtonBuilder(
-                                            backgroundColor: Color(0xFF25D366),
-                                            onPressed: () => Share.share(
+                                          ButtAuth(
+                                            share_button_pop,
+                                            () => Share.share(
                                                 'Descárgate la app y no te pierdas este pedazo de brownie que te comparten! http://elbrownie.com/',
                                                 subject:
                                                     "No sabes la cantidad de brownies que hay por toda la ciudad...",
@@ -268,27 +268,15 @@ class _PostScreenState extends State<PostScreen> {
                                                     box.localToGlobal(
                                                             Offset.zero) &
                                                         box.size),
-                                            /* SocialShare.shareWhatsapp(
-                                                  "No sabes la cantidad de brownies que hay por toda la ciudad... \n http://elbrownie.com/")
-                                              .then((data) {
-                                            print(data);
-                                          }),
-                                          */
-                                            text: share_button_pop,
-                                            image: Container(
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0.0, 0.0, 10.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: SvgPicture.asset(
-                                                    'assets/whatsapp.sv'),
-                                              ),
-                                            ),
+                                            border: true,
                                           ),
-                                          SizedBox(
-                                              height:
-                                                  ScreenUtil().setHeight(60)),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8.0),
+                                            child: SizedBox(
+                                                height:
+                                                    ScreenUtil().setHeight(60)),
+                                          ),
                                         ],
                                       ),
                                     ])
@@ -313,7 +301,7 @@ class _PostScreenState extends State<PostScreen> {
                             ),
                             SizedBox(height: ScreenUtil().setHeight(10)),
                             Text(
-                              "Share",
+                              "Comparte",
                               style: Mystyle.smallTextStyle
                                   .copyWith(color: Colors.black87),
                               textAlign: TextAlign.center,

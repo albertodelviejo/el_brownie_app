@@ -110,7 +110,7 @@ class _FavScreenState extends State<FavScreen> {
             Text(
               "Mis favoritos",
               style: Mystyle.titleTextStyle.copyWith(
-                fontSize: ScreenUtil().setSp(100),
+                fontSize: ScreenUtil().setSp(90),
                 color: Colors.black87,
               ),
               textAlign: TextAlign.center,

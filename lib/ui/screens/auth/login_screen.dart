@@ -129,9 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Text(
                             welcome_text,
                             textAlign: TextAlign.center,
-                            style: Mystyle.titleTextStyle.copyWith(
-                                color: Colors.black87,
-                                fontSize: ScreenUtil().setSp(72)),
+                            style: Mystyle.regularTextStyle,
                           ),
                           SizedBox(height: ScreenUtil().setHeight(50)),
                           ButtAuth(welcome_login, () {
@@ -168,6 +166,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Text(
                             "¡Qué bien que estés aquí!",
+                            style: Mystyle.titleTextStyle.copyWith(
+                              color: Colors.black87,
+                            ),
+                          ),
+                          Text(
+                            "Introduce tus credenciales para acceder",
+                            textAlign: TextAlign.center,
                             style: Mystyle.titleTextStyle.copyWith(
                               color: Colors.black87,
                             ),

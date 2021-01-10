@@ -49,10 +49,10 @@ class RankTile extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: Mystyle.titleTextStyle.copyWith(
-                    fontSize: ScreenUtil().setSp(60),
-                    color: Colors.black87,
-                  ),
+                  style: Mystyle.normalTextStyle.copyWith(
+                      fontSize: ScreenUtil().setSp(50),
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold),
                 ),
                 Text(
                   pub,
