@@ -205,6 +205,8 @@ class UserBloc implements Bloc {
   //20. Top 3 notification
   void updateAddTop3Notification(bool isTop3) =>
       _cloudFirestoreRepository.updateAddTop3Notification(user.uid, isTop3);
+  //21. Log in Apple
+  Future<dynamic> signInApple() => _authRepository.singInApple();
 
   Future<void> reautenticate() async {
 // Reauthenticate
@@ -214,3 +216,4 @@ class UserBloc implements Bloc {
   @override
   void dispose() {}
 }
+

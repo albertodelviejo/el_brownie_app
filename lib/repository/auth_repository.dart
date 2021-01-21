@@ -16,6 +16,7 @@ class AuthRepository {
   Future<dynamic> singInGoogle() => _firebaseAuthAPI.signInGoogle();
 
   Future<dynamic> singInFacebook() => _firebaseAuthAPI.signInFacebook();
+  Future<dynamic> singInApple() => _firebaseAuthAPI.signInApple();
 
   signOut() => _firebaseAuthAPI.signOut();
 }

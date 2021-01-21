@@ -15,7 +15,8 @@ import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'dart:io';
+import 'package:device_info/device_info.dart';
 class RegisterScreen extends StatefulWidget {
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
@@ -33,6 +34,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   UserBloc userBloc;
 
   bool _obscureText = true;
+  bool applesignin = true;
 
   var _email;
   var _emailconfirmation;
@@ -45,6 +47,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+  @override
+  void initState() {
+    super.initState();
+
+    _useAppleSignIn();
+  }
+
+  _useAppleSignIn() async {
+    if (Platform.isIOS) {
+      var deviceInfo = await DeviceInfoPlugin().iosInfo;
+      var version = deviceInfo.systemVersion;
+
+      if (double.parse(version) >= 13) {
+        setState(() {
+          applesignin = true;
+        });
+      }
+    }
   }
 
   @override
@@ -330,6 +351,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
+              SizedBox(height: ScreenUtil().setHeight(30)),
+              applesignin==true?SignInButton(
+                Buttons.Apple,
+                padding: EdgeInsets.symmetric(vertical: 13, horizontal: 16),
+                onPressed: () {
+                  userBloc.signInApple().then((value) {
+                    userBloc.user.uid = value.uid;
+                    userBloc.updateUserData(UserModel(
+                        uid: value.uid,
+                        userName: value.displayName,
+                        email: value.email));
+                  });
+                },
+                shape: StadiumBorder(
+                  side: BorderSide(
+                    color: Colors.black,
+                  ),
+                ),
+              ):Container(),
               SizedBox(height: ScreenUtil().setHeight(50)),
             ],
           ),

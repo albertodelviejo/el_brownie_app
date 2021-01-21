@@ -14,6 +14,8 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
+import 'dart:io';
+import 'package:device_info/device_info.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -34,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _obscureText = true;
   bool _autoValidate = false;
+  bool applesignin = false;
 
   var _emailconfirmation;
   bool _validate = false;
@@ -46,6 +49,27 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    _useAppleSignIn();
+  }
+
+// here we verify if the device support SignIn with apple if yes we show SignIn with apple button
+  _useAppleSignIn() async {
+    if (Platform.isIOS) {
+      var deviceInfo = await DeviceInfoPlugin().iosInfo;
+      var version = deviceInfo.systemVersion;
+
+      if (double.parse(version) >= 13) {
+        setState(() {
+          applesignin = true;
+        });
+      }
+    }
   }
 
   @override
@@ -474,6 +498,38 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
+                SizedBox(height: ScreenUtil().setHeight(30)),
+                applesignin == true
+                    ? SignInButton(
+                        Buttons.Apple,
+                        padding:
+                            EdgeInsets.symmetric(vertical: 13, horizontal: 16),
+                        onPressed: () {
+                          userBloc.signInApple().then((value) {
+                            if (value is User) {
+                              userBloc.user = UserModel(
+                                  uid: value.uid,
+                                  email: value.email,
+                                  userName: value.displayName);
+                              userBloc.updateUserData(UserModel(
+                                  uid: value.uid,
+                                  userName: value.displayName,
+                                  email: value.email));
+                            } else {
+                              final errorMsg =
+                                  AuthExceptionHandler.generateExceptionMessage(
+                                      value);
+                              _showAlertDialog(errorMsg);
+                            }
+                          });
+                        },
+                        shape: StadiumBorder(
+                          side: BorderSide(
+                            color: Colors.transparent,
+                          ),
+                        ),
+                      )
+                    : Container(),
                 SizedBox(height: ScreenUtil().setHeight(20)),
               ],
             ),
