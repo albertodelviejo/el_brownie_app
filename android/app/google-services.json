@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "325312053116",
+    "firebase_url": "https://elbrownie-baf68.firebaseio.com",
+    "project_id": "elbrownie-baf68",
+    "storage_bucket": "elbrownie-baf68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325312053116:android:caf0c778f63c27d7d12ef9",
+        "android_client_info": {
+          "package_name": "com.ideafoster.elbrownie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325312053116-220vb8bmfs6j76n4agchq0r499j8dr4v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ideafoster.elbrownie",
+            "certificate_hash": "012af3001877f9f6bfa32e3ad1eb2ff6d7f627e4"
+          }
+        },
+        {
+          "client_id": "325312053116-citqmccolvrgdhj01srsoib7dgakf71h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3FgPyKl9zhgPS5fBRlYE1b-SSFkOvcns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325312053116-citqmccolvrgdhj01srsoib7dgakf71h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "325312053116-jgdasejprhl95rj4qtuhm2qfiue4639g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.elBrownieApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
