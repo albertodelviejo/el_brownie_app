@@ -22,6 +22,10 @@
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>This identifier will be used to deliver personalized ads to you.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs the photo library to upload a new post</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs the camera to upload a new post</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
