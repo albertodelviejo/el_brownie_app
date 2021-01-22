@@ -273,7 +273,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 ),
                 SizedBox(height: ScreenUtil().setHeight(60)),
                 ButtAuth(
-                    "Pagar",
+                    "Pagar esta reclamación",
                     widget.isEnabled
                         ? () async {
                             if (_value == 0 && cifController.text == '') {

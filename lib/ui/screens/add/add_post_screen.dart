@@ -274,7 +274,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                   child: TextFormField(
                     controller: nombre,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: Mystyle.inputWhitebg('Nombre del restaurante'),
+                    decoration: Mystyle.inputWhitebg('Nombre del local'),
                     textInputAction: TextInputAction.done,
                     validator: validateNotEmpty,
                     onSaved: (String val) {

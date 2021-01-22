@@ -43,27 +43,6 @@ class RankTile extends StatelessWidget {
               ),
             ),
             SizedBox(width: 5),
-<<<<<<< HEAD
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: Mystyle.normalTextStyle.copyWith(
-                      fontSize: ScreenUtil().setSp(50),
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  pub,
-                  style: Mystyle.regularTextStyle.copyWith(
-                    fontSize: ScreenUtil().setSp(30),
-                    color: Colors.black87,
-                  ),
-                ),
-              ],
-=======
             Flexible(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -72,7 +51,7 @@ class RankTile extends StatelessWidget {
                   Text(
                     name,
                     style: Mystyle.normalTextStyle.copyWith(
-                        fontSize: ScreenUtil().setSp(50),
+                        fontSize: ScreenUtil().setSp(45),
                         color: Colors.black87,
                         fontWeight: FontWeight.bold),
                   ),
@@ -85,7 +64,6 @@ class RankTile extends StatelessWidget {
                   ),
                 ],
               ),
->>>>>>> reportFunctions
             )
           ],
         ),

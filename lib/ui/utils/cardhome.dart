@@ -237,35 +237,6 @@ class _CardHomeState extends State<CardHome> {
                           maxLines: 1,
                         ),
                       ),
-<<<<<<< HEAD
-                Row(
-                  children: [
-                    Container(
-                      height: ScreenUtil().setHeight(50),
-                      width: ScreenUtil().setHeight(50),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.transparent,
-                        border: Border.all(color: Mystyle.thirdcolo),
-                      ),
-                      alignment: Alignment.centerLeft,
-                      child: widget.reclam
-                          ? Icon(
-                              Icons.check,
-                              color: Mystyle.thirdcolo,
-                              size: 15,
-                            )
-                          : Container(),
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      widget.reclam ? "Reclamada" : "Sin Reclamar",
-                      style: Mystyle.smallTextStyle.copyWith(
-                        color: Mystyle.thirdcolo,
-                      ),
-                    ),
-                  ],
-=======
                 Flexible(
                   child: Row(
                     children: [
@@ -297,7 +268,6 @@ class _CardHomeState extends State<CardHome> {
                       ),
                     ],
                   ),
->>>>>>> reportFunctions
                 ),
               ],
             ),

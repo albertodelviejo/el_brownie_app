@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\achraf\\Desktop\\el_brownie_app\\build\\url_launcher\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pa\\values-pa.xml",
+            "outputFile": "/home/alberto/FiverrProyects/el_brownie_app/build/url_launcher/intermediates/res/merged/debug/values-pa/values-pa.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\achraf\\.gradle\\caches\\transforms-2\\files-2.1\\5fd24aa1d5b54dfa1be0fcd49b46015a\\core-1.1.0\\res\\values-pa\\values-pa.xml",
+                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5fd24aa1d5b54dfa1be0fcd49b46015a/core-1.1.0/res/values-pa/values-pa.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\achraf\\Desktop\\el_brownie_app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\values-pa\\values-pa.xml",
+            "outputFile": "/home/alberto/FiverrProyects/el_brownie_app/build/url_launcher/intermediates/incremental/mergeDebugResources/merged.dir/values-pa/values-pa.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\achraf\\.gradle\\caches\\transforms-2\\files-2.1\\5fd24aa1d5b54dfa1be0fcd49b46015a\\core-1.1.0\\res\\values-pa\\values-pa.xml",
+                    "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5fd24aa1d5b54dfa1be0fcd49b46015a/core-1.1.0/res/values-pa/values-pa.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

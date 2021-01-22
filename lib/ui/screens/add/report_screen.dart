@@ -70,7 +70,7 @@ class _ReportScreenState extends State<ReportScreen> {
               children: [
                 SizedBox(height: ScreenUtil().setHeight(60)),
                 Text(
-                  "Informar de usuario o publicación",
+                  "Informar de publicación",
                   style: Mystyle.titleTextStyle.copyWith(
                     fontSize: ScreenUtil().setSp(100),
                     color: Colors.black87,
@@ -165,7 +165,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 ),
                 SizedBox(height: ScreenUtil().setHeight(100)),
                 ButtAuth(
-                    "Report",
+                    "Reportar",
                     isEnabled
                         ? () async {
                             setState(() {
@@ -246,8 +246,12 @@ class _ReportScreenState extends State<ReportScreen> {
                                                       .setWidth(330),
                                                   width: ScreenUtil()
                                                       .setWidth(330),
-                                                  child: SvgPicture.asset(
-                                                      "assets/svg/send.svg")),
+                                                  child: Image(
+                                                    height: ScreenUtil()
+                                                        .setHeight(400),
+                                                    image: AssetImage(
+                                                        "assets/pop/check_mark.png"),
+                                                  )),
                                             ),
                                             SizedBox(
                                                 height:

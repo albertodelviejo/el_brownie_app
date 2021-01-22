@@ -15,7 +15,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -117,22 +116,6 @@
             android:value="2" />
 
         <service
-            android:name="com.lyokone.location.FlutterLocationService"
-            android:enabled="true"
-            android:exported="false"
-            android:foregroundServiceType="location" />
-
-        <provider
-            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-            android:authorities="com.ideafoster.elbrownie.flutter.image_provider"
-            android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/flutter_image_picker_file_paths" />
-        </provider>
-
-        <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"
             android:directBootAware="true"
             android:exported="false" >
@@ -190,6 +173,21 @@
         </activity>
 
         <provider
+            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+            android:authorities="com.ideafoster.elbrownie.flutter.image_provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/flutter_image_picker_file_paths" />
+        </provider>
+
+        <activity
+            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
+        <provider
             android:name="io.flutter.plugins.share.ShareFileProvider"
             android:authorities="com.ideafoster.elbrownie.flutter.share_provider"
             android:exported="false"
@@ -199,10 +197,12 @@
                 android:resource="@xml/flutter_share_file_paths" />
         </provider>
 
-        <activity
-            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+        <service
+            android:name="com.lyokone.location.FlutterLocationService"
+            android:enabled="true"
             android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:foregroundServiceType="location" />
+
         <activity
             android:name="com.stripe.android.view.AddPaymentMethodActivity"
             android:theme="@style/StripeDefaultTheme" />

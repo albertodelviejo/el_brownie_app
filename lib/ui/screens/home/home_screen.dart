@@ -47,11 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<OrderBy> orderByList = [
     OrderBy("Cerca de mi", "assets/svg/send.svg", false),
-<<<<<<< HEAD
     OrderBy("Los más Warros!", "assets/svg/iempty.svg", false),
-=======
-    OrderBy("Más Warros!", "assets/svg/iempty.svg", false),
->>>>>>> reportFunctions
   ];
 
   @override

@@ -44,12 +44,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool noresult = false;
 
   UserBloc userBloc;
-<<<<<<< HEAD
-=======
   final _reportFormKey = GlobalKey<FormState>();
   String _reportedUsername = '';
   String _reportedUReason = '';
->>>>>>> reportFunctions
 
   @override
   Widget build(BuildContext context) {
@@ -490,8 +487,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(height: ScreenUtil().setHeight(50)),
         RichText(
             text: TextSpan(
-<<<<<<< HEAD
-=======
                 text: profile_screen_report,
                 style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
                 recognizer: TapGestureRecognizer()
@@ -501,17 +496,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(height: ScreenUtil().setHeight(30)),
         RichText(
             text: TextSpan(
->>>>>>> reportFunctions
                 text: profile_screen_help,
                 style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     _launchURLHelp();
                   })),
-<<<<<<< HEAD
-=======
         SizedBox(height: ScreenUtil().setHeight(30)),
->>>>>>> reportFunctions
         RichText(
             text: TextSpan(
                 text: profile_screen_privacy,
@@ -567,11 +558,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _launchURLHelp() async {
-<<<<<<< HEAD
     const url = 'https://elbrownie.com/index.php#funciona';
-=======
-    const url = 'http://elbrownie.com/index.php#funciona';
->>>>>>> reportFunctions
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -580,19 +567,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _launchURLTerms() async {
-<<<<<<< HEAD
     const url = 'https://elbrownie.com/terms.php';
-=======
-    const url = 'http://elbrownie.com/terms.php';
->>>>>>> reportFunctions
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
     }
   }
-<<<<<<< HEAD
-=======
 
   _reportUserModal() {
     return showDialog(
@@ -631,6 +612,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Text(
                           report_user_body,
+                          textAlign: TextAlign.center,
                         ),
                       ),
                       SizedBox(height: ScreenUtil().setHeight(40)),
@@ -640,10 +622,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             TextFormField(
                               textInputAction: TextInputAction.done,
-                              decoration: Mystyle.inputWhitebg('Username reported'),
+                              decoration:
+                                  Mystyle.inputWhitebg('Usuario a reportar'),
                               validator: (String value) {
-                                if(value == '') {
-                                  return 'Enter username reported';
+                                if (value == '') {
+                                  return 'Introduzca el usuario a reportar';
                                 } else {
                                   return null;
                                 }
@@ -655,10 +638,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             SizedBox(height: ScreenUtil().setHeight(40)),
                             TextFormField(
                               textInputAction: TextInputAction.done,
-                              decoration: Mystyle.inputWhitebg('Reason why'),
+                              decoration: Mystyle.inputWhitebg('Razón'),
                               validator: (value) {
-                                if(value == '') {
-                                  return 'Enter reason valid';
+                                if (value == '') {
+                                  return 'Introduzca una razón válida';
                                 } else {
                                   return null;
                                 }
@@ -671,19 +654,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       SizedBox(height: ScreenUtil().setHeight(40)),
-                      ButtAuth("Reporte", () async {
+                      ButtAuth("Reportar", () async {
                         if (_reportFormKey.currentState.validate()) {
                           _reportFormKey.currentState.save();
                           await userBloc.reportUser({
-                              'reported': 'user',
-                              'username': _reportedUsername,
-                              'reports': [
-                                {
-                                  'id_user': userBloc.currentUser.uid,
-                                  'reason': _reportedUReason,
-                                }
-                              ],
-                            });
+                            'reported': 'user',
+                            'username': _reportedUsername,
+                            'reports': [
+                              {
+                                'id_user': userBloc.currentUser.uid,
+                                'reason': _reportedUReason,
+                              }
+                            ],
+                          });
                           Navigator.pop(context);
                         }
                       }, border: true),
@@ -694,5 +677,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ]),
             )));
   }
->>>>>>> reportFunctions
 }

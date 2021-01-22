@@ -1,18 +1,18 @@
 [
     {
-        "merged": "C:\\Users\\achraf\\Desktop\\el_brownie_app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
-        "source": "C:\\Users\\achraf\\.gradle\\caches\\transforms-2\\files-2.1\\5fd24aa1d5b54dfa1be0fcd49b46015a\\core-1.1.0\\res\\drawable\\notification_icon_background.xml"
+        "merged": "/home/alberto/FiverrProyects/el_brownie_app/build/url_launcher/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",
+        "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5fd24aa1d5b54dfa1be0fcd49b46015a/core-1.1.0/res/drawable/notification_tile_bg.xml"
     },
     {
-        "merged": "C:\\Users\\achraf\\Desktop\\el_brownie_app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\drawable\\notification_tile_bg.xml",
-        "source": "C:\\Users\\achraf\\.gradle\\caches\\transforms-2\\files-2.1\\5fd24aa1d5b54dfa1be0fcd49b46015a\\core-1.1.0\\res\\drawable\\notification_tile_bg.xml"
+        "merged": "/home/alberto/FiverrProyects/el_brownie_app/build/url_launcher/intermediates/res/merged/debug/drawable/notification_bg.xml",
+        "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5fd24aa1d5b54dfa1be0fcd49b46015a/core-1.1.0/res/drawable/notification_bg.xml"
     },
     {
-        "merged": "C:\\Users\\achraf\\Desktop\\el_brownie_app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\drawable\\notification_bg.xml",
-        "source": "C:\\Users\\achraf\\.gradle\\caches\\transforms-2\\files-2.1\\5fd24aa1d5b54dfa1be0fcd49b46015a\\core-1.1.0\\res\\drawable\\notification_bg.xml"
+        "merged": "/home/alberto/FiverrProyects/el_brownie_app/build/url_launcher/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
+        "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5fd24aa1d5b54dfa1be0fcd49b46015a/core-1.1.0/res/drawable/notification_bg_low.xml"
     },
     {
-        "merged": "C:\\Users\\achraf\\Desktop\\el_brownie_app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
-        "source": "C:\\Users\\achraf\\.gradle\\caches\\transforms-2\\files-2.1\\5fd24aa1d5b54dfa1be0fcd49b46015a\\core-1.1.0\\res\\drawable\\notification_bg_low.xml"
+        "merged": "/home/alberto/FiverrProyects/el_brownie_app/build/url_launcher/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
+        "source": "/home/alberto/.gradle/caches/transforms-2/files-2.1/5fd24aa1d5b54dfa1be0fcd49b46015a/core-1.1.0/res/drawable/notification_icon_background.xml"
     }
 ]
