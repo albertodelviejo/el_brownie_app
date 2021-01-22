@@ -2,7 +2,7 @@ import 'package:el_brownie_app/repository/auth_result_status.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:apple_sign_in/apple_sign_in.dart';
 import 'auth_exception_handler.dart';
 
 class FirebaseAuthAPI {
@@ -101,6 +101,44 @@ class FirebaseAuthAPI {
     assert(_user.uid == currentUser.uid);
 
     return currentUser;
+  }
+
+// SignIn with apple
+  Future<User> signInApple() async {
+    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    // Send request to apple SignIn and request user Email and user FullName
+    final AuthorizationResult result = await AppleSignIn.performRequests([
+      AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
+    ]);
+    switch (result.status) {
+      case AuthorizationStatus.authorized:
+
+        final AppleIdCredential _auth = result.credential;
+        final OAuthProvider oAuthProvider = new OAuthProvider("apple.com");
+
+        final AuthCredential credential = oAuthProvider.credential(
+          idToken: String.fromCharCodes(_auth.identityToken),
+          accessToken: String.fromCharCodes(_auth.authorizationCode),
+        );
+        // SignIn with firebase using apple credential
+        await _firebaseAuth.signInWithCredential(credential);
+
+        // update the user information
+        if (_auth.fullName != null) {
+             await FirebaseAuth.instance.currentUser.updateProfile(displayName:"${_auth.fullName.givenName} ${_auth.fullName.familyName}",);
+        }
+        // return firebase user
+        return FirebaseAuth.instance.currentUser;
+
+      case AuthorizationStatus.error:
+        print("Sign In Failed ${result.error.localizedDescription}");
+        break;
+
+      case AuthorizationStatus.cancelled:
+        print("User Cancled");
+        break;
+    }
+
   }
 
   signOut() async {
