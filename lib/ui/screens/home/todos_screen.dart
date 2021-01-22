@@ -192,7 +192,11 @@ class _TodosScreenState extends State<TodosScreen> {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
+<<<<<<< HEAD
                                 childAspectRatio: (57 / 100),
+=======
+                                childAspectRatio: (54 / 100),
+>>>>>>> reportFunctions
                                 crossAxisSpacing: ScreenUtil().setHeight(30),
                                 mainAxisSpacing: ScreenUtil().setHeight(30),
                               ),

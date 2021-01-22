@@ -14,8 +14,11 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:el_brownie_app/ui/utils/strings.dart';
+<<<<<<< HEAD
 import 'dart:io';
 import 'package:device_info/device_info.dart';
+=======
+>>>>>>> reportFunctions
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -36,7 +39,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _obscureText = true;
   bool _autoValidate = false;
+<<<<<<< HEAD
   bool applesignin = false;
+=======
+>>>>>>> reportFunctions
 
   var _emailconfirmation;
   bool _validate = false;
@@ -51,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+<<<<<<< HEAD
 
   @override
   void initState() {
@@ -72,6 +79,8 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+=======
+>>>>>>> reportFunctions
   @override
   Widget build(BuildContext context) {
     userBloc = BlocProvider.of(context);
@@ -197,7 +206,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           Text(
                             "Introduce tus credenciales para acceder",
                             textAlign: TextAlign.center,
+<<<<<<< HEAD
                             style: Mystyle.regularTextStyle,
+=======
+                            style: Mystyle.titleTextStyle.copyWith(
+                              color: Colors.black87,
+                            ),
+>>>>>>> reportFunctions
                           ),
                           SizedBox(height: ScreenUtil().setHeight(50)),
                           Container(
@@ -433,7 +448,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Text(
+<<<<<<< HEAD
                   "O accede mediante Redes Sociales",
+=======
+                  "O utiliza tu perfil de Social Media",
+>>>>>>> reportFunctions
                   style: Mystyle.normalTextStyle,
                   textAlign: TextAlign.center,
                 ),
@@ -496,6 +515,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
+<<<<<<< HEAD
                 SizedBox(height: ScreenUtil().setHeight(30)),
                 applesignin == true
                     ? SignInButton(
@@ -528,6 +548,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       )
                     : Container(),
+=======
+>>>>>>> reportFunctions
                 SizedBox(height: ScreenUtil().setHeight(20)),
               ],
             ),

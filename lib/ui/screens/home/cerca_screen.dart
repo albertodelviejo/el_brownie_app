@@ -105,8 +105,13 @@ class _CercaScreenState extends State<CercaScreen> {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
+<<<<<<< HEAD
                             childAspectRatio: (57 / 100),
                             crossAxisSpacing: ScreenUtil().setHeight(30),
+=======
+                            childAspectRatio: (54 / 100),
+                            crossAxisSpacing: ScreenUtil().setHeight(15),
+>>>>>>> reportFunctions
                             mainAxisSpacing: ScreenUtil().setHeight(30),
                           ),
                           shrinkWrap: true,

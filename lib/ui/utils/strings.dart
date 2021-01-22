@@ -58,7 +58,11 @@ const String recover_text_model =
 /*******************Home Screen *******************************/
 
 const String todos_title = "Encuentra el desastre perfecto";
+<<<<<<< HEAD
 const String todos_search_text = "¿A dónde vas?";
+=======
+const String todos_search_text = "¿A donde vas?";
+>>>>>>> reportFunctions
 const String cerca_title = "Brownies cerca de mí";
 const String todos_empty_title = "Buenas noticias";
 const String todos_empty_text =
@@ -84,7 +88,11 @@ const String notification_tile_comment =
 const String notification_tile_added = "Has subido un local!";
 
 const String orderOption1 = 'Cerca a mi';
+<<<<<<< HEAD
 const String orderOption2 = 'Los más Warros!';
+=======
+const String orderOption2 = 'Más Warros!';
+>>>>>>> reportFunctions
 
 /******************************* Pop notifications ***********************/
 const String notification_pop_title_reclamation =
@@ -93,7 +101,11 @@ const String notification_pop_title_favourite = "!Eres famoso!";
 const String notification_pop_title_top = "Eres de los mejores!";
 const String notification_pop_title_welcome = "Somos uno más!";
 const String notification_pop_title_comment = "Tómate un respiro...";
+<<<<<<< HEAD
 const String notification_pop_title_added = "¡Vaya Brownie! Ahora a por otro";
+=======
+const String notification_pop_title_added = "Vaya Brownie! Ahora a por otro";
+>>>>>>> reportFunctions
 
 const String notification_pop_text_reclamation =
     "Alguien ha reclamado un local que has subido. Cuantas más reclamaciones tengamos más fácil será solucionar el drama.";
@@ -106,7 +118,11 @@ const String notification_pop_text_welcome =
 const String notification_pop_text_comment =
     "Alguien ha comentado un local que has publicado";
 const String notification_pop_text_added =
+<<<<<<< HEAD
     "¡Has encontrado un nuevo Brownie!, ¡Seguro que juntos acabaremos con este desastre!";
+=======
+    "Has encontrado un nuevo Brownie!, Seguro que juntos acabaremos con este desastre!";
+>>>>>>> reportFunctions
 
 const String share_title_pop = "Comparte con los coleguis";
 const String share_text_pop =
@@ -155,6 +171,10 @@ const String profile_screen_owner = "¿Eres propietario de un local?";
 const String profile_screen_owner_name = "Nombre del local";
 const String profile_screen_owner_address = "Dirección";
 const String profile_screen_owner_cif = "CIF propiedad";
+<<<<<<< HEAD
+=======
+const String profile_screen_report = "Reportar usuario ?";
+>>>>>>> reportFunctions
 const String profile_screen_help = "¿Necesitas ayuda?";
 const String profile_screen_privacy = "Política de privacidad";
 
@@ -168,6 +188,10 @@ const String empty_list = "Nada por aquí, nada por allá!";
 const String empty_filter = "No hay resultados\naplicando estos filtros";
 
 const String transference_succesfull = "Transferencia completada!";
+<<<<<<< HEAD
+=======
+const String report_succesfull = "Informe completado!";
+>>>>>>> reportFunctions
 
 const category_list = [
   "Veggie",
@@ -180,3 +204,16 @@ const category_list = [
   "Comida rápida",
   "Fusión"
 ];
+<<<<<<< HEAD
+=======
+
+//************************** report session ******************/
+//report options
+const String report_opt_1 = "Lenguaje ofensivo o abusivo";
+const String report_opt_2 = "Contiene contenido o actividad ilegal";
+const String report_opt_3 = "Violación de la privacidad de alguien";
+const String report_opt_4 = "Esta publicación está reclamada";
+
+const String report_user_title = "Reportar usuario";
+const String report_user_body = "Informe al usuario simplemente ingrese su nombre de usuario y verificaremos su informe";
+>>>>>>> reportFunctions

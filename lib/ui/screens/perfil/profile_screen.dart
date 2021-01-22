@@ -44,6 +44,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool noresult = false;
 
   UserBloc userBloc;
+<<<<<<< HEAD
+=======
+  final _reportFormKey = GlobalKey<FormState>();
+  String _reportedUsername = '';
+  String _reportedUReason = '';
+>>>>>>> reportFunctions
 
   @override
   Widget build(BuildContext context) {
@@ -484,12 +490,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SizedBox(height: ScreenUtil().setHeight(50)),
         RichText(
             text: TextSpan(
+<<<<<<< HEAD
+=======
+                text: profile_screen_report,
+                style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    _reportUserModal();
+                  })),
+        SizedBox(height: ScreenUtil().setHeight(30)),
+        RichText(
+            text: TextSpan(
+>>>>>>> reportFunctions
                 text: profile_screen_help,
                 style: Mystyle.smallTextStyle.copyWith(color: Colors.black87),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     _launchURLHelp();
                   })),
+<<<<<<< HEAD
+=======
+        SizedBox(height: ScreenUtil().setHeight(30)),
+>>>>>>> reportFunctions
         RichText(
             text: TextSpan(
                 text: profile_screen_privacy,
@@ -545,7 +567,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _launchURLHelp() async {
+<<<<<<< HEAD
     const url = 'https://elbrownie.com/index.php#funciona';
+=======
+    const url = 'http://elbrownie.com/index.php#funciona';
+>>>>>>> reportFunctions
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -554,11 +580,119 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _launchURLTerms() async {
+<<<<<<< HEAD
     const url = 'https://elbrownie.com/terms.php';
+=======
+    const url = 'http://elbrownie.com/terms.php';
+>>>>>>> reportFunctions
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
     }
   }
+<<<<<<< HEAD
+=======
+
+  _reportUserModal() {
+    return showDialog(
+        context: context,
+        builder: (context) => Dialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Wrap(children: <Widget>[
+                Stack(children: [
+                  Positioned(
+                      right: 0,
+                      top: 0,
+                      child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                              alignment: Alignment.bottomRight,
+                              width: ScreenUtil().setHeight(100),
+                              height: ScreenUtil().setHeight(100),
+                              child: SvgPicture.asset("")))),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(height: ScreenUtil().setHeight(60)),
+                      Text(
+                        report_user_title,
+                        style: Mystyle.titleTextStyle
+                            .copyWith(color: Colors.black87),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: ScreenUtil().setHeight(40)),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Text(
+                          report_user_body,
+                        ),
+                      ),
+                      SizedBox(height: ScreenUtil().setHeight(40)),
+                      Form(
+                        key: _reportFormKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              textInputAction: TextInputAction.done,
+                              decoration: Mystyle.inputWhitebg('Username reported'),
+                              validator: (String value) {
+                                if(value == '') {
+                                  return 'Enter username reported';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              onSaved: (String val) {
+                                _reportedUsername = val;
+                              },
+                            ),
+                            SizedBox(height: ScreenUtil().setHeight(40)),
+                            TextFormField(
+                              textInputAction: TextInputAction.done,
+                              decoration: Mystyle.inputWhitebg('Reason why'),
+                              validator: (value) {
+                                if(value == '') {
+                                  return 'Enter reason valid';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              onSaved: (String val) {
+                                _reportedUReason = val;
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: ScreenUtil().setHeight(40)),
+                      ButtAuth("Reporte", () async {
+                        if (_reportFormKey.currentState.validate()) {
+                          _reportFormKey.currentState.save();
+                          await userBloc.reportUser({
+                              'reported': 'user',
+                              'username': _reportedUsername,
+                              'reports': [
+                                {
+                                  'id_user': userBloc.currentUser.uid,
+                                  'reason': _reportedUReason,
+                                }
+                              ],
+                            });
+                          Navigator.pop(context);
+                        }
+                      }, border: true),
+                      SizedBox(height: ScreenUtil().setHeight(60)),
+                    ],
+                  ),
+                ])
+              ]),
+            )));
+  }
+>>>>>>> reportFunctions
 }
