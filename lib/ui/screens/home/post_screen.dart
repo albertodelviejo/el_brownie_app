@@ -261,7 +261,7 @@ class _PostScreenState extends State<PostScreen> {
                                           ButtAuth(
                                             share_button_pop,
                                             () => Share.share(
-                                                'Descárgate la app y no te pierdas este pedazo de brownie que te comparten! http://elbrownie.com/',
+                                                'Descárgate la app y no te pierdas este pedazo de brownie que te comparten! https://elbrownie.com/',
                                                 subject:
                                                     "No sabes la cantidad de brownies que hay por toda la ciudad...",
                                                 sharePositionOrigin:

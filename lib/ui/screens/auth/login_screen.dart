@@ -173,9 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Text(
                             "Introduce tus credenciales para acceder",
                             textAlign: TextAlign.center,
-                            style: Mystyle.titleTextStyle.copyWith(
-                              color: Colors.black87,
-                            ),
+                            style: Mystyle.regularTextStyle,
                           ),
                           SizedBox(height: ScreenUtil().setHeight(50)),
                           Container(
@@ -411,7 +409,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Text(
-                  "O utiliza tu perfil de Social Media",
+                  "O accede mediante Redes Sociales",
                   style: Mystyle.normalTextStyle,
                   textAlign: TextAlign.center,
                 ),

@@ -58,7 +58,7 @@ const String recover_text_model =
 /*******************Home Screen *******************************/
 
 const String todos_title = "Encuentra el desastre perfecto";
-const String todos_search_text = "¿A donde vas?";
+const String todos_search_text = "¿A dónde vas?";
 const String cerca_title = "Brownies cerca de mí";
 const String todos_empty_title = "Buenas noticias";
 const String todos_empty_text =
@@ -84,7 +84,7 @@ const String notification_tile_comment =
 const String notification_tile_added = "Has subido un local!";
 
 const String orderOption1 = 'Cerca a mi';
-const String orderOption2 = 'Más Warros!';
+const String orderOption2 = 'Los más Warros!';
 
 /******************************* Pop notifications ***********************/
 const String notification_pop_title_reclamation =
@@ -93,7 +93,7 @@ const String notification_pop_title_favourite = "!Eres famoso!";
 const String notification_pop_title_top = "Eres de los mejores!";
 const String notification_pop_title_welcome = "Somos uno más!";
 const String notification_pop_title_comment = "Tómate un respiro...";
-const String notification_pop_title_added = "Vaya Brownie! Ahora a por otro";
+const String notification_pop_title_added = "¡Vaya Brownie! Ahora a por otro";
 
 const String notification_pop_text_reclamation =
     "Alguien ha reclamado un local que has subido. Cuantas más reclamaciones tengamos más fácil será solucionar el drama.";
@@ -106,7 +106,7 @@ const String notification_pop_text_welcome =
 const String notification_pop_text_comment =
     "Alguien ha comentado un local que has publicado";
 const String notification_pop_text_added =
-    "Has encontrado un nuevo Brownie!, Seguro que juntos acabaremos con este desastre!";
+    "¡Has encontrado un nuevo Brownie!, ¡Seguro que juntos acabaremos con este desastre!";
 
 const String share_title_pop = "Comparte con los coleguis";
 const String share_text_pop =

@@ -270,7 +270,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         children: <TextSpan>[
                       TextSpan(text: '¿Tienes una cuenta? '),
                       TextSpan(
-                          text: 'Accede ahora',
+                          text: 'Entrar',
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.push(
@@ -287,7 +287,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               SizedBox(height: ScreenUtil().setHeight(150)),
               Text(
-                "O utiliza tu perfil de Social Media",
+                "O accede mediante Redes Sociales",
                 style: Mystyle.normalTextStyle,
                 textAlign: TextAlign.center,
               ),
@@ -354,7 +354,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 }
 
 _launchURL() async {
-  const url = 'http://elbrownie.com/terms.php';
+  const url = 'https://elbrownie.com/terms.php';
   if (await canLaunch(url)) {
     await launch(url);
   } else {

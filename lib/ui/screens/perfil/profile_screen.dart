@@ -545,7 +545,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _launchURLHelp() async {
-    const url = 'http://elbrownie.com/index.php#funciona';
+    const url = 'https://elbrownie.com/index.php#funciona';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -554,7 +554,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _launchURLTerms() async {
-    const url = 'http://elbrownie.com/terms.php';
+    const url = 'https://elbrownie.com/terms.php';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
