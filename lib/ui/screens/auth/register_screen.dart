@@ -15,12 +15,9 @@ import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-<<<<<<< HEAD
 import 'dart:io';
 import 'package:device_info/device_info.dart';
-=======
 
->>>>>>> reportFunctions
 class RegisterScreen extends StatefulWidget {
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
@@ -38,10 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   UserBloc userBloc;
 
   bool _obscureText = true;
-<<<<<<< HEAD
   bool applesignin = true;
-=======
->>>>>>> reportFunctions
 
   var _email;
   var _emailconfirmation;
@@ -55,7 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _obscureText = !_obscureText;
     });
   }
-<<<<<<< HEAD
+
   @override
   void initState() {
     super.initState();
@@ -75,8 +69,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       }
     }
   }
-=======
->>>>>>> reportFunctions
 
   @override
   Widget build(BuildContext context) {
@@ -301,11 +293,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         children: <TextSpan>[
                       TextSpan(text: '¿Tienes una cuenta? '),
                       TextSpan(
-<<<<<<< HEAD
                           text: 'Entrar',
-=======
-                          text: 'Accede ahora',
->>>>>>> reportFunctions
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.push(
@@ -322,11 +310,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               SizedBox(height: ScreenUtil().setHeight(150)),
               Text(
-<<<<<<< HEAD
                 "O accede mediante Redes Sociales",
-=======
-                "O utiliza tu perfil de Social Media",
->>>>>>> reportFunctions
                 style: Mystyle.normalTextStyle,
                 textAlign: TextAlign.center,
               ),
@@ -369,28 +353,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
-<<<<<<< HEAD
               SizedBox(height: ScreenUtil().setHeight(30)),
-              applesignin==true?SignInButton(
-                Buttons.Apple,
-                padding: EdgeInsets.symmetric(vertical: 13, horizontal: 16),
-                onPressed: () {
-                  userBloc.signInApple().then((value) {
-                    userBloc.user.uid = value.uid;
-                    userBloc.updateUserData(UserModel(
-                        uid: value.uid,
-                        userName: value.displayName,
-                        email: value.email));
-                  });
-                },
-                shape: StadiumBorder(
-                  side: BorderSide(
-                    color: Colors.black,
-                  ),
-                ),
-              ):Container(),
-=======
->>>>>>> reportFunctions
+              applesignin == true
+                  ? SignInButton(
+                      Buttons.Apple,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 13, horizontal: 16),
+                      onPressed: () {
+                        userBloc.signInApple().then((value) {
+                          userBloc.user.uid = value.uid;
+                          userBloc.updateUserData(UserModel(
+                              uid: value.uid,
+                              userName: value.displayName,
+                              email: value.email));
+                        });
+                      },
+                      shape: StadiumBorder(
+                        side: BorderSide(
+                          color: Colors.black,
+                        ),
+                      ),
+                    )
+                  : Container(),
               SizedBox(height: ScreenUtil().setHeight(50)),
             ],
           ),
@@ -415,11 +399,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 }
 
 _launchURL() async {
-<<<<<<< HEAD
   const url = 'https://elbrownie.com/terms.php';
-=======
-  const url = 'http://elbrownie.com/terms.php';
->>>>>>> reportFunctions
   if (await canLaunch(url)) {
     await launch(url);
   } else {
