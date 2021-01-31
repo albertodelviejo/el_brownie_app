@@ -415,6 +415,7 @@ class _PostScreenState extends State<PostScreen> {
           ),
           SizedBox(height: ScreenUtil().setHeight(5)),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FlatButton(
                 padding: EdgeInsets.zero,
@@ -437,6 +438,7 @@ class _PostScreenState extends State<PostScreen> {
                   ),
                 ),
               ),
+              Container(width: 40),
               FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () {
