@@ -232,7 +232,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 points: element.get("points"),
                 hasNotifications: element.get("hasNotifications"),
                 hasRequestedNotification:
-                    element.get("hasRequestedNotification"));
+                    element.get("hasRequestedNotification"),
+                blockedUsers: element.get("blocked_users"));
             Stream.empty();
           }
           return homeScreen();

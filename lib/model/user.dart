@@ -14,6 +14,7 @@ class UserModel {
   String avatarURL = "";
   bool hasNotifications = false;
   bool hasRequestedNotification = false;
+  List blockedUsers;
 
   UserModel(
       {Key key,
@@ -29,5 +30,6 @@ class UserModel {
       this.cif,
       this.avatarURL,
       this.hasNotifications,
-      this.hasRequestedNotification});
+      this.hasRequestedNotification,
+      this.blockedUsers});
 }

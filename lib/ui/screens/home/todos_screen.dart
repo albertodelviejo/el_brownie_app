@@ -141,18 +141,16 @@ class _TodosScreenState extends State<TodosScreen> {
       //return CercaScreen(); //register
 
     }
-    if (widget.orderPer == orderOption2) {
-      /*
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) {
-            return LosMasScreen(); //register
-          },
-        ),
-      );
-      */
-    }
+    userBloc.user.blockedUsers
+        .forEach((blockedUid) => posts.removeWhere((post) {
+              if (post.idUserPost == null) {
+                return false;
+              } else {
+                return post.idUserPost.contains(blockedUid) ? true : false;
+              }
+            }));
+    //post.idUserPost != null ?? post.idUserPost.contains(blockedUid)));
+
     return filteredPosts;
   }
 

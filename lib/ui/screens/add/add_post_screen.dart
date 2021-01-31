@@ -34,7 +34,7 @@ class AddCommentScreen extends StatefulWidget {
 class _AddCommentScreen extends State<AddCommentScreen> {
   final _formKey = GlobalKey<FormState>();
   var scaffoldKey = GlobalKey<ScaffoldState>();
-  double _value = 5;
+  double _value = 10;
   final nombre = TextEditingController();
   final direccion = TextEditingController();
   final comentario = TextEditingController();
@@ -475,7 +475,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "1 €",
+                      "7 €",
                       style: Mystyle.subtitleTextStyle
                           .copyWith(color: Colors.black),
                       textAlign: TextAlign.center,
@@ -488,8 +488,8 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                               RoundSliderThumbShape(enabledThumbRadius: 12.0),
                         ),
                         child: Slider(
-                          min: 1,
-                          max: 7,
+                          min: 7,
+                          max: 25,
                           activeColor: Mystyle.secondrycolo,
                           inactiveColor: Colors.grey[300],
                           value: _value,
@@ -502,7 +502,7 @@ class _AddCommentScreen extends State<AddCommentScreen> {
                       ),
                     ),
                     Text(
-                      "7 €",
+                      "25 €",
                       style: Mystyle.subtitleTextStyle
                           .copyWith(color: Colors.black),
                       textAlign: TextAlign.center,

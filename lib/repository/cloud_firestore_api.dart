@@ -45,6 +45,7 @@ class CloudFirestoreAPI {
                 'type': "default",
                 'favorites': [],
                 'notifications': {},
+                'blocked_users': [],
                 'avatar_url':
                     "https://firebasestorage.googleapis.com/v0/b/elbrownie-baf68.appspot.com/o/avatars%2Fdefault.png?alt=media&token=f2afa6be-730c-46b1-81c0-b80da431a8af",
                 'number_of_posts': 0,
@@ -115,34 +116,6 @@ class CloudFirestoreAPI {
     });
     return allPost;
   }
-
-  // List<CardHome> buildFavouritesPosts(List<Post> postListsSnapshot) {
-  //   List<CardHome> favouritesPosts = List<CardHome>();
-  //   postListsSnapshot.forEach((element) {
-  //     favouritesPosts.add(CardHome(
-  //       name: element.name,
-  //       valo: "1700 valoraciones",
-  //       place: element.address,
-  //       reclam: element.status.toString() == "true" ? true : false,
-  //       view: "1700 views",
-  //       hace: "Hace 2 dias",
-  //       myindex: element.valoration,
-  //       id: element.idPost,
-  //       imageUrl: element.photoUrl,
-  //     ));
-  //   });
-
-  //   return favouritesPosts;
-  // }
-
-  // Future<List<dynamic>> getFavouritesPostFromString(String uid) async {
-  //   DocumentReference ref = _db.collection("users").doc(uid);
-  //   List<dynamic> favoritesPost = new List<String>();
-  //   await ref.get().then((value) {
-  //     favoritesPost = value.get('favorites');
-  //     return favoritesPost;
-  //   });
-  // }
 
   List<CardLosmas> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) {
     List<CardLosmas> allPost = List<CardLosmas>();
@@ -218,33 +191,6 @@ class CloudFirestoreAPI {
     return allPost;
   }
 
-/*
-  List<CardHome> buildMyPostsCerca(List<DocumentSnapshot> postsListSnapshot) {
-    List<CardHome> allPost = List<CardHome>();
-    postsListSnapshot.forEach((element) {
-      allPost.add(CardHome(
-        name: element.get('name'),
-        valo: "1700 valoraciones",
-        category: element.get('category'),
-        place: element.get('address'),
-        reclam: element.get('status'),
-        view: "1700 views",
-        hace: "Hace 2 dias",
-        imageUrl: element.get('photo'),
-        myindex: element.get('valoration').toString(),
-        idUserPost: element.get('id_user'),
-        id: element.id,
-        longitude: element.get('longitude'),
-        latitude: element.get('latitude'),
-      ));
-    });
-    return GoogleMapsApi().getNearbyPlaces(allPost).then((value) {
-      return value;
-    });
-    //return allPost;
-  }
-  */
-
   Future likePost(String idPost, String uid) async {
     DocumentReference ref = _db.collection("users").doc(uid);
     ref.get().then((value) => {
@@ -305,10 +251,6 @@ class CloudFirestoreAPI {
       });
     });
   }
-
-  // void addPhotoToPost(String idPost, String imageUrl) async {
-  //   await _db.collection("posts").doc(idPost).update({'photo': imageUrl.toString()});
-  // }
 
   Post getPost(String idPost) {
     DocumentReference ref = _db.collection("posts").doc(idPost);
@@ -569,5 +511,12 @@ class CloudFirestoreAPI {
       data['reports'] = reports;
       await _db.collection('reports').doc(doc.id).update(data);
     }
+  }
+
+  Future<void> addBlockedUser(uid, uid_blocked) async {
+    DocumentReference docRef = _db.collection("users").doc(uid);
+    await docRef.update({
+      'blocked_users': FieldValue.arrayUnion([uid_blocked])
+    });
   }
 }

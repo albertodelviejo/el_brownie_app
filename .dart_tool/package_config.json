@@ -338,6 +338,12 @@
       "languageVersion": "2.5"
     },
     {
+      "name": "in_app_purchase",
+      "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/in_app_purchase-0.3.5+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "intl",
       "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1",
       "packageUri": "lib/",
@@ -348,6 +354,12 @@
       "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.2",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "json_annotation",
+      "rootUri": "file:///home/alberto/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/json_annotation-3.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "location",
@@ -662,7 +674,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-01-24T09:19:32.298872Z",
+  "generated": "2021-01-27T15:11:43.064962Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

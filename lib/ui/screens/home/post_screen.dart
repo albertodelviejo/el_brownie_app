@@ -80,34 +80,6 @@ class _PostScreenState extends State<PostScreen> {
         });
   }
 
-  // Widget getComments() {
-  //   return StreamBuilder<QuerySnapshot>(
-  //       stream: FirebaseFirestore.instance
-  //           .collection("comments")
-  //           .where('id_post', isEqualTo: widget.id)
-  //           .snapshots(),
-  //       builder: (BuildContext context, AsyncSnapshot snapshot) {
-  //         if (!snapshot.hasData) {
-  //           return Center(child: CircularProgressIndicator());
-  //         } else {
-  //           List<CommentsW> list = new List<CommentsW>();
-  //           snapshot.data.documents.forEach((element) {
-  //             list.add(CommentsW(
-  //               comment: element.get('text'),
-  //               image: "",
-  //               likes: element.get('likes'),
-  //               name: "",
-  //               valoration: int.parse(element.get('valoration')),
-  //               time: "",
-  //             ));
-  //           });
-  //           Stream.empty();
-  //           return postScreen();
-  //           //return getComments();
-  //         }
-  //       });
-  // }
-
   Widget getComments1() {
     return StreamBuilder(
         stream: userBloc.commentsListStream(widget.id),
@@ -149,28 +121,7 @@ class _PostScreenState extends State<PostScreen> {
           child: Image.asset("assets/appblogo.png"),
         ),
         centerTitle: true,
-        actions: [
-          /*
-          Padding(
-            padding: const EdgeInsets.only(right: 12.0),
-            child: IconButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return NotificationsScreen(); //register
-                  },
-                ),
-              ),
-              icon: Icon(
-                Icons.notifications_none,
-                color: Colors.black,
-                size: 28,
-              ),
-            ),
-          ),
-          */
-        ],
+        actions: [],
       ),
       body: ListView(
         children: <Widget>[
@@ -463,28 +414,114 @@ class _PostScreenState extends State<PostScreen> {
             ),
           ),
           SizedBox(height: ScreenUtil().setHeight(5)),
-          Center(
-            child: FlatButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return ReportScreen(
-                          postId: widget.id,
-                          idUserPost: widget.cardHome.idUserPost);
-                    },
+          Row(
+            children: [
+              FlatButton(
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return ReportScreen(
+                            postId: widget.id,
+                            idUserPost: widget.cardHome.idUserPost);
+                      },
+                    ),
+                  );
+                },
+                child: Text(
+                  'Reportar post',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
                   ),
-                );
-              },
-              child: Text(
-                'Reportar post',
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
                 ),
               ),
-            ),
+              FlatButton(
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  userBloc.blockUser(widget.cardHome.idUserPost);
+                  return showDialog(
+                      context: context,
+                      builder: (context) => Dialog(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Wrap(children: <Widget>[
+                            Stack(children: [
+                              Positioned(
+                                right: 0,
+                                top: 0,
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                      alignment: Alignment.bottomRight,
+                                      height: ScreenUtil().setWidth(100),
+                                      width: ScreenUtil().setWidth(100),
+                                      child: SvgPicture.asset("")),
+                                ),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(height: ScreenUtil().setHeight(60)),
+                                  Text(
+                                    "Bloqueado correctamente",
+                                    style: Mystyle.titleTextStyle
+                                        .copyWith(color: Colors.black87),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 15),
+                                    child: Container(
+                                        alignment: Alignment.center,
+                                        height: ScreenUtil().setWidth(330),
+                                        width: ScreenUtil().setWidth(330),
+                                        child: Image(
+                                          height: ScreenUtil().setHeight(400),
+                                          image: AssetImage(
+                                              "assets/pop/check_mark.png"),
+                                        )),
+                                  ),
+                                  SizedBox(height: ScreenUtil().setHeight(40)),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 24),
+                                    child: Text(
+                                      "Ha bloqueado al usuario",
+                                      style: Mystyle.normalTextStyle,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  SizedBox(height: ScreenUtil().setHeight(40)),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 24),
+                                    child: ButtAuth(
+                                      "Aceptar",
+                                      () {
+                                        Navigator.of(context)
+                                            .popUntil((route) => route.isFirst);
+                                      },
+                                      border: true,
+                                    ),
+                                  ),
+                                  SizedBox(height: ScreenUtil().setHeight(40)),
+                                ],
+                              ),
+                            ]),
+                          ])));
+                },
+                child: Text(
+                  'Bloquear usuario',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+            ],
           ),
           SizedBox(height: ScreenUtil().setHeight(5)),
           Divider(color: Colors.black87),

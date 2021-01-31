@@ -219,6 +219,9 @@ class UserBloc implements Bloc {
   reportUser(Map<String, dynamic> data) =>
       _cloudFirestoreRepository.reportUser(data);
 
+  blockUser(String blockedUser) =>
+      _cloudFirestoreRepository.blockUser(user.uid, blockedUser);
+
   @override
   void dispose() {}
 }

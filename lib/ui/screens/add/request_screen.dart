@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:el_brownie_app/bloc/bloc_user.dart';
 import 'package:el_brownie_app/repository/stripe_api.dart';
 import 'package:el_brownie_app/ui/screens/notifications/notifications_screen.dart';
@@ -8,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import '../../utils/buttonauth.dart';
@@ -23,7 +27,73 @@ class RequestScreen extends StatefulWidget {
   _RequestScreenState createState() => _RequestScreenState();
 }
 
+final String testID = 'post_reclamation';
+
 class _RequestScreenState extends State<RequestScreen> {
+  /// Is the API available on the device
+  bool _available = true;
+
+  /// The In App Purchase plugin
+  InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
+
+  /// Products for sale
+  List<ProductDetails> _products = [];
+
+  /// Past purchases
+  List<PurchaseDetails> _purchases = [];
+
+  /// Updates to purchases
+  StreamSubscription _subscription;
+
+  /// Initialize data
+  void _initialize() async {
+// Check availability of In App Purchases
+    _available = await _iap.isAvailable();
+
+    if (_available) {
+      await _getProducts();
+      await _getPastPurchases();
+
+      // Verify and deliver a purchase with your own business logic
+      // _verifyPurchase();
+    }
+  }
+
+  /// Get all products available for sale
+  Future<void> _getProducts() async {
+    Set<String> ids = Set.from([testID, 'test_a']);
+    ProductDetailsResponse response = await _iap.queryProductDetails(ids);
+
+    setState(() {
+      _products = response.productDetails;
+    });
+  }
+
+  /// Gets past purchases
+  Future<void> _getPastPurchases() async {
+    QueryPurchaseDetailsResponse response = await _iap.queryPastPurchases();
+
+    for (PurchaseDetails purchase in response.pastPurchases) {
+      final pending = Platform.isIOS
+          ? purchase.pendingCompletePurchase
+          : !purchase.billingClientPurchase.isAcknowledged;
+
+      if (pending) {
+        InAppPurchaseConnection.instance.completePurchase(purchase);
+      }
+    }
+
+    setState(() {
+      _purchases = response.pastPurchases;
+    });
+  }
+
+  /// Returns purchase of specific product ID
+  PurchaseDetails _hasPurchased(String productID) {
+    return _purchases.firstWhere((purchase) => purchase.productID == productID,
+        orElse: () => null);
+  }
+
   var scaffoldKey = GlobalKey<ScaffoldState>();
   int _value = 12;
   bool isfirst = false;
@@ -39,6 +109,13 @@ class _RequestScreenState extends State<RequestScreen> {
   void initState() {
     super.initState();
     StripeService.init();
+  }
+
+  /// Purchase a product
+  void _buyProduct(ProductDetails prod) {
+    final PurchaseParam purchaseParam = PurchaseParam(productDetails: prod);
+    _iap.buyNonConsumable(purchaseParam: purchaseParam);
+    //_iap.buyConsumable(purchaseParam: purchaseParam, autoConsume: false);
   }
 
   @override
@@ -66,28 +143,6 @@ class _RequestScreenState extends State<RequestScreen> {
               child: Image.asset("assets/appblogo.png"),
             ),
             centerTitle: true,
-            /*
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 12.0),
-                child: IconButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return NotificationsScreen(); //register
-                      },
-                    ),
-                  ),
-                  icon: Icon(
-                    Icons.notifications_none,
-                    color: Colors.black,
-                    size: 28,
-                  ),
-                ),
-              ),
-            ],
-            */
           ),
           body: Builder(
             builder: (context) => ListView(
@@ -276,6 +331,7 @@ class _RequestScreenState extends State<RequestScreen> {
                     "Pagar esta reclamación",
                     widget.isEnabled
                         ? () async {
+                            _buyProduct(_products.single);
                             if (_value == 0 && cifController.text == '') {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                   content: Text('Rellene el CIF!'),
@@ -288,6 +344,7 @@ class _RequestScreenState extends State<RequestScreen> {
                               String cif = cifController.text;
                               double price = double.parse(widget.price) * 100;
                               String finalPrice = price.toStringAsFixed(0);
+
                               var response = await StripeService.payWithNewCard(
                                   amount: finalPrice, currency: 'EUR');
 
@@ -305,6 +362,7 @@ class _RequestScreenState extends State<RequestScreen> {
                                   reason = claim_opt_4;
                                   break;
                               }
+
                               if (response.success) {
                                 await _stripeService.createClaim(
                                     widget.price,
@@ -316,11 +374,14 @@ class _RequestScreenState extends State<RequestScreen> {
                                 userBloc.addNotification(
                                     widget.idUserPost, "reclamation", 10);
                                 userBloc.addPoints(widget.idUserPost, 10);
+
                                 Scaffold.of(context).showSnackBar(SnackBar(
                                   content: Text(response.message),
                                   duration: Duration(seconds: 5),
                                 ));
+
                                 Navigator.pop(context);
+
                                 return showDialog(
                                     context: context,
                                     builder: (context) => Dialog(
@@ -502,11 +563,13 @@ class _RequestScreenState extends State<RequestScreen> {
                                             ),
                                           ]),
                                         ])));
+
                                 Scaffold.of(context).showSnackBar(SnackBar(
                                   content: Text(response.message),
                                   duration: Duration(seconds: 5),
                                 ));
                               }
+
                               setState(() {
                                 loading = false;
                               });

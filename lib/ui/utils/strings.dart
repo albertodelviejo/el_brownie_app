@@ -168,8 +168,8 @@ const String profile_edit_button = "Guardar Cambios";
 const String empty_list = "Nada por aquí, nada por allá!";
 const String empty_filter = "No hay resultados\naplicando estos filtros";
 
-const String transference_succesfull = "Transferencia completada!";
-const String report_succesfull = "¡Informe completado!";
+const String transference_succesfull = "¡Transferencia completada!";
+const String report_succesfull = "¡Reporte completado!";
 
 const category_list = [
   "Veggie",

@@ -115,4 +115,7 @@ class CloudFirestoreRepository {
 
   void reportUser(Map<String, dynamic> data) =>
       _cloudFirestoreAPI.reportUser(data);
+
+  void blockUser(String uid, String blockedUid) =>
+      _cloudFirestoreAPI.addBlockedUser(uid, blockedUid);
 }
