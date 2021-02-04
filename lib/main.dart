@@ -14,6 +14,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Admob.initialize(testDeviceIds: ["F88D249D3AE7F0D5C62C8C07C0F615A4"]);
+  Admob.requestTrackingAuthorization();
   InAppPurchaseConnection.enablePendingPurchases();
   runApp(MyApp());
 }

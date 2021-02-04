@@ -9,20 +9,18 @@ class CardAdd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.grey,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.grey,
+          ),
+          borderRadius: BorderRadius.circular(5),
         ),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      padding: EdgeInsets.only(top: 5, right: 5, left: 5),
-      child: AdmobBanner(
-        adUnitId: admobService.getBannerAdId(),
-        adSize: AdmobBannerSize.ADAPTIVE_BANNER(
-            width: ScreenUtil().setWidth(600).toInt()),
-      ),
-    );
+        padding: EdgeInsets.only(top: 5, right: 5, left: 5),
+        child: AdmobBanner(
+          adUnitId: admobService.getBannerAdId(),
+          adSize: AdmobBannerSize.ADAPTIVE_BANNER(
+              width: ScreenUtil().setWidth(600).toInt()),
+        ));
   }
 }

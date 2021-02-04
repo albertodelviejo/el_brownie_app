@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:admob_flutter/admob_flutter.dart';
 
 class AdmobService {
-  final String _appIdIOS = 'ca-app-pub-3940256099942544~1458002511';
-  final String _appIdAndroid = 'ca-app-pub-3940256099942544~3347511713';
+  final String _appIdIOS = 'ca-app-pub-2936019539842342/4390432301';
+  final String _appIdAndroid = 'ca-app-pub-2936019539842342/7849303344';
 
   //get the app id configured at Admob
   String getAppId() {
@@ -26,27 +26,27 @@ class AdmobService {
   //######### Set your Ads here #########
   String getBannerAdId() {
     if (Platform.isIOS) {
-      return 'ca-app-pub-3940256099942544/2934735716';
+      return 'ca-app-pub-2936019539842342/4390432301';
     } else if (Platform.isAndroid) {
-      return 'ca-app-pub-3940256099942544/6300978111';
+      return 'ca-app-pub-2936019539842342/7849303344';
     }
     return null;
   }
 
   String getRewardBasedVideoAdUnitId() {
     if (Platform.isIOS) {
-      return 'ca-app-pub-3940256099942544/1712485313';
+      return 'ca-app-pub-2936019539842342/4390432301';
     } else if (Platform.isAndroid) {
-      return 'ca-app-pub-3940256099942544/5224354917';
+      return 'ca-app-pub-2936019539842342/7849303344';
     }
     return null;
   }
 
   String getInterstitialAdUnitId() {
     if (Platform.isIOS) {
-      return 'ca-app-pub-3940256099942544/4411468910';
+      return 'ca-app-pub-2936019539842342/4390432301';
     } else if (Platform.isAndroid) {
-      return 'ca-app-pub-3940256099942544/1033173712';
+      return 'ca-app-pub-2936019539842342/7849303344';
     }
     return null;
   }
