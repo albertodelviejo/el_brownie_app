@@ -62,32 +62,6 @@ class UserBloc implements Bloc {
           List<DocumentSnapshot> ticketsListSnapshot) =>
       _cloudFirestoreRepository.buildMyPostsCardHome(ticketsListSnapshot);
 
-/*
-  List<CardHome> buildMyPostsCerca(List<DocumentSnapshot> snapshot) =>
-      _cloudFirestoreRepository.buildMyPostsCerca(snapshot);
-*/
-// //6. Get favourites posts
-//   Future<List<CardHome>> myFavouritesPostsList() async {
-//     List<String> list = [];
-//     list =
-//         await _cloudFirestoreRepository.getFavouritesPostFromString(user.uid);
-
-//     List<Post> posts = [];
-//     list.forEach((element) {
-//       posts.add(_cloudFirestoreRepository.getPost(element));
-//     });
-//     List<CardHome> favorites = buildMyFavouritesPosts(posts);
-//     return favorites;
-//   }
-
-  // List<CardHome> buildMyFavouritesPosts(List<Post> favouritesPostsSnapshot) =>
-  //     _cloudFirestoreRepository.buildFavouritesPosts(favouritesPostsSnapshot);
-
-//3. Get Tickets from DB
-
-  // Future<Location> getSearchLocation(text) =>
-  //     _googleMapsApi.getSearchLocation(text);
-
 // 7. Set post as favourite
 
   Future likePost(String idPost) =>
@@ -112,9 +86,6 @@ class UserBloc implements Bloc {
           int valoration) =>
       _cloudFirestoreRepository.createPost(idPost, currentUser.uid, address,
           category, name, comentary, price, status, photoUrl, valoration);
-
-  // void addPhotoToPost(String idPost, String imageUrl) =>
-  //      _cloudFirestoreRepository.addPhotoToPost(idPost, imageUrl);
 
 //10. Get my brownies
   Stream<QuerySnapshot> myBrowniesListStream(uid) => FirebaseFirestore.instance

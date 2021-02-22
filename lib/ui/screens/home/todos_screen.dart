@@ -34,7 +34,7 @@ class TodosScreen extends StatefulWidget {
 
 class _TodosScreenState extends State<TodosScreen> {
   UserBloc userBloc;
-
+//post.idUserPost != null ?? post.idUserPost.contains(blockedUid)));
   final admobService = AdmobService();
   AdmobBannerSize bannerSize;
   AdmobInterstitial interstitialAd;
@@ -149,8 +149,7 @@ class _TodosScreenState extends State<TodosScreen> {
                 return post.idUserPost.contains(blockedUid) ? true : false;
               }
             }));
-    //post.idUserPost != null ?? post.idUserPost.contains(blockedUid)));
-
+  
     return filteredPosts;
   }
 
