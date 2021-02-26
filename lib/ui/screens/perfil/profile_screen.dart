@@ -264,7 +264,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Eres propietario de un restaurante?",
+                profile_screen_owner,
                 style: Mystyle.smallTextStyle.copyWith(
                   color: Colors.black87,
                 ),

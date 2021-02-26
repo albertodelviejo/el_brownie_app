@@ -120,6 +120,7 @@ class CloudFirestoreAPI {
   List<CardLosmas> buildAllPosts(List<DocumentSnapshot> postsListSnapshot) {
     List<CardLosmas> allPost = List<CardLosmas>();
     int index = 0;
+
     postsListSnapshot.forEach((element) {
       if (index % 4 == 3) {
         allPost.add(CardLosmas(isAdd: true, name: ""));

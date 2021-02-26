@@ -294,6 +294,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       TextSpan(text: '¿Tienes una cuenta? '),
                       TextSpan(
                           text: 'Entrar',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.push(

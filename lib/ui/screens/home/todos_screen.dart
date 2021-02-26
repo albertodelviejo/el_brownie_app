@@ -87,21 +87,33 @@ class _TodosScreenState extends State<TodosScreen> {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
               return Center(child: CircularProgressIndicator());
-
             case ConnectionState.done:
-              return todosScreen(
-                  userBloc.buildMyPosts(snapshot.data.documents));
-
+              if (snapshot.data.documents != null) {
+                return todosScreen(
+                    userBloc.buildMyPosts(snapshot.data.documents));
+              } else {
+                return NoResult();
+              }
+              break;
             case ConnectionState.active:
-              return todosScreen(
-                  userBloc.buildMyPosts(snapshot.data.documents));
-
+              if (snapshot.data.documents != null) {
+                return todosScreen(
+                    userBloc.buildMyPosts(snapshot.data.documents));
+              } else {
+                return NoResult();
+              }
+              break;
             case ConnectionState.none:
               return Center(child: CircularProgressIndicator());
 
             default:
-              return todosScreen(
-                  userBloc.buildMyPosts(snapshot.data.documents));
+              if (snapshot.data.documents != null) {
+                return todosScreen(
+                    userBloc.buildMyPosts(snapshot.data.documents));
+              } else {
+                return NoResult();
+              }
+              break;
           }
         });
   }
@@ -141,15 +153,17 @@ class _TodosScreenState extends State<TodosScreen> {
       //return CercaScreen(); //register
 
     }
-    userBloc.user.blockedUsers
-        .forEach((blockedUid) => posts.removeWhere((post) {
-              if (post.idUserPost == null) {
-                return false;
-              } else {
-                return post.idUserPost.contains(blockedUid) ? true : false;
-              }
-            }));
-  
+    if (userBloc.user.blockedUsers != null) {
+      userBloc.user.blockedUsers
+          .forEach((blockedUid) => posts.removeWhere((post) {
+                if (post.idUserPost == null) {
+                  return false;
+                } else {
+                  return post.idUserPost.contains(blockedUid) ? true : false;
+                }
+              }));
+    }
+
     return filteredPosts;
   }
 

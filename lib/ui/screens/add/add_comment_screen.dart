@@ -305,7 +305,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 } else {
                   _validate = true;
                 }
-              }, border: true, press: true),
+              }, border: true, press: false),
               SizedBox(height: ScreenUtil().setHeight(100)),
             ],
           ),
